@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import { kingfisher, speciesShort } from './lib/presentation'
+import { startAmbience } from './lib/sfx'
 import styles from './StartScreen.module.css'
 
 export type StartConfig =
   | { kind: 'passplay' }
+  | { kind: 'tutorial' }
   | { kind: 'bots'; numPlayers: number; humanSeat: string; botSeats: string[] }
 
 export function StartScreen({ onStart }: { onStart: (config: StartConfig) => void }) {
@@ -11,9 +13,14 @@ export function StartScreen({ onStart }: { onStart: (config: StartConfig) => voi
   const [seatPref, setSeatPref] = useState(0)
   const seat = Math.min(seatPref, botCount)
 
+  const begin = (config: StartConfig) => {
+    startAmbience()
+    onStart(config)
+  }
+
   const startBots = () => {
     const seats = Array.from({ length: 1 + botCount }, (_, i) => String(i))
-    onStart({
+    begin({
       kind: 'bots',
       numPlayers: seats.length,
       humanSeat: String(seat),
@@ -27,7 +34,14 @@ export function StartScreen({ onStart }: { onStart: (config: StartConfig) => voi
       <p className={styles.subtitle}>dive &amp; crash</p>
 
       <div className={styles.cards}>
-        <button className={styles.modeCard} onClick={() => onStart({ kind: 'passplay' })}>
+        <button className={styles.modeCard} onClick={() => begin({ kind: 'tutorial' })}>
+          <span className={styles.modeName}>Tutorial</span>
+          <span className={styles.modeDesc}>
+            Guided clicks through catch, crash, splash, steal, Hover, and Pike. Opponents play a fixed script.
+          </span>
+        </button>
+
+        <button className={styles.modeCard} onClick={() => begin({ kind: 'passplay' })}>
           <span className={styles.modeName}>Pass &amp; Play</span>
           <span className={styles.modeDesc}>
             Four seats on one device. Switch seats as pawns are placed, then after each card locks.

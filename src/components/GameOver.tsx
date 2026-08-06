@@ -1,9 +1,11 @@
 import type { GameState } from '../game/types'
 import { kingfisher, species } from '../lib/presentation'
+import { cueWinSfx } from '../lib/sfx'
 import styles from './GameOver.module.css'
 
 export function GameOver({ game, playOrder, onReset }: { game: GameState; playOrder: string[]; onReset: () => void }) {
   if (game.winner === null) return null
+  cueWinSfx(game.winner)
   const winner = kingfisher(Number(game.winner))
   const standings = [...playOrder].sort((a, b) => {
     const scoreDiff = game.players[b].score - game.players[a].score

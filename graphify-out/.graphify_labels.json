@@ -1,6 +1,6 @@
 {
   "0": "VISUALS.md — Kingfisher: Dive & Crash",
-  "1": "Board.tsx",
+  "1": "App.tsx",
   "2": "package.json",
   "3": "compilerOptions",
   "4": "Game.ts",
@@ -18,5 +18,5 @@
   "16": "cleanup.ts",
   "17": "legacy.ts",
   "18": "bot.ts",
-  "19": "OutcomeSplash.tsx"
+  "20": "lesson.ts"
 }

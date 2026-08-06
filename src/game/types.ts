@@ -98,4 +98,6 @@ export interface GameState {
    * headless sims). Vs-bots sets the human seat so bots don't auto-skip the review.
    */
   humanSeats: string[]
+  /** Scripted sandbox: fixed river + TutorialBot opponents. */
+  tutorial: boolean
 }

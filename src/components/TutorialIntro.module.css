@@ -1,0 +1,90 @@
+.shell {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.65rem;
+  width: min(100%, 26rem);
+  margin: 0 auto;
+  padding: 1.1rem 1rem 1.4rem;
+}
+
+.kicker {
+  margin: 0;
+  color: var(--water-deep);
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0;
+  color: var(--forest-deep);
+  font-family: var(--font-display);
+  font-size: clamp(1.55rem, 5vw, 2rem);
+  font-weight: 800;
+  line-height: 1.05;
+  text-shadow: 0 1px 0 rgba(250, 243, 227, 0.7);
+}
+
+.body {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.list {
+  margin: 0.15rem 0 0;
+  padding: 0.7rem 0.85rem 0.7rem 1.35rem;
+  border: 1.5px solid rgba(46, 75, 42, 0.22);
+  border-radius: 0.55rem;
+  background:
+    linear-gradient(160deg, rgba(250, 243, 227, 0.92), rgba(232, 244, 248, 0.88)),
+    var(--paper-grain);
+  box-shadow: 0 2px 10px var(--shadow-soft);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.list li + li {
+  margin-top: 0.35rem;
+}
+
+.actions {
+  display: flex;
+  gap: 0.55rem;
+  margin-top: 0.55rem;
+}
+
+.primary,
+.secondary {
+  flex: 1;
+  padding: 0.65rem 0.75rem;
+  border-radius: 0.45rem;
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.primary {
+  border: 1.5px solid var(--forest-deep);
+  background: var(--forest-deep);
+  color: var(--parchment);
+}
+
+.secondary {
+  border: 1.5px solid rgba(46, 75, 42, 0.35);
+  background: rgba(250, 243, 227, 0.75);
+  color: var(--forest-deep);
+}
+
+.primary:active,
+.secondary:active {
+  transform: translateY(1px);
+}

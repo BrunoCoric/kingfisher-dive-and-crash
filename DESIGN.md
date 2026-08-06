@@ -27,12 +27,15 @@ Single source of truth for implementation status. Refer to `README.md` for the g
   - `bot.ts` — smart `KingfisherBot` + re-export of legacy bot
   - `ai/` — belief, fish-drift memory, scoring, softmax select, legacy greedy
   - `kingfishers.ts` — typed species sprite manifest
-  - `src/components/` — river board, held hand, scores roster sheet, rules cheatsheet, status line, end-state panels
+  - `src/components/` — river board, held hand, scores roster sheet, rules cheatsheet, status line, end-state panels, tutorial coach
+  - `src/tutorial/` — scripted bot moves, lesson copy, `TutorialBot`
+  - `src/TutorialBoard.tsx` — coach + click-gate wrapper for tutorial mode
   - `scene/` — SVG board props (`BranchSvg`, `ReedSvg`, `BankFoliageSvg`, `WaterPuddleSvg`)
-- `src/lib/stepFeedback.ts` — pure helpers: zone actions/outcomes, pawn reactions, outcome story
-- `src/lib/personalSplash.ts` — local-seat good/neutral/bad splash valence from outcomeLog + lastReveals
-- `src/lib/boardChrome.tsx` — status-line hint/action builders for the mobile HUD
-- `src/components/OutcomeSplash.tsx` — personal bird burst overlay (local seat only)
+  - `src/lib/stepFeedback.ts` — pure helpers: zone actions/outcomes, pawn reactions, outcome story
+  - `src/lib/personalSplash.ts` — local-seat good/neutral/bad splash valence from outcomeLog + lastReveals
+  - `src/lib/sfx.ts` / `src/lib/stepSfx.ts` — WAV playback (`public/sounds/`) + once-per-step resolve cues
+  - `src/lib/boardChrome.tsx` — status-line hint/action builders for the mobile HUD
+  - `src/components/OutcomeSplash.tsx` — personal bird burst overlay (local seat only)
 
 ## Progress
 
@@ -81,9 +84,12 @@ Single source of truth for implementation status. Refer to `README.md` for the g
 - [x] Public fish-deck remaining count (`deckCount`) on the Scores chip; deck faces stay hidden
 - [x] Bottom-right rules cheatsheet (`RulesCheatsheet`): tap `? Rules` for priority order + crash / splash / steal interactions
 - [x] Personal outcome splash (local seat only): `OutcomeSplash` + `personalSplash.ts` — slower bird burst on catch / steal / crash only; river feedback remains shared truth (VISUALS §6 Step 4b)
+- [x] Scripted interactive tutorial: Start Screen **Tutorial** → rules intro slides (goal / VPs / reach / round / cards) then 3-seat sandbox (`tutorial: true` setup, `TutorialBot` seats 1–2, gated `TutorialBoard` + coach). Human only taps highlighted targets; opponents play a fixed script across 4 rounds covering place/peek, solo Dive, empty Drop, Hover move, Splash block, Drop steal, Dive Crash, Drop+Drop Crash, and Pike. Smoke: `npx tsx _tutorial_smoke.mts`.
+- [x] SFX pack wired (`public/sounds/*.wav`): card select/lock, peek, step resolve + all four card reveals, outcome kinds (catch/crash/steal/blocked/pike), fish-value flavors, personal splash good/bad, bird perch hops, fish drift → restock → round start, game win, looping ambience on mode select. Skips when `prefers-reduced-motion`.
 
 ### Implementation Notes
 - The local browser build is a four-seat pass-and-play: one shared boardgame.io `Local` client switches between Player 0 through Player 3 with the seat control. Hidden-information secrecy is intentionally deferred, as recorded in the implementation plan.
+- **Tutorial mode:** Opens with four primer slides (`src/tutorial/intro.ts` / `TutorialIntro`) before the Local client mounts — goal & end condition, reach, round cadence, then the four cards. `setup(..., { humanSeats: ['0'], tutorial: true })` deals a fixed river/deck and First Player `0`. Crash discards prefer burning Hover so mid-round Splash/Drop lessons stay legal. Lessons derive from phase/round/outcomes (`src/tutorial/lesson.ts`); review beats use Got it before unlocking the next gate.
 - The opening placement phase randomizes the First Player, then lets each player choose one unoccupied perch in clockwise order before the first simultaneous card step.
 - Crash always discards the zone’s fish (Splash+Splash, Dive+Dive, Drop+Drop). Solo Dive grant is deferred until after Drops so a Drop+Drop Crash never briefly awards the catch.
 - Splash blocks Dives only (blocked = discard penalty). Drop steals only from a successful solo Dive — Splash-blocked / crashed Dive → Drop does nothing. Drops Crash when 2+ share a zone (even if the Dive failed).

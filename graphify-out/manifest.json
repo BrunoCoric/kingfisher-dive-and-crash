@@ -5,13 +5,13 @@
     "semantic_hash": ""
   },
   "src/App.tsx": {
-    "mtime": 1786019130.5482616,
-    "ast_hash": "bd1965d05b8dca8cd6e1a2c6d7fc5e11",
+    "mtime": 1786028859.7923322,
+    "ast_hash": "71af6ef25f95036ed8891f1cca73c2cc",
     "semantic_hash": ""
   },
   "src/Board.tsx": {
-    "mtime": 1786025830.52439,
-    "ast_hash": "29312106a864aa53f65ba1ac8f2eaf0d",
+    "mtime": 1786029299.6356301,
+    "ast_hash": "1fae2ca19cf2e0c87ac14af644763818",
     "semantic_hash": ""
   },
   "src/components/ActionCard.tsx": {
@@ -25,8 +25,8 @@
     "semantic_hash": ""
   },
   "src/components/GameOver.tsx": {
-    "mtime": 1785999066.9686825,
-    "ast_hash": "35ab9e8e5c456e89a21dd340c784ec0d",
+    "mtime": 1786029301.060639,
+    "ast_hash": "b4a4e517394e0d738300630888f184d8",
     "semantic_hash": ""
   },
   "src/components/Hand.tsx": {
@@ -50,8 +50,8 @@
     "semantic_hash": ""
   },
   "src/game/Game.ts": {
-    "mtime": 1786019984.8296995,
-    "ast_hash": "bd639ae41c5545e4595b1a406d4c0975",
+    "mtime": 1786026805.7284107,
+    "ast_hash": "282b78ebe7ab46a60999ed9433fb499d",
     "semantic_hash": ""
   },
   "src/game/cards.ts": {
@@ -85,13 +85,13 @@
     "semantic_hash": ""
   },
   "src/game/resolution.ts": {
-    "mtime": 1786021101.916799,
-    "ast_hash": "ea35b3aa2af91d2bf4b9ab641968e981",
+    "mtime": 1786026932.1272786,
+    "ast_hash": "5dc396dc980743ee5c68c662cc5c6a65",
     "semantic_hash": ""
   },
   "src/game/types.ts": {
-    "mtime": 1786020082.8434067,
-    "ast_hash": "f615f2a32f7c083d7604922560142d06",
+    "mtime": 1786026449.1484637,
+    "ast_hash": "ed8f6c8910079443a0eb25c0a9786b69",
     "semantic_hash": ""
   },
   "src/lib/presentation.ts": {
@@ -135,8 +135,8 @@
     "semantic_hash": ""
   },
   "DESIGN.md": {
-    "mtime": 1786025926.3286254,
-    "ast_hash": "2c4dbe7cbac2897ab86d2066ad3a99ce",
+    "mtime": 1786029302.3983355,
+    "ast_hash": "ac19d833c9e2116bdc988d9ec536057e",
     "semantic_hash": ""
   },
   "README.md": {
@@ -190,8 +190,8 @@
     "semantic_hash": ""
   },
   "src/StartScreen.tsx": {
-    "mtime": 1786004649.1809146,
-    "ast_hash": "cb2de71366432b5b1ed24775a98d2d8f",
+    "mtime": 1786028859.7923095,
+    "ast_hash": "ecb828b94de66c830fc46f1f8d327a0c",
     "semantic_hash": ""
   },
   "src/components/ActionIcon.tsx": {
@@ -345,13 +345,193 @@
     "semantic_hash": ""
   },
   "src/components/OutcomeSplash.tsx": {
-    "mtime": 1786025727.6157382,
-    "ast_hash": "8fb05a9361a3c790398adc92d3723823",
+    "mtime": 1786028643.472581,
+    "ast_hash": "4919500e18f48114469df8efce985bec",
     "semantic_hash": ""
   },
   "src/lib/personalSplash.ts": {
     "mtime": 1786025921.6521778,
     "ast_hash": "f6f267e9488013bf65e10a650271ab82",
+    "semantic_hash": ""
+  },
+  "_tutorial_smoke.mts": {
+    "mtime": 1786026993.2389479,
+    "ast_hash": "0741181391a61d8389eaadbd235425dd",
+    "semantic_hash": ""
+  },
+  "src/TutorialBoard.tsx": {
+    "mtime": 1786027027.7597947,
+    "ast_hash": "16683b150526e746a4b9254509a91fe7",
+    "semantic_hash": ""
+  },
+  "src/components/TutorialCoach.tsx": {
+    "mtime": 1786026628.4324827,
+    "ast_hash": "ff39577468d1422fab7fd97c89c9e1c1",
+    "semantic_hash": ""
+  },
+  "src/tutorial/TutorialBot.ts": {
+    "mtime": 1786027215.3923953,
+    "ast_hash": "3dc7f2863a44c3e2ec9c759dbd127626",
+    "semantic_hash": ""
+  },
+  "src/tutorial/lesson.ts": {
+    "mtime": 1786027035.1217024,
+    "ast_hash": "a2f7ddd936aadce4c4e79ae272cf6836",
+    "semantic_hash": ""
+  },
+  "src/tutorial/script.ts": {
+    "mtime": 1786027214.977534,
+    "ast_hash": "39e854c66283890a65d1def01222ca6a",
+    "semantic_hash": ""
+  },
+  "src/tutorial/types.ts": {
+    "mtime": 1786026493.1614344,
+    "ast_hash": "f424a2390fe6eb5db1227ec9cab7aa4d",
+    "semantic_hash": ""
+  },
+  "src/components/TutorialIntro.tsx": {
+    "mtime": 1786027284.3783865,
+    "ast_hash": "0907de3e3a34268d1848e42ec07286ea",
+    "semantic_hash": ""
+  },
+  "src/tutorial/intro.ts": {
+    "mtime": 1786027276.6282907,
+    "ast_hash": "d778c201ec211026349b7d14789f569b",
+    "semantic_hash": ""
+  },
+  "src/lib/sfx.ts": {
+    "mtime": 1786029292.695467,
+    "ast_hash": "1c08923e94be3c2833afd317b1fad7d4",
+    "semantic_hash": ""
+  },
+  "src/lib/stepSfx.ts": {
+    "mtime": 1786029294.6925383,
+    "ast_hash": "22c06c9553752de205cb5b4ee60d9e64",
+    "semantic_hash": ""
+  },
+  "public/sounds/blocked.wav": {
+    "mtime": 1786028533.2695255,
+    "ast_hash": "1615423d4386e10c409f66bc38438ee9",
+    "semantic_hash": ""
+  },
+  "public/sounds/card_lock.wav": {
+    "mtime": 1786028533.2778385,
+    "ast_hash": "86b9b25be79eb12207558e2468029042",
+    "semantic_hash": ""
+  },
+  "public/sounds/card_select.wav": {
+    "mtime": 1786028533.2756877,
+    "ast_hash": "cff6b4e319e896c300af49111e44ca5d",
+    "semantic_hash": ""
+  },
+  "public/sounds/catch.wav": {
+    "mtime": 1786028533.258787,
+    "ast_hash": "55cc1e26aabe4621e9e700dfe1647711",
+    "semantic_hash": ""
+  },
+  "public/sounds/crash.wav": {
+    "mtime": 1786028533.2662115,
+    "ast_hash": "2d85591c06128f88e921c64b67716b0d",
+    "semantic_hash": ""
+  },
+  "public/sounds/fish_drift.wav": {
+    "mtime": 1786028533.282867,
+    "ast_hash": "acc79fb6b12f91f0ac74a3ff4acf90fc",
+    "semantic_hash": ""
+  },
+  "public/sounds/fish_minnow.wav": {
+    "mtime": 1786028533.298961,
+    "ast_hash": "465756b129db2991450cfd71895fcc04",
+    "semantic_hash": ""
+  },
+  "public/sounds/fish_perch.wav": {
+    "mtime": 1786028533.3003201,
+    "ast_hash": "5780dab580e1b576bae709276517a09e",
+    "semantic_hash": ""
+  },
+  "public/sounds/fish_trash.wav": {
+    "mtime": 1786028533.254971,
+    "ast_hash": "0eeadf37f86d790f6329a89b200cbda9",
+    "semantic_hash": ""
+  },
+  "public/sounds/fish_trout.wav": {
+    "mtime": 1786028533.3018312,
+    "ast_hash": "5dc825160e2a12d0a120f622edf4543e",
+    "semantic_hash": ""
+  },
+  "public/sounds/peek.wav": {
+    "mtime": 1786028533.2805405,
+    "ast_hash": "c62f85fe8b67a241bde28ac66c8c0323",
+    "semantic_hash": ""
+  },
+  "public/sounds/pike.wav": {
+    "mtime": 1786028533.2724104,
+    "ast_hash": "0fc91b32a0a0e07b7438afb801f16fbd",
+    "semantic_hash": ""
+  },
+  "public/sounds/reveal_hover.wav": {
+    "mtime": 1786028533.2883668,
+    "ast_hash": "51afcda99ea4dfb5c5d3eafd737c0d5f",
+    "semantic_hash": ""
+  },
+  "public/sounds/reveal_splash.wav": {
+    "mtime": 1786028533.2897615,
+    "ast_hash": "75889678b2008b48c2a0d7806e7d0527",
+    "semantic_hash": ""
+  },
+  "public/sounds/splash_bad.wav": {
+    "mtime": 1786028533.293896,
+    "ast_hash": "9d42b4abbe95dd1b6e083260a4c8381d",
+    "semantic_hash": ""
+  },
+  "public/sounds/splash_good.wav": {
+    "mtime": 1786028533.2857072,
+    "ast_hash": "d0bc95510e4caf311f67d70652e268e3",
+    "semantic_hash": ""
+  },
+  "public/sounds/steal.wav": {
+    "mtime": 1786028533.2634242,
+    "ast_hash": "6bbd300d1fd9ab1ff8f1745590661cde",
+    "semantic_hash": ""
+  },
+  "public/sounds/step_resolve.wav": {
+    "mtime": 1786028533.2970202,
+    "ast_hash": "a5ea3e5b27961ae3d7230b7032008c15",
+    "semantic_hash": ""
+  },
+  "public/sounds/ambience.wav": {
+    "mtime": 1786028820.831153,
+    "ast_hash": "aa28adb5f8ea47254b387361cfa46700",
+    "semantic_hash": ""
+  },
+  "public/sounds/bird_move.wav": {
+    "mtime": 1786029268.2413144,
+    "ast_hash": "b5a6b1193108eb50e8c1889a238eef5a",
+    "semantic_hash": ""
+  },
+  "public/sounds/game_win.wav": {
+    "mtime": 1786029268.2758675,
+    "ast_hash": "07b233a01a87137a0c35cc0d048826e1",
+    "semantic_hash": ""
+  },
+  "public/sounds/restock.wav": {
+    "mtime": 1786029268.2958872,
+    "ast_hash": "ee9cc0a8be5564383cf2f770624a89d3",
+    "semantic_hash": ""
+  },
+  "public/sounds/reveal_dive.wav": {
+    "mtime": 1786029268.266368,
+    "ast_hash": "35b7df57b187499e8a108dd0c52ecfaf",
+    "semantic_hash": ""
+  },
+  "public/sounds/reveal_drop.wav": {
+    "mtime": 1786029268.2716937,
+    "ast_hash": "f9e78b152f10341e2be6d037f99f4bcf",
+    "semantic_hash": ""
+  },
+  "public/sounds/round_start.wav": {
+    "mtime": 1786029268.301001,
+    "ast_hash": "0844c83a0c58027781b5c779d54b41f6",
     "semantic_hash": ""
   }
 }

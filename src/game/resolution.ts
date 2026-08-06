@@ -9,8 +9,15 @@ function rotateOrder(playOrder: string[], first: string): string[] {
   return [...playOrder.slice(idx), ...playOrder.slice(0, idx)]
 }
 
-function discardOneCard(hand: CardType[], random: Random): void {
+function discardOneCard(hand: CardType[], random: Random, tutorial: boolean): void {
   if (hand.length === 0) return
+  if (tutorial) {
+    // Prefer burning Hover so scripted mid-round Splash/Drop/Dive lessons stay legal.
+    const prefer: CardType[] = ['Hover', 'Splash', 'Drop', 'Dive']
+    const pick = prefer.find((c) => hand.includes(c)) ?? hand[0]
+    hand.splice(hand.indexOf(pick), 1)
+    return
+  }
   const [dropped] = random.Shuffle(hand)
   hand.splice(hand.indexOf(dropped), 1)
 }
@@ -47,7 +54,7 @@ function returnPikePenalty(G: GameState, pid: string, zone: number): void {
 }
 
 function discardExtraCard(G: GameState, pid: string, random: Random): void {
-  discardOneCard(G.players[pid].hand, random)
+  discardOneCard(G.players[pid].hand, random, G.tutorial)
 }
 
 function crashPlayer(G: GameState, pid: string, zone: number, random: Random): void {

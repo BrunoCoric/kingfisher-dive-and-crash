@@ -7,6 +7,8 @@ import { hasHoverPeekTarget, isHoverPeekTarget } from './game/hoverPeek'
 import { kingfisher, playerColor } from './lib/presentation'
 import { playerReactions, zoneActions, zoneOutcomes } from './lib/stepFeedback'
 import { statusActionsFor, statusHintFor } from './lib/boardChrome'
+import { cueRoundAdvanceSfx, playSfx } from './lib/sfx'
+import { cueStepSfx } from './lib/stepSfx'
 import { RiverBoard, type PerchOccupant } from './components/RiverBoard'
 import { Hand } from './components/Hand'
 import { RosterButton } from './components/RosterButton'
@@ -15,14 +17,24 @@ import { StatusLine } from './components/StatusLine'
 import { GameOver } from './components/GameOver'
 import { RulesCheatsheet } from './components/RulesCheatsheet'
 import { OutcomeSplash } from './components/OutcomeSplash'
+import { TutorialCoach } from './components/TutorialCoach'
+import type { TutorialGate, TutorialLesson } from './tutorial/types'
 import styles from './Board.module.css'
 
 interface PendingSelection {
   card: CardType
 }
 
-export function Board(props: BoardProps<GameState>) {
-  const { G, ctx, moves, playerID, isActive, reset } = props
+export type BoardExtra = {
+  /** When true, only `guide` targets are clickable (tutorial sandbox). */
+  guided?: boolean
+  guide?: TutorialGate | null
+  coach?: TutorialLesson | null
+  onDismissReview?: () => void
+}
+
+export function Board(props: BoardProps<GameState> & BoardExtra) {
+  const { G, ctx, moves, playerID, isActive, reset, guided, guide, coach, onDismissReview } = props
   const [pending, setPending] = useState<PendingSelection | null>(null)
   const [rosterOpen, setRosterOpen] = useState(false)
   const [drifting, setDrifting] = useState(false)
@@ -32,20 +44,24 @@ export function Board(props: BoardProps<GameState>) {
   const placing = G.currentPhase === 'placement'
   const hopping = G.currentPhase.startsWith('hover')
   const cleaning = G.currentPhase === 'cleanup'
-  // Keep step-3 chips/outcomes through the cleanup review beat (cleared on Continue).
   const showStepFeedback = !placing && !drifting
   const locked = me !== undefined && G.selections[myID] !== undefined
-  const canAct = isActive && me !== undefined && !locked && !placing && !hopping && !cleaning
-  const canPlace = isActive && me !== undefined && placing && G.locked[myID] !== true
-  const canHover = isActive && me !== undefined && hopping
-  const canContinue = cleaning && isActive && !drifting
+  const guideOk = !guided || guide != null
+  const canAct =
+    guideOk && isActive && me !== undefined && !locked && !placing && !hopping && !cleaning
+  const canPlace = guideOk && isActive && me !== undefined && placing && G.locked[myID] !== true
+  const canHover = guideOk && isActive && me !== undefined && hopping
+  const canContinue =
+    guideOk && cleaning && isActive && !drifting && (!guided || guide?.action === 'continue')
   const noLegalStepMove = canAct && !hasLegalStepMove(G, myID)
   const hoverPeekAvailable = myID !== '' && hasHoverPeekTarget(G, myID)
 
   const beginDrift = () => {
     if (!canContinue || drifting) return
+    playSfx('fish_drift')
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       moves.continueRound()
+      cueRoundAdvanceSfx()
       return
     }
     setDrifting(true)
@@ -53,6 +69,7 @@ export function Board(props: BoardProps<GameState>) {
   const finishDrift = () => {
     if (!drifting) return
     moves.continueRound()
+    cueRoundAdvanceSfx()
     setDrifting(false)
   }
 
@@ -61,22 +78,31 @@ export function Board(props: BoardProps<GameState>) {
   const sightLineOpen =
     placing &&
     isActive &&
+    guideOk &&
     me !== undefined &&
     myPerch !== undefined &&
     myPerch.level === 'low' &&
     G.sightlinePeek[myID] === undefined
   const occupiedIds = new Set(Object.values(G.players).map((p) => p.perch).filter(Boolean))
-  const movablePerches =
+  let movablePerches =
     placing && canPlace
       ? G.perches.filter((perch) => !occupiedIds.has(perch.id) || perch.id === me.perch).map((p) => p.id)
       : canHover && me
         ? openHoverPerches(G.perches, me.perch, occupiedIds).map((p) => p.id)
         : []
+  if (guided && guide?.perchId) {
+    movablePerches = movablePerches.filter((id) => id === guide.perchId)
+  } else if (guided && placing) {
+    movablePerches = []
+  } else if (guided && hopping && guide?.action === 'stay') {
+    movablePerches = []
+  }
 
   const reactions = showStepFeedback ? playerReactions(G) : {}
   const actionsByZone = showStepFeedback ? zoneActions(G) : {}
   const outcomesByZone = showStepFeedback ? zoneOutcomes(G) : {}
   const feedbackKey = `${G.round}-${G.step}-${G.outcomeLog.length}`
+  if (showStepFeedback) cueStepSfx(feedbackKey, G)
 
   const occupants: Record<string, PerchOccupant> = {}
   for (const pid of ctx.playOrder) {
@@ -95,8 +121,14 @@ export function Board(props: BoardProps<GameState>) {
 
   const targetStates: Record<number, 'legal' | 'illegal' | 'peek' | null> = {}
   for (const zone of G.zones) {
+    if (guided && guide?.zoneId !== undefined && zone.id !== guide.zoneId) {
+      targetStates[zone.id] = null
+      continue
+    }
     if (pending && canAct) {
-      if (pending.card === 'Hover') {
+      if (guided && guide?.card && pending.card !== guide.card) {
+        targetStates[zone.id] = null
+      } else if (pending.card === 'Hover') {
         targetStates[zone.id] = isHoverPeekTarget(G, myID, zone.id) ? 'peek' : null
       } else if (reach.includes(zone.id)) {
         const legal = pending.card !== 'Dive' || zone.fish !== null
@@ -112,7 +144,11 @@ export function Board(props: BoardProps<GameState>) {
   }
 
   const commit = (sel: StepSelection) => {
-    if (pending) moves.selectCard(pending.card, sel)
+    if (pending) {
+      playSfx('card_lock')
+      if (sel.card === 'Hover' && sel.peek !== undefined) playSfx('peek', 80)
+      moves.selectCard(pending.card, sel)
+    }
     setPending(null)
   }
   const cancel = () => setPending(null)
@@ -134,10 +170,10 @@ export function Board(props: BoardProps<GameState>) {
         noLegalStepMove,
         hoverPeekAvailable,
       })
-  const statusActions = statusActionsFor({
+  const rawActions = statusActionsFor({
     pending,
     canAct,
-    canHover,
+    canHover: canHover && (!guided || guide?.action === 'stay' || guide?.perchId !== undefined),
     canContinue,
     noLegalStepMove,
     hoverPeekAvailable,
@@ -147,7 +183,49 @@ export function Board(props: BoardProps<GameState>) {
     onSkip: () => moves.skipTurn(),
     onContinue: beginDrift,
   })
+  const statusActions =
+    guided && guide?.action === 'stay'
+      ? statusActionsFor({
+          pending: null,
+          canAct: false,
+          canHover: true,
+          canContinue: false,
+          noLegalStepMove: false,
+          onSkipPeek: () => undefined,
+          onCancel: () => undefined,
+          onStay: () => moves.hoverMove(undefined),
+          onSkip: () => undefined,
+        })
+      : guided && guide?.action === 'continue'
+        ? rawActions
+        : guided && !guide?.action
+          ? // Hide stray Skip / Cancel noise during gated card play; keep Cancel if pending
+            pending && canAct
+              ? statusActionsFor({
+                  pending,
+                  canAct,
+                  canHover: false,
+                  canContinue: false,
+                  noLegalStepMove: false,
+                  hoverPeekAvailable,
+                  onSkipPeek: () => commit({ card: 'Hover' }),
+                  onCancel: cancel,
+                  onStay: () => undefined,
+                  onSkip: () => undefined,
+                })
+              : undefined
+          : rawActions
   const lockedCard = G.selections[myID]?.card ?? null
+
+  const selectCard = (card: CardType) => {
+    if (guided && guide?.card && card !== guide.card) return
+    if (pending?.card === card) {
+      cancel()
+      return
+    }
+    playSfx('card_select')
+    setPending({ card })
+  }
 
   return (
     <div className={styles.app}>
@@ -173,6 +251,8 @@ export function Board(props: BoardProps<GameState>) {
           </span>
         </span>
       </header>
+
+      {coach && <TutorialCoach lesson={coach} onDismissReview={() => onDismissReview?.()} />}
 
       {rosterOpen && (
         <RosterSheet
@@ -204,13 +284,7 @@ export function Board(props: BoardProps<GameState>) {
             locked={locked}
             canAct={canAct}
             selectedCard={pending?.card ?? lockedCard}
-            onSelect={(card) => {
-              if (pending?.card === card) {
-                cancel()
-                return
-              }
-              setPending({ card })
-            }}
+            onSelect={selectCard}
           />
         )}
         <RulesCheatsheet />
@@ -230,11 +304,14 @@ export function Board(props: BoardProps<GameState>) {
             drifting={drifting}
             onDriftEnd={finishDrift}
             onZoneClick={(id) => {
+              if (guided && guide?.zoneId !== undefined && id !== guide.zoneId) return
               if (sightLineOpen && reach.includes(id)) {
+                playSfx('peek')
                 moves.peekSightline(id)
                 return
               }
               if (!canAct || !pending) return
+              if (guided && guide?.card && pending.card !== guide.card) return
               if (pending.card === 'Hover') {
                 if (isHoverPeekTarget(G, myID, id)) commit({ card: 'Hover', peek: id })
               } else if (reach.includes(id) && (pending.card !== 'Dive' || G.zones[id].fish !== null)) {
@@ -242,9 +319,12 @@ export function Board(props: BoardProps<GameState>) {
               }
             }}
             onPerchClick={(id) => {
+              if (guided && guide?.perchId && id !== guide.perchId) return
               if (canHover && movablePerches.includes(id)) {
+                if (me && id !== me.perch) playSfx('bird_move')
                 moves.hoverMove(id)
               } else if (canPlace && movablePerches.includes(id)) {
+                if (!me?.perch || id !== me.perch) playSfx('bird_move')
                 moves.placePawn(id)
               }
             }}

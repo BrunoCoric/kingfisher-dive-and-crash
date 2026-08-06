@@ -2,6 +2,7 @@ import { useState, type AnimationEvent } from 'react'
 import type { GameState } from '../game/types'
 import { kingfisher } from '../lib/presentation'
 import { personalOutcomeSplash } from '../lib/personalSplash'
+import { playSfx } from '../lib/sfx'
 import styles from './OutcomeSplash.module.css'
 
 interface Props {
@@ -35,7 +36,12 @@ export function OutcomeSplash({ G, playerID }: Props) {
       aria-live="polite"
       aria-label={splash.label}
       onClick={dismiss}
-      onAnimationStart={(e) => onRootAnim(e, () => setLive(true))}
+      onAnimationStart={(e) =>
+        onRootAnim(e, () => {
+          setLive(true)
+          playSfx(splash.valence === 'good' ? 'splash_good' : 'splash_bad')
+        })
+      }
       onAnimationEnd={(e) => onRootAnim(e, dismiss)}
     >
       <img className={styles.bird} src={bird.sprite} alt="" />

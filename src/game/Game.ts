@@ -1,5 +1,5 @@
 import type { FnContext, Game as GameConfig, PhaseConfig } from 'boardgame.io'
-import { buildDeck, riverZonesFor } from './fish'
+import { buildDeck, riverZonesFor, FISH_POINTS } from './fish'
 import { ACTION_DECK } from './cards'
 import { placePawn, peekSightline, selectCard, hoverMove, skipTurn, continueRound } from './moves'
 import { resolveStep } from './resolution'
@@ -7,7 +7,7 @@ import { endOfRoundCleanup } from './cleanup'
 import { filterPlayerView } from './playerView'
 import { enumerateLegalMoves } from './enumerate'
 import { openHoverPerches } from './reach'
-import type { GameState, GamePhase, Perch, PlayerState } from './types'
+import type { FishCard, FishType, GameState, GamePhase, Perch, PlayerState } from './types'
 
 function buildPerches(zoneCount: number): Perch[] {
   const perches: Perch[] = []
@@ -27,19 +27,65 @@ function rotateOrder(playOrder: string[], first: string): string[] {
 
 export interface KingfisherSetupData {
   humanSeats?: string[]
+  /** Fixed 3-seat river + firstPlayer 0 for the interactive tutorial. */
+  tutorial?: boolean
+}
+
+function fish(type: FishType, id: string): FishCard {
+  return { id, type, points: FISH_POINTS[type] }
+}
+
+/** Deterministic starting river for the scripted tutorial (3 players → 5 zones). */
+function tutorialRiver(): { zones: GameState['zones']; deck: FishCard[] } {
+  const zones = [
+    { id: 0, fish: fish('Trout', 'tut-z0') },
+    { id: 1, fish: fish('Minnow', 'tut-z1') },
+    { id: 2, fish: fish('Perch', 'tut-z2') },
+    { id: 3, fish: fish('Minnow', 'tut-z3') },
+    { id: 4, fish: fish('Trout', 'tut-z4') },
+  ]
+  // pop() takes from the end. After R1 drift, null fills want Minnow → Pike → Perch
+  // so Pike sits on zone 2, drifts to 3 for R3, then to 4 for the R4 Pike dive.
+  const deck: FishCard[] = [
+    fish('Trash', 'tut-d0'),
+    fish('Trash', 'tut-d1'),
+    fish('Minnow', 'tut-d2'),
+    fish('Perch', 'tut-d3'),
+    fish('Trout', 'tut-d4'),
+    fish('Minnow', 'tut-d5'),
+    fish('Perch', 'tut-d6'),
+    fish('Trout', 'tut-d7'),
+    fish('Trout', 'tut-r2c'),
+    fish('Perch', 'tut-r2b'),
+    fish('Minnow', 'tut-r2a'),
+    fish('Perch', 'tut-r1c'),
+    fish('Pike', 'tut-r1b'),
+    fish('Minnow', 'tut-r1a'),
+  ]
+  return { zones, deck }
 }
 
 export function setup(
   { ctx, random }: Pick<FnContext<GameState>, 'ctx' | 'random'>,
   setupData?: KingfisherSetupData,
 ): GameState {
+  const tutorial = setupData?.tutorial === true
   const zoneCount = riverZonesFor(ctx.numPlayers)
-  const deck = random.Shuffle(buildDeck(ctx.numPlayers))
   const perches = buildPerches(zoneCount)
-  const zones = Array.from({ length: zoneCount }, (_, i) => ({
-    id: i,
-    fish: deck.pop() ?? null,
-  }))
+
+  let deck: FishCard[]
+  let zones: GameState['zones']
+  if (tutorial) {
+    const river = tutorialRiver()
+    zones = river.zones
+    deck = river.deck
+  } else {
+    deck = random.Shuffle(buildDeck(ctx.numPlayers))
+    zones = Array.from({ length: zoneCount }, (_, i) => ({
+      id: i,
+      fish: deck.pop() ?? null,
+    }))
+  }
 
   const players: Record<string, PlayerState> = {}
   ctx.playOrder.forEach((pid) => {
@@ -60,7 +106,7 @@ export function setup(
     players,
     discard: [],
     currentPhase: 'placement',
-    firstPlayer: random.Shuffle([...ctx.playOrder])[0],
+    firstPlayer: tutorial ? '0' : random.Shuffle([...ctx.playOrder])[0],
     round: 1,
     step: 0,
     selections: {},
@@ -73,6 +119,7 @@ export function setup(
     outcomeLog: [],
     winner: null,
     humanSeats: setupData?.humanSeats ?? [],
+    tutorial,
   }
 }
 

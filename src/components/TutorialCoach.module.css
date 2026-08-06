@@ -1,0 +1,55 @@
+.coach {
+  display: flex;
+  flex: none;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.55rem;
+  width: 100%;
+  padding: 0.45rem 0.55rem;
+  border: 1.5px solid rgba(46, 75, 42, 0.28);
+  border-radius: 0.55rem;
+  background:
+    linear-gradient(135deg, rgba(250, 243, 227, 0.96), rgba(232, 244, 248, 0.92)),
+    var(--paper-grain);
+  box-shadow: 0 2px 8px var(--shadow-soft);
+}
+
+.copy {
+  min-width: 0;
+  flex: 1;
+}
+
+.title {
+  display: block;
+  color: var(--forest-deep);
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.body {
+  margin: 0.15rem 0 0;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  line-height: 1.35;
+}
+
+.gotIt {
+  flex: none;
+  margin-top: 0.1rem;
+  padding: 0.35rem 0.65rem;
+  border: 1.5px solid var(--forest-deep);
+  border-radius: 0.4rem;
+  background: var(--forest-deep);
+  color: var(--parchment);
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.gotIt:active {
+  transform: translateY(1px);
+}
