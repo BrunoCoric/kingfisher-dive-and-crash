@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import type { CardType } from '../game/types'
+import { SPECIES_POWERS } from '../game/powers'
+import { KINGFISHERS } from '../game/kingfishers'
 import { CARD_ACCENT } from '../lib/presentation'
 import { ActionIcon } from './ActionIcon'
 import styles from './RulesCheatsheet.module.css'
@@ -40,7 +42,7 @@ const ROWS: Row[] = [
   },
 ]
 
-export function RulesCheatsheet() {
+export function RulesCheatsheet({ speciesPowers = false }: { speciesPowers?: boolean }) {
   const [open, setOpen] = useState(false)
 
   return (
@@ -115,6 +117,25 @@ export function RulesCheatsheet() {
                 </li>
               ))}
             </ul>
+
+            {speciesPowers && (
+              <>
+                <p className={styles.priorityLabel}>Species powers</p>
+                <ul className={styles.list}>
+                  {Object.values(KINGFISHERS).map((bird) => {
+                    const power = SPECIES_POWERS[bird.id]
+                    return (
+                      <li key={bird.id} className={styles.row}>
+                        <strong className={styles.rowTitle}>
+                          {bird.displayName.split(' ')[0]} · {power.name}
+                        </strong>
+                        <span className={styles.rowBody}>{power.blurb}</span>
+                      </li>
+                    )
+                  })}
+                </ul>
+              </>
+            )}
 
             <p className={styles.foot}>Effects last only for the Step they are played.</p>
           </div>

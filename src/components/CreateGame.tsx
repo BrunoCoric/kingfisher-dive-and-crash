@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { kingfisher, speciesShort } from '../lib/presentation'
+import { SPECIES_POWERS, speciesIdForSeat } from '../game/powers'
 import { playSfx } from '../lib/sfx'
 import type { StartConfig } from '../startConfig'
 import surface from './menuSurface.module.css'
@@ -18,9 +19,11 @@ export function CreateGame({
 }) {
   const [playerCount, setPlayerCount] = useState(DEFAULT_PLAYERS)
   const [birdPref, setBirdPref] = useState(0)
+  const [speciesPowers, setSpeciesPowers] = useState(true)
   const bird = Math.min(birdPref, playerCount - 1)
   const botCount = playerCount - 1
   const you = kingfisher(bird)
+  const yourPower = SPECIES_POWERS[speciesIdForSeat(String(bird))]
 
   const start = () => {
     playSfx('card_select')
@@ -31,6 +34,7 @@ export function CreateGame({
       numPlayers: playerCount,
       humanSeat,
       botSeats: seats.filter((id) => id !== humanSeat),
+      speciesPowers,
     })
   }
 
@@ -57,6 +61,11 @@ export function CreateGame({
           <div>
             <span className={styles.portraitLabel}>You play as</span>
             <strong>{speciesShort(bird)}</strong>
+            {speciesPowers && (
+              <p className={styles.powerHint}>
+                <em>{yourPower.name}</em> — {yourPower.blurb}
+              </p>
+            )}
           </div>
         </div>
 
@@ -92,18 +101,25 @@ export function CreateGame({
               <img src={you.sprite} alt="" />
               <div>
                 <strong>You</strong>
-                <span>{speciesShort(bird)}</span>
+                <span>
+                  {speciesShort(bird)}
+                  {speciesPowers ? ` · ${yourPower.name}` : ''}
+                </span>
               </div>
             </li>
             {Array.from({ length: botCount }, (_, i) => {
               const seat = i < bird ? i : i + 1
               const k = kingfisher(seat)
+              const power = SPECIES_POWERS[speciesIdForSeat(String(seat))]
               return (
                 <li key={seat} className={styles.slot} style={{ ['--seat-accent' as string]: k.accent }}>
                   <img src={k.sprite} alt="" />
                   <div>
                     <strong>Bot</strong>
-                    <span>{speciesShort(seat)}</span>
+                    <span>
+                      {speciesShort(seat)}
+                      {speciesPowers ? ` · ${power.name}` : ''}
+                    </span>
                   </div>
                 </li>
               )
@@ -134,6 +150,21 @@ export function CreateGame({
             </button>
           </div>
         </div>
+
+        <label className={styles.toggle}>
+          <input
+            type="checkbox"
+            checked={speciesPowers}
+            onChange={(e) => {
+              playSfx('card_select')
+              setSpeciesPowers(e.target.checked)
+            }}
+          />
+          <span>
+            <strong>Species powers</strong>
+            Soft passives per bird. Same cards & crash rules either way.
+          </span>
+        </label>
 
         <button type="button" className={surface.primary} onClick={start}>
           Play

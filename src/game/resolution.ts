@@ -1,6 +1,7 @@
 import type { Ctx, FnContext } from 'boardgame.io'
 type Random = FnContext['random']
 import { isFish } from './types'
+import { hasPower } from './powers'
 import type { CalloutKind, CardType, FishCard, GameState, MatchOutcomeTallies } from './types'
 
 const EMPTY_OUTCOMES: MatchOutcomeTallies = {
@@ -50,11 +51,17 @@ function grantFish(G: GameState, pid: string, fish: FishCard, zone: number): voi
 /** Pike is 0 VP; if the catcher holds a Minnow, discard that Minnow too. */
 function returnPikePenalty(G: GameState, pid: string, zone: number): void {
   const player = G.players[pid]
-  const minnowIndex = player.scored.findIndex((fish) => fish.type === 'Minnow')
-  if (minnowIndex !== -1) {
-    const minnow = player.scored.splice(minnowIndex, 1)[0]
-    player.score -= minnow.points
-    G.discard.push(minnow)
+  // Azure Tough Gut: first Pike this match skips the Minnow tax.
+  const shield = hasPower(G, pid, 'toughGut') && !player.pikeShieldUsed
+  if (shield) {
+    player.pikeShieldUsed = true
+  } else {
+    const minnowIndex = player.scored.findIndex((fish) => fish.type === 'Minnow')
+    if (minnowIndex !== -1) {
+      const minnow = player.scored.splice(minnowIndex, 1)[0]
+      player.score -= minnow.points
+      G.discard.push(minnow)
+    }
   }
   const pikeIndex = player.scored.findIndex((fish) => fish.type === 'Pike')
   if (pikeIndex !== -1) {
@@ -68,7 +75,10 @@ function returnPikePenalty(G: GameState, pid: string, zone: number): void {
 
 /** Crash: spent played card + one random extra hand card; fish stays on the zone. */
 function crashPlayer(G: GameState, pid: string, zone: number, random: Random): void {
-  discardOneCard(G.players[pid].hand, random, G.tutorial)
+  // Common Steady Wing: skip the extra discard (played card already spent).
+  if (!hasPower(G, pid, 'steadyWing')) {
+    discardOneCard(G.players[pid].hand, random, G.tutorial)
+  }
   G.outcomeLog.push({ zone, kind: 'crash', actor: pid })
 }
 

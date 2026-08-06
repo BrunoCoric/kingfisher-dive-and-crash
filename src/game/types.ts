@@ -74,6 +74,8 @@ export interface PlayerState {
   fishCount: number
   scored: FishCard[]
   perch: string
+  /** Azure Tough Gut: first Pike already used its shield this match. */
+  pikeShieldUsed: boolean
 }
 
 export interface GameState {
@@ -126,4 +128,9 @@ export interface GameState {
   humanSeats: string[]
   /** Scripted sandbox: fixed river + TutorialBot opponents. */
   tutorial: boolean
+  /**
+   * When true, each seat’s species grants one soft passive (see `powers.ts`).
+   * Off for tutorial / classic symmetric play.
+   */
+  speciesPowers: boolean
 }

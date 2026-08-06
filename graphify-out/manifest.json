@@ -5,13 +5,13 @@
     "semantic_hash": ""
   },
   "src/App.tsx": {
-    "mtime": 1786040760.4563036,
-    "ast_hash": "4fcaae1de97f5e6bf062315d8f18d2ad",
+    "mtime": 1786042111.138914,
+    "ast_hash": "77b9a0dd33a8b460763a583027b09374",
     "semantic_hash": ""
   },
   "src/Board.tsx": {
-    "mtime": 1786040374.8130648,
-    "ast_hash": "47d4760680c660af7c1ef0204d22e4cf",
+    "mtime": 1786042085.2334373,
+    "ast_hash": "320b332fdff2d468898e3cda707d16f0",
     "semantic_hash": ""
   },
   "src/components/ActionCard.tsx": {
@@ -40,8 +40,8 @@
     "semantic_hash": ""
   },
   "src/components/RiverBoard.tsx": {
-    "mtime": 1786035125.1744213,
-    "ast_hash": "f69aae77a670b3bb673e320167b1eef0",
+    "mtime": 1786042073.9404542,
+    "ast_hash": "abc445d2badda8fcc8e737fbee012dcb",
     "semantic_hash": ""
   },
   "src/components/ZoneTile.tsx": {
@@ -50,8 +50,8 @@
     "semantic_hash": ""
   },
   "src/game/Game.ts": {
-    "mtime": 1786039982.7402477,
-    "ast_hash": "83847288884065c4a192eb77b7d42bc0",
+    "mtime": 1786041968.125219,
+    "ast_hash": "2ac9b5a67aeccec77fa888810d889af9",
     "semantic_hash": ""
   },
   "src/game/cards.ts": {
@@ -75,8 +75,8 @@
     "semantic_hash": ""
   },
   "src/game/moves.ts": {
-    "mtime": 1786035870.984645,
-    "ast_hash": "12a2b190eaafe33bed977117e782fb94",
+    "mtime": 1786042010.4864583,
+    "ast_hash": "1731ecdf7d32993e1846e347f4a10786",
     "semantic_hash": ""
   },
   "src/game/reach.ts": {
@@ -85,13 +85,13 @@
     "semantic_hash": ""
   },
   "src/game/resolution.ts": {
-    "mtime": 1786040419.5053303,
-    "ast_hash": "ab8dcd10a824600d173222672321eb73",
+    "mtime": 1786041977.6363807,
+    "ast_hash": "04f0d8503afdc0f7df77cb6d9360c9bd",
     "semantic_hash": ""
   },
   "src/game/types.ts": {
-    "mtime": 1786039981.380018,
-    "ast_hash": "b9cddd7c09e4c7079f614fdb6bcd30d5",
+    "mtime": 1786041939.2969866,
+    "ast_hash": "fa973176cb832e71a5b8873a0ef31a0e",
     "semantic_hash": ""
   },
   "src/lib/presentation.ts": {
@@ -135,13 +135,13 @@
     "semantic_hash": ""
   },
   "DESIGN.md": {
-    "mtime": 1786041324.6167872,
-    "ast_hash": "af1be2a0c053455fdc604d4a930e4102",
+    "mtime": 1786042162.4440582,
+    "ast_hash": "8f0c04e7cd7c0d0d2a73d3321fc4d175",
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1786040520.8711367,
-    "ast_hash": "21554edd01a4d4c2409489a848414ed8",
+    "mtime": 1786042160.556835,
+    "ast_hash": "42ea3fdc99afa29e3920ebd54bfb2088",
     "semantic_hash": ""
   },
   "VISUALS.md": {
@@ -215,8 +215,8 @@
     "semantic_hash": ""
   },
   "src/game/enumerate.ts": {
-    "mtime": 1786035901.3699803,
-    "ast_hash": "40a6fe4e3d393c3864b5ae701c53b4ca",
+    "mtime": 1786042010.4875906,
+    "ast_hash": "f17f848caa69937a4a5a06a509071625",
     "semantic_hash": ""
   },
   "src/game/playerView.ts": {
@@ -250,8 +250,8 @@
     "semantic_hash": ""
   },
   "src/game/ai/legacy.ts": {
-    "mtime": 1786036014.7259774,
-    "ast_hash": "ae255a6578dcd701bd0b5fcb8fa87a23",
+    "mtime": 1786042041.3126974,
+    "ast_hash": "f65c3820729177d3df9857f6fcbc581a",
     "semantic_hash": ""
   },
   "src/game/ai/memory.ts": {
@@ -265,8 +265,8 @@
     "semantic_hash": ""
   },
   "src/game/ai/scoring.ts": {
-    "mtime": 1786035959.988063,
-    "ast_hash": "2e96b72e8fada51c2d8195722036dfd2",
+    "mtime": 1786042034.1403894,
+    "ast_hash": "59ab966faf4c27289afb7074addc1653",
     "semantic_hash": ""
   },
   "src/game/ai/select.ts": {
@@ -280,8 +280,8 @@
     "semantic_hash": ""
   },
   "src/game/ai/values.ts": {
-    "mtime": 1786033842.3217866,
-    "ast_hash": "a2129e8a5b730a38d3964bca36416494",
+    "mtime": 1786042026.839043,
+    "ast_hash": "f670fa8772ba7880aa943a798be21c12",
     "semantic_hash": ""
   },
   "src/lib/stepFeedback.ts": {
@@ -335,8 +335,8 @@
     "semantic_hash": ""
   },
   "src/components/RulesCheatsheet.tsx": {
-    "mtime": 1786040507.7042873,
-    "ast_hash": "a1cf5980ee4842c17d2e92c921e1ca3b",
+    "mtime": 1786042085.4728417,
+    "ast_hash": "69790dbd8d49b6962edb0322e21b234c",
     "semantic_hash": ""
   },
   "src/components/scene/waterRecipes.ts": {
@@ -360,8 +360,8 @@
     "semantic_hash": ""
   },
   "src/TutorialBoard.tsx": {
-    "mtime": 1786027027.7597947,
-    "ast_hash": "16683b150526e746a4b9254509a91fe7",
+    "mtime": 1786041962.0691178,
+    "ast_hash": "690c5628ade69b1a85988fa157bcbe1d",
     "semantic_hash": ""
   },
   "src/components/TutorialCoach.tsx": {
@@ -570,8 +570,8 @@
     "semantic_hash": ""
   },
   "src/components/CreateGame.tsx": {
-    "mtime": 1786040906.304729,
-    "ast_hash": "1ef2d11ccc9b9dedec451d9d5bb24456",
+    "mtime": 1786042105.8739197,
+    "ast_hash": "2facef40526920d1d8504dbcde99115a",
     "semantic_hash": ""
   },
   "src/components/GameLobby.tsx": {
@@ -580,13 +580,23 @@
     "semantic_hash": ""
   },
   "src/startConfig.ts": {
-    "mtime": 1786040753.9052153,
-    "ast_hash": "81e57c6259c754877976a31c8687e297",
+    "mtime": 1786041939.6144426,
+    "ast_hash": "27e61c0e102ab001346acfa9997c5fe1",
     "semantic_hash": ""
   },
   "src/components/TitleDiorama.tsx": {
     "mtime": 1786041309.7966669,
     "ast_hash": "1763e8d615e6cc9760ad63b37a05ec34",
+    "semantic_hash": ""
+  },
+  "src/game/powers.ts": {
+    "mtime": 1786042181.513024,
+    "ast_hash": "51776503bed3aac95a0eeff488d98fbc",
+    "semantic_hash": ""
+  },
+  "_powers_smoke.mts": {
+    "mtime": 1786042188.0111127,
+    "ast_hash": "7f271ddef76cc448b8591205d07aa128",
     "semantic_hash": ""
   }
 }

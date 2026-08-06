@@ -147,3 +147,48 @@
   opacity: 0.45;
   cursor: not-allowed;
 }
+
+.powerHint {
+  margin: 0.35rem 0 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: rgba(43, 36, 32, 0.68);
+}
+
+.powerHint em {
+  font-style: normal;
+  font-weight: 800;
+  color: var(--forest-deep);
+}
+
+.toggle {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.55rem 0.65rem;
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.35);
+  border: 1.5px solid rgba(46, 75, 42, 0.14);
+  cursor: pointer;
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: rgba(43, 36, 32, 0.7);
+}
+
+.toggle input {
+  margin-top: 0.15rem;
+  width: 1.05rem;
+  height: 1.05rem;
+  accent-color: var(--leaf-green);
+  flex-shrink: 0;
+}
+
+.toggle strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  color: var(--ink);
+  margin-bottom: 0.1rem;
+}

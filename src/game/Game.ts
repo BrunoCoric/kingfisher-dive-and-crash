@@ -6,7 +6,7 @@ import { resolveStep } from './resolution'
 import { endOfRoundCleanup } from './cleanup'
 import { filterPlayerView } from './playerView'
 import { enumerateLegalMoves } from './enumerate'
-import { openHoverPerches } from './reach'
+import { openHoverTargets } from './powers'
 import type { FishCard, FishType, GameState, GamePhase, Perch, PlayerState } from './types'
 
 function buildPerches(zoneCount: number): Perch[] {
@@ -29,6 +29,8 @@ export interface KingfisherSetupData {
   humanSeats?: string[]
   /** Fixed 3-seat river + firstPlayer 0 for the interactive tutorial. */
   tutorial?: boolean
+  /** Soft species passives; default false (tutorial / headless). */
+  speciesPowers?: boolean
 }
 
 function fish(type: FishType, id: string): FishCard {
@@ -95,6 +97,7 @@ export function setup(
       fishCount: 0,
       scored: [],
       perch: '',
+      pikeShieldUsed: false,
     }
   })
 
@@ -123,6 +126,7 @@ export function setup(
     winner: null,
     humanSeats: setupData?.humanSeats ?? [],
     tutorial,
+    speciesPowers: setupData?.speciesPowers === true && !tutorial,
   }
 }
 
@@ -214,7 +218,7 @@ function hoverPhase(step: number, phase: GamePhase, next: string): PhaseConfig<G
         if (!player || sel?.card !== 'Hover' || G.hovered.includes(pid)) return
         if (sel.moveTo !== undefined) {
           const occupied = Object.values(G.players).map((p) => p.perch).filter(Boolean)
-          if (openHoverPerches(G.perches, player.perch, occupied).some((p) => p.id === sel.moveTo)) {
+          if (openHoverTargets(G, pid, player.perch, occupied).some((p) => p.id === sel.moveTo)) {
             player.perch = sel.moveTo
           }
         }

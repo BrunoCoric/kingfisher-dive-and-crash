@@ -10,7 +10,7 @@ Components
 1 River Board
 Center Track: River zones (depending on number of players, 2: 4, 3: 5, 4: 6, 5: 7)
 Left & Right Banks: Perch locations flanking the river.
-5 Kingfisher Pawns (Blue, Orange, Teal, Green, Purple)
+5 Kingfisher Pawns (Blue, Orange, Teal, Green, Purple) — optional Species Powers (one soft passive each; toggle on Create game)
 5 Action Decks (4 cards per player)
 1 Fish Deck (2: 25, 3: 32, 4: 39, 5: 43)
 1 First Player / Season Marker
@@ -60,6 +60,7 @@ Shuffle the Fish Deck and place it face-down next to the board.
 Deal 1 face-down Fish card to each of the 5 River Zones.
 Each player chooses a color, takes their Kingfisher Pawn, and places it on any starting Perch space of their choice. In the demo, the First Player is randomized and players place pawns clockwise onto an empty board (later rounds clear every bird first, then place again the same way).
 Each player takes their matching 4-card Action Deck into their hand.
+Optional — Species Powers: when enabled (Create game toggle), each species adds one soft passive. Same cards and crash rules for everyone; see below.
 Game Loop
 Round Structure: Three Actions per Round
 A single round consists of 3 Sequential Steps.
@@ -123,3 +124,11 @@ Board Restock: Place new face-down cards from the Fish Deck onto any empty Water
 Hand Reset: Players retrieve all spent and discarded Action Cards back into their hand (returning to 4 cards).
 Perch Maintenance: At the start of each round (after the First Player marker passes clockwise), all Kingfisher pawns leave the board, then players place again in turn order onto any unoccupied perch. If a player places on a low branch, they may secretly peek at one reachable face-down Fish card.
 Win Condition: The game ends there are no cards in the fish deck to fill out an empty slot in the river. The player with the highest total fish points wins (on tie, the player with most fish wins)!
+
+Species Powers (optional)
+Enabled from Create game (default on for vs-bots; always off in Tutorial). Powers are seat-bound to species art:
+- Common — Steady Wing: on Crash, skip the extra hand discard (played card still spent).
+- Pied — Long Hover: Hover Relocate may move up to two perch hops (free seats only).
+- Oriental Dwarf — Keen Sight: High perch also gets a placement sightline peek.
+- Belted — Wide Bank: Low perch uses High’s three-zone reach.
+- Azure — Tough Gut: your first Pike each match does not eat a Minnow.

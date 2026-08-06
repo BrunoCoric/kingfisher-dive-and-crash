@@ -31,6 +31,8 @@ interface RiverBoardProps {
   zoneOutcomes?: Record<number, OutcomeCallout[]>
   /** Play the end-of-round fish-drift motion before state updates. */
   drifting?: boolean
+  /** Optional reach override for perch hover preview (species powers). */
+  previewReach?: (perchId: string) => number[]
   onDriftEnd?: () => void
   onZoneClick: (id: number) => void
   onPerchClick: (id: string) => void
@@ -46,6 +48,7 @@ export function RiverBoard({
   zoneActions = {},
   zoneOutcomes = {},
   drifting = false,
+  previewReach,
   onDriftEnd,
   onZoneClick,
   onPerchClick,
@@ -60,7 +63,11 @@ export function RiverBoard({
     ? perches.find((p) => p.id === hoverPerchId)
     : undefined
   const influence = hoverPerch
-    ? new Set(reachableZones(hoverPerch.zone, hoverPerch.level, zoneCount))
+    ? new Set(
+        previewReach
+          ? previewReach(hoverPerch.id)
+          : reachableZones(hoverPerch.zone, hoverPerch.level, zoneCount),
+      )
     : null
 
   const renderPerch = (perch: PerchType | undefined) => {

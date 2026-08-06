@@ -1,4 +1,4 @@
-import { reachableZones } from '../reach'
+import { reachFromPerch, playerReach } from '../powers'
 import { FISH_COUNTS } from '../fish'
 import type { GameState, Perch } from '../types'
 import { HIDDEN_FISH } from '../types'
@@ -81,7 +81,7 @@ export function perchValue(
   memory?: BotMemory,
 ): number {
   let total = 0
-  for (const zone of reachableZones(perch.zone, perch.level, G.zones.length)) {
+  for (const zone of reachFromPerch(G, playerID, perch)) {
     const value = zoneValue(G, zone, playerID, weights, memory)
     if (Number.isFinite(value)) total += value
   }
@@ -94,9 +94,7 @@ export function opponentsReaching(G: GameState, playerID: string, target: number
     if (pid === playerID) continue
     const other = G.players[pid]
     if (!other.perch) continue
-    const perch = G.perches.find((p) => p.id === other.perch)
-    if (!perch) continue
-    if (reachableZones(perch.zone, perch.level, G.zones.length).includes(target)) count++
+    if (playerReach(G, pid).includes(target)) count++
   }
   return count
 }
@@ -136,11 +134,7 @@ export function bestContestedPerchValue(
 
 /** Zones an opponent could dive this step (to crash you or to be your Drop/reposition). */
 export function opponentDiveZones(G: GameState, opp: string): number[] {
-  const other = G.players[opp]
-  if (!other?.perch) return []
-  const perch = G.perches.find((p) => p.id === other.perch)
-  if (!perch) return []
-  return reachableZones(perch.zone, perch.level, G.zones.length).filter((z) => G.zones[z]?.fish)
+  return playerReach(G, opp).filter((z) => G.zones[z]?.fish)
 }
 
 /**
@@ -155,7 +149,7 @@ export function denyValue(
   weights: WeightRecord,
   memory?: BotMemory,
 ): number {
-  const mine = reachableZones(perch.zone, perch.level, G.zones.length)
+  const mine = reachFromPerch(G, playerID, perch)
   let total = 0
   for (const pid in G.players) {
     if (pid === playerID) continue

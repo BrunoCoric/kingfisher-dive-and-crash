@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import type { BoardProps } from 'boardgame.io/react'
 import type { CardType, GameState, StepSelection } from './game/types'
-import { reachableZones, openHoverPerches } from './game/reach'
+import { canSightline, openHoverTargets, playerReach, reachFromPerch } from './game/powers'
 import { hasLegalStepMove } from './game/enumerate'
 import { hasHoverPeekTarget, isHoverPeekTarget } from './game/hoverPeek'
 import { kingfisher, playerColor } from './lib/presentation'
@@ -75,19 +75,19 @@ export function Board(props: BoardProps<GameState> & BoardExtra) {
   }
 
   const myPerch = me ? G.perches.find((p) => p.id === me.perch) : undefined
-  const reach = myPerch ? reachableZones(myPerch.zone, myPerch.level, G.zones.length) : []
+  const reach = me ? playerReach(G, myID) : []
   const sightLineOpen =
     placing &&
     isActive &&
     guideOk &&
     me !== undefined &&
     myPerch !== undefined &&
-    myPerch.level === 'low' &&
+    canSightline(G, myID, myPerch) &&
     G.sightlinePeek[myID] === undefined
   const occupiedIds = new Set(Object.values(G.players).map((p) => p.perch).filter(Boolean))
   const hoverOpenPerches =
     me !== undefined
-      ? openHoverPerches(G.perches, me.perch, occupiedIds).map((p) => p.id)
+      ? openHoverTargets(G, myID, me.perch, occupiedIds).map((p) => p.id)
       : []
   const hoverRelocateAvailable = hoverOpenPerches.length > 0
   // Relocate targets light during pending Hover (step); hover phase auto-applies.
@@ -104,6 +104,12 @@ export function Board(props: BoardProps<GameState> & BoardExtra) {
   } else if (guided && pending?.card === 'Hover' && guide?.zoneId !== undefined) {
     // Scout lesson: only the coached zone; hide Relocate perches.
     movablePerches = []
+  }
+
+  const previewReachFor = (perchId: string) => {
+    const perch = G.perches.find((p) => p.id === perchId)
+    if (!perch || !me) return []
+    return reachFromPerch(G, myID, perch)
   }
 
   const reactions = showStepFeedback ? playerReactions(G) : {}
@@ -295,7 +301,7 @@ export function Board(props: BoardProps<GameState> & BoardExtra) {
             onSelect={selectCard}
           />
         )}
-        <RulesCheatsheet />
+        <RulesCheatsheet speciesPowers={G.speciesPowers} />
         {myID !== '' && showStepFeedback && G.outcomeLog.length > 0 && (
           <OutcomeSplash key={`${feedbackKey}:${myID}`} G={G} playerID={myID} />
         )}
@@ -310,6 +316,7 @@ export function Board(props: BoardProps<GameState> & BoardExtra) {
             zoneActions={actionsByZone}
             zoneOutcomes={outcomesByZone}
             drifting={drifting}
+            previewReach={me ? previewReachFor : undefined}
             onDriftEnd={finishDrift}
             onZoneClick={(id) => {
               if (guided && guide?.zoneId !== undefined && id !== guide.zoneId) return

@@ -3,6 +3,7 @@ import type { Ctx, PlayerID, State } from 'boardgame.io'
 import type { AiEnumerate } from 'boardgame.io'
 import { filterPlayerView } from '../playerView'
 import { ACTION_DECK } from '../cards'
+import { canSightline } from '../powers'
 import type { GameState, Perch } from '../types'
 import { HIDDEN_FISH } from '../types'
 import { expectedFishValue, zoneValue, perchValue, opponentsReaching, opponentDiveZones } from './scoring'
@@ -97,7 +98,7 @@ function evaluateMove(G: GameState, player: string, move: string, args: unknown[
     case 'placePawn': {
       const perch = G.perches.find((p) => p.id === args[0])
       if (!perch) return -Infinity
-      return perchValue(G, perch, player) + (perch.level === 'low' ? SIGHTLINE_BONUS : 0)
+      return perchValue(G, perch, player) + (canSightline(G, player, perch) ? SIGHTLINE_BONUS : 0)
     }
     case 'peekSightline':
       return zoneValue(G, Number(args[0]), player)

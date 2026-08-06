@@ -28,6 +28,7 @@ Single source of truth for implementation status. Refer to `README.md` for the g
   - `bot.ts` — smart `KingfisherBot` + re-export of legacy bot
   - `ai/` — belief, fish-drift memory, scoring, softmax select, legacy greedy
   - `kingfishers.ts` — typed species sprite manifest
+  - `powers.ts` — optional per-species soft passives + reach/hover helpers
   - `src/components/` — river board, held hand, scores roster sheet, rules cheatsheet, status line, end-state panels, tutorial coach
   - `src/tutorial/` — scripted bot moves, lesson copy, `TutorialBot`
   - `src/TutorialBoard.tsx` — coach + click-gate wrapper for tutorial mode
@@ -103,9 +104,11 @@ Single source of truth for implementation status. Refer to `README.md` for the g
 - [x] Play → local **Game lobby** (empty list for now) → **Create game** (bird pick + bot slots, default 4 players) → vs-bots match
 - [x] Menu / lobby / create: clean title (brand + flock + pill CTAs); lobby/create bank-sand panels
 - [x] Start Screen **Nest** panel: lifetime stats, badge list, recent matches
+- [x] Optional Species Powers (`src/game/powers.ts`): one soft passive per bird; Create game toggle (default on); tutorial forced off; Rules sheet lists them when active
 
 ### Implementation Notes
 - Local browser play is vs-bots only from Create game (2–5 seats). Pass-and-play entry is removed from the Start Screen. Hidden-information secrecy for true multiplayer is deferred.
+- **Species Powers (optional):** `G.speciesPowers` from setup. Same 4-card deck & crash principle; helpers in `powers.ts` (`playerReach`, `openHoverTargets`, `canSightline`, `hasPower`). Common skips crash extra discard; Pied 2-hop Hover; Dwarf high sightline; Belted low→high reach; Azure first Pike skips Minnow tax (`pikeShieldUsed`). Smoke: `npx tsx _powers_smoke.mts`.
 - **Tutorial mode:** Opens with four primer slides (`src/tutorial/intro.ts` / `TutorialIntro`) before the Local client mounts — goal & end condition, reach, round cadence, then the four cards. `setup(..., { humanSeats: ['0'], tutorial: true })` deals a fixed river/deck and First Player `0`. Crash discards prefer burning Splash first so Hover lessons stay legal after a Dive Crash. Lessons derive from phase/round/outcomes (`src/tutorial/lesson.ts`); review beats use Got it before unlocking the next gate.
 - The opening placement phase randomizes the First Player, then lets each player choose one unoccupied perch in clockwise order before the first simultaneous card step.
 - Crash never discards the zone’s fish (Splash+Splash, Dive+Dive, Drop+Drop). Crashers spend the played card and discard one extra random hand card. Solo Dive grant is deferred until after Drops so a Drop+Drop Crash can return the fish to the zone.

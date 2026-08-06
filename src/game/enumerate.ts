@@ -1,6 +1,6 @@
 import type { Ctx, PlayerID } from 'boardgame.io'
 import type { AiEnumerate } from 'boardgame.io'
-import { reachableZones, openHoverPerches } from './reach'
+import { canSightline, openHoverTargets, playerReach } from './powers'
 import { isHoverPeekTarget } from './hoverPeek'
 import type { GameState } from './types'
 
@@ -27,8 +27,8 @@ export function enumerateLegalMoves(G: GameState, ctx: Ctx, playerID: PlayerID):
       }
     } else {
       const perch = G.perches.find((p) => p.id === player.perch)
-      if (perch && perch.level === 'low' && G.sightlinePeek[playerID] === undefined) {
-        for (const zone of reachableZones(perch.zone, perch.level, G.zones.length)) {
+      if (perch && canSightline(G, playerID, perch) && G.sightlinePeek[playerID] === undefined) {
+        for (const zone of playerReach(G, playerID)) {
           candidates.push({ move: 'peekSightline', args: [zone] })
         }
       }
@@ -45,12 +45,12 @@ export function enumerateLegalMoves(G: GameState, ctx: Ctx, playerID: PlayerID):
       candidates.push({ move: 'skipTurn', args: [] })
       return candidates
     }
-    const reach = reachableZones(perch.zone, perch.level, G.zones.length)
+    const reach = playerReach(G, playerID)
 
     for (const card of player.hand) {
       if (card === 'Hover') {
         const occupied = Object.values(G.players).map((p) => p.perch).filter(Boolean)
-        const open = openHoverPerches(G.perches, player.perch, occupied)
+        const open = openHoverTargets(G, playerID, player.perch, occupied)
         let any = false
         for (const zone of G.zones) {
           if (isHoverPeekTarget(G, playerID, zone.id)) {
@@ -107,7 +107,7 @@ export function hasLegalStepMove(G: GameState, playerID: PlayerID): boolean {
   if (!player) return false
   const perch = G.perches.find((p) => p.id === player.perch)
   if (!perch) return false
-  const reach = reachableZones(perch.zone, perch.level, G.zones.length)
+  const reach = playerReach(G, playerID)
   return player.hand.some((card) => {
     if (card === 'Hover') return true
     return reach.some((target) => !(card === 'Dive' && !G.zones[target]?.fish))

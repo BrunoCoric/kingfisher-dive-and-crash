@@ -1,5 +1,6 @@
 import { FISH_POINTS } from '../fish'
 import { STEPS_PER_ROUND } from '../cards'
+import { canSightline } from '../powers'
 import type { GameState } from '../types'
 import { HIDDEN_FISH } from '../types'
 import {
@@ -78,7 +79,7 @@ export function scoreMove(
     case 'placePawn': {
       const perch = G.perches.find((p) => p.id === args[0])
       if (!perch) return -Infinity
-      const bonus = perch.level === 'low' ? W.sightlineBonus : 0
+      const bonus = canSightline(G, playerID, perch) ? W.sightlineBonus : 0
       return contestedPerchValue(G, perch, playerID, W, b.memory) + bonus
     }
     case 'peekSightline':

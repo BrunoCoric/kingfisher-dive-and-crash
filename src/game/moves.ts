@@ -1,5 +1,5 @@
 import type { FnContext, PlayerID } from 'boardgame.io'
-import { reachableZones, openHoverPerches } from './reach'
+import { canSightline, openHoverTargets, playerReach } from './powers'
 import { hasLegalStepMove } from './enumerate'
 import { hasHoverPeekTarget, isHoverPeekTarget } from './hoverPeek'
 import type { CardType, GameState, StepSelection } from './types'
@@ -19,12 +19,12 @@ export function placePawn(
 
   player.perch = perchId
   G.locked[playerID] = true
-  // A low perch grants a private sightline peek before the turn ends.
-  if (perch.level === 'low') return
+  // Low perch (or Dwarf Keen Sight on high) grants a private sightline peek.
+  if (canSightline(G, playerID, perch)) return
   events.endTurn()
 }
 
-/** Records the zone a low-perch player peeked at during placement, then ends the turn. */
+/** Records the zone a sightline-eligible player peeked at, then ends the turn. */
 export function peekSightline(
   { G, playerID, ctx, events }: FnContext<GameState> & { playerID: PlayerID },
   zoneId: number,
@@ -32,9 +32,9 @@ export function peekSightline(
   if (G.currentPhase !== 'placement' || playerID !== ctx.currentPlayer) return
   const player = G.players[playerID]
   const perch = player ? G.perches.find((candidate) => candidate.id === player.perch) : undefined
-  if (!player || !perch || !G.locked[playerID] || perch.level !== 'low') return
+  if (!player || !perch || !G.locked[playerID] || !canSightline(G, playerID, perch)) return
   if (G.sightlinePeek[playerID] !== undefined) return
-  if (!reachableZones(perch.zone, perch.level, G.zones.length).includes(zoneId)) return
+  if (!playerReach(G, playerID).includes(zoneId)) return
 
   G.sightlinePeek[playerID] = zoneId
   G.peeked[playerID] = [...(G.peeked[playerID] ?? []), zoneId]
@@ -60,7 +60,7 @@ export function selectCard(
 
   const perch = G.perches.find((p) => p.id === player.perch)
   if (!perch) return
-  const reach = reachableZones(perch.zone, perch.level, G.zones.length)
+  const reach = playerReach(G, pid)
 
   if (card === 'Dive' || card === 'Drop' || card === 'Splash') {
     if (selection.target === undefined || !reach.includes(selection.target)) return
@@ -72,7 +72,7 @@ export function selectCard(
     const moveTo = selection.moveTo
     if (peek !== undefined && moveTo !== undefined) return
     const occupied = Object.values(G.players).map((p) => p.perch).filter(Boolean)
-    const open = openHoverPerches(G.perches, player.perch, occupied)
+    const open = openHoverTargets(G, pid, player.perch, occupied)
     const canScout = hasHoverPeekTarget(G, pid)
     const canRelocate = open.length > 0
     if (peek !== undefined) {
@@ -80,7 +80,7 @@ export function selectCard(
     } else if (moveTo !== undefined) {
       if (!open.some((p) => p.id === moveTo)) return
     } else if (canScout || canRelocate) {
-      // Scout XOR Relocate: must pick a zone or a free adjacent perch when either exists.
+      // Scout XOR Relocate: must pick a zone or a free perch when either exists.
       return
     }
   }
@@ -135,7 +135,7 @@ export function hoverMove(
   const target = moveTo ?? sel.moveTo
   if (target !== undefined) {
     const occupied = Object.values(G.players).map((p) => p.perch).filter(Boolean)
-    if (openHoverPerches(G.perches, player.perch, occupied).some((p) => p.id === target)) {
+    if (openHoverTargets(G, playerID, player.perch, occupied).some((p) => p.id === target)) {
       player.perch = target
     }
   }

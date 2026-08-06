@@ -13,7 +13,13 @@ import { startAmbience } from './lib/sfx'
 import './styles/global.css'
 import './styles/tokens.css'
 
-type BotsMode = { kind: 'bots'; numPlayers: number; humanSeat: string; botSeats: string[] }
+type BotsMode = {
+  kind: 'bots'
+  numPlayers: number
+  humanSeat: string
+  botSeats: string[]
+  speciesPowers: boolean
+}
 type Mode = { kind: 'pick' } | { kind: 'tutorial' } | BotsMode
 
 function BotsGame({ mode, onMenu }: { mode: BotsMode; onMenu: () => void }) {
@@ -28,7 +34,11 @@ function BotsGame({ mode, onMenu }: { mode: BotsMode; onMenu: () => void }) {
       Client({
         game: {
           ...Game,
-          setup: (context) => setup(context, { humanSeats: [mode.humanSeat] }),
+          setup: (context) =>
+            setup(context, {
+              humanSeats: [mode.humanSeat],
+              speciesPowers: mode.speciesPowers,
+            }),
         },
         board: Board,
         numPlayers: mode.numPlayers,
