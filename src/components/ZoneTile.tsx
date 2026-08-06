@@ -56,16 +56,18 @@ export function ZoneTile({
     fishCls.push(driftOff ? styles.fishDriftOff : styles.fishDrift)
   }
 
+  const interactive = targetState === 'legal' || targetState === 'peek'
+
   return (
     <div
       className={cls.join(' ')}
       data-zone={zone.id}
       data-state={targetState ?? undefined}
-      onClick={onClick}
-      role={onClick ? 'button' : undefined}
-      tabIndex={onClick ? 0 : undefined}
+      onClick={interactive ? onClick : undefined}
+      role={interactive ? 'button' : undefined}
+      tabIndex={interactive ? 0 : undefined}
       onKeyDown={(event) => {
-        if (onClick && (event.key === 'Enter' || event.key === ' ')) onClick()
+        if (interactive && onClick && (event.key === 'Enter' || event.key === ' ')) onClick()
       }}
       aria-label={`Zone ${zone.id + 1}`}
     >
@@ -119,6 +121,19 @@ export function ZoneTile({
       {splashed && (
         <span className={styles.dome} aria-hidden>
           <span className={styles.domeCore} />
+        </span>
+      )}
+      {targetState === 'legal' && (
+        <span className={styles.sunHalo} aria-hidden />
+      )}
+      {targetState === 'legal' && (
+        <span className={styles.sunBadge} aria-hidden>
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <circle cx="12" cy="12" r="4.2" />
+            <g stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none">
+              <path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6" />
+            </g>
+          </svg>
         </span>
       )}
       {targetState === 'peek' && (

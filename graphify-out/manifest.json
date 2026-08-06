@@ -10,8 +10,8 @@
     "semantic_hash": ""
   },
   "src/Board.tsx": {
-    "mtime": 1786029299.6356301,
-    "ast_hash": "1fae2ca19cf2e0c87ac14af644763818",
+    "mtime": 1786033475.5023828,
+    "ast_hash": "fed78dfcde50dc1c1a4c486bf3cc6f30",
     "semantic_hash": ""
   },
   "src/components/ActionCard.tsx": {
@@ -45,13 +45,13 @@
     "semantic_hash": ""
   },
   "src/components/ZoneTile.tsx": {
-    "mtime": 1786023772.94689,
-    "ast_hash": "03bf1a5d285a6f3bdd0787d1d6c63960",
+    "mtime": 1786033322.4302382,
+    "ast_hash": "aafecbc4318ad2ffd7e0d6bdf99b5d82",
     "semantic_hash": ""
   },
   "src/game/Game.ts": {
-    "mtime": 1786026805.7284107,
-    "ast_hash": "282b78ebe7ab46a60999ed9433fb499d",
+    "mtime": 1786033678.0497878,
+    "ast_hash": "6232e934f4c7d76cb5883d8a1e99aedf",
     "semantic_hash": ""
   },
   "src/game/cards.ts": {
@@ -60,8 +60,8 @@
     "semantic_hash": ""
   },
   "src/game/cleanup.ts": {
-    "mtime": 1786019985.970867,
-    "ast_hash": "a48d981bc6bb7d0aed4410ddbc7b0d16",
+    "mtime": 1786033892.0203855,
+    "ast_hash": "e4532dfa04fe6dc36e483fddf99590ac",
     "semantic_hash": ""
   },
   "src/game/fish.ts": {
@@ -75,8 +75,8 @@
     "semantic_hash": ""
   },
   "src/game/moves.ts": {
-    "mtime": 1786019612.4902158,
-    "ast_hash": "d25491d97b9470710717cabc771370b5",
+    "mtime": 1786033472.0438201,
+    "ast_hash": "a714f567b71c8a216860cd706e9d4107",
     "semantic_hash": ""
   },
   "src/game/reach.ts": {
@@ -85,13 +85,13 @@
     "semantic_hash": ""
   },
   "src/game/resolution.ts": {
-    "mtime": 1786026932.1272786,
-    "ast_hash": "5dc396dc980743ee5c68c662cc5c6a65",
+    "mtime": 1786033679.691948,
+    "ast_hash": "d4eba5ab31c8a49fed4f918252ff4400",
     "semantic_hash": ""
   },
   "src/game/types.ts": {
-    "mtime": 1786026449.1484637,
-    "ast_hash": "ed8f6c8910079443a0eb25c0a9786b69",
+    "mtime": 1786033894.5337758,
+    "ast_hash": "a5865769649521752aff25be1434dc5a",
     "semantic_hash": ""
   },
   "src/lib/presentation.ts": {
@@ -135,18 +135,18 @@
     "semantic_hash": ""
   },
   "DESIGN.md": {
-    "mtime": 1786029302.3983355,
-    "ast_hash": "ac19d833c9e2116bdc988d9ec536057e",
+    "mtime": 1786033904.145744,
+    "ast_hash": "bddfba5a0e1e0cbfa92ec81c6e465729",
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1786021104.7639685,
-    "ast_hash": "64528d731bf38bff0660b2cdda2e0975",
+    "mtime": 1786033905.9031625,
+    "ast_hash": "bd31917fd01ec6caed534c60ec829ad6",
     "semantic_hash": ""
   },
   "VISUALS.md": {
-    "mtime": 1786025925.765152,
-    "ast_hash": "7f5d7a0a02c96ef3d51ed5520106e607",
+    "mtime": 1786033327.5442543,
+    "ast_hash": "b1e142a7f6932ae37e675cb52252bd87",
     "semantic_hash": ""
   },
   "index.html": {
@@ -215,13 +215,13 @@
     "semantic_hash": ""
   },
   "src/game/enumerate.ts": {
-    "mtime": 1786019606.0622385,
-    "ast_hash": "5c8c7ec7229e493e9fe76eb859f7508c",
+    "mtime": 1786033473.841886,
+    "ast_hash": "0d7b0b96baf373c3b2f4df1a52f06276",
     "semantic_hash": ""
   },
   "src/game/playerView.ts": {
-    "mtime": 1786019991.9658098,
-    "ast_hash": "0516a9e300810bf439a73600cedc5d3d",
+    "mtime": 1786033894.823629,
+    "ast_hash": "badc9099f0326e56936dc77410ca3fb4",
     "semantic_hash": ""
   },
   "_bot_ab.mts": {
@@ -265,8 +265,8 @@
     "semantic_hash": ""
   },
   "src/game/ai/scoring.ts": {
-    "mtime": 1786015341.8279605,
-    "ast_hash": "acf9048cd576c90b87d04241154ec93b",
+    "mtime": 1786033870.2444854,
+    "ast_hash": "6666ef72cd1ad7bbec229e1e0f5aef12",
     "semantic_hash": ""
   },
   "src/game/ai/select.ts": {
@@ -280,8 +280,8 @@
     "semantic_hash": ""
   },
   "src/game/ai/values.ts": {
-    "mtime": 1786015335.4585922,
-    "ast_hash": "5aad8655a32c518739b82749896476a4",
+    "mtime": 1786033842.3217866,
+    "ast_hash": "a2129e8a5b730a38d3964bca36416494",
     "semantic_hash": ""
   },
   "src/lib/stepFeedback.ts": {
@@ -320,8 +320,8 @@
     "semantic_hash": ""
   },
   "src/components/RosterSheet.tsx": {
-    "mtime": 1786017766.9120302,
-    "ast_hash": "5a1d719abb4f6a86c9b66470cf098f43",
+    "mtime": 1786033737.0511997,
+    "ast_hash": "74479db40d85269465b5d70d9c344754",
     "semantic_hash": ""
   },
   "src/components/scene/WaterPuddleSvg.tsx": {
@@ -375,8 +375,8 @@
     "semantic_hash": ""
   },
   "src/tutorial/lesson.ts": {
-    "mtime": 1786027035.1217024,
-    "ast_hash": "a2f7ddd936aadce4c4e79ae272cf6836",
+    "mtime": 1786033480.3411179,
+    "ast_hash": "da4c2b697cc81ace39d40d56e4d92ccb",
     "semantic_hash": ""
   },
   "src/tutorial/script.ts": {
@@ -395,8 +395,8 @@
     "semantic_hash": ""
   },
   "src/tutorial/intro.ts": {
-    "mtime": 1786027276.6282907,
-    "ast_hash": "d778c201ec211026349b7d14789f569b",
+    "mtime": 1786033477.4228911,
+    "ast_hash": "649cc1e93b1ae457c63755ed9de4a7a6",
     "semantic_hash": ""
   },
   "src/lib/sfx.ts": {

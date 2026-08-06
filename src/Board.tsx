@@ -86,7 +86,7 @@ export function Board(props: BoardProps<GameState> & BoardExtra) {
   const occupiedIds = new Set(Object.values(G.players).map((p) => p.perch).filter(Boolean))
   let movablePerches =
     placing && canPlace
-      ? G.perches.filter((perch) => !occupiedIds.has(perch.id) || perch.id === me.perch).map((p) => p.id)
+      ? G.perches.filter((perch) => !occupiedIds.has(perch.id)).map((p) => p.id)
       : canHover && me
         ? openHoverPerches(G.perches, me.perch, occupiedIds).map((p) => p.id)
         : []
@@ -122,6 +122,7 @@ export function Board(props: BoardProps<GameState> & BoardExtra) {
   const targetStates: Record<number, 'legal' | 'illegal' | 'peek' | null> = {}
   for (const zone of G.zones) {
     if (guided && guide?.zoneId !== undefined && zone.id !== guide.zoneId) {
+      // Tutorial: only the coached zone lights; others stay neutral (not dimmed).
       targetStates[zone.id] = null
       continue
     }
@@ -129,15 +130,17 @@ export function Board(props: BoardProps<GameState> & BoardExtra) {
       if (guided && guide?.card && pending.card !== guide.card) {
         targetStates[zone.id] = null
       } else if (pending.card === 'Hover') {
-        targetStates[zone.id] = isHoverPeekTarget(G, myID, zone.id) ? 'peek' : null
+        // Peek targets glow green; everything else dims so reach is obvious.
+        targetStates[zone.id] = isHoverPeekTarget(G, myID, zone.id) ? 'peek' : 'illegal'
       } else if (reach.includes(zone.id)) {
         const legal = pending.card !== 'Dive' || zone.fish !== null
         targetStates[zone.id] = legal ? 'legal' : 'illegal'
       } else {
-        targetStates[zone.id] = null
+        // Out of perch reach — dim so legal Splash/Drop/Dive lanes pop.
+        targetStates[zone.id] = 'illegal'
       }
-    } else if (sightLineOpen && reach.includes(zone.id)) {
-      targetStates[zone.id] = 'peek'
+    } else if (sightLineOpen) {
+      targetStates[zone.id] = reach.includes(zone.id) ? 'peek' : 'illegal'
     } else {
       targetStates[zone.id] = null
     }

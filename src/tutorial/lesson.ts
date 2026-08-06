@@ -213,7 +213,7 @@ function actionLesson(key: string, gate: TutorialGate): TutorialLesson {
     },
     '3|placement|place': {
       title: 'Hold the high perch',
-      body: 'Tap the highlighted perch (or stay) so you can reach zones 1–3 for the crash lessons.',
+      body: 'Tap the highlighted perch so you can reach zones 1–3 for the crash lessons.',
     },
     '3|step1': {
       title: 'Dive Crash',

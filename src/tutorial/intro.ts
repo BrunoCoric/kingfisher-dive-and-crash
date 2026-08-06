@@ -39,7 +39,7 @@ export const TUTORIAL_INTRO: IntroSlide[] = [
       'Resolve order: Hover → Splash → Dive → Drop',
       'Effects last only for that step — nothing carries over',
       'After step 3: review, fish drift downstream, restock, hands reset',
-      'First Player passes clockwise; everyone repositions on a perch',
+      'First Player passes clockwise; birds leave the board, then everyone places again',
     ],
   },
   {

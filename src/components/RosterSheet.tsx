@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import type { CalloutKind, FishCard, GameState, StepSelection } from '../game/types'
+import type { CalloutKind, CardType, FishCard, GameState, StepSelection } from '../game/types'
+import { STEPS_PER_ROUND } from '../game/cards'
 import { selectionDetail } from '../lib/stepFeedback'
 import { FISH_LABEL, kingfisher, speciesShort } from '../lib/presentation'
 import { ActionIcon } from './ActionIcon'
@@ -42,6 +43,7 @@ export function RosterSheet({
             Close
           </button>
         </header>
+        <p className={styles.hint}>Round plays · empty slots still open</p>
 
         <ul className={styles.list}>
           {playOrder.map((pid) => {
@@ -52,6 +54,7 @@ export function RosterSheet({
             const leading = p.score > 0 && p.score === best
             const ready = placing ? p.perch !== '' : G.locked[pid] ?? false
             const reveal = showReveals ? G.lastReveals[pid] : undefined
+            const plays = G.roundPlays[pid] ?? []
             const expanded = openFish === pid
             const rowCls = [styles.row]
             if (mine) rowCls.push(styles.mine)
@@ -81,6 +84,8 @@ export function RosterSheet({
                   <span className={styles.score}>{p.score}</span>
                 </button>
 
+                <RoundPlays plays={plays} />
+
                 {reveal && (
                   <RevealLine reveal={reveal} outcome={reactions[pid]} />
                 )}
@@ -99,6 +104,28 @@ export function RosterSheet({
           })}
         </ul>
       </div>
+    </div>
+  )
+}
+
+/** Compact strip of cards played this round (up to STEPS_PER_ROUND). */
+function RoundPlays({ plays }: { plays: CardType[] }) {
+  const label =
+    plays.length === 0 ? 'No plays yet this round' : `Played this round: ${plays.join(', ')}`
+
+  return (
+    <div className={styles.plays} aria-label={label} title={label}>
+      {Array.from({ length: STEPS_PER_ROUND }, (_, i) => {
+        const card = plays[i]
+        if (!card) {
+          return <span key={`empty-${i}`} className={styles.playEmpty} aria-hidden />
+        }
+        return (
+          <span key={`${card}-${i}`} className={styles.playChip} title={card}>
+            <ActionIcon card={card} className={styles.icon} />
+          </span>
+        )
+      })}
     </div>
   )
 }

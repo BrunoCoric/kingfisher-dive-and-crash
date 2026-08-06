@@ -4,6 +4,8 @@ import { isFish } from './types'
 import type { FishCard, GameState } from './types'
 
 export function endOfRoundCleanup(G: GameState, ctx: Ctx): void {
+  // Shift private peeks before fish move so zone ids stay tied to the same cards.
+  driftPeeked(G)
   driftFish(G)
   restock(G)
 
@@ -17,11 +19,28 @@ export function endOfRoundCleanup(G: GameState, ctx: Ctx): void {
 
   G.selections = {}
   G.lastReveals = {}
+  G.roundPlays = {}
   G.outcomeLog = []
   G.splashes = []
   G.sightlinePeek = {}
-  G.peeked = {}
   G.locked = {}
+}
+
+/** Keep each player's face-up peeks on the same fish after downstream drift. */
+function driftPeeked(G: GameState): void {
+  const last = G.zones.length - 1
+  const next: Record<string, number[]> = {}
+  for (const pid of Object.keys(G.peeked)) {
+    const zones: number[] = []
+    for (const z of G.peeked[pid]) {
+      // Caught / discarded — don't reveal whatever restocks that slot.
+      if (!isFish(G.zones[z]?.fish)) continue
+      if (z >= last) continue
+      zones.push(z + 1)
+    }
+    if (zones.length > 0) next[pid] = zones
+  }
+  G.peeked = next
 }
 
 function driftFish(G: GameState): void {

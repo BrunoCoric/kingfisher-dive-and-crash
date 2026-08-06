@@ -199,7 +199,7 @@ Small (about 60% of an action card). Always show a **big point number** plus a t
 This sequence is the heart of the game. **Current build: "Read it on the river"** — outcomes are readable on the board and birds for the whole next selection phase. Staged priority timeline / dive arcs / fish fly-to-score remain future polish.
 
 ### Step 1 — Select & Lock
-- Legal targets light up (sun-yellow highlight); illegal targets dim.
+- Legal targets light up (sun-yellow halo + sun badge + zone-number rim); out-of-reach and empty-Dive targets dim hard so the legal lanes read at a glance.
 - Locking in shows a small "lock" pulse + an animated countdown when the step timer is low.
 
 ### Step 2 — Simultaneous Reveal

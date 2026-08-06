@@ -19,10 +19,9 @@ export function enumerateLegalMoves(G: GameState, ctx: Ctx, playerID: PlayerID):
     const occupied = new Set(Object.values(G.players).map((p) => p.perch).filter(Boolean))
     const placedThisRound = G.locked[playerID] === true
     if (!placedThisRound) {
-      // Round 1: any unoccupied perch. Later rounds: any unoccupied perch or stay.
+      // Birds start off the board each round — any free perch is legal.
       for (const perch of G.perches) {
-        const staying = player.perch !== '' && perch.id === player.perch
-        if (staying || (!occupied.has(perch.id) && perch.id !== player.perch)) {
+        if (!occupied.has(perch.id)) {
           candidates.push({ move: 'placePawn', args: [perch.id] })
         }
       }

@@ -31,7 +31,7 @@ Perch Types & Rules
 "Adjacent" (reach) means the zones a perch can act on. Zone 1 is the most upstream; zone numbers increase downstream.
 Low Perches (Reeds & Low Branches):
 Reach: Its own zone + the downstream zone. If there is no downstream zone, its own zone + the upstream zone.
-Sightline: At the start of a round, you may secretly peek at one face-down Fish card of your choice among your reachable zones.
+Sightline: At the start of a round, you may secretly peek at one face-down Fish card of your choice among your reachable zones. Peeked cards stay face-up for you as they drift downstream (until they leave the river).
 High Perches (Tall Trees & Overhangs):
 Reach: Its own zone + the downstream zone + the upstream zone. If there is no downstream zone, its own zone + the upstream zone + the zone one further upstream. Symmetric case if there is no upstream zone.
 Sightline: No peeking (too high to see through the glare).
@@ -41,7 +41,7 @@ Each player receives an identical 4-card deck:
 Dive: Target 1 adjacent tile to catch the fish on it..
 Drop: Target 1 adjacent zone to ambush and steal a fish being caught by a player in the exact same Step
 Splash: Target 1 adjacent zone to create a hazard block. Cancels all Dives on that zone (Drops are unaffected).
-Hover: Peek at 1 face-down card anywhere on the board AND/OR optionally move your pawn to an adjacent perch (across or next to your current position).
+Hover: Peek at 1 face-down card anywhere on the board AND/OR optionally move your pawn to an adjacent perch (across or next to your current position). Your peeked cards stay face-up for you across rounds as they drift.
 2. Fish Deck (46 Cards Total) - 5 player game
 Small Minnows (x14): 1 Point (Easy catch, reliable).
 Medium Perch (x12): 2 Points.
@@ -58,7 +58,7 @@ Setup (60 Seconds)
 Place the River Board in the center of the table.
 Shuffle the Fish Deck and place it face-down next to the board.
 Deal 1 face-down Fish card to each of the 5 River Zones.
-Each player chooses a color, takes their Kingfisher Pawn, and places it on any starting Perch space of their choice. In the demo, the First Player is randomized and players place pawns clockwise.
+Each player chooses a color, takes their Kingfisher Pawn, and places it on any starting Perch space of their choice. In the demo, the First Player is randomized and players place pawns clockwise onto an empty board (later rounds clear every bird first, then place again the same way).
 Each player takes their matching 4-card Action Deck into their hand.
 Game Loop
 Round Structure: Three Actions per Round
@@ -121,5 +121,5 @@ Secure Catches: Players add all caught fish cards to their personal scoring pile
 Move fish: Move each fish card one space downstream, fish in the Zone 5 (the most downstream zone) is discarded
 Board Restock: Place new face-down cards from the Fish Deck onto any empty Water Tiles.
 Hand Reset: Players retrieve all spent and discarded Action Cards back into their hand (returning to 4 cards).
-Perch Maintenance: At the start of each round (after the First Player marker passes clockwise), run a reposition turn: players move their pawn to any unoccupied perch of their choice. If a player ends the turn on a low branch, they may secretly peek at one reachable face-down Fish card.
+Perch Maintenance: At the start of each round (after the First Player marker passes clockwise), all Kingfisher pawns leave the board, then players place again in turn order onto any unoccupied perch. If a player places on a low branch, they may secretly peek at one reachable face-down Fish card.
 Win Condition: The game ends there are no cards in the fish deck to fill out an empty slot in the river. The player with the highest total fish points wins (on tie, the player with most fish wins)!

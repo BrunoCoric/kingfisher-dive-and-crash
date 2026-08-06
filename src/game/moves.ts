@@ -12,12 +12,10 @@ export function placePawn(
   const player = G.players[playerID]
   const perch = G.perches.find((candidate) => candidate.id === perchId)
   if (!player || !perch) return
-  // One reposition per round; `locked` is reset by round cleanup.
+  // One place per round; birds start off the board (placement onBegin clears perches).
   if (G.locked[playerID]) return
-  // Staying on the current perch is an explicit choice (lets a low-perch player peek).
-  const staying = perchId === player.perch
   const occupied = Object.values(G.players).some((candidate) => candidate.perch === perchId)
-  if (!staying && occupied) return
+  if (occupied) return
 
   player.perch = perchId
   G.locked[playerID] = true

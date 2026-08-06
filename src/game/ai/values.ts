@@ -17,13 +17,16 @@ export const DEFAULT_WEIGHTS: WeightRecord = {
   splashWeight: 0.2,
   collisionCost: 1.8,
   intelWeight: 0.3,
-  repositionWeight: 0.3,
+  // Contest-aware relocate: worth playing Hover to invade a lonely bank.
+  repositionWeight: 0.45,
   peekWeight: 0.2,
   sightlineBonus: 0.55,
   // Large enough that two bots with the same public info still prefer different
   // blind Dive/Splash targets (legacy anti-crash coordination).
   hiddenJitter: 1.35,
-  denyWeight: 0.25,
+  // High enough that after someone claims a bank, later placers invade their
+  // exclusive reach instead of opening a second free-pickings corridor.
+  denyWeight: 0.7,
 }
 
 export function expectedFishValue(G: GameState, weights: WeightRecord = DEFAULT_WEIGHTS): number {
@@ -114,6 +117,23 @@ export function bestPerchValue(
   return best === -Infinity ? 0 : best
 }
 
+/** Best free perch by own EV + exclusive-lane contest (smart Hover relocate). */
+export function bestContestedPerchValue(
+  G: GameState,
+  playerID: string,
+  weights: WeightRecord = DEFAULT_WEIGHTS,
+  memory?: BotMemory,
+): number {
+  const occupied = new Set(Object.values(G.players).map((p) => p.perch).filter(Boolean))
+  let best = -Infinity
+  for (const perch of G.perches) {
+    if (occupied.has(perch.id)) continue
+    const value = contestedPerchValue(G, perch, playerID, weights, memory)
+    if (value > best) best = value
+  }
+  return best === -Infinity ? 0 : best
+}
+
 /** Zones an opponent could dive this step (to crash you or to be your Drop/reposition). */
 export function opponentDiveZones(G: GameState, opp: string): number[] {
   const other = G.players[opp]
@@ -124,8 +144,9 @@ export function opponentDiveZones(G: GameState, opp: string): number[] {
 }
 
 /**
- * Value a perch has as *denial*: how much target value we remove from each
- * opponent by sitting on a competitive perch they also could dive.
+ * Value a perch has as *denial*: spoiling fish an already-placed opponent can
+ * dive. Exclusive lanes (one bird only — free pickings) are weighted hardest so
+ * later placers / Hover moves contest a lonely side instead of herding mid-river.
  */
 export function denyValue(
   G: GameState,
@@ -138,13 +159,29 @@ export function denyValue(
   let total = 0
   for (const pid in G.players) {
     if (pid === playerID) continue
-    const target = opponentDiveZones(G, pid)
-    for (const zone of target) {
+    for (const zone of opponentDiveZones(G, pid)) {
+      if (!mine.includes(zone)) continue
       const v = zoneValue(G, zone, pid, weights, memory)
-      if (mine.includes(zone) && Number.isFinite(v) && v > 0) total += v
+      if (!Number.isFinite(v) || v <= 0) continue
+      // holders = placed birds already covering this zone (we aren't placed yet
+      // during placePawn, and hoverMove still excludes self via opponentsReaching).
+      const holders = opponentsReaching(G, playerID, zone)
+      const exclusivity = holders <= 1 ? 1.8 : holders === 2 ? 0.75 : 0.3
+      total += v * exclusivity
     }
   }
   return total
+}
+
+/** Own reach EV plus contest pressure — used for place / Hover perch choice. */
+export function contestedPerchValue(
+  G: GameState,
+  perch: Perch,
+  playerID: string,
+  weights: WeightRecord = DEFAULT_WEIGHTS,
+  memory?: BotMemory,
+): number {
+  return perchValue(G, perch, playerID, weights, memory) + weights.denyWeight * denyValue(G, perch, playerID, weights, memory)
 }
 
 export function perchOf(G: GameState, playerID: string): Perch | undefined {

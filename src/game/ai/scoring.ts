@@ -4,7 +4,9 @@ import type { GameState } from '../types'
 import { HIDDEN_FISH } from '../types'
 import {
   DEFAULT_WEIGHTS,
+  bestContestedPerchValue,
   bestPerchValue,
+  contestedPerchValue,
   denyValue,
   expectedFishValue,
   hashOffset,
@@ -16,9 +18,12 @@ import {
 } from './values'
 import { collisionRisk, soloDiveProb, type BeliefContext } from './risk'
 
+// Re-export values/risk helpers so call sites can import from scoring alone.
 export {
   DEFAULT_WEIGHTS,
+  bestContestedPerchValue,
   bestPerchValue,
+  contestedPerchValue,
   denyValue,
   expectedFishValue,
   hashOffset,
@@ -67,10 +72,8 @@ export function scoreMove(
     case 'placePawn': {
       const perch = G.perches.find((p) => p.id === args[0])
       if (!perch) return -Infinity
-      const base = perchValue(G, perch, playerID, W, b.memory)
       const bonus = perch.level === 'low' ? W.sightlineBonus : 0
-      const deny = W.denyWeight * denyValue(G, perch, playerID, W, b.memory)
-      return base + bonus + deny
+      return contestedPerchValue(G, perch, playerID, W, b.memory) + bonus
     }
     case 'peekSightline':
       return zoneValue(G, Number(args[0]), playerID, W, b.memory)
@@ -79,7 +82,11 @@ export function scoreMove(
       if (card === 'Hover') {
         const current = perchOf(G, playerID)
         const relocateGain = current
-          ? Math.max(0, bestPerchValue(G, playerID, W, b.memory) - perchValue(G, current, playerID, W, b.memory))
+          ? Math.max(
+              0,
+              bestContestedPerchValue(G, playerID, W, b.memory) -
+                contestedPerchValue(G, current, playerID, W, b.memory),
+            )
           : 0
         const peek = peekOf(args)
         let intel = 0
@@ -135,9 +142,10 @@ export function scoreMove(
       const perch = G.perches.find((p) => p.id === target)
       const current = perchOf(G, playerID)
       if (!perch || !current) return 0
-      const gain = perchValue(G, perch, playerID, W, b.memory) - perchValue(G, current, playerID, W, b.memory)
-      const denyDiff = W.denyWeight * (denyValue(G, perch, playerID, W, b.memory) - denyValue(G, current, playerID, W, b.memory))
-      return gain + denyDiff
+      return (
+        contestedPerchValue(G, perch, playerID, W, b.memory) -
+        contestedPerchValue(G, current, playerID, W, b.memory)
+      )
     }
     case 'skipTurn':
       return -50

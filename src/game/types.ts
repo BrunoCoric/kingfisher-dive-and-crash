@@ -82,9 +82,19 @@ export interface GameState {
   selections: Record<string, StepSelection | null>
   /** Selections from the previous step, kept for zone chips / opponent reveal rows. */
   lastReveals: Record<string, StepSelection | null>
+  /**
+   * Cards each seat played so far this round (public after each step resolve).
+   * Cleared at end-of-round cleanup. Lets the roster show action history /
+   * remaining-hand inference across the 3 steps.
+   */
+  roundPlays: Record<string, CardType[]>
   /** Zone each low-perch player peeked during placement (private sightline). */
   sightlinePeek: Record<string, number>
-  /** Zones revealed face-up to each player this round (Hover peeks + sightline). */
+  /**
+   * Zones revealed face-up to each player (Hover peeks + sightline). Persists
+   * across rounds: drifts +1 with the fish, drops when a fish washes off or
+   * leaves the river (catch / crash discard).
+   */
   peeked: Record<string, number[]>
   /** Players who have locked in a selection / placement for the current step. */
   locked: Record<string, boolean>

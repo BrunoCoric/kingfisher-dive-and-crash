@@ -44,12 +44,17 @@ export function filterPlayerView({
   const sightlinePeek: Record<string, number> =
     playerID in G.sightlinePeek ? { [playerID]: G.sightlinePeek[playerID] } : {}
 
+  // Peeks are private and persist across rounds — never leak other seats' lists.
+  const peeked: Record<string, number[]> =
+    playerID in G.peeked ? { [playerID]: G.peeked[playerID] } : {}
+
   return {
     ...G,
     zones,
     players,
     selections,
     sightlinePeek,
+    peeked,
     deck: [],
     deckCount: G.deck.length,
   }

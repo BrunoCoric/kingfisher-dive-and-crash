@@ -161,26 +161,79 @@
 
 .legal {
   cursor: pointer;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  z-index: 2;
 }
 
 .legal .wash {
-  filter: drop-shadow(0 0 3px var(--status-highlight)) drop-shadow(0 0 12px rgba(242, 193, 78, 0.55));
+  filter: drop-shadow(0 0 5px var(--status-highlight)) drop-shadow(0 0 18px rgba(242, 193, 78, 0.75));
   animation: legalPulse 1.5s ease-in-out infinite;
 }
 
+.legal .label {
+  background: var(--status-highlight);
+  color: var(--ink);
+  border-color: rgba(43, 36, 32, 0.28);
+  box-shadow: 0 0 0 2px rgba(242, 193, 78, 0.55), 0 2px 6px var(--shadow-soft);
+}
+
+.sunHalo {
+  position: absolute;
+  inset: 2% 0%;
+  z-index: 0;
+  border-radius: 48% 52% 50% 50% / 50% 48% 52% 50%;
+  background: radial-gradient(
+    ellipse at 50% 52%,
+    rgba(242, 193, 78, 0.52) 0%,
+    rgba(242, 193, 78, 0.2) 42%,
+    transparent 72%
+  );
+  animation: sunGlow 1.6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.sunBadge {
+  position: absolute;
+  top: -0.4rem;
+  right: 0.55rem;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: var(--status-highlight);
+  color: var(--ink);
+  border: 2px solid var(--parchment);
+  box-shadow: 0 2px 6px var(--shadow-soft);
+}
+
+.sunBadge svg {
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
 .illegal {
-  cursor: not-allowed;
-  opacity: 0.75;
-  filter: saturate(0.7) brightness(0.95);
+  cursor: default;
+  opacity: 0.38;
+  filter: saturate(0.28) brightness(0.9);
+  pointer-events: none;
 }
 
 .peek {
   cursor: pointer;
+  z-index: 2;
 }
 
 .peek .wash {
-  filter: drop-shadow(0 0 3px var(--leaf-green)) drop-shadow(0 0 10px rgba(76, 122, 61, 0.45));
+  filter: drop-shadow(0 0 4px var(--leaf-green)) drop-shadow(0 0 14px rgba(76, 122, 61, 0.55));
+}
+
+.peek .label {
+  background: var(--leaf-green);
+  color: var(--parchment);
+  border-color: rgba(46, 75, 42, 0.35);
+  box-shadow: 0 0 0 2px rgba(76, 122, 61, 0.4), 0 2px 6px var(--shadow-soft);
 }
 
 .eyeBadge {
@@ -418,10 +471,22 @@
 @keyframes legalPulse {
   0%,
   100% {
-    filter: drop-shadow(0 0 3px var(--status-highlight)) drop-shadow(0 0 8px rgba(242, 193, 78, 0.4));
+    filter: drop-shadow(0 0 4px var(--status-highlight)) drop-shadow(0 0 12px rgba(242, 193, 78, 0.55));
   }
   50% {
-    filter: drop-shadow(0 0 4px var(--status-highlight)) drop-shadow(0 0 16px rgba(242, 193, 78, 0.65));
+    filter: drop-shadow(0 0 7px var(--status-highlight)) drop-shadow(0 0 22px rgba(242, 193, 78, 0.85));
+  }
+}
+
+@keyframes sunGlow {
+  0%,
+  100% {
+    opacity: 0.72;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
   }
 }
 
@@ -442,6 +507,7 @@
   .fishDriftOff,
   .domeCore,
   .legal .wash,
+  .sunHalo,
   .outcomeBadge,
   .outcomeCrash {
     animation: none;

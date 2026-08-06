@@ -111,6 +111,7 @@ export function setup(
     step: 0,
     selections: {},
     lastReveals: {},
+    roundPlays: {},
     sightlinePeek: {},
     peeked: {},
     locked: {},
@@ -128,6 +129,12 @@ const placementPhase: PhaseConfig<GameState> = {
     // Re-entered each round (cleanup → placement), so keep `G.currentPhase` in
     // sync for the move guards, bot enumeration, and the Board UI.
     G.currentPhase = 'placement'
+    // Lift every bird off the river so placement reads as empty → place in order
+    // (who already sat down is obvious; who still waits has no pawn yet).
+    for (const pid in G.players) {
+      G.players[pid].perch = ''
+    }
+    G.locked = {}
   },
   turn: {
     order: {

@@ -79,6 +79,11 @@ export function resolveStep(G: GameState, ctx: Ctx, random: Random): void {
   // this resolution runs so every seat's bot can fold crashes/steals into hand
   // belief on its first think of the new step.
   G.lastReveals = { ...G.selections }
+  for (const pid of ctx.playOrder) {
+    const card = G.selections[pid]?.card
+    if (!card) continue
+    ;(G.roundPlays[pid] ??= []).push(card)
+  }
   G.outcomeLog = []
   const order = rotateOrder(ctx.playOrder, G.firstPlayer)
   resolveSplashes(G, order, random)

@@ -1,16 +1,16 @@
 # Graph Report - kingfisher-dive-and-crash  (2026-08-06)
 
 ## Corpus Check
-- 76 files · ~64,938 words
+- 76 files · ~65,727 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 501 nodes · 1173 edges · 20 communities (19 shown, 1 thin omitted)
+- 505 nodes · 1186 edges · 20 communities (19 shown, 1 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 9 edges (avg confidence: 0.73)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `33cc9b5c`
+- Built from commit: `dfc3a929`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -20,7 +20,7 @@
 - package.json
 - compilerOptions
 - Game.ts
-- WaterPuddleSvg.tsx
+- StatusLine.tsx
 - compilerOptions
 - types.ts
 - resolution.ts
@@ -35,11 +35,11 @@
 
 ## God Nodes (most connected - your core abstractions)
 1. `GameState` - 41 edges
-2. `CardType` - 23 edges
+2. `CardType` - 24 edges
 3. `Board()` - 19 edges
 4. `compilerOptions` - 17 edges
-5. `scoreMove()` - 16 edges
-6. `kingfisher()` - 16 edges
+5. `kingfisher()` - 16 edges
+6. `scoreMove()` - 15 edges
 7. `compilerOptions` - 15 edges
 8. `reachableZones()` - 14 edges
 9. `VISUALS.md — Kingfisher: Dive & Crash` - 13 edges
@@ -50,12 +50,12 @@
   _tutorial_smoke.mts → src/tutorial/script.ts
 - `main()` --calls--> `humanGate()`  [EXTRACTED]
   _tutorial_smoke.mts → src/tutorial/script.ts
-- `BotsGame()` --indirect_call--> `Board()`  [INFERRED]
-  src/App.tsx → src/Board.tsx
-- `TutorialGame()` --indirect_call--> `TutorialBot`  [INFERRED]
-  src/App.tsx → src/tutorial/TutorialBot.ts
 - `TutorialGame()` --indirect_call--> `TutorialBoard()`  [INFERRED]
   src/App.tsx → src/TutorialBoard.tsx
+- `StatusLineProps` --references--> `GameState`  [EXTRACTED]
+  src/components/StatusLine.tsx → src/game/types.ts
+- `filterPlayerView()` --indirect_call--> `fish()`  [INFERRED]
+  src/game/playerView.ts → src/game/Game.ts
 
 ## Import Cycles
 - None detected.
@@ -67,8 +67,8 @@ Cohesion: 0.05
 Nodes (38): 10. Implementation Notes (CSS Modules), 11. Screens Inventory, 1. Art Direction — "Sunlit Field Guide", 2. Color Palette, 3. Typography, 4. Layout Structure, 5. Card & Component System, 6. The Theatrical Core: Select → Lock → Reveal → Resolve (+30 more)
 
 ### Community 1 - "App.tsx"
-Cohesion: 0.15
-Nodes (15): App(), BotsGame(), BotsMode, Mode, PassPlayClient, PassPlayGame(), TutorialGame(), Props (+7 more)
+Cohesion: 0.33
+Nodes (5): WaterPuddleSvg(), WaterPuddleSvgProps, Bloom, WashRecipe, WATER_RECIPES
 
 ### Community 2 - "package.json"
 Cohesion: 0.07
@@ -79,24 +79,24 @@ Cohesion: 0.09
 Nodes (22): DOM, DOM.Iterable, ES2022, src, compilerOptions, allowImportingTsExtensions, isolatedModules, jsx (+14 more)
 
 ### Community 4 - "Game.ts"
-Cohesion: 0.12
-Nodes (32): beforeHover, ev(), mm(), order, phaseLog, reducer, state, enumerateLegalMoves() (+24 more)
+Cohesion: 0.10
+Nodes (38): beforeHover, ev(), mm(), order, phaseLog, reducer, state, enumerateLegalMoves() (+30 more)
 
-### Community 5 - "WaterPuddleSvg.tsx"
-Cohesion: 0.33
-Nodes (5): WaterPuddleSvg(), WaterPuddleSvgProps, Bloom, WashRecipe, WATER_RECIPES
+### Community 5 - "StatusLine.tsx"
+Cohesion: 0.53
+Nodes (5): calloutFor(), phaseText(), StatusLine(), StatusLineProps, outcomeStory()
 
 ### Community 6 - "compilerOptions"
 Cohesion: 0.11
 Nodes (18): ES2023, vite.config.ts, compilerOptions, allowImportingTsExtensions, isolatedModules, lib, module, moduleDetection (+10 more)
 
 ### Community 7 - "types.ts"
-Cohesion: 0.09
-Nodes (39): FishCard(), FishCardBack(), FishIcon(), Perch(), PerchProps, REACTION_CLASS, PerchOccupant, RiverBoardProps (+31 more)
+Cohesion: 0.06
+Nodes (60): PendingSelection, ActionCard(), ActionCardProps, ActionIcon(), ActionIconProps, FishCard(), FishCardBack(), FishIcon() (+52 more)
 
 ### Community 8 - "resolution.ts"
 Cohesion: 0.16
-Nodes (25): bestPlayer(), drawOne(), driftFish(), endOfRoundCleanup(), handReset(), nextPlayer(), restock(), blockPlayer() (+17 more)
+Nodes (27): bestPlayer(), drawOne(), driftFish(), driftPeeked(), endOfRoundCleanup(), handReset(), nextPlayer(), restock() (+19 more)
 
 ### Community 9 - "WildTracks — Agent Rules"
 Cohesion: 0.20
@@ -111,16 +111,16 @@ Cohesion: 0.40
 Nodes (12): bounceDive(), cardsOf(), exactKeyHelper(), expectedLeft(), freshHand(), oppVictimAt(), playCard(), pOfHeld() (+4 more)
 
 ### Community 16 - "cleanup.ts"
-Cohesion: 0.06
-Nodes (55): Board(), BoardExtra, PendingSelection, ActionCard(), ActionCardProps, ActionIcon(), ActionIconProps, GameOver() (+47 more)
+Cohesion: 0.08
+Nodes (44): App(), BotsGame(), BotsMode, Mode, PassPlayClient, PassPlayGame(), Board(), BoardExtra (+36 more)
 
 ### Community 17 - "legacy.ts"
-Cohesion: 0.11
-Nodes (44): FishIconProps, collisionRisk(), EnumerateFn, evaluateMove(), individualDiveProb(), opponentDiveWeights(), opponentHasCard(), peekOf() (+36 more)
+Cohesion: 0.13
+Nodes (38): collisionRisk(), EnumerateFn, evaluateMove(), individualDiveProb(), opponentDiveWeights(), opponentHasCard(), peekOf(), perchOf() (+30 more)
 
 ### Community 18 - "bot.ts"
 Cohesion: 0.07
-Nodes (43): avg(), BotKind, main(), makeBot(), newStats(), report(), simulate(), Stats (+35 more)
+Nodes (44): avg(), BotKind, main(), makeBot(), newStats(), report(), simulate(), Stats (+36 more)
 
 ### Community 20 - "lesson.ts"
 Cohesion: 0.14
@@ -134,10 +134,10 @@ Nodes (22): Props, TutorialCoach(), actionLesson(), cleanupReviewKey(), lessonFo
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `GameState` connect `bot.ts` to `Game.ts`, `types.ts`, `resolution.ts`, `cleanup.ts`, `cleanup.ts`, `legacy.ts`, `lesson.ts`?**
+- **Why does `GameState` connect `bot.ts` to `Game.ts`, `StatusLine.tsx`, `types.ts`, `resolution.ts`, `cleanup.ts`, `cleanup.ts`, `legacy.ts`, `lesson.ts`?**
   _High betweenness centrality (0.082) - this node is a cross-community bridge._
-- **Why does `CardType` connect `cleanup.ts` to `Game.ts`, `types.ts`, `resolution.ts`, `cleanup.ts`, `legacy.ts`, `lesson.ts`?**
-  _High betweenness centrality (0.021) - this node is a cross-community bridge._
+- **Why does `CardType` connect `types.ts` to `Game.ts`, `resolution.ts`, `cleanup.ts`, `cleanup.ts`, `legacy.ts`, `lesson.ts`?**
+  _High betweenness centrality (0.022) - this node is a cross-community bridge._
 - **Why does `Perch` connect `types.ts` to `legacy.ts`, `Game.ts`?**
   _High betweenness centrality (0.006) - this node is a cross-community bridge._
 - **What connects `Stats`, `BotKind`, `Stats` to the rest of the system?**
