@@ -14,15 +14,7 @@
   "12": "README.md",
   "13": "vite-env.d.ts",
   "14": "vite.config.ts",
-  "15": "GameState",
-  "16": "RiverBoard.tsx",
   "17": "legacy.ts",
-  "18": "bot.ts",
   "19": "stepFeedback.ts",
-  "20": "lesson.ts",
-  "21": "RosterSheet.tsx",
-  "22": "Perch.tsx",
-  "23": "WaterPuddleSvg.tsx",
-  "24": "game/types.ts",
-  "25": "stepFeedback.ts"
+  "20": "lesson.ts"
 }

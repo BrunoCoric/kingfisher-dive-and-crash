@@ -9,6 +9,7 @@ Single source of truth for implementation status. Refer to `README.md` for the g
 - CSS Modules for component styles; global styles in `src/styles/`
 - Shared game types in `src/game/types.ts`
 - Nest profile (localStorage) in `src/profile/` — match stats & flock bird unlocks for vs-bots
+- Online match server in `server/index.ts` (`npm run server`) — Lobby REST + Socket.IO
 
 ## Project Structure
 
@@ -29,7 +30,9 @@ Single source of truth for implementation status. Refer to `README.md` for the g
   - `ai/` — belief, fish-drift memory, scoring, softmax select, legacy greedy
   - `kingfishers.ts` — typed species sprite manifest
   - `powers.ts` — optional per-species soft passives + reach/hover helpers
-  - `src/components/` — river board, held hand, scores roster sheet, rules cheatsheet, status line, end-state panels, tutorial coach
+  - `src/components/` — river board, held hand, scores roster sheet, rules cheatsheet, status line, end-state panels, tutorial coach, lobby / create online / gather / waiting room
+  - `src/lib/gameServer.ts` / `matchSession.ts` — Socket/Lobby URL + session credentials
+  - `server/index.ts` — boardgame.io Server entry
   - `src/tutorial/` — scripted bot moves, lesson copy, `TutorialBot`
   - `src/TutorialBoard.tsx` — coach + click-gate wrapper for tutorial mode
   - `scene/` — SVG board props (`BranchSvg`, `ReedSvg`, `BankFoliageSvg`, `MossTuftSvg`, `RiverChannelSvg`, `WaterPuddleSvg`)
@@ -102,15 +105,21 @@ Single source of truth for implementation status. Refer to `README.md` for the g
 - [x] Match-long tallies on `G`: `matchPlays` / `matchOutcomes` (append in `resolveStep`, never cleared mid-game)
 - [x] GameOver records Nest once (`recordMatchOnce`) and shows newly unlocked badges; CTA is **Main menu** (returns to Start Screen — in-client rematch stalled vs Local bots)
 - [x] Start Screen main menu: **Play** / **Nest** / **Tutorial** (`card_select` on click); no Pass & Play
-- [x] Play → local **Game lobby** (empty list for now) → **Create game** (bird pick + bot slots, default 4 players) → vs-bots match
+- [x] Play → **Game lobby** → **Create online** (Lobby API) or **Play vs bots** → Create game (bird pick + bot slots)
 - [x] Menu / lobby / create: clean title (brand + flock + pill CTAs); lobby/create bank-sand panels
 - [x] Start Screen **Nest** panel: lifetime stats, flock unlock gallery, recent matches
 - [x] Optional Species Powers (`src/game/powers.ts`): one soft passive per bird; Create game toggle (default on); tutorial forced off; Rules sheet lists them when active
 - [x] Nest flock unlocks: Common always free; Pied / Oriental Dwarf / Belted / Azure via vs-bots missions; Create game gates bird pick; `G.speciesBySeat` decouples seat from species
 - [x] App favicon: Common Kingfisher mark (`public/favicon.svg` + PNG fallbacks / apple-touch)
+- [x] Online multiplayer: `npm run server` (boardgame.io Server + Socket.IO, default `:8000`); Lobby create/list/join; SocketIO client with credentials; waiting room until seats filled; host can fill seats with bots (driven on the host client)
+- [x] Online **gather** phase: each seat picks bird (`setSpecies`) + Ready (`setReady`) before placement; Nest unlocks still client-gated; local/bots/tutorial skip gather
 
 ### Implementation Notes
-- Local browser play is vs-bots only from Create game (2–5 seats). Pass-and-play entry is removed from the Start Screen. Hidden-information secrecy for true multiplayer is deferred.
+- **Local vs-bots** remains Create game (2–5 seats, `Local({ bots })`). Pass-and-play stays off the Start Screen.
+- **Online tables:** Play → lobby → Create online (bird pick + bot/open seats, like vs-bots) or Refresh/join. Requires `npm run server` (`PORT` / `VITE_GAME_SERVER`). Host claims bot seats via Lobby join and drives them with headless SocketIO `KingfisherBot` clients (`src/lib/onlineBots.ts`). Open seats wait for humans. Nest records only when `humanSeats.length === 1` (host + bots only).
+- **Share over the internet (local tunnel):** `npm run share` serves the built UI + game server on one port (default `8000`). In a second terminal, `npm run tunnel` (Cloudflare quick tunnel; needs `cloudflared`). Friends open the printed `https://….trycloudflare.com` URL — same-origin, no `VITE_GAME_SERVER`. Keep your machine awake; matches are in-memory. If port 8000 is busy: `PORT=8002 npm run share` and `cloudflared tunnel --url http://localhost:8002`.
+- **Hidden info:** `filterPlayerView` keeps hands, pending selections, peeks, and deck faces private; master state lives on the server for SocketIO matches. Online clients run with `debug: false`. Hand UI only reads the local seat’s hand.
+- **Gather phase:** `G.online` from setupData; starts as `gather` then → `placement`. Offline paths auto-`endPhase` in gather `onBegin`.
 - **Species Powers (optional):** `G.speciesPowers` from setup. Same 4-card deck & crash principle; helpers in `powers.ts` (`playerReach`, `openHoverTargets`, `canSightline`, `hasPower`). Common skips crash extra discard; Pied 2-hop Hover; Dwarf high sightline; Belted low→high reach; Azure first Pike skips Minnow tax (`pikeShieldUsed`). Smoke: `npx tsx _powers_smoke.mts`.
 - **Tutorial mode:** Opens with four primer slides (`src/tutorial/intro.ts` / `TutorialIntro`) before the Local client mounts — goal & end condition, reach, round cadence, then the four cards. `setup(..., { humanSeats: ['0'], tutorial: true })` deals a fixed river/deck and First Player `0`. Crash discards prefer burning Splash first so Hover lessons stay legal after a Dive Crash. Lessons derive from phase/round/outcomes (`src/tutorial/lesson.ts`); review beats use Got it before unlocking the next gate.
 - The opening placement phase randomizes the First Player, then lets each player choose one unoccupied perch in clockwise order before the first simultaneous card step.

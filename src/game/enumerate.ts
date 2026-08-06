@@ -15,6 +15,13 @@ export function enumerateLegalMoves(G: GameState, ctx: Ctx, playerID: PlayerID):
   if (!player) return []
   const candidates: AiEnumerate = []
 
+  if (G.currentPhase === 'gather') {
+    if (!G.ready[playerID]) {
+      candidates.push({ move: 'setReady', args: [] })
+    }
+    return fallback(ctx, candidates)
+  }
+
   if (G.currentPhase === 'placement') {
     const occupied = new Set(Object.values(G.players).map((p) => p.perch).filter(Boolean))
     const placedThisRound = G.locked[playerID] === true

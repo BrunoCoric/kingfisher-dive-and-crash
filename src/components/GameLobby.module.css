@@ -7,14 +7,39 @@
   animation: bob 2.8s ease-in-out infinite;
 }
 
+.listHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(43, 36, 32, 0.55);
+}
+
+.refresh {
+  padding: 0.25rem 0.55rem;
+  border: 1.5px solid rgba(46, 75, 42, 0.22);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.45);
+  color: var(--forest-deep);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
 .list {
   list-style: none;
   margin: 0;
   padding: 0.35rem 0.2rem;
   min-height: 5rem;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: stretch;
   justify-content: center;
+  gap: 0.35rem;
   border-radius: 0.85rem;
   background: rgba(255, 255, 255, 0.28);
   border: 1.5px dashed rgba(46, 75, 42, 0.22);
@@ -38,6 +63,83 @@
   font-size: 1.4rem;
   color: var(--water-bloom);
   opacity: 0.8;
+}
+
+.matchRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  border: 1.5px solid rgba(46, 75, 42, 0.14);
+  border-radius: 0.7rem;
+  background: rgba(255, 255, 255, 0.5);
+  color: var(--ink);
+  font-family: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.matchRow strong {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+}
+
+.matchId {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(43, 36, 32, 0.5);
+}
+
+.secondary {
+  width: 100%;
+  padding: 0.65rem 1rem;
+  border: 2px solid rgba(46, 75, 42, 0.22);
+  border-radius: 0.85rem;
+  background:
+    linear-gradient(165deg, rgba(250, 243, 227, 0.95), rgba(239, 226, 194, 0.9));
+  color: var(--forest-deep);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.secondary:hover {
+  border-color: var(--status-highlight);
+}
+
+.code {
+  font-size: 0.85rem;
+  word-break: break-all;
+}
+
+.seatPick {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.seatBtn,
+.seatActive {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 0.65rem;
+  font-family: var(--font-display);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.seatBtn {
+  border: 2px solid rgba(46, 75, 42, 0.2);
+  background: rgba(255, 255, 255, 0.45);
+  color: var(--forest-deep);
+}
+
+.seatActive {
+  border: 2px solid var(--status-highlight);
+  background: linear-gradient(160deg, #fdf8e8, #f3e4bc);
+  color: var(--forest-deep);
 }
 
 @keyframes bob {

@@ -35,6 +35,7 @@ export interface RiverZone {
 }
 
 export type GamePhase =
+  | 'gather'
   | 'placement'
   | 'step1'
   | 'step2'
@@ -126,15 +127,23 @@ export interface GameState {
   /**
    * Seats that must click Next round at cleanup. Empty = anyone (pass-and-play /
    * headless sims). Vs-bots sets the human seat so bots don't auto-skip the review.
+   * Online sets every seat (all humans) — Nest still requires exactly one.
    */
   humanSeats: string[]
   /** Scripted sandbox: fixed river + TutorialBot opponents. */
   tutorial: boolean
   /**
+   * Online Socket.IO match: start in `gather` for bird pick + ready.
+   * Local vs-bots / tutorial / sims skip gather immediately.
+   */
+  online: boolean
+  /** Gather phase: seat has locked in Ready (public). */
+  ready: Record<string, boolean>
+  /**
    * When true, each seat’s species grants one soft passive (see `powers.ts`).
    * Off for tutorial / classic symmetric play.
    */
   speciesPowers: boolean
-  /** Seat → species (Create game picks human bird; bots fill the rest). */
+  /** Seat → species (Create game / gather picks; bots fill the rest offline). */
   speciesBySeat: Record<string, KingfisherID>
 }

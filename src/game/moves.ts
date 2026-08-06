@@ -1,8 +1,28 @@
 import type { FnContext, PlayerID } from 'boardgame.io'
-import { canSightline, openHoverTargets, playerReach } from './powers'
+import { canSightline, openHoverTargets, playerReach, SPECIES_ORDER } from './powers'
 import { hasLegalStepMove } from './enumerate'
 import { hasHoverPeekTarget, isHoverPeekTarget } from './hoverPeek'
+import type { KingfisherID } from './kingfishers'
 import type { CardType, GameState, StepSelection } from './types'
+
+/** Online gather: pick a bird before Ready. Nest unlocks are client-gated. */
+export function setSpecies(
+  { G, playerID }: FnContext<GameState> & { playerID: PlayerID },
+  species: KingfisherID,
+): void {
+  if (G.currentPhase !== 'gather') return
+  if (G.ready[playerID]) return
+  if (!SPECIES_ORDER.includes(species)) return
+  G.speciesBySeat[playerID] = species
+}
+
+/** Online gather: lock seat; phase ends when every seat is ready. */
+export function setReady({ G, ctx, playerID, events }: FnContext<GameState> & { playerID: PlayerID }): void {
+  if (G.currentPhase !== 'gather') return
+  if (G.ready[playerID]) return
+  G.ready[playerID] = true
+  if (ctx.playOrder.every((id) => G.ready[id])) events.endPhase()
+}
 
 export function placePawn(
   { G, playerID, ctx, events }: FnContext<GameState> & { playerID: PlayerID },

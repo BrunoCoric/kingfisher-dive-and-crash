@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { Client } from 'boardgame.io/react'
-import { Local } from 'boardgame.io/multiplayer'
+import { Local, SocketIO } from 'boardgame.io/multiplayer'
 import { Game, setup } from './game/Game'
 import { KingfisherBot } from './game/bot'
 import { TutorialBot } from './tutorial/TutorialBot'
@@ -9,7 +9,11 @@ import { TutorialBoard } from './TutorialBoard'
 import { TutorialIntro } from './components/TutorialIntro'
 import { TUTORIAL_INTRO } from './tutorial/intro'
 import { StartScreen, type StartConfig } from './StartScreen'
+import { MatchWaiting } from './components/MatchWaiting'
 import { startAmbience } from './lib/sfx'
+import { gameServerUrl } from './lib/gameServer'
+import { clearMatchSession, saveMatchSession, loadMatchSession } from './lib/matchSession'
+import { ensureOnlineBots, stopOnlineBots, type OnlineBotSeat } from './lib/onlineBots'
 import type { KingfisherID } from './game/kingfishers'
 import './styles/global.css'
 import './styles/tokens.css'
@@ -22,7 +26,19 @@ type BotsMode = {
   speciesPowers: boolean
   humanSpecies: KingfisherID
 }
-type Mode = { kind: 'pick' } | { kind: 'tutorial' } | BotsMode
+
+type OnlineMode = {
+  kind: 'online'
+  matchID: string
+  playerID: string
+  credentials: string
+  numPlayers: number
+  playerName: string
+  tableFull: boolean
+  bots: OnlineBotSeat[]
+}
+
+type Mode = { kind: 'pick' } | { kind: 'tutorial' } | BotsMode | OnlineMode
 
 function BotsGame({ mode, onMenu }: { mode: BotsMode; onMenu: () => void }) {
   const [matchID] = useState(() => crypto.randomUUID())
@@ -57,6 +73,61 @@ function BotsGame({ mode, onMenu }: { mode: BotsMode; onMenu: () => void }) {
       </button>
       <div className="seat">
         <BotsClient key={matchID} matchID={matchID} playerID={mode.humanSeat} onMenu={onMenu} />
+      </div>
+    </main>
+  )
+}
+
+function OnlineGame({ mode, onMenu }: { mode: OnlineMode; onMenu: () => void }) {
+  const [seated, setSeated] = useState(mode.tableFull)
+
+  const OnlineClient = useMemo(
+    () =>
+      Client({
+        game: Game,
+        board: Board,
+        numPlayers: mode.numPlayers,
+        debug: false,
+        multiplayer: SocketIO({ server: gameServerUrl() }),
+      }),
+    [mode.numPlayers],
+  )
+
+  const enterRiver = () => {
+    ensureOnlineBots(mode.matchID, mode.numPlayers, mode.bots)
+    setSeated(true)
+  }
+
+  const leave = () => {
+    stopOnlineBots(mode.matchID)
+    onMenu()
+  }
+
+  if (!seated) {
+    return (
+      <MatchWaiting
+        matchID={mode.matchID}
+        playerID={mode.playerID}
+        playerName={mode.playerName}
+        numPlayers={mode.numPlayers}
+        onFull={enterRiver}
+        onBack={leave}
+      />
+    )
+  }
+
+  return (
+    <main className="app-shell">
+      <button type="button" className="menu-chip" onClick={leave} aria-label="Back to menu">
+        Menu
+      </button>
+      <div className="seat">
+        <OnlineClient
+          matchID={mode.matchID}
+          playerID={mode.playerID}
+          credentials={mode.credentials}
+          onMenu={leave}
+        />
       </div>
     </main>
   )
@@ -121,14 +192,35 @@ function App() {
   const [mode, setMode] = useState<Mode>({ kind: 'pick' })
   const backToMenu = () => {
     startAmbience()
+    const session = loadMatchSession()
+    if (session) stopOnlineBots(session.matchID)
+    clearMatchSession()
     setMode({ kind: 'pick' })
   }
 
   if (mode.kind === 'pick') {
-    return <StartScreen onStart={(config: StartConfig) => setMode(config)} />
+    return (
+      <StartScreen
+        onStart={(config: StartConfig) => {
+          if (config.kind === 'online') {
+            saveMatchSession({
+              matchID: config.matchID,
+              playerID: config.playerID,
+              credentials: config.credentials,
+              numPlayers: config.numPlayers,
+              playerName: config.playerName,
+            })
+          }
+          setMode(config)
+        }}
+      />
+    )
   }
   if (mode.kind === 'tutorial') {
     return <TutorialGame onMenu={backToMenu} />
+  }
+  if (mode.kind === 'online') {
+    return <OnlineGame mode={mode} onMenu={backToMenu} />
   }
   return <BotsGame mode={mode} onMenu={backToMenu} />
 }

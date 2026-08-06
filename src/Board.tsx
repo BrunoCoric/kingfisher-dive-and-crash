@@ -18,6 +18,7 @@ import { GameOver } from './components/GameOver'
 import { RulesCheatsheet } from './components/RulesCheatsheet'
 import { OutcomeSplash } from './components/OutcomeSplash'
 import { TutorialCoach } from './components/TutorialCoach'
+import { GatherPanel } from './components/GatherPanel'
 import type { TutorialGate, TutorialLesson } from './tutorial/types'
 import styles from './Board.module.css'
 
@@ -42,6 +43,7 @@ export function Board(props: BoardProps<GameState> & BoardExtra) {
 
   const myID = playerID ?? ''
   const me = myID === '' ? undefined : G.players[myID]
+  const gathering = G.currentPhase === 'gather'
   const placing = G.currentPhase === 'placement'
   const hopping = G.currentPhase.startsWith('hover')
   const cleaning = G.currentPhase === 'cleanup'
@@ -251,6 +253,34 @@ export function Board(props: BoardProps<GameState> & BoardExtra) {
         accent: turnBird.accent,
       }
     : null
+
+  if (gathering) {
+    return (
+      <div className={styles.app}>
+        <header className={styles.header}>
+          <span className={styles.logo}>
+            Kingfisher
+            <span className={styles.logoSub}>dive &amp; crash</span>
+          </span>
+          <span className={styles.headerRight}>
+            <span className={styles.meta}>
+              <span>Gather</span>
+            </span>
+          </span>
+        </header>
+        <div className={styles.riverStage}>
+          <GatherPanel
+            G={G}
+            playOrder={ctx.playOrder as string[]}
+            myID={myID}
+            isActive={Boolean(isActive)}
+            onSetSpecies={(id) => moves.setSpecies(id)}
+            onReady={() => moves.setReady()}
+          />
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className={styles.app}>

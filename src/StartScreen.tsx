@@ -4,13 +4,14 @@ import { playSfx, startAmbience } from './lib/sfx'
 import { NestPanel } from './components/NestPanel'
 import { GameLobby } from './components/GameLobby'
 import { CreateGame } from './components/CreateGame'
+import { CreateOnline } from './components/CreateOnline'
 import { TitleDiorama } from './components/TitleDiorama'
 import type { StartConfig } from './startConfig'
 import styles from './StartScreen.module.css'
 
 export type { StartConfig }
 
-type View = 'menu' | 'lobby' | 'create'
+type View = 'menu' | 'lobby' | 'createBots' | 'createOnline'
 
 function cueMenu() {
   playSfx('card_select')
@@ -24,13 +25,24 @@ export function StartScreen({ onStart }: { onStart: (config: StartConfig) => voi
   if (view === 'lobby') {
     return (
       <GameLobby
-        onCreate={() => setView('create')}
+        onCreateOnline={() => setView('createOnline')}
+        onCreateBots={() => setView('createBots')}
+        onStart={onStart}
         onBack={() => setView('menu')}
       />
     )
   }
 
-  if (view === 'create') {
+  if (view === 'createOnline') {
+    return (
+      <CreateOnline
+        onStart={onStart}
+        onBack={() => setView('lobby')}
+      />
+    )
+  }
+
+  if (view === 'createBots') {
     return (
       <CreateGame
         onStart={onStart}
@@ -57,7 +69,7 @@ export function StartScreen({ onStart }: { onStart: (config: StartConfig) => voi
           <img className={styles.icon} src={kingfisher(0).sprite} alt="" />
           <span className={styles.copy}>
             <span className={styles.label}>Play</span>
-            <span className={styles.hint}>Host a river match</span>
+            <span className={styles.hint}>Online or vs bots</span>
           </span>
         </button>
         <button

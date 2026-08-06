@@ -1,7 +1,16 @@
 import type { FnContext, Game as GameConfig, PhaseConfig } from 'boardgame.io'
 import { buildDeck, riverZonesFor, FISH_POINTS } from './fish'
 import { ACTION_DECK } from './cards'
-import { placePawn, peekSightline, selectCard, hoverMove, skipTurn, continueRound } from './moves'
+import {
+  placePawn,
+  peekSightline,
+  selectCard,
+  hoverMove,
+  skipTurn,
+  continueRound,
+  setSpecies,
+  setReady,
+} from './moves'
 import { resolveStep } from './resolution'
 import { endOfRoundCleanup } from './cleanup'
 import { filterPlayerView } from './playerView'
@@ -34,6 +43,8 @@ export interface KingfisherSetupData {
   speciesPowers?: boolean
   /** Human's chosen bird (vs-bots). Bots fill remaining flock seats. */
   humanSpecies?: KingfisherID
+  /** Socket.IO match: open with gather phase for bird pick. */
+  online?: boolean
 }
 
 function fish(type: FishType, id: string): FishCard {
@@ -104,15 +115,23 @@ export function setup(
     }
   })
 
+  const online = setupData?.online === true && !tutorial
   const humanSeats = setupData?.humanSeats ?? []
   const humanSeat = humanSeats[0] ?? '0'
   const humanSpecies = setupData?.humanSpecies ?? SPECIES_ORDER[0]
+  // Online + local vs-bots: host bird + flock fill for bots / other seats.
+  // Pure online (no humanSpecies) defaults everyone to Common until gather picks.
   const speciesBySeat =
     setupData?.humanSpecies !== undefined
       ? buildSpeciesBySeat(ctx.playOrder, humanSpecies, humanSeat)
-      : Object.fromEntries(
-          ctx.playOrder.map((pid) => [pid, SPECIES_ORDER[Number(pid) % SPECIES_ORDER.length]]),
-        )
+      : online
+        ? Object.fromEntries(ctx.playOrder.map((pid) => [pid, 'common' as KingfisherID]))
+        : Object.fromEntries(
+            ctx.playOrder.map((pid) => [pid, SPECIES_ORDER[Number(pid) % SPECIES_ORDER.length]]),
+          )
+
+  const ready: Record<string, boolean> = {}
+  for (const pid of ctx.playOrder) ready[pid] = !online
 
   return {
     zones,
@@ -121,7 +140,7 @@ export function setup(
     deckCount: deck.length,
     players,
     discard: [],
-    currentPhase: 'placement',
+    currentPhase: online ? 'gather' : 'placement',
     firstPlayer: tutorial ? '0' : random.Shuffle([...ctx.playOrder])[0],
     round: 1,
     step: 0,
@@ -139,9 +158,26 @@ export function setup(
     winner: null,
     humanSeats,
     tutorial,
+    online,
+    ready,
     speciesPowers: setupData?.speciesPowers === true && !tutorial,
     speciesBySeat,
   }
+}
+
+const gatherPhase: PhaseConfig<GameState> = {
+  start: true,
+  onBegin: ({ G, events }: FnContext<GameState>) => {
+    G.currentPhase = 'gather'
+    // Local bots / tutorial / headless: skip straight to placement.
+    if (!G.online) events.endPhase()
+  },
+  turn: {
+    activePlayers: { all: 'gather' },
+  },
+  moves: { setSpecies, setReady },
+  endIf: ({ G, ctx }: FnContext<GameState>) => ctx.playOrder.every((pid) => G.ready[pid] === true),
+  next: 'placement',
 }
 
 const placementPhase: PhaseConfig<GameState> = {
@@ -262,9 +298,9 @@ export const Game: GameConfig<GameState> = {
   },
 
   phases: {
+    gather: gatherPhase,
     placement: {
       ...placementPhase,
-      start: true,
     },
     step1: {
       ...stepPhase(0, 'step1', 'hover1', 'step2'),

@@ -10,6 +10,7 @@ function revealZone(G: GameState, playerID: string, zoneId: number): boolean {
  * Hidden-information view for one player. The master always holds full state
  * (real `FishCard`s); client views and bot decision inputs are filtered here.
  * Must stay pure: the engine diffs filtered states to build sync patches.
+ * Online Socket.IO matches rely on this — never ship unfiltered G to clients.
  *
  * After a step resolves, `lastReveals` (incl. Hover peek *zones*) stay public so
  * board chips can show who Hovered where — only the fish face stays private
