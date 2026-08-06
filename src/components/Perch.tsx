@@ -15,7 +15,10 @@ interface PerchProps {
     feedbackKey?: string
   }
   movable?: boolean
+  /** Soft highlight while mouse is over this perch (reach preview). */
+  previewing?: boolean
   onClick?: () => void
+  onHoverChange?: (hovering: boolean) => void
 }
 
 const REACTION_CLASS: Partial<Record<CalloutKind, string>> = {
@@ -26,10 +29,11 @@ const REACTION_CLASS: Partial<Record<CalloutKind, string>> = {
   pike: styles.reactPike,
 }
 
-export function Perch({ perch, occupant, movable, onClick }: PerchProps) {
+export function Perch({ perch, occupant, movable, previewing, onClick, onHoverChange }: PerchProps) {
   const cls = [styles.perch, perch.bank === 'left' ? styles.left : styles.right, styles[perch.level]]
   if (movable) cls.push(styles.movable)
   if (occupant) cls.push(styles.occupied)
+  if (previewing) cls.push(styles.previewing)
 
   const flip =
     occupant !== undefined &&
@@ -48,6 +52,10 @@ export function Perch({ perch, occupant, movable, onClick }: PerchProps) {
       role={onClick ? 'button' : undefined}
       tabIndex={onClick ? 0 : undefined}
       aria-label={`Perch ${perch.id} (${perch.level})`}
+      onMouseEnter={() => onHoverChange?.(true)}
+      onMouseLeave={() => onHoverChange?.(false)}
+      onFocus={() => onHoverChange?.(true)}
+      onBlur={() => onHoverChange?.(false)}
       onKeyDown={(event) => {
         if (onClick && (event.key === 'Enter' || event.key === ' ')) onClick()
       }}

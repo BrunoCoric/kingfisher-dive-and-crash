@@ -35,18 +35,18 @@
     "semantic_hash": ""
   },
   "src/components/Perch.tsx": {
-    "mtime": 1786016551.4274049,
-    "ast_hash": "9416e0c105ff38024cad51ccf221c16c",
+    "mtime": 1786034443.7353845,
+    "ast_hash": "9986581f03150340755c1dbc9030f210",
     "semantic_hash": ""
   },
   "src/components/RiverBoard.tsx": {
-    "mtime": 1786023780.1470728,
-    "ast_hash": "b64af6f0dd9b10832c638455f53d1c20",
+    "mtime": 1786034470.1328392,
+    "ast_hash": "f55acc5f39de2518f429744fe51fa081",
     "semantic_hash": ""
   },
   "src/components/ZoneTile.tsx": {
-    "mtime": 1786033322.4302382,
-    "ast_hash": "aafecbc4318ad2ffd7e0d6bdf99b5d82",
+    "mtime": 1786034449.2330084,
+    "ast_hash": "a1d90188a1b3dff18e459f89d9b8af52",
     "semantic_hash": ""
   },
   "src/game/Game.ts": {
@@ -135,8 +135,8 @@
     "semantic_hash": ""
   },
   "DESIGN.md": {
-    "mtime": 1786033904.145744,
-    "ast_hash": "bddfba5a0e1e0cbfa92ec81c6e465729",
+    "mtime": 1786034480.7333674,
+    "ast_hash": "f2366f13a8eaee4c526d408a3b63a89f",
     "semantic_hash": ""
   },
   "README.md": {
@@ -320,8 +320,8 @@
     "semantic_hash": ""
   },
   "src/components/RosterSheet.tsx": {
-    "mtime": 1786033737.0511997,
-    "ast_hash": "74479db40d85269465b5d70d9c344754",
+    "mtime": 1786034257.4474514,
+    "ast_hash": "0c17e7e36983cd20a272e3f9493eed9d",
     "semantic_hash": ""
   },
   "src/components/scene/WaterPuddleSvg.tsx": {

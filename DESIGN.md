@@ -79,6 +79,7 @@ Single source of truth for implementation status. Refer to `README.md` for the g
 - [x] Handcrafted river board diorama: SVG scene pieces (`BranchSvg` / `ReedSvg` / `BankFoliageSvg` / `WaterPuddleSvg`), paper-grain tokens, 2.5D row depth, watercolor puddle zones
 - [x] Field-guide polish: organic per-zone puddle silhouettes (`waterRecipes.ts`), parchment fish backs, soft sun-glow perch targets (not yellow app buttons), clearer high/low perch elevation, dappled bank light
 - [x] Targeting contrast: Splash/Drop/Dive (and Hover peek / sightline) light legal zones with a sun halo + badge and dim out-of-reach / illegal zones so reach is obvious at a glance
+- [x] Perch hover reach preview: hovering (or focusing) any perch soft-glows its reachable zones in water-cyan and dims the rest — suppressed while card/sightline targeting is active so it never fights the sun/peek highlights
 - [x] Round-start placement clears all birds off perches, then players place in First-Player order (empty → seated makes turn order readable)
 - [x] End-of-round fish drift animation: **Next round** plays a short CSS slide downstream (last zone washes off), then `continueRound` applies cleanup; respects `prefers-reduced-motion`
 - [x] Phone-first HUD shell: fixed `100dvh` column, slim masthead + on-demand `RosterSheet` (scores / 1st / fish piles), `StatusLine`, bottom-left minimizable held-hand fan (`Hand` / `ActionCard`); river stage scrolls internally

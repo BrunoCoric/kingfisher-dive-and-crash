@@ -20,6 +20,8 @@ interface ZoneTileProps {
   zone: RiverZone
   splashed?: boolean
   targetState?: 'legal' | 'illegal' | 'peek' | null
+  /** Soft reach preview while hovering a perch (`in` = covered, `out` = dimmed). */
+  influence?: 'in' | 'out' | null
   actions?: ZoneAction[]
   outcomes?: OutcomeCallout[]
   /** End-of-round: animate this zone's fish one step downstream. */
@@ -33,6 +35,7 @@ export function ZoneTile({
   zone,
   splashed,
   targetState,
+  influence,
   actions = [],
   outcomes = [],
   drifting,
@@ -47,6 +50,8 @@ export function ZoneTile({
   if (targetState === 'legal') cls.push(styles.legal)
   if (targetState === 'illegal') cls.push(styles.illegal)
   if (targetState === 'peek') cls.push(styles.peek)
+  if (influence === 'in') cls.push(styles.influence)
+  if (influence === 'out') cls.push(styles.influenceOut)
   if (primary === 'crash') cls.push(styles.outcomeCrash)
   if (primary === 'catch') cls.push(styles.outcomeCatch)
   if (primary === 'steal') cls.push(styles.outcomeSteal)

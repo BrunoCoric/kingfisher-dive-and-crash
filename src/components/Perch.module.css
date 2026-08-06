@@ -155,8 +155,13 @@
   pointer-events: none;
 }
 
-.movable:hover {
+.movable:hover,
+.previewing {
   filter: brightness(1.08);
+}
+
+.previewing .art {
+  filter: drop-shadow(0 0 5px rgba(90, 158, 184, 0.55));
 }
 
 .movable .art {

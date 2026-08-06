@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import type { CalloutKind, OutcomeCallout, Perch as PerchType, RiverZone } from '../game/types'
+import { reachableZones } from '../game/reach'
 import type { ZoneAction } from '../lib/stepFeedback'
 import { Perch } from './Perch'
 import { ZoneTile } from './ZoneTile'
@@ -46,8 +48,32 @@ export function RiverBoard({
   onZoneClick,
   onPerchClick,
 }: RiverBoardProps) {
+  const [hoverPerchId, setHoverPerchId] = useState<string | null>(null)
   const zoneCount = zones.length
   const lastZone = zoneCount - 1
+
+  // Don't fight Splash/Dive/peek targeting — only preview when the river is idle.
+  const targeting = Object.values(targetStates).some((state) => state != null)
+  const hoverPerch = !targeting && hoverPerchId
+    ? perches.find((p) => p.id === hoverPerchId)
+    : undefined
+  const influence = hoverPerch
+    ? new Set(reachableZones(hoverPerch.zone, hoverPerch.level, zoneCount))
+    : null
+
+  const renderPerch = (perch: PerchType | undefined) => {
+    if (!perch) return <span className={styles.spacer} />
+    return (
+      <Perch
+        perch={perch}
+        occupant={occupants[perch.id]}
+        movable={movablePerches.includes(perch.id)}
+        previewing={hoverPerch?.id === perch.id}
+        onClick={() => onPerchClick(perch.id)}
+        onHoverChange={(hovering) => setHoverPerchId(hovering ? perch.id : null)}
+      />
+    )
+  }
 
   return (
     <div className={styles.frame}>
@@ -99,39 +125,25 @@ export function RiverBoard({
             transformOrigin: 'center bottom',
             marginInline: `${-depth * 0.35}rem`,
           }
+          const zoneInfluence = influence
+            ? influence.has(zone.id) ? 'in' : 'out'
+            : null
 
           return (
             <div className={styles.row} key={zone.id} style={rowStyle} data-depth={index}>
-              {left ? (
-                <Perch
-                  perch={left}
-                  occupant={occupants[left.id]}
-                  movable={movablePerches.includes(left.id)}
-                  onClick={() => onPerchClick(left.id)}
-                />
-              ) : (
-                <span className={styles.spacer} />
-              )}
+              {renderPerch(left)}
               <ZoneTile
                 zone={zone}
                 splashed={splashes.includes(zone.id)}
                 targetState={targetStates[zone.id] ?? undefined}
+                influence={zoneInfluence}
                 actions={zoneActions[zone.id]}
                 outcomes={zoneOutcomes[zone.id]}
                 drifting={drifting}
                 driftOff={drifting && zone.id === lastZone}
                 onClick={() => onZoneClick(zone.id)}
               />
-              {right ? (
-                <Perch
-                  perch={right}
-                  occupant={occupants[right.id]}
-                  movable={movablePerches.includes(right.id)}
-                  onClick={() => onPerchClick(right.id)}
-                />
-              ) : (
-                <span className={styles.spacer} />
-              )}
+              {renderPerch(right)}
             </div>
           )
         })}

@@ -1165,8 +1165,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_perch",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "perch.tsx"
     },
     {
@@ -1176,30 +1176,30 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "src_components_perch_perchprops",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "perchprops"
     },
     {
       "label": "REACTION_CLASS",
       "file_type": "code",
       "source_file": "src/components/Perch.tsx",
-      "source_location": "L21",
+      "source_location": "L24",
       "_origin": "ast",
       "id": "src_components_perch_reaction_class",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "reaction_class"
     },
     {
       "label": "Perch()",
       "file_type": "code",
       "source_file": "src/components/Perch.tsx",
-      "source_location": "L29",
+      "source_location": "L32",
       "_origin": "ast",
       "id": "src_components_perch_perch",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "perch()"
     },
     {
@@ -1209,41 +1209,41 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_riverboard",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "riverboard.tsx"
     },
     {
       "label": "PerchOccupant",
       "file_type": "code",
       "source_file": "src/components/RiverBoard.tsx",
-      "source_location": "L8",
+      "source_location": "L10",
       "_origin": "ast",
       "id": "src_components_riverboard_perchoccupant",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "perchoccupant"
     },
     {
       "label": "RiverBoardProps",
       "file_type": "code",
       "source_file": "src/components/RiverBoard.tsx",
-      "source_location": "L19",
+      "source_location": "L21",
       "_origin": "ast",
       "id": "src_components_riverboard_riverboardprops",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "riverboardprops"
     },
     {
       "label": "RiverBoard()",
       "file_type": "code",
       "source_file": "src/components/RiverBoard.tsx",
-      "source_location": "L35",
+      "source_location": "L37",
       "_origin": "ast",
       "id": "src_components_riverboard_riverboard",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "riverboard()"
     },
     {
@@ -1297,8 +1297,8 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "src_components_rostersheet_rostersheetprops",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "rostersheetprops"
     },
     {
@@ -1327,7 +1327,7 @@
       "label": "RevealLine()",
       "file_type": "code",
       "source_file": "src/components/RosterSheet.tsx",
-      "source_location": "L133",
+      "source_location": "L138",
       "_origin": "ast",
       "id": "src_components_rostersheet_revealline",
       "community": 7,
@@ -1338,7 +1338,7 @@
       "label": "FishChip()",
       "file_type": "code",
       "source_file": "src/components/RosterSheet.tsx",
-      "source_location": "L155",
+      "source_location": "L163",
       "_origin": "ast",
       "id": "src_components_rostersheet_fishchip",
       "community": 7,
@@ -1407,8 +1407,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_statusline",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "statusline.tsx"
     },
     {
@@ -1418,8 +1418,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "src_components_statusline_statuslineprops",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "statuslineprops"
     },
     {
@@ -1429,8 +1429,8 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "src_components_statusline_statusline",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "statusline()"
     },
     {
@@ -1440,8 +1440,8 @@
       "source_location": "L41",
       "_origin": "ast",
       "id": "src_components_statusline_phasetext",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "phasetext()"
     },
     {
@@ -1451,8 +1451,8 @@
       "source_location": "L58",
       "_origin": "ast",
       "id": "src_components_statusline_calloutfor",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "calloutfor()"
     },
     {
@@ -1528,8 +1528,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_zonetile",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "zonetile.tsx"
     },
     {
@@ -1539,8 +1539,8 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "src_components_zonetile_badge_class",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "badge_class"
     },
     {
@@ -1550,19 +1550,19 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "src_components_zonetile_zonetileprops",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "zonetileprops"
     },
     {
       "label": "ZoneTile()",
       "file_type": "code",
       "source_file": "src/components/ZoneTile.tsx",
-      "source_location": "L32",
+      "source_location": "L34",
       "_origin": "ast",
       "id": "src_components_zonetile_zonetile",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "zonetile()"
     },
     {
@@ -1572,8 +1572,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_scene_bankfoliagesvg",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "bankfoliagesvg.tsx"
     },
     {
@@ -1583,8 +1583,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_scene_bankfoliagesvg_bankfoliagesvgprops",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "bankfoliagesvgprops"
     },
     {
@@ -1594,8 +1594,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "src_components_scene_bankfoliagesvg_bankfoliagesvg",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "bankfoliagesvg()"
     },
     {
@@ -1605,8 +1605,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_scene_branchsvg",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "branchsvg.tsx"
     },
     {
@@ -1616,8 +1616,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "src_components_scene_branchsvg_branchsvgprops",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "branchsvgprops"
     },
     {
@@ -1627,8 +1627,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "src_components_scene_branchsvg_branchsvg",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "branchsvg()"
     },
     {
@@ -1638,8 +1638,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_scene_reedsvg",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "reedsvg.tsx"
     },
     {
@@ -1649,8 +1649,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "src_components_scene_reedsvg_reedsvgprops",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "reedsvgprops"
     },
     {
@@ -1660,8 +1660,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "src_components_scene_reedsvg_reedsvg",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "reedsvg()"
     },
     {
@@ -2441,8 +2441,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "src_game_ai_types_knownfish",
-      "community": 18,
-      "community_name": "bot.ts",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "knownfish"
     },
     {
@@ -3464,8 +3464,8 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "src_game_types_perch",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "perch"
     },
     {
@@ -3475,8 +3475,8 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "src_game_types_riverzone",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "riverzone"
     },
     {
@@ -3508,8 +3508,8 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "src_game_types_calloutkind",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "calloutkind"
     },
     {
@@ -3519,8 +3519,8 @@
       "source_location": "L54",
       "_origin": "ast",
       "id": "src_game_types_outcomecallout",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "outcomecallout"
     },
     {
@@ -3871,8 +3871,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_lib_stepfeedback",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "stepfeedback.ts"
     },
     {
@@ -3882,8 +3882,8 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "src_lib_stepfeedback_zoneaction",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "zoneaction"
     },
     {
@@ -3893,8 +3893,8 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "src_lib_stepfeedback_reaction_priority",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "reaction_priority"
     },
     {
@@ -3904,8 +3904,8 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "src_lib_stepfeedback_outcome_label",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "outcome_label"
     },
     {
@@ -3915,8 +3915,8 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "src_lib_stepfeedback_selectionzone",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "selectionzone()"
     },
     {
@@ -3926,8 +3926,8 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "src_lib_stepfeedback_zoneactions",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "zoneactions()"
     },
     {
@@ -3948,8 +3948,8 @@
       "source_location": "L49",
       "_origin": "ast",
       "id": "src_lib_stepfeedback_playerreactions",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "playerreactions()"
     },
     {
@@ -3970,8 +3970,8 @@
       "source_location": "L76",
       "_origin": "ast",
       "id": "src_lib_stepfeedback_outcomestory",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "outcomestory()"
     },
     {
@@ -3981,8 +3981,8 @@
       "source_location": "L88",
       "_origin": "ast",
       "id": "src_lib_stepfeedback_outcomelabel",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "outcomelabel()"
     },
     {
@@ -3992,8 +3992,8 @@
       "source_location": "L93",
       "_origin": "ast",
       "id": "src_lib_stepfeedback_primaryzonecallout",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "primaryzonecallout()"
     },
     {
@@ -4003,8 +4003,8 @@
       "source_location": "L100",
       "_origin": "ast",
       "id": "src_lib_stepfeedback_primaryzoneoutcome",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "primaryzoneoutcome()"
     },
     {
@@ -5111,7 +5111,7 @@
       "label": "Implementation Notes",
       "file_type": "document",
       "source_file": "DESIGN.md",
-      "source_location": "L93",
+      "source_location": "L94",
       "_origin": "ast",
       "id": "design_implementation_notes",
       "community": 10,
@@ -9447,7 +9447,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/Perch.tsx",
-      "source_location": "L29",
+      "source_location": "L32",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_perch",
@@ -9469,7 +9469,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/Perch.tsx",
-      "source_location": "L21",
+      "source_location": "L24",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_perch",
@@ -9565,7 +9565,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/RiverBoard.tsx",
-      "source_location": "L3",
+      "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_riverboard",
@@ -9601,7 +9601,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/RiverBoard.tsx",
-      "source_location": "L3",
+      "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_riverboard",
@@ -9612,7 +9612,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/RiverBoard.tsx",
-      "source_location": "L8",
+      "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_riverboard",
@@ -9623,7 +9623,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/RiverBoard.tsx",
-      "source_location": "L35",
+      "source_location": "L37",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_riverboard",
@@ -9634,7 +9634,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/RiverBoard.tsx",
-      "source_location": "L19",
+      "source_location": "L21",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_riverboard",
@@ -9646,7 +9646,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/RiverBoard.tsx",
-      "source_location": "L5",
+      "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_riverboard",
@@ -9658,7 +9658,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/RiverBoard.tsx",
-      "source_location": "L5",
+      "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_riverboard",
@@ -9670,7 +9670,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/RiverBoard.tsx",
-      "source_location": "L4",
+      "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_riverboard",
@@ -9682,7 +9682,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/RiverBoard.tsx",
-      "source_location": "L4",
+      "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_riverboard",
@@ -9694,11 +9694,11 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/RiverBoard.tsx",
-      "source_location": "L1",
+      "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_riverboard",
-      "target": "src_game_types",
+      "target": "src_game_reach",
       "confidence_score": 1.0
     },
     {
@@ -9706,47 +9706,11 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/RiverBoard.tsx",
-      "source_location": "L1",
+      "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_riverboard",
-      "target": "src_game_types_calloutkind",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/RiverBoard.tsx",
-      "source_location": "L1",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_components_riverboard",
-      "target": "src_game_types_outcomecallout",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/RiverBoard.tsx",
-      "source_location": "L1",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_components_riverboard",
-      "target": "src_game_types_perch",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/RiverBoard.tsx",
-      "source_location": "L1",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_components_riverboard",
-      "target": "src_game_types_riverzone",
+      "target": "src_game_reach_reachablezones",
       "confidence_score": 1.0
     },
     {
@@ -9758,7 +9722,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_riverboard",
-      "target": "src_lib_stepfeedback",
+      "target": "src_game_types",
       "confidence_score": 1.0
     },
     {
@@ -9770,6 +9734,66 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_riverboard",
+      "target": "src_game_types_calloutkind",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/RiverBoard.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_riverboard",
+      "target": "src_game_types_outcomecallout",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/RiverBoard.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_riverboard",
+      "target": "src_game_types_perch",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/RiverBoard.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_riverboard",
+      "target": "src_game_types_riverzone",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/RiverBoard.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_riverboard",
+      "target": "src_lib_stepfeedback",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/RiverBoard.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_riverboard",
       "target": "src_lib_stepfeedback_zoneaction",
       "confidence_score": 1.0
     },
@@ -9778,7 +9802,7 @@
       "context": "field",
       "confidence": "EXTRACTED",
       "source_file": "src/components/RiverBoard.tsx",
-      "source_location": "L14",
+      "source_location": "L16",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_riverboard_perchoccupant",
@@ -9790,7 +9814,7 @@
       "context": "generic_arg",
       "confidence": "EXTRACTED",
       "source_file": "src/components/RiverBoard.tsx",
-      "source_location": "L27",
+      "source_location": "L29",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_riverboard_riverboardprops",
@@ -9802,7 +9826,7 @@
       "context": "field",
       "confidence": "EXTRACTED",
       "source_file": "src/components/RiverBoard.tsx",
-      "source_location": "L21",
+      "source_location": "L23",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_riverboard_riverboardprops",
@@ -9814,7 +9838,7 @@
       "context": "field",
       "confidence": "EXTRACTED",
       "source_file": "src/components/RiverBoard.tsx",
-      "source_location": "L20",
+      "source_location": "L22",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_riverboard_riverboardprops",
@@ -9826,12 +9850,24 @@
       "context": "generic_arg",
       "confidence": "EXTRACTED",
       "source_file": "src/components/RiverBoard.tsx",
-      "source_location": "L26",
+      "source_location": "L28",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_riverboard_riverboardprops",
       "target": "src_lib_stepfeedback_zoneaction",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/components/RiverBoard.tsx",
+      "source_location": "L61",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_riverboard_riverboard",
+      "target": "src_game_reach_reachablezones"
     },
     {
       "relation": "contains",
@@ -9931,7 +9967,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/RosterSheet.tsx",
-      "source_location": "L155",
+      "source_location": "L163",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_rostersheet",
@@ -9942,7 +9978,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/RosterSheet.tsx",
-      "source_location": "L133",
+      "source_location": "L138",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_rostersheet",
@@ -10087,6 +10123,18 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_rostersheet",
+      "target": "src_lib_presentation_card_accent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/RosterSheet.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_rostersheet",
       "target": "src_lib_presentation_fish_label",
       "confidence_score": 1.0
     },
@@ -10192,7 +10240,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/RosterSheet.tsx",
-      "source_location": "L140",
+      "source_location": "L145",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_rostersheet_revealline",
@@ -10585,7 +10633,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/ZoneTile.tsx",
-      "source_location": "L32",
+      "source_location": "L34",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_zonetile",
@@ -10764,7 +10812,7 @@
       "context": "field",
       "confidence": "EXTRACTED",
       "source_file": "src/components/ZoneTile.tsx",
-      "source_location": "L24",
+      "source_location": "L26",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_zonetile_zonetileprops",
@@ -10788,7 +10836,7 @@
       "context": "field",
       "confidence": "EXTRACTED",
       "source_file": "src/components/ZoneTile.tsx",
-      "source_location": "L23",
+      "source_location": "L25",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_zonetile_zonetileprops",
@@ -10801,7 +10849,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/ZoneTile.tsx",
-      "source_location": "L106",
+      "source_location": "L111",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_zonetile_zonetile",
@@ -10813,7 +10861,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/ZoneTile.tsx",
-      "source_location": "L100",
+      "source_location": "L105",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_zonetile_zonetile",
@@ -10825,7 +10873,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/ZoneTile.tsx",
-      "source_location": "L91",
+      "source_location": "L96",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_zonetile_zonetile",
@@ -10837,7 +10885,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/ZoneTile.tsx",
-      "source_location": "L42",
+      "source_location": "L45",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_zonetile_zonetile",
@@ -18931,7 +18979,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "DESIGN.md",
-      "source_location": "L93",
+      "source_location": "L94",
       "weight": 1.0,
       "_origin": "ast",
       "source": "design_progress",
@@ -19380,5 +19428,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "dfc3a929de7a9421eaa8e6282569d65edad5f4a4"
+  "built_at_commit": "d862a704dcb439b60991acfede34ab964a2bdc24"
 }
