@@ -329,8 +329,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "powers_smoke",
-      "community": 8,
-      "community_name": "resolution.ts",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "_powers_smoke.mts"
     },
     {
@@ -340,8 +340,8 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "powers_smoke_assert",
-      "community": 8,
-      "community_name": "resolution.ts",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "assert()"
     },
     {
@@ -351,8 +351,8 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "powers_smoke_fresh",
-      "community": 8,
-      "community_name": "resolution.ts",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "fresh()"
     },
     {
@@ -362,8 +362,8 @@
       "source_location": "L33",
       "_origin": "ast",
       "id": "powers_smoke_main",
-      "community": 8,
-      "community_name": "resolution.ts",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "main()"
     },
     {
@@ -780,8 +780,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_app",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "app.tsx"
     },
     {
@@ -791,8 +791,8 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "src_app_botsmode",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "botsmode"
     },
     {
@@ -802,8 +802,8 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "src_app_mode",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "mode"
     },
     {
@@ -813,8 +813,8 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "src_app_botsgame",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "botsgame()"
     },
     {
@@ -824,8 +824,8 @@
       "source_location": "L65",
       "_origin": "ast",
       "id": "src_app_tutorialgame",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "tutorialgame()"
     },
     {
@@ -835,8 +835,8 @@
       "source_location": "L120",
       "_origin": "ast",
       "id": "src_app_app",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "app()"
     },
     {
@@ -857,8 +857,8 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "src_board_pendingselection",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "pendingselection"
     },
     {
@@ -868,8 +868,8 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "src_board_boardextra",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 20,
+      "community_name": "lesson.ts",
       "norm_label": "boardextra"
     },
     {
@@ -934,8 +934,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_tutorialboard",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 20,
+      "community_name": "lesson.ts",
       "norm_label": "tutorialboard.tsx"
     },
     {
@@ -945,8 +945,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "src_tutorialboard_tutorialboard",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 20,
+      "community_name": "lesson.ts",
       "norm_label": "tutorialboard()"
     },
     {
@@ -956,8 +956,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_actioncard",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "actioncard.tsx"
     },
     {
@@ -967,8 +967,8 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "src_components_actioncard_actioncardprops",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "actioncardprops"
     },
     {
@@ -978,8 +978,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "src_components_actioncard_actioncard",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "actioncard()"
     },
     {
@@ -989,8 +989,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_actionicon",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "actionicon.tsx"
     },
     {
@@ -1000,8 +1000,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "src_components_actionicon_actioniconprops",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "actioniconprops"
     },
     {
@@ -1011,8 +1011,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "src_components_actionicon_actionicon",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "actionicon()"
     },
     {
@@ -1044,8 +1044,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_fishcard",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 21,
+      "community_name": "RosterSheet.tsx",
       "norm_label": "fishcard.tsx"
     },
     {
@@ -1055,8 +1055,8 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "src_components_fishcard_fishcard",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 21,
+      "community_name": "RosterSheet.tsx",
       "norm_label": "fishcard()"
     },
     {
@@ -1066,8 +1066,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_fishcardback",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 21,
+      "community_name": "RosterSheet.tsx",
       "norm_label": "fishcardback.tsx"
     },
     {
@@ -1077,8 +1077,8 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "src_components_fishcardback_fishcardback",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 21,
+      "community_name": "RosterSheet.tsx",
       "norm_label": "fishcardback()"
     },
     {
@@ -1088,8 +1088,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_fishicon",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 21,
+      "community_name": "RosterSheet.tsx",
       "norm_label": "fishicon.tsx"
     },
     {
@@ -1099,8 +1099,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "src_components_fishicon_fishiconprops",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 21,
+      "community_name": "RosterSheet.tsx",
       "norm_label": "fishiconprops"
     },
     {
@@ -1110,8 +1110,8 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "src_components_fishicon_fishicon",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 21,
+      "community_name": "RosterSheet.tsx",
       "norm_label": "fishicon()"
     },
     {
@@ -1165,8 +1165,8 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "src_components_gameover_gameover",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 15,
+      "community_name": "GameState",
       "norm_label": "gameover()"
     },
     {
@@ -1176,8 +1176,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_hand",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "hand.tsx"
     },
     {
@@ -1187,8 +1187,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "src_components_hand_handprops",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "handprops"
     },
     {
@@ -1198,8 +1198,8 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "src_components_hand_hand",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "hand()"
     },
     {
@@ -1242,8 +1242,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_outcomesplash",
-      "community": 19,
-      "community_name": "stepFeedback.ts",
+      "community": 15,
+      "community_name": "GameState",
       "norm_label": "outcomesplash.tsx"
     },
     {
@@ -1253,8 +1253,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "src_components_outcomesplash_props",
-      "community": 19,
-      "community_name": "stepFeedback.ts",
+      "community": 15,
+      "community_name": "GameState",
       "norm_label": "props"
     },
     {
@@ -1264,8 +1264,8 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "src_components_outcomesplash_prefersreducedmotion",
-      "community": 19,
-      "community_name": "stepFeedback.ts",
+      "community": 15,
+      "community_name": "GameState",
       "norm_label": "prefersreducedmotion()"
     },
     {
@@ -1275,8 +1275,8 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "src_components_outcomesplash_outcomesplash",
-      "community": 19,
-      "community_name": "stepFeedback.ts",
+      "community": 15,
+      "community_name": "GameState",
       "norm_label": "outcomesplash()"
     },
     {
@@ -1286,8 +1286,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_perch",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 22,
+      "community_name": "Perch.tsx",
       "norm_label": "perch.tsx"
     },
     {
@@ -1297,8 +1297,8 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "src_components_perch_perchprops",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 22,
+      "community_name": "Perch.tsx",
       "norm_label": "perchprops"
     },
     {
@@ -1308,8 +1308,8 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "src_components_perch_reaction_class",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 22,
+      "community_name": "Perch.tsx",
       "norm_label": "reaction_class"
     },
     {
@@ -1319,8 +1319,8 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "src_components_perch_perch",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 22,
+      "community_name": "Perch.tsx",
       "norm_label": "perch()"
     },
     {
@@ -1341,8 +1341,8 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "src_components_riverboard_perchoccupant",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 22,
+      "community_name": "Perch.tsx",
       "norm_label": "perchoccupant"
     },
     {
@@ -1374,8 +1374,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_rosterbutton",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 15,
+      "community_name": "GameState",
       "norm_label": "rosterbutton.tsx"
     },
     {
@@ -1385,8 +1385,8 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "src_components_rosterbutton_rosterbuttonprops",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 15,
+      "community_name": "GameState",
       "norm_label": "rosterbuttonprops"
     },
     {
@@ -1396,8 +1396,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "src_components_rosterbutton_rosterbutton",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 15,
+      "community_name": "GameState",
       "norm_label": "rosterbutton()"
     },
     {
@@ -1407,8 +1407,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_rostersheet",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 21,
+      "community_name": "RosterSheet.tsx",
       "norm_label": "rostersheet.tsx"
     },
     {
@@ -1418,8 +1418,8 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "src_components_rostersheet_rostersheetprops",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 22,
+      "community_name": "Perch.tsx",
       "norm_label": "rostersheetprops"
     },
     {
@@ -1429,8 +1429,8 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "src_components_rostersheet_rostersheet",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "rostersheet()"
     },
     {
@@ -1440,8 +1440,8 @@
       "source_location": "L112",
       "_origin": "ast",
       "id": "src_components_rostersheet_roundplays",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 21,
+      "community_name": "RosterSheet.tsx",
       "norm_label": "roundplays()"
     },
     {
@@ -1451,8 +1451,8 @@
       "source_location": "L138",
       "_origin": "ast",
       "id": "src_components_rostersheet_revealline",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 21,
+      "community_name": "RosterSheet.tsx",
       "norm_label": "revealline()"
     },
     {
@@ -1462,8 +1462,8 @@
       "source_location": "L163",
       "_origin": "ast",
       "id": "src_components_rostersheet_fishchip",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 21,
+      "community_name": "RosterSheet.tsx",
       "norm_label": "fishchip()"
     },
     {
@@ -1473,8 +1473,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_rulescheatsheet",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "rulescheatsheet.tsx"
     },
     {
@@ -1484,8 +1484,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "src_components_rulescheatsheet_priority",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "priority"
     },
     {
@@ -1495,8 +1495,8 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "src_components_rulescheatsheet_row",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "row"
     },
     {
@@ -1506,8 +1506,8 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "src_components_rulescheatsheet_rows",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "rows"
     },
     {
@@ -1517,8 +1517,8 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "src_components_rulescheatsheet_rulescheatsheet",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "rulescheatsheet()"
     },
     {
@@ -1528,52 +1528,63 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_statusline",
-      "community": 19,
-      "community_name": "stepFeedback.ts",
+      "community": 15,
+      "community_name": "GameState",
       "norm_label": "statusline.tsx"
+    },
+    {
+      "label": "StatusActor",
+      "file_type": "code",
+      "source_file": "src/components/StatusLine.tsx",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "src_components_statusline_statusactor",
+      "community": 15,
+      "community_name": "GameState",
+      "norm_label": "statusactor"
     },
     {
       "label": "StatusLineProps",
       "file_type": "code",
       "source_file": "src/components/StatusLine.tsx",
-      "source_location": "L7",
+      "source_location": "L13",
       "_origin": "ast",
       "id": "src_components_statusline_statuslineprops",
-      "community": 19,
-      "community_name": "stepFeedback.ts",
+      "community": 15,
+      "community_name": "GameState",
       "norm_label": "statuslineprops"
     },
     {
       "label": "StatusLine()",
       "file_type": "code",
       "source_file": "src/components/StatusLine.tsx",
-      "source_location": "L16",
+      "source_location": "L24",
       "_origin": "ast",
       "id": "src_components_statusline_statusline",
-      "community": 19,
-      "community_name": "stepFeedback.ts",
+      "community": 15,
+      "community_name": "GameState",
       "norm_label": "statusline()"
     },
     {
       "label": "phaseText()",
       "file_type": "code",
       "source_file": "src/components/StatusLine.tsx",
-      "source_location": "L41",
+      "source_location": "L64",
       "_origin": "ast",
       "id": "src_components_statusline_phasetext",
-      "community": 19,
-      "community_name": "stepFeedback.ts",
+      "community": 15,
+      "community_name": "GameState",
       "norm_label": "phasetext()"
     },
     {
       "label": "calloutFor()",
       "file_type": "code",
       "source_file": "src/components/StatusLine.tsx",
-      "source_location": "L58",
+      "source_location": "L87",
       "_origin": "ast",
       "id": "src_components_statusline_calloutfor",
-      "community": 19,
-      "community_name": "stepFeedback.ts",
+      "community": 15,
+      "community_name": "GameState",
       "norm_label": "calloutfor()"
     },
     {
@@ -1649,8 +1660,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_tutorialintro",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "tutorialintro.tsx"
     },
     {
@@ -1660,8 +1671,8 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "src_components_tutorialintro_props",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "props"
     },
     {
@@ -1671,8 +1682,8 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "src_components_tutorialintro_tutorialintro",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "tutorialintro()"
     },
     {
@@ -1759,8 +1770,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_scene_branchsvg",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 22,
+      "community_name": "Perch.tsx",
       "norm_label": "branchsvg.tsx"
     },
     {
@@ -1770,8 +1781,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "src_components_scene_branchsvg_branchsvgprops",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 22,
+      "community_name": "Perch.tsx",
       "norm_label": "branchsvgprops"
     },
     {
@@ -1781,8 +1792,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "src_components_scene_branchsvg_branchsvg",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 22,
+      "community_name": "Perch.tsx",
       "norm_label": "branchsvg()"
     },
     {
@@ -1825,8 +1836,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_scene_reedsvg",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 22,
+      "community_name": "Perch.tsx",
       "norm_label": "reedsvg.tsx"
     },
     {
@@ -1836,8 +1847,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "src_components_scene_reedsvg_reedsvgprops",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 22,
+      "community_name": "Perch.tsx",
       "norm_label": "reedsvgprops"
     },
     {
@@ -1847,8 +1858,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "src_components_scene_reedsvg_reedsvg",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 22,
+      "community_name": "Perch.tsx",
       "norm_label": "reedsvg()"
     },
     {
@@ -1968,8 +1979,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_game_game",
-      "community": 8,
-      "community_name": "resolution.ts",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "game.ts"
     },
     {
@@ -1979,8 +1990,8 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "src_game_game_buildperches",
-      "community": 8,
-      "community_name": "resolution.ts",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "buildperches()"
     },
     {
@@ -1990,8 +2001,8 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "src_game_game_rotateorder",
-      "community": 8,
-      "community_name": "resolution.ts",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "rotateorder()"
     },
     {
@@ -2001,8 +2012,8 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "src_game_game_kingfishersetupdata",
-      "community": 8,
-      "community_name": "resolution.ts",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "kingfishersetupdata"
     },
     {
@@ -2012,8 +2023,8 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "src_game_game_fish",
-      "community": 8,
-      "community_name": "resolution.ts",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "fish()"
     },
     {
@@ -2023,8 +2034,8 @@
       "source_location": "L44",
       "_origin": "ast",
       "id": "src_game_game_tutorialriver",
-      "community": 8,
-      "community_name": "resolution.ts",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "tutorialriver()"
     },
     {
@@ -2034,8 +2045,8 @@
       "source_location": "L73",
       "_origin": "ast",
       "id": "src_game_game_setup",
-      "community": 8,
-      "community_name": "resolution.ts",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "setup()"
     },
     {
@@ -2045,8 +2056,8 @@
       "source_location": "L147",
       "_origin": "ast",
       "id": "src_game_game_placementphase",
-      "community": 8,
-      "community_name": "resolution.ts",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "placementphase"
     },
     {
@@ -2067,8 +2078,8 @@
       "source_location": "L203",
       "_origin": "ast",
       "id": "src_game_game_hoverphase",
-      "community": 8,
-      "community_name": "resolution.ts",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "hoverphase()"
     },
     {
@@ -2683,8 +2694,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "src_game_ai_types_knownfish",
-      "community": 19,
-      "community_name": "stepFeedback.ts",
+      "community": 17,
+      "community_name": "legacy.ts",
       "norm_label": "knownfish"
     },
     {
@@ -3112,8 +3123,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_game_fish",
-      "community": 8,
-      "community_name": "resolution.ts",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "fish.ts"
     },
     {
@@ -3123,8 +3134,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "src_game_fish_fish_points",
-      "community": 8,
-      "community_name": "resolution.ts",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "fish_points"
     },
     {
@@ -3134,8 +3145,8 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "src_game_fish_fish_counts",
-      "community": 8,
-      "community_name": "resolution.ts",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "fish_counts"
     },
     {
@@ -3145,8 +3156,8 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "src_game_fish_river_zones",
-      "community": 8,
-      "community_name": "resolution.ts",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "river_zones"
     },
     {
@@ -3156,8 +3167,8 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "src_game_fish_riverzonesfor",
-      "community": 8,
-      "community_name": "resolution.ts",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "riverzonesfor()"
     },
     {
@@ -3167,8 +3178,8 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "src_game_fish_builddeck",
-      "community": 8,
-      "community_name": "resolution.ts",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "builddeck()"
     },
     {
@@ -3233,8 +3244,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "src_game_kingfishers_kingfisher",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "kingfisher"
     },
     {
@@ -3321,8 +3332,8 @@
       "source_location": "L126",
       "_origin": "ast",
       "id": "src_game_moves_hovermove",
-      "community": 8,
-      "community_name": "resolution.ts",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "hovermove()"
     },
     {
@@ -3343,8 +3354,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_game_playerview",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 19,
+      "community_name": "stepFeedback.ts",
       "norm_label": "playerview.ts"
     },
     {
@@ -3376,8 +3387,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_game_powers",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 24,
+      "community_name": "game/types.ts",
       "norm_label": "powers.ts"
     },
     {
@@ -3387,8 +3398,8 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "src_game_powers_species_order",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "species_order"
     },
     {
@@ -3409,8 +3420,8 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "src_game_powers_speciesidforseat",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 24,
+      "community_name": "game/types.ts",
       "norm_label": "speciesidforseat()"
     },
     {
@@ -3420,8 +3431,8 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "src_game_powers_powerid",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 24,
+      "community_name": "game/types.ts",
       "norm_label": "powerid"
     },
     {
@@ -3431,8 +3442,8 @@
       "source_location": "L46",
       "_origin": "ast",
       "id": "src_game_powers_speciespower",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 24,
+      "community_name": "game/types.ts",
       "norm_label": "speciespower"
     },
     {
@@ -3453,8 +3464,8 @@
       "source_location": "L81",
       "_origin": "ast",
       "id": "src_game_powers_powerforseat",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 24,
+      "community_name": "game/types.ts",
       "norm_label": "powerforseat()"
     },
     {
@@ -3464,8 +3475,8 @@
       "source_location": "L86",
       "_origin": "ast",
       "id": "src_game_powers_haspower",
-      "community": 8,
-      "community_name": "resolution.ts",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "haspower()"
     },
     {
@@ -3475,8 +3486,8 @@
       "source_location": "L91",
       "_origin": "ast",
       "id": "src_game_powers_reachlevel",
-      "community": 8,
-      "community_name": "resolution.ts",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "reachlevel()"
     },
     {
@@ -3519,8 +3530,8 @@
       "source_location": "L113",
       "_origin": "ast",
       "id": "src_game_powers_openhovertargets",
-      "community": 8,
-      "community_name": "resolution.ts",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "openhovertargets()"
     },
     {
@@ -3530,8 +3541,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_game_reach",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 24,
+      "community_name": "game/types.ts",
       "norm_label": "reach.ts"
     },
     {
@@ -3552,8 +3563,8 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "src_game_reach_adjacentperches",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 24,
+      "community_name": "game/types.ts",
       "norm_label": "adjacentperches()"
     },
     {
@@ -3563,8 +3574,8 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "src_game_reach_openhoverperches",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 24,
+      "community_name": "game/types.ts",
       "norm_label": "openhoverperches()"
     },
     {
@@ -3772,8 +3783,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_game_types",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 24,
+      "community_name": "game/types.ts",
       "norm_label": "game/types.ts"
     },
     {
@@ -3783,8 +3794,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "src_game_types_cardtype",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "cardtype"
     },
     {
@@ -3794,8 +3805,8 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "src_game_types_fishtype",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 21,
+      "community_name": "RosterSheet.tsx",
       "norm_label": "fishtype"
     },
     {
@@ -3805,8 +3816,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "src_game_types_fishcard",
-      "community": 8,
-      "community_name": "resolution.ts",
+      "community": 21,
+      "community_name": "RosterSheet.tsx",
       "norm_label": "fishcard"
     },
     {
@@ -3816,8 +3827,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "src_game_types_hidden_fish",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 17,
+      "community_name": "legacy.ts",
       "norm_label": "hidden_fish"
     },
     {
@@ -3827,8 +3838,8 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "src_game_types_zonefish",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 19,
+      "community_name": "stepFeedback.ts",
       "norm_label": "zonefish"
     },
     {
@@ -3849,8 +3860,8 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "src_game_types_perchlevel",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 24,
+      "community_name": "game/types.ts",
       "norm_label": "perchlevel"
     },
     {
@@ -3860,8 +3871,8 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "src_game_types_perch",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 24,
+      "community_name": "game/types.ts",
       "norm_label": "perch"
     },
     {
@@ -3882,8 +3893,8 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "src_game_types_gamephase",
-      "community": 8,
-      "community_name": "resolution.ts",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "gamephase"
     },
     {
@@ -3893,8 +3904,8 @@
       "source_location": "L47",
       "_origin": "ast",
       "id": "src_game_types_stepselection",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 25,
+      "community_name": "stepFeedback.ts",
       "norm_label": "stepselection"
     },
     {
@@ -3904,8 +3915,8 @@
       "source_location": "L54",
       "_origin": "ast",
       "id": "src_game_types_calloutkind",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 22,
+      "community_name": "Perch.tsx",
       "norm_label": "calloutkind"
     },
     {
@@ -3937,8 +3948,8 @@
       "source_location": "L73",
       "_origin": "ast",
       "id": "src_game_types_playerstate",
-      "community": 8,
-      "community_name": "resolution.ts",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "playerstate"
     },
     {
@@ -3948,8 +3959,8 @@
       "source_location": "L83",
       "_origin": "ast",
       "id": "src_game_types_gamestate",
-      "community": 19,
-      "community_name": "stepFeedback.ts",
+      "community": 15,
+      "community_name": "GameState",
       "norm_label": "gamestate"
     },
     {
@@ -3970,8 +3981,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "src_lib_boardchrome_pendingselection",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "pendingselection"
     },
     {
@@ -4003,8 +4014,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_lib_personalsplash",
-      "community": 19,
-      "community_name": "stepFeedback.ts",
+      "community": 15,
+      "community_name": "GameState",
       "norm_label": "personalsplash.ts"
     },
     {
@@ -4014,8 +4025,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "src_lib_personalsplash_splashvalence",
-      "community": 19,
-      "community_name": "stepFeedback.ts",
+      "community": 15,
+      "community_name": "GameState",
       "norm_label": "splashvalence"
     },
     {
@@ -4025,8 +4036,8 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "src_lib_personalsplash_personalsplash",
-      "community": 19,
-      "community_name": "stepFeedback.ts",
+      "community": 15,
+      "community_name": "GameState",
       "norm_label": "personalsplash"
     },
     {
@@ -4036,8 +4047,8 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "src_lib_personalsplash_pointssuffix",
-      "community": 19,
-      "community_name": "stepFeedback.ts",
+      "community": 15,
+      "community_name": "GameState",
       "norm_label": "pointssuffix()"
     },
     {
@@ -4047,8 +4058,8 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "src_lib_personalsplash_personaloutcomesplash",
-      "community": 19,
-      "community_name": "stepFeedback.ts",
+      "community": 15,
+      "community_name": "GameState",
       "norm_label": "personaloutcomesplash()"
     },
     {
@@ -4058,8 +4069,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_lib_presentation",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "presentation.ts"
     },
     {
@@ -4069,8 +4080,8 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "src_lib_presentation_species_short",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "species_short"
     },
     {
@@ -4102,8 +4113,8 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "src_lib_presentation_seatkingfisher",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 15,
+      "community_name": "GameState",
       "norm_label": "seatkingfisher()"
     },
     {
@@ -4113,8 +4124,8 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "src_lib_presentation_playercolor",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 15,
+      "community_name": "GameState",
       "norm_label": "playercolor()"
     },
     {
@@ -4124,8 +4135,8 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "src_lib_presentation_speciesname",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 15,
+      "community_name": "GameState",
       "norm_label": "speciesname()"
     },
     {
@@ -4135,8 +4146,8 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "src_lib_presentation_speciesshort",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "speciesshort()"
     },
     {
@@ -4157,8 +4168,8 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "src_lib_presentation_card_accent",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "card_accent"
     },
     {
@@ -4168,8 +4179,8 @@
       "source_location": "L50",
       "_origin": "ast",
       "id": "src_lib_presentation_fish_label",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 21,
+      "community_name": "RosterSheet.tsx",
       "norm_label": "fish_label"
     },
     {
@@ -4179,8 +4190,8 @@
       "source_location": "L58",
       "_origin": "ast",
       "id": "src_lib_presentation_action_label",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "action_label"
     },
     {
@@ -4190,8 +4201,8 @@
       "source_location": "L66",
       "_origin": "ast",
       "id": "src_lib_presentation_perchlabel",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "perchlabel()"
     },
     {
@@ -4311,8 +4322,8 @@
       "source_location": "L132",
       "_origin": "ast",
       "id": "src_lib_sfx_cueroundadvancesfx",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "cueroundadvancesfx()"
     },
     {
@@ -4322,8 +4333,8 @@
       "source_location": "L140",
       "_origin": "ast",
       "id": "src_lib_sfx_cuewinsfx",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "cuewinsfx()"
     },
     {
@@ -4333,8 +4344,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_lib_stepfeedback",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 25,
+      "community_name": "stepFeedback.ts",
       "norm_label": "stepfeedback.ts"
     },
     {
@@ -4355,8 +4366,8 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "src_lib_stepfeedback_reaction_priority",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 25,
+      "community_name": "stepFeedback.ts",
       "norm_label": "reaction_priority"
     },
     {
@@ -4366,8 +4377,8 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "src_lib_stepfeedback_outcome_label",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 25,
+      "community_name": "stepFeedback.ts",
       "norm_label": "outcome_label"
     },
     {
@@ -4377,8 +4388,8 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "src_lib_stepfeedback_selectionzone",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 25,
+      "community_name": "stepFeedback.ts",
       "norm_label": "selectionzone()"
     },
     {
@@ -4388,8 +4399,8 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "src_lib_stepfeedback_zoneactions",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 25,
+      "community_name": "stepFeedback.ts",
       "norm_label": "zoneactions()"
     },
     {
@@ -4410,8 +4421,8 @@
       "source_location": "L49",
       "_origin": "ast",
       "id": "src_lib_stepfeedback_playerreactions",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 25,
+      "community_name": "stepFeedback.ts",
       "norm_label": "playerreactions()"
     },
     {
@@ -4421,8 +4432,8 @@
       "source_location": "L63",
       "_origin": "ast",
       "id": "src_lib_stepfeedback_selectiondetail",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 21,
+      "community_name": "RosterSheet.tsx",
       "norm_label": "selectiondetail()"
     },
     {
@@ -4432,8 +4443,8 @@
       "source_location": "L73",
       "_origin": "ast",
       "id": "src_lib_stepfeedback_outcomestory",
-      "community": 19,
-      "community_name": "stepFeedback.ts",
+      "community": 15,
+      "community_name": "GameState",
       "norm_label": "outcomestory()"
     },
     {
@@ -4454,8 +4465,8 @@
       "source_location": "L90",
       "_origin": "ast",
       "id": "src_lib_stepfeedback_primaryzonecallout",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 25,
+      "community_name": "stepFeedback.ts",
       "norm_label": "primaryzonecallout()"
     },
     {
@@ -4465,8 +4476,8 @@
       "source_location": "L97",
       "_origin": "ast",
       "id": "src_lib_stepfeedback_primaryzoneoutcome",
-      "community": 16,
-      "community_name": "RiverBoard.tsx",
+      "community": 25,
+      "community_name": "stepFeedback.ts",
       "norm_label": "primaryzoneoutcome()"
     },
     {
@@ -4542,8 +4553,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_main",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "main.tsx"
     },
     {
@@ -4751,8 +4762,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "src_profile_types_lifetimestats",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 21,
+      "community_name": "RosterSheet.tsx",
       "norm_label": "lifetimestats"
     },
     {
@@ -5026,8 +5037,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_tutorial_intro",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "intro.ts"
     },
     {
@@ -5037,8 +5048,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_tutorial_intro_introslide",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "introslide"
     },
     {
@@ -5048,8 +5059,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "src_tutorial_intro_tutorial_intro",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "tutorial_intro"
     },
     {
@@ -5969,7 +5980,7 @@
       "label": "Implementation Notes",
       "file_type": "document",
       "source_file": "DESIGN.md",
-      "source_location": "L111",
+      "source_location": "L112",
       "_origin": "ast",
       "id": "design_implementation_notes",
       "community": 10,
@@ -6134,7 +6145,7 @@
       "label": "Desktop",
       "file_type": "document",
       "source_file": "VISUALS.md",
-      "source_location": "L114",
+      "source_location": "L115",
       "_origin": "ast",
       "id": "visuals_desktop",
       "community": 0,
@@ -6145,7 +6156,7 @@
       "label": "The River Board (center stage)",
       "file_type": "document",
       "source_file": "VISUALS.md",
-      "source_location": "L117",
+      "source_location": "L118",
       "_origin": "ast",
       "id": "visuals_the_river_board_center_stage",
       "community": 0,
@@ -6156,7 +6167,7 @@
       "label": "Pawn Species (5 playable kingfishers)",
       "file_type": "document",
       "source_file": "VISUALS.md",
-      "source_location": "L138",
+      "source_location": "L139",
       "_origin": "ast",
       "id": "visuals_pawn_species_5_playable_kingfishers",
       "community": 0,
@@ -6167,7 +6178,7 @@
       "label": "Scores roster (on demand)",
       "file_type": "document",
       "source_file": "VISUALS.md",
-      "source_location": "L155",
+      "source_location": "L156",
       "_origin": "ast",
       "id": "visuals_scores_roster_on_demand",
       "community": 0,
@@ -6178,7 +6189,7 @@
       "label": "Held hand (bottom-left overlay)",
       "file_type": "document",
       "source_file": "VISUALS.md",
-      "source_location": "L161",
+      "source_location": "L162",
       "_origin": "ast",
       "id": "visuals_held_hand_bottom_left_overlay",
       "community": 0,
@@ -6189,7 +6200,7 @@
       "label": "Rules cheatsheet (bottom-right overlay)",
       "file_type": "document",
       "source_file": "VISUALS.md",
-      "source_location": "L167",
+      "source_location": "L168",
       "_origin": "ast",
       "id": "visuals_rules_cheatsheet_bottom_right_overlay",
       "community": 0,
@@ -6200,7 +6211,7 @@
       "label": "5. Card & Component System",
       "file_type": "document",
       "source_file": "VISUALS.md",
-      "source_location": "L174",
+      "source_location": "L175",
       "_origin": "ast",
       "id": "visuals_5_card_component_system",
       "community": 0,
@@ -6211,7 +6222,7 @@
       "label": "Action Cards (held hand)",
       "file_type": "document",
       "source_file": "VISUALS.md",
-      "source_location": "L176",
+      "source_location": "L177",
       "_origin": "ast",
       "id": "visuals_action_cards_held_hand",
       "community": 0,
@@ -6222,7 +6233,7 @@
       "label": "Fish Cards",
       "file_type": "document",
       "source_file": "VISUALS.md",
-      "source_location": "L186",
+      "source_location": "L187",
       "_origin": "ast",
       "id": "visuals_fish_cards",
       "community": 0,
@@ -6233,7 +6244,7 @@
       "label": "Overlays & Modals",
       "file_type": "document",
       "source_file": "VISUALS.md",
-      "source_location": "L190",
+      "source_location": "L191",
       "_origin": "ast",
       "id": "visuals_overlays_modals",
       "community": 0,
@@ -6244,7 +6255,7 @@
       "label": "6. The Theatrical Core: Select \u2192 Lock \u2192 Reveal \u2192 Resolve",
       "file_type": "document",
       "source_file": "VISUALS.md",
-      "source_location": "L197",
+      "source_location": "L198",
       "_origin": "ast",
       "id": "visuals_6_the_theatrical_core_select_lock_reveal_resolve",
       "community": 0,
@@ -6255,7 +6266,7 @@
       "label": "Step 1 \u2014 Select & Lock",
       "file_type": "document",
       "source_file": "VISUALS.md",
-      "source_location": "L201",
+      "source_location": "L202",
       "_origin": "ast",
       "id": "visuals_step_1_select_lock",
       "community": 0,
@@ -6266,7 +6277,7 @@
       "label": "Step 2 \u2014 Simultaneous Reveal",
       "file_type": "document",
       "source_file": "VISUALS.md",
-      "source_location": "L205",
+      "source_location": "L206",
       "_origin": "ast",
       "id": "visuals_step_2_simultaneous_reveal",
       "community": 0,
@@ -6277,7 +6288,7 @@
       "label": "Step 3 \u2014 Priority Resolution (Hover \u2192 Splash \u2192 Dive \u2192 Drop)",
       "file_type": "document",
       "source_file": "VISUALS.md",
-      "source_location": "L209",
+      "source_location": "L210",
       "_origin": "ast",
       "id": "visuals_step_3_priority_resolution_hover_splash_dive_drop",
       "community": 0,
@@ -6288,7 +6299,7 @@
       "label": "Step 4 \u2014 Outcome Callouts (\"Read it on the river\")",
       "file_type": "document",
       "source_file": "VISUALS.md",
-      "source_location": "L213",
+      "source_location": "L214",
       "_origin": "ast",
       "id": "visuals_step_4_outcome_callouts_read_it_on_the_river",
       "community": 0,
@@ -6299,7 +6310,7 @@
       "label": "Step 4b \u2014 Personal outcome splash (local player only)",
       "file_type": "document",
       "source_file": "VISUALS.md",
-      "source_location": "L224",
+      "source_location": "L225",
       "_origin": "ast",
       "id": "visuals_step_4b_personal_outcome_splash_local_player_only",
       "community": 0,
@@ -6310,7 +6321,7 @@
       "label": "7. Motion Language",
       "file_type": "document",
       "source_file": "VISUALS.md",
-      "source_location": "L243",
+      "source_location": "L244",
       "_origin": "ast",
       "id": "visuals_7_motion_language",
       "community": 0,
@@ -6321,7 +6332,7 @@
       "label": "8. Key UX Interactions",
       "file_type": "document",
       "source_file": "VISUALS.md",
-      "source_location": "L253",
+      "source_location": "L254",
       "_origin": "ast",
       "id": "visuals_8_key_ux_interactions",
       "community": 0,
@@ -6332,7 +6343,7 @@
       "label": "Hover (peek + move)",
       "file_type": "document",
       "source_file": "VISUALS.md",
-      "source_location": "L255",
+      "source_location": "L256",
       "_origin": "ast",
       "id": "visuals_hover_peek_move",
       "community": 0,
@@ -6343,7 +6354,7 @@
       "label": "Crash / Penalty Feedback",
       "file_type": "document",
       "source_file": "VISUALS.md",
-      "source_location": "L260",
+      "source_location": "L261",
       "_origin": "ast",
       "id": "visuals_crash_penalty_feedback",
       "community": 0,
@@ -6354,7 +6365,7 @@
       "label": "Score & Fish Flow",
       "file_type": "document",
       "source_file": "VISUALS.md",
-      "source_location": "L261",
+      "source_location": "L262",
       "_origin": "ast",
       "id": "visuals_score_fish_flow",
       "community": 0,
@@ -6365,7 +6376,7 @@
       "label": "End of Round Cleanup",
       "file_type": "document",
       "source_file": "VISUALS.md",
-      "source_location": "L264",
+      "source_location": "L265",
       "_origin": "ast",
       "id": "visuals_end_of_round_cleanup",
       "community": 0,
@@ -6376,7 +6387,7 @@
       "label": "9. Accessibility",
       "file_type": "document",
       "source_file": "VISUALS.md",
-      "source_location": "L271",
+      "source_location": "L272",
       "_origin": "ast",
       "id": "visuals_9_accessibility",
       "community": 0,
@@ -6387,7 +6398,7 @@
       "label": "10. Implementation Notes (CSS Modules)",
       "file_type": "document",
       "source_file": "VISUALS.md",
-      "source_location": "L281",
+      "source_location": "L282",
       "_origin": "ast",
       "id": "visuals_10_implementation_notes_css_modules",
       "community": 0,
@@ -6398,7 +6409,7 @@
       "label": "11. Screens Inventory",
       "file_type": "document",
       "source_file": "VISUALS.md",
-      "source_location": "L291",
+      "source_location": "L292",
       "_origin": "ast",
       "id": "visuals_11_screens_inventory",
       "community": 0,
@@ -6409,7 +6420,7 @@
       "label": "Appendix \u2014 Pawn Sprite Generation Prompts",
       "file_type": "document",
       "source_file": "VISUALS.md",
-      "source_location": "L306",
+      "source_location": "L307",
       "_origin": "ast",
       "id": "visuals_appendix_pawn_sprite_generation_prompts",
       "community": 0,
@@ -8962,6 +8973,18 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/Board.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_board",
+      "target": "src_lib_presentation_speciesshort",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -9260,6 +9283,18 @@
       "_origin": "ast",
       "source": "src_board_board",
       "target": "src_lib_presentation_seatkingfisher"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/Board.tsx",
+      "source_location": "L249",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_board_board",
+      "target": "src_lib_presentation_speciesshort"
     },
     {
       "relation": "calls",
@@ -12453,7 +12488,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/StatusLine.tsx",
-      "source_location": "L58",
+      "source_location": "L87",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_statusline",
@@ -12464,7 +12499,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/StatusLine.tsx",
-      "source_location": "L41",
+      "source_location": "L64",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_statusline",
@@ -12475,7 +12510,18 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/StatusLine.tsx",
-      "source_location": "L16",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_statusline",
+      "target": "src_components_statusline_statusactor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/StatusLine.tsx",
+      "source_location": "L24",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_statusline",
@@ -12486,7 +12532,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/StatusLine.tsx",
-      "source_location": "L7",
+      "source_location": "L13",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_statusline",
@@ -12558,7 +12604,7 @@
       "context": "field",
       "confidence": "EXTRACTED",
       "source_file": "src/components/StatusLine.tsx",
-      "source_location": "L8",
+      "source_location": "L14",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_statusline_statuslineprops",
@@ -12570,7 +12616,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/components/StatusLine.tsx",
-      "source_location": "L27",
+      "source_location": "L36",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_statusline_statusline",
@@ -12582,7 +12628,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/components/StatusLine.tsx",
-      "source_location": "L25",
+      "source_location": "L34",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_statusline_statusline",
@@ -12595,7 +12641,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/StatusLine.tsx",
-      "source_location": "L24",
+      "source_location": "L33",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_statusline_statusline",
@@ -23144,7 +23190,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "DESIGN.md",
-      "source_location": "L111",
+      "source_location": "L112",
       "weight": 1.0,
       "_origin": "ast",
       "source": "design_progress",
@@ -23188,7 +23234,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "VISUALS.md",
-      "source_location": "L281",
+      "source_location": "L282",
       "weight": 1.0,
       "_origin": "ast",
       "source": "visuals_visuals_md_kingfisher_dive_crash",
@@ -23199,7 +23245,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "VISUALS.md",
-      "source_location": "L291",
+      "source_location": "L292",
       "weight": 1.0,
       "_origin": "ast",
       "source": "visuals_visuals_md_kingfisher_dive_crash",
@@ -23254,7 +23300,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "VISUALS.md",
-      "source_location": "L174",
+      "source_location": "L175",
       "weight": 1.0,
       "_origin": "ast",
       "source": "visuals_visuals_md_kingfisher_dive_crash",
@@ -23265,7 +23311,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "VISUALS.md",
-      "source_location": "L197",
+      "source_location": "L198",
       "weight": 1.0,
       "_origin": "ast",
       "source": "visuals_visuals_md_kingfisher_dive_crash",
@@ -23276,7 +23322,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "VISUALS.md",
-      "source_location": "L243",
+      "source_location": "L244",
       "weight": 1.0,
       "_origin": "ast",
       "source": "visuals_visuals_md_kingfisher_dive_crash",
@@ -23287,7 +23333,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "VISUALS.md",
-      "source_location": "L253",
+      "source_location": "L254",
       "weight": 1.0,
       "_origin": "ast",
       "source": "visuals_visuals_md_kingfisher_dive_crash",
@@ -23298,7 +23344,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "VISUALS.md",
-      "source_location": "L271",
+      "source_location": "L272",
       "weight": 1.0,
       "_origin": "ast",
       "source": "visuals_visuals_md_kingfisher_dive_crash",
@@ -23309,7 +23355,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "VISUALS.md",
-      "source_location": "L306",
+      "source_location": "L307",
       "weight": 1.0,
       "_origin": "ast",
       "source": "visuals_visuals_md_kingfisher_dive_crash",
@@ -23386,7 +23432,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "VISUALS.md",
-      "source_location": "L114",
+      "source_location": "L115",
       "weight": 1.0,
       "_origin": "ast",
       "source": "visuals_4_layout_structure",
@@ -23397,7 +23443,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "VISUALS.md",
-      "source_location": "L161",
+      "source_location": "L162",
       "weight": 1.0,
       "_origin": "ast",
       "source": "visuals_4_layout_structure",
@@ -23419,7 +23465,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "VISUALS.md",
-      "source_location": "L138",
+      "source_location": "L139",
       "weight": 1.0,
       "_origin": "ast",
       "source": "visuals_4_layout_structure",
@@ -23430,7 +23476,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "VISUALS.md",
-      "source_location": "L167",
+      "source_location": "L168",
       "weight": 1.0,
       "_origin": "ast",
       "source": "visuals_4_layout_structure",
@@ -23441,7 +23487,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "VISUALS.md",
-      "source_location": "L155",
+      "source_location": "L156",
       "weight": 1.0,
       "_origin": "ast",
       "source": "visuals_4_layout_structure",
@@ -23452,7 +23498,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "VISUALS.md",
-      "source_location": "L117",
+      "source_location": "L118",
       "weight": 1.0,
       "_origin": "ast",
       "source": "visuals_4_layout_structure",
@@ -23463,7 +23509,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "VISUALS.md",
-      "source_location": "L176",
+      "source_location": "L177",
       "weight": 1.0,
       "_origin": "ast",
       "source": "visuals_5_card_component_system",
@@ -23474,7 +23520,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "VISUALS.md",
-      "source_location": "L186",
+      "source_location": "L187",
       "weight": 1.0,
       "_origin": "ast",
       "source": "visuals_5_card_component_system",
@@ -23485,7 +23531,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "VISUALS.md",
-      "source_location": "L190",
+      "source_location": "L191",
       "weight": 1.0,
       "_origin": "ast",
       "source": "visuals_5_card_component_system",
@@ -23496,7 +23542,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "VISUALS.md",
-      "source_location": "L201",
+      "source_location": "L202",
       "weight": 1.0,
       "_origin": "ast",
       "source": "visuals_6_the_theatrical_core_select_lock_reveal_resolve",
@@ -23507,7 +23553,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "VISUALS.md",
-      "source_location": "L205",
+      "source_location": "L206",
       "weight": 1.0,
       "_origin": "ast",
       "source": "visuals_6_the_theatrical_core_select_lock_reveal_resolve",
@@ -23518,7 +23564,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "VISUALS.md",
-      "source_location": "L209",
+      "source_location": "L210",
       "weight": 1.0,
       "_origin": "ast",
       "source": "visuals_6_the_theatrical_core_select_lock_reveal_resolve",
@@ -23529,7 +23575,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "VISUALS.md",
-      "source_location": "L213",
+      "source_location": "L214",
       "weight": 1.0,
       "_origin": "ast",
       "source": "visuals_6_the_theatrical_core_select_lock_reveal_resolve",
@@ -23540,7 +23586,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "VISUALS.md",
-      "source_location": "L224",
+      "source_location": "L225",
       "weight": 1.0,
       "_origin": "ast",
       "source": "visuals_6_the_theatrical_core_select_lock_reveal_resolve",
@@ -23551,7 +23597,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "VISUALS.md",
-      "source_location": "L260",
+      "source_location": "L261",
       "weight": 1.0,
       "_origin": "ast",
       "source": "visuals_8_key_ux_interactions",
@@ -23562,7 +23608,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "VISUALS.md",
-      "source_location": "L264",
+      "source_location": "L265",
       "weight": 1.0,
       "_origin": "ast",
       "source": "visuals_8_key_ux_interactions",
@@ -23573,7 +23619,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "VISUALS.md",
-      "source_location": "L255",
+      "source_location": "L256",
       "weight": 1.0,
       "_origin": "ast",
       "source": "visuals_8_key_ux_interactions",
@@ -23584,7 +23630,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "VISUALS.md",
-      "source_location": "L261",
+      "source_location": "L262",
       "weight": 1.0,
       "_origin": "ast",
       "source": "visuals_8_key_ux_interactions",
@@ -23593,5 +23639,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "5902dd96744811e09fb33f83c36da834d92ba0be"
+  "built_at_commit": "c1e8c1325491c3970f74b3bfdf0f54b290cff7b2"
 }

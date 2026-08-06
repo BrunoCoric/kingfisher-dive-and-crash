@@ -3,18 +3,39 @@
   flex: none;
   align-items: center;
   justify-content: space-between;
-  gap: 0.45rem;
+  gap: 0.55rem;
   width: 100%;
-  /* Fixed chrome height so buttons / story never shove the river down. */
-  height: 2.05rem;
-  min-height: 2.05rem;
-  max-height: 2.05rem;
-  padding: 0.1rem 0.2rem 0.2rem;
+  min-height: 2.85rem;
+  padding: 0.45rem 0.65rem;
   overflow: hidden;
-  border: none;
-  border-bottom: 1.5px dashed rgba(46, 75, 42, 0.22);
-  background: transparent;
-  box-shadow: none;
+  border: 1.5px solid rgba(46, 75, 42, 0.18);
+  border-radius: 0.95rem;
+  background: rgba(250, 243, 227, 0.88);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    0 6px 16px var(--shadow-soft);
+  backdrop-filter: blur(8px);
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    background 160ms ease;
+}
+
+.active {
+  border-color: rgba(217, 164, 22, 0.55);
+  background: linear-gradient(
+    165deg,
+    rgba(255, 248, 220, 0.96),
+    rgba(250, 243, 227, 0.92)
+  );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    0 0 0 1px rgba(247, 205, 106, 0.35),
+    0 8px 20px rgba(217, 164, 22, 0.22);
+}
+
+.idle {
+  opacity: 0.92;
 }
 
 .copy {
@@ -23,8 +44,42 @@
   flex: 1;
   flex-wrap: nowrap;
   align-items: center;
-  gap: 0.3rem 0.5rem;
+  gap: 0.35rem 0.5rem;
   overflow: hidden;
+}
+
+.actor {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 1.85rem;
+  height: 1.85rem;
+  border: 2px solid var(--actor-accent, var(--forest-deep));
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.55);
+  overflow: hidden;
+  box-shadow: 0 2px 6px var(--shadow-soft);
+}
+
+.actor img {
+  width: 140%;
+  height: 140%;
+  object-fit: cover;
+  object-position: center 35%;
+}
+
+.you {
+  flex: none;
+  padding: 0.12rem 0.45rem;
+  border-radius: 999px;
+  background: linear-gradient(160deg, #f7cd6a, var(--status-highlight));
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  box-shadow: 0 2px 6px rgba(217, 164, 22, 0.35);
 }
 
 .phase {
@@ -32,17 +87,21 @@
   overflow: hidden;
   color: var(--forest-deep);
   font-family: var(--font-display);
-  font-size: 0.76rem;
-  font-weight: 700;
+  font-size: 0.88rem;
+  font-weight: 800;
   letter-spacing: 0.01em;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
+.active .phase {
+  font-size: 0.92rem;
+}
+
 .story {
   overflow: hidden;
   color: var(--ink);
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   font-weight: 600;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -53,7 +112,7 @@
   flex: none;
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -88,12 +147,12 @@
 }
 
 .actions :global(button) {
-  min-height: 1.75rem;
-  padding: 0.18rem 0.65rem;
+  min-height: 2rem;
+  padding: 0.22rem 0.75rem;
   border-radius: 999px;
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: 0.7rem;
+  font-size: 0.74rem;
 }
 
 .actions :global(button[data-primary]) {
@@ -107,4 +166,24 @@
   border: 1.5px solid rgba(43, 36, 32, 0.28);
   background: rgba(250, 243, 227, 0.65);
   color: var(--ink);
+}
+
+@media (max-width: 560px) {
+  .line {
+    min-height: 2.65rem;
+    padding: 0.4rem 0.55rem;
+    border-radius: 0.85rem;
+  }
+
+  .phase {
+    font-size: 0.8rem;
+  }
+
+  .active .phase {
+    font-size: 0.84rem;
+  }
+
+  .story {
+    display: none;
+  }
 }

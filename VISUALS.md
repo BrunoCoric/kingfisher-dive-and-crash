@@ -93,13 +93,14 @@ Phone is the design target. The board lives in a **fixed viewport shell** (`100d
 ```
 ┌────────────────────────────────────────────┐  100dvh
 │  Logo · [Scores flock] · Round/Step        │  slim masthead
-│  Status line (phase / hint / outcome)      │
 ├────────────────────────────────────────────┤
 │                                            │
 │            RIVER BOARD (scroll ok)         │
 │            flows downstream ↓              │
 │  ┌ hand ┐                                  │
 │  │ fan  │                                  │
+├────────────────────────────────────────────┤
+│  Status dock (Your turn / phase / actions) │  thumb-zone focus
 └────────────────────────────────────────────┘
 ```
 
@@ -108,7 +109,7 @@ Phone is the design target. The board lives in a **fixed viewport shell** (`100d
 - Your action cards are a **held hand overlay** in the **bottom-left** of the river stage (fanned parchment cards). They float over the board — they do not take a permanent full-width strip.
 - The hand can be **minimized** to a small pill (selected/locked action + count) so the river is fully readable; expand again to pick a card.
 - Play flow: tap a card → tap a legal zone → committed. Tap the same card again to cancel. Hover: tap one face-down zone to peek and lock immediately (Skip peek only if none remain).
-- Phase / targeting / outcome share **one status line**.
+- Phase / targeting / outcome share **one status dock** pinned under the river (thumb zone) — not under the masthead.
 - River stage scrolls vertically when zones need space; page chrome stays pinned.
 
 ### Desktop
@@ -156,7 +157,7 @@ Guidelines:
 - Masthead holds a **Scores** flock chip (fish-deck count + stacked avatars + ready count + 1st marker). Opens a bottom parchment sheet: every bird, score, first-player badge, ready/reveal.
 - Tap a row to expand that player's **public scoring pile** (fish chips with points). Hands stay private.
 - Leading score tints gold. Your row is softly outlined.
-- Status remains a dashed ink line under the masthead (phase / targeting / outcome). River chips still answer “where?” after a step.
+- Status is a parchment **dock under the river** (phase / targeting / outcome). Active turns get a sun rim + **Your turn** pill; placement waiting shows the current bird’s face. River chips still answer “where?” after a step.
 
 ### Held hand (bottom-left overlay)
 - Small fanned parchment cards (icon + label) sit bottom-left over the river — like cards in hand.
@@ -217,7 +218,7 @@ Board is the source of truth; HUD story line is the accessible companion (`aria-
 - **Pawn reactions** — CSS one-shots on the actor's kingfisher: catch bounce + "+", crash tilt + red ×, steal lean + STEAL chip, blocked wet shake + purple drip, pike recoil + "!".
 - **Outcome story** — one sentence under the phase banner, e.g. `Pied CRASH Z2 · Azure STEAL Z2`.
 - **Stable layout** — zone tiles and the status line reserve chip/button space at all times so feedback never resizes or shoves the river.
-- Lifetime: badges / chips / reveals / reactions stay through the following selection phase (until the next `resolveStep`). After **step 3**, the game pauses in a cleanup review beat with the same river feedback still up. Tap status-line **Next round** to drift/restock and clear the feedback before placement.
+- Lifetime: badges / chips / reveals / reactions stay through the following selection phase (until the next `resolveStep`). After **step 3**, the game pauses in a cleanup review beat with the same river feedback still up. Tap status-dock **Next round** to drift/restock and clear the feedback before placement.
 
 > Rule of thumb: players must be able to reconstruct exactly what happened by looking at the river + opponent rows. Color is never the only signal (icon + text).
 
@@ -263,7 +264,7 @@ Two clear sub-moments, both surfaced with distinct UI:
 
 ### End of Round Cleanup
 - First: hold on the river so players can read step-3 chips / badges (same “read it on the river” language as mid-round).
-- Status line shows the outcome story plus a primary **Next round**.
+- Status dock shows the outcome story plus a primary **Next round**.
 - On Next round: fish cards **slide one zone downstream** (~700ms; last zone fades off the board), status says “Fish drift downstream…”, then cleanup commits (hands reset, empties restock, placement). Skip the motion when `prefers-reduced-motion`.
 
 ---
@@ -297,7 +298,7 @@ Two clear sub-moments, both surfaced with distinct UI:
 | **Peek modal** | Hover peeks, face-down fish reveal. |
 | **Crash / outcome overlay** | Zone-anchored badges + pawn reactions + `OutcomeStory` line (not modal dialogs). |
 | **Personal outcome splash** | Local-only bird burst on catch / steal / crash; auto-dismiss; does not replace river feedback. |
-| **Round review** | Same board + status-line **Next round** (no modal). |
+| **Round review** | Same board + status-dock **Next round** (no modal). |
 | **Game over** | Winner celebration, final scoreboard, main menu button. |
 | **Rules cheatsheet** | Bottom-right `? Rules` → parchment collision reference. |
 

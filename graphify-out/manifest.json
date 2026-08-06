@@ -10,8 +10,8 @@
     "semantic_hash": ""
   },
   "src/Board.tsx": {
-    "mtime": 1786043971.5868726,
-    "ast_hash": "c78ec79fae77e94d8c2dfc1d26748a86",
+    "mtime": 1786045141.158,
+    "ast_hash": "d6469777f8e56669b50e66c1663eecf4",
     "semantic_hash": ""
   },
   "src/components/ActionCard.tsx": {
@@ -135,8 +135,8 @@
     "semantic_hash": ""
   },
   "DESIGN.md": {
-    "mtime": 1786044332.8307009,
-    "ast_hash": "8cd53c8e5f88fd1c84a7268963d10fa5",
+    "mtime": 1786045128.23973,
+    "ast_hash": "2d53940028250b18a9e75c8cd9094e3a",
     "semantic_hash": ""
   },
   "README.md": {
@@ -145,8 +145,8 @@
     "semantic_hash": ""
   },
   "VISUALS.md": {
-    "mtime": 1786041038.8740878,
-    "ast_hash": "81940715d37a248451550b0e5eac7de0",
+    "mtime": 1786045143.4778762,
+    "ast_hash": "bb75650fbf56ab933a5ee22880753399",
     "semantic_hash": ""
   },
   "index.html": {
@@ -305,8 +305,8 @@
     "semantic_hash": ""
   },
   "src/components/StatusLine.tsx": {
-    "mtime": 1786036143.550137,
-    "ast_hash": "e42c379fdf3eadfa955d03e3c8c296df",
+    "mtime": 1786045087.1349392,
+    "ast_hash": "cd9e0a03c51970bde9fc6a8feaa1da94",
     "semantic_hash": ""
   },
   "src/lib/boardChrome.tsx": {

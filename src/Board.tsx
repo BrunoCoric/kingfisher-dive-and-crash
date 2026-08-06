@@ -4,7 +4,7 @@ import type { CardType, GameState, StepSelection } from './game/types'
 import { canSightline, openHoverTargets, playerReach, reachFromPerch } from './game/powers'
 import { hasLegalStepMove } from './game/enumerate'
 import { hasHoverPeekTarget, isHoverPeekTarget } from './game/hoverPeek'
-import { seatKingfisher } from './lib/presentation'
+import { seatKingfisher, speciesShort } from './lib/presentation'
 import { playerReactions, zoneActions, zoneOutcomes } from './lib/stepFeedback'
 import { statusActionsFor, statusHintFor } from './lib/boardChrome'
 import { cueRoundAdvanceSfx, playSfx } from './lib/sfx'
@@ -242,6 +242,16 @@ export function Board(props: BoardProps<GameState> & BoardExtra) {
     setPending({ card })
   }
 
+  const turnPid = placing ? ctx.currentPlayer : undefined
+  const turnBird = turnPid ? seatKingfisher(G, turnPid) : null
+  const turnActor = turnBird && turnPid
+    ? {
+        shortName: speciesShort(G, turnPid),
+        sprite: turnBird.sprite,
+        accent: turnBird.accent,
+      }
+    : null
+
   return (
     <div className={styles.app}>
       <header className={styles.header}>
@@ -278,17 +288,6 @@ export function Board(props: BoardProps<GameState> & BoardExtra) {
           showReveals={showReveals}
           reactions={reactions}
           onClose={() => setRosterOpen(false)}
-        />
-      )}
-
-      {myID !== '' && (
-        <StatusLine
-          G={G}
-          isActive={statusActive}
-          isSighting={sightLineOpen}
-          showStory={showStepFeedback && !statusHint}
-          hint={statusHint}
-          actions={statusActions}
         />
       )}
 
@@ -347,6 +346,18 @@ export function Board(props: BoardProps<GameState> & BoardExtra) {
           />
         </div>
       </div>
+
+      {myID !== '' && (
+        <StatusLine
+          G={G}
+          isActive={statusActive}
+          isSighting={sightLineOpen}
+          showStory={showStepFeedback && !statusHint}
+          hint={statusHint}
+          actions={statusActions}
+          actor={turnActor}
+        />
+      )}
 
       {onMenu && <GameOver game={G} playOrder={ctx.playOrder as string[]} onMenu={onMenu} />}
     </div>
