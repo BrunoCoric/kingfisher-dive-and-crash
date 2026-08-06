@@ -2,7 +2,7 @@ import { useState } from 'react'
 import type { CalloutKind, CardType, FishCard, GameState, StepSelection } from '../game/types'
 import { STEPS_PER_ROUND } from '../game/cards'
 import { selectionDetail } from '../lib/stepFeedback'
-import { FISH_LABEL, kingfisher, speciesShort } from '../lib/presentation'
+import { FISH_LABEL, kingfisher, speciesShort, CARD_ACCENT } from '../lib/presentation'
 import { ActionIcon } from './ActionIcon'
 import { FishIcon } from './FishIcon'
 import styles from './RosterSheet.module.css'
@@ -121,7 +121,12 @@ function RoundPlays({ plays }: { plays: CardType[] }) {
           return <span key={`empty-${i}`} className={styles.playEmpty} aria-hidden />
         }
         return (
-          <span key={`${card}-${i}`} className={styles.playChip} title={card}>
+          <span
+            key={`${card}-${i}`}
+            className={styles.playChip}
+            title={card}
+            style={{ ['--card-accent' as string]: CARD_ACCENT[card] }}
+          >
             <ActionIcon card={card} className={styles.icon} />
           </span>
         )
@@ -140,7 +145,10 @@ function RevealLine({
   const detail = selectionDetail(reveal)
   return (
     <div className={styles.reveal}>
-      <span className={styles.revealIcon}>
+      <span
+        className={styles.revealIcon}
+        style={{ ['--card-accent' as string]: CARD_ACCENT[reveal.card] }}
+      >
         <ActionIcon card={reveal.card} className={styles.icon} />
       </span>
       <span>
