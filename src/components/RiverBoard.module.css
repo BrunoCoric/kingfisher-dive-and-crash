@@ -1,0 +1,248 @@
+.frame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 30rem;
+}
+
+.board {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+  width: 100%;
+  padding: 1rem 0.5rem 1.1rem;
+  border-radius: 2rem 2.4rem 2.1rem 1.8rem / 2.2rem 1.85rem 2.4rem 2rem;
+  background:
+    radial-gradient(18% 14% at 22% 18%, rgba(255, 252, 230, 0.55), transparent 70%),
+    radial-gradient(16% 12% at 78% 42%, rgba(255, 248, 214, 0.4), transparent 70%),
+    radial-gradient(20% 16% at 40% 72%, rgba(255, 250, 220, 0.35), transparent 72%),
+    radial-gradient(130% 55% at 50% -6%, rgba(255, 246, 214, 0.82), transparent 58%),
+    radial-gradient(40% 30% at 8% 40%, rgba(196, 164, 106, 0.35), transparent 70%),
+    radial-gradient(40% 30% at 92% 60%, rgba(196, 164, 106, 0.3), transparent 70%),
+    linear-gradient(
+      90deg,
+      var(--bank-cliff) 0%,
+      var(--bank-deep) 10%,
+      var(--bank-sand) 18%,
+      var(--bank-sand) 82%,
+      var(--bank-deep) 90%,
+      var(--bank-cliff) 100%
+    );
+  border: 3px solid rgba(46, 75, 42, 0.32);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 248, 214, 0.45),
+    inset 0 0 32px rgba(46, 75, 42, 0.18),
+    0 4px 0 rgba(90, 56, 24, 0.12),
+    0 16px 36px rgba(43, 36, 32, 0.28);
+  overflow: hidden;
+}
+
+.flowHint {
+  position: absolute;
+  top: 0.45rem;
+  right: 0.5rem;
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  width: 1.55rem;
+  height: 1.55rem;
+  border-radius: 999px;
+  background: rgba(250, 243, 227, 0.88);
+  color: var(--water-deep);
+  border: 1.5px solid rgba(46, 75, 42, 0.22);
+  box-shadow: 0 2px 5px var(--shadow-soft);
+  pointer-events: none;
+}
+
+.flowArrow {
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
+/* paper grain over the whole diorama frame */
+.grain {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: var(--paper-grain);
+  background-size: 140px 140px;
+  opacity: 0.11;
+  mix-blend-mode: multiply;
+  border-radius: inherit;
+}
+
+/* Soft river sheen under the puddles — pigment wash, not a glass strip */
+.spine {
+  position: absolute;
+  top: 8%;
+  bottom: 6%;
+  left: 50%;
+  z-index: 0;
+  width: 58%;
+  transform: translateX(-50%);
+  border-radius: 48% / 8%;
+  background: linear-gradient(
+    180deg,
+    rgba(90, 158, 184, 0.12) 0%,
+    rgba(90, 158, 184, 0.06) 45%,
+    rgba(90, 158, 184, 0.14) 100%
+  );
+  pointer-events: none;
+}
+
+.spineSheen {
+  position: absolute;
+  top: 10%;
+  bottom: 8%;
+  left: 50%;
+  z-index: 0;
+  width: 42%;
+  transform: translateX(-50%);
+  border-radius: 50% / 10%;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255, 252, 245, 0.22) 48%,
+    transparent 66%
+  );
+  pointer-events: none;
+  animation: washBreathe 8s ease-in-out infinite;
+}
+
+.foliage {
+  position: absolute;
+  width: 6.4rem;
+  height: 6.4rem;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.9;
+}
+
+.foliageTL {
+  top: -1.8rem;
+  left: -1.6rem;
+}
+
+.foliageTR {
+  top: -1.8rem;
+  right: -1.6rem;
+}
+
+.foliageBL {
+  bottom: -1.8rem;
+  left: -1.6rem;
+}
+
+.foliageBR {
+  right: -1.6rem;
+  bottom: -1.8rem;
+}
+
+.row {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  /* Narrow banks + overlap into the water so perches hug the puddles */
+  grid-template-columns: 3.1rem 1fr 3.1rem;
+  align-items: stretch;
+  gap: 0;
+  /* Match zone min-height so bank/perch columns don't reflow with feedback. */
+  min-height: 5.85rem;
+}
+
+/* banks sit above water so birds/branches never get a hard water-box behind them */
+.row > :first-child,
+.row > :last-child {
+  position: relative;
+  z-index: 3;
+}
+
+/* pull perches toward the river (close the sand gutter) */
+.row > :first-child {
+  transform: translateX(0.85rem);
+}
+
+.row > :last-child {
+  transform: translateX(-0.85rem);
+}
+
+.spacer {
+  display: block;
+}
+
+.boardDrifting {
+  pointer-events: none;
+}
+
+/* Invisible beat keeps drift timing in sync (fires onAnimationEnd once). */
+.driftBeat {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+  animation: driftBeat 0.7s linear forwards;
+}
+
+@keyframes driftBeat {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes washBreathe {
+  0%,
+  100% {
+    opacity: 0.65;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+@media (max-width: 560px) {
+  .board {
+    gap: 0.06rem;
+    padding: 0.75rem 0.32rem 0.85rem;
+    border-radius: 1.6rem 1.9rem 1.7rem 1.5rem / 1.8rem 1.5rem 1.9rem 1.6rem;
+  }
+
+  .row {
+    grid-template-columns: 2.85rem 1fr 2.85rem;
+    gap: 0;
+    min-height: 5.55rem;
+  }
+
+  .row > :first-child {
+    transform: translateX(0.7rem);
+  }
+
+  .row > :last-child {
+    transform: translateX(-0.7rem);
+  }
+
+  .flowHint {
+    top: 0.32rem;
+    right: 0.35rem;
+    width: 1.35rem;
+    height: 1.35rem;
+  }
+
+  .flowArrow {
+    width: 0.82rem;
+    height: 0.82rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spineSheen,
+  .driftBeat {
+    animation: none;
+  }
+}

@@ -1,0 +1,33 @@
+# Dependencies & build
+node_modules
+dist
+dist-ssr
+*.local
+*.tsbuildinfo
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# Editor / OS
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+Thumbs.db
+
+# One-off debug scratchpads (keep _bot_*.mts / _sim_legacy.mts / _hover_test.mts)
+_dbg*.mts
+
+# Graphify caches & dated backups (keep graph.json / GRAPH_REPORT.md)
+graphify-out/cache/
+graphify-out/[0-9][0-9][0-9][0-9]-*/

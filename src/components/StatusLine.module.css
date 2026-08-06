@@ -1,0 +1,110 @@
+.line {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.45rem;
+  width: 100%;
+  /* Fixed chrome height so buttons / story never shove the river down. */
+  height: 2.05rem;
+  min-height: 2.05rem;
+  max-height: 2.05rem;
+  padding: 0.1rem 0.2rem 0.2rem;
+  overflow: hidden;
+  border: none;
+  border-bottom: 1.5px dashed rgba(46, 75, 42, 0.22);
+  background: transparent;
+  box-shadow: none;
+}
+
+.copy {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.3rem 0.5rem;
+  overflow: hidden;
+}
+
+.phase {
+  flex: none;
+  overflow: hidden;
+  color: var(--forest-deep);
+  font-family: var(--font-display);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.story {
+  overflow: hidden;
+  color: var(--ink);
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  opacity: 0.72;
+}
+
+.callout {
+  flex: none;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.catch {
+  color: var(--status-success);
+}
+
+.crash {
+  color: var(--status-crash);
+}
+
+.steal {
+  color: var(--flame);
+}
+
+.blocked {
+  color: var(--status-hazard);
+}
+
+.pike {
+  color: var(--status-crash);
+}
+
+.actions {
+  display: flex;
+  flex: none;
+  flex-wrap: nowrap;
+  gap: 0.3rem;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.actions :global(button) {
+  min-height: 1.75rem;
+  padding: 0.18rem 0.65rem;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.7rem;
+}
+
+.actions :global(button[data-primary]) {
+  border: none;
+  background: linear-gradient(160deg, #f7cd6a, var(--status-highlight));
+  color: var(--ink);
+  box-shadow: 0 2px 7px rgba(217, 164, 22, 0.4);
+}
+
+.actions :global(button[data-secondary]) {
+  border: 1.5px solid rgba(43, 36, 32, 0.28);
+  background: rgba(250, 243, 227, 0.65);
+  color: var(--ink);
+}

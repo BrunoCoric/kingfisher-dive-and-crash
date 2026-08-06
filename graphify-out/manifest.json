@@ -1,0 +1,347 @@
+{
+  "package.json": {
+    "mtime": 1785966609.4204862,
+    "ast_hash": "f81a142af8abe172f6ba69809562872a",
+    "semantic_hash": ""
+  },
+  "src/App.tsx": {
+    "mtime": 1786019130.5482616,
+    "ast_hash": "bd1965d05b8dca8cd6e1a2c6d7fc5e11",
+    "semantic_hash": ""
+  },
+  "src/Board.tsx": {
+    "mtime": 1786023797.197673,
+    "ast_hash": "941d95177a3bb5c6ef9d6622fab9fa4e",
+    "semantic_hash": ""
+  },
+  "src/components/ActionCard.tsx": {
+    "mtime": 1786017426.7283294,
+    "ast_hash": "dc53c4a6792e58b4663dceb328e78177",
+    "semantic_hash": ""
+  },
+  "src/components/FishCard.tsx": {
+    "mtime": 1785998362.4449654,
+    "ast_hash": "71a0b7b0ca67c585eeb3091cd34dad5e",
+    "semantic_hash": ""
+  },
+  "src/components/GameOver.tsx": {
+    "mtime": 1785999066.9686825,
+    "ast_hash": "35ab9e8e5c456e89a21dd340c784ec0d",
+    "semantic_hash": ""
+  },
+  "src/components/Hand.tsx": {
+    "mtime": 1786017437.2000022,
+    "ast_hash": "2d298a73e1ec34f592274e7f6b2beb06",
+    "semantic_hash": ""
+  },
+  "src/components/Perch.tsx": {
+    "mtime": 1786016551.4274049,
+    "ast_hash": "9416e0c105ff38024cad51ccf221c16c",
+    "semantic_hash": ""
+  },
+  "src/components/RiverBoard.tsx": {
+    "mtime": 1786023780.1470728,
+    "ast_hash": "b64af6f0dd9b10832c638455f53d1c20",
+    "semantic_hash": ""
+  },
+  "src/components/ZoneTile.tsx": {
+    "mtime": 1786023772.94689,
+    "ast_hash": "03bf1a5d285a6f3bdd0787d1d6c63960",
+    "semantic_hash": ""
+  },
+  "src/game/Game.ts": {
+    "mtime": 1786019984.8296995,
+    "ast_hash": "bd639ae41c5545e4595b1a406d4c0975",
+    "semantic_hash": ""
+  },
+  "src/game/cards.ts": {
+    "mtime": 1786021104.2415028,
+    "ast_hash": "c8151ba5e1ea7ddc72cd8b72d2f8ba87",
+    "semantic_hash": ""
+  },
+  "src/game/cleanup.ts": {
+    "mtime": 1786019985.970867,
+    "ast_hash": "a48d981bc6bb7d0aed4410ddbc7b0d16",
+    "semantic_hash": ""
+  },
+  "src/game/fish.ts": {
+    "mtime": 1785968390.114065,
+    "ast_hash": "43071df28e32f8d01a1c3fb1298a4ba7",
+    "semantic_hash": ""
+  },
+  "src/game/kingfishers.ts": {
+    "mtime": 1785969527.5507033,
+    "ast_hash": "a439fcd5d131e5f219dfe5e9a3ec38ea",
+    "semantic_hash": ""
+  },
+  "src/game/moves.ts": {
+    "mtime": 1786019612.4902158,
+    "ast_hash": "d25491d97b9470710717cabc771370b5",
+    "semantic_hash": ""
+  },
+  "src/game/reach.ts": {
+    "mtime": 1786019600.049954,
+    "ast_hash": "4d49f43a8bb5ed544204f82157c806fa",
+    "semantic_hash": ""
+  },
+  "src/game/resolution.ts": {
+    "mtime": 1786021101.916799,
+    "ast_hash": "ea35b3aa2af91d2bf4b9ab641968e981",
+    "semantic_hash": ""
+  },
+  "src/game/types.ts": {
+    "mtime": 1786020082.8434067,
+    "ast_hash": "f615f2a32f7c083d7604922560142d06",
+    "semantic_hash": ""
+  },
+  "src/lib/presentation.ts": {
+    "mtime": 1785998108.2840521,
+    "ast_hash": "36bb9b364d07d9db3a89513532bdd748",
+    "semantic_hash": ""
+  },
+  "src/main.tsx": {
+    "mtime": 1785966934.213301,
+    "ast_hash": "ed253c2b35b20c0bd9f01ca372994410",
+    "semantic_hash": ""
+  },
+  "src/vite-env.d.ts": {
+    "mtime": 1785969537.1466427,
+    "ast_hash": "0352474ba2918efe13895edbc3780d94",
+    "semantic_hash": ""
+  },
+  "tsconfig.app.json": {
+    "mtime": 1785966651.6558287,
+    "ast_hash": "e41daaf614e5dd285940b710c74985db",
+    "semantic_hash": ""
+  },
+  "tsconfig.json": {
+    "mtime": 1785966648.680141,
+    "ast_hash": "58d5c538670794407a86033c46d2136b",
+    "semantic_hash": ""
+  },
+  "tsconfig.node.json": {
+    "mtime": 1785966654.1346924,
+    "ast_hash": "ed4461b2814b852d0818c1b41e9f499b",
+    "semantic_hash": ""
+  },
+  "vite.config.ts": {
+    "mtime": 1785966656.3622544,
+    "ast_hash": "7e8d2d2a67cf6717bea85b97e1fd198c",
+    "semantic_hash": ""
+  },
+  "AGENTS.md": {
+    "mtime": 1786007044.7241368,
+    "ast_hash": "e717871f714119552c59b46d2fab1a91",
+    "semantic_hash": ""
+  },
+  "DESIGN.md": {
+    "mtime": 1786023798.8252766,
+    "ast_hash": "187d63c7db0a6280168bba4faf1f3f24",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1786021104.7639685,
+    "ast_hash": "64528d731bf38bff0660b2cdda2e0975",
+    "semantic_hash": ""
+  },
+  "VISUALS.md": {
+    "mtime": 1786023800.7668083,
+    "ast_hash": "252cf61d29cb6cbad542eec6d21672fb",
+    "semantic_hash": ""
+  },
+  "index.html": {
+    "mtime": 1785974374.3344305,
+    "ast_hash": "e2ad2499a32b5f3ee9b747a42b828682",
+    "semantic_hash": ""
+  },
+  "src/assets/kingfishers/azure-kingfisher.png": {
+    "mtime": 1785997656.988069,
+    "ast_hash": "cd20b4f8d02677eb6744de6fad57eb11",
+    "semantic_hash": ""
+  },
+  "src/assets/kingfishers/belted-kingfisher.png": {
+    "mtime": 1785997656.9345393,
+    "ast_hash": "7cfd73b57a50b46b8e87a2206b0233b6",
+    "semantic_hash": ""
+  },
+  "src/assets/kingfishers/common-kingfisher.png": {
+    "mtime": 1785997656.7598367,
+    "ast_hash": "23590ccfbd5590e84885352dca2b5d50",
+    "semantic_hash": ""
+  },
+  "src/assets/kingfishers/oriental-dwarf-kingfisher.png": {
+    "mtime": 1785997656.8736773,
+    "ast_hash": "7b91f20e38b6c63e985d41119583f493",
+    "semantic_hash": ""
+  },
+  "src/assets/kingfishers/pied-kingfisher.png": {
+    "mtime": 1785997656.815969,
+    "ast_hash": "6ec8f664adf9524013f3443d1ace2bf7",
+    "semantic_hash": ""
+  },
+  "_bot_sim.mts": {
+    "mtime": 1786004915.0531268,
+    "ast_hash": "2d85a6ea77fc84ef0768e5d2cf99fe41",
+    "semantic_hash": ""
+  },
+  "_hover_test.mts": {
+    "mtime": 1786019703.9484265,
+    "ast_hash": "27b1a5bd62996178d6d433ddd17da8d5",
+    "semantic_hash": ""
+  },
+  "src/StartScreen.tsx": {
+    "mtime": 1786004649.1809146,
+    "ast_hash": "cb2de71366432b5b1ed24775a98d2d8f",
+    "semantic_hash": ""
+  },
+  "src/components/ActionIcon.tsx": {
+    "mtime": 1785998064.5342398,
+    "ast_hash": "01cb29f1fcd2578bbf485c6d5396ef1b",
+    "semantic_hash": ""
+  },
+  "src/components/FishCardBack.tsx": {
+    "mtime": 1786000107.3075283,
+    "ast_hash": "bfceb27fb9afb6537e388e8835124ab2",
+    "semantic_hash": ""
+  },
+  "src/components/FishIcon.tsx": {
+    "mtime": 1785998083.9520025,
+    "ast_hash": "89d473b8cf5de9d85da7eab30090ae54",
+    "semantic_hash": ""
+  },
+  "src/game/bot.ts": {
+    "mtime": 1786014013.1130648,
+    "ast_hash": "4610c8aa3690f00ff38c38134025ae3d",
+    "semantic_hash": ""
+  },
+  "src/game/enumerate.ts": {
+    "mtime": 1786019606.0622385,
+    "ast_hash": "5c8c7ec7229e493e9fe76eb859f7508c",
+    "semantic_hash": ""
+  },
+  "src/game/playerView.ts": {
+    "mtime": 1786019991.9658098,
+    "ast_hash": "0516a9e300810bf439a73600cedc5d3d",
+    "semantic_hash": ""
+  },
+  "_bot_ab.mts": {
+    "mtime": 1786013914.3328352,
+    "ast_hash": "38dabde67f7c725fe1721cf714d0535a",
+    "semantic_hash": ""
+  },
+  "_bot_diag.mts": {
+    "mtime": 1786014033.4546478,
+    "ast_hash": "13d4feaf7e759b150dd8ff724d7697ba",
+    "semantic_hash": ""
+  },
+  "_bot_probe.mts": {
+    "mtime": 1786014227.1056087,
+    "ast_hash": "3c0803e9200f6c1f0c27c6577b5a89be",
+    "semantic_hash": ""
+  },
+  "_sim_legacy.mts": {
+    "mtime": 1786013613.0890648,
+    "ast_hash": "62f1bbf25daf846a51521b34346a8272",
+    "semantic_hash": ""
+  },
+  "src/game/ai/belief.ts": {
+    "mtime": 1786014380.5829926,
+    "ast_hash": "1a0da413d9e678fd8480315a22d1cf02",
+    "semantic_hash": ""
+  },
+  "src/game/ai/legacy.ts": {
+    "mtime": 1786014021.225984,
+    "ast_hash": "c11a3266793b2938b21a4b1a8dc6a0e4",
+    "semantic_hash": ""
+  },
+  "src/game/ai/memory.ts": {
+    "mtime": 1786020786.2663069,
+    "ast_hash": "7e084d7682b9cfbe6f1a2718e36012b5",
+    "semantic_hash": ""
+  },
+  "src/game/ai/risk.ts": {
+    "mtime": 1786015308.5474815,
+    "ast_hash": "a45cb9441b4cf3dbae6e456522e93996",
+    "semantic_hash": ""
+  },
+  "src/game/ai/scoring.ts": {
+    "mtime": 1786015341.8279605,
+    "ast_hash": "acf9048cd576c90b87d04241154ec93b",
+    "semantic_hash": ""
+  },
+  "src/game/ai/select.ts": {
+    "mtime": 1786014252.1155176,
+    "ast_hash": "a3b989d99039bd731ccf115e70c091d2",
+    "semantic_hash": ""
+  },
+  "src/game/ai/types.ts": {
+    "mtime": 1786014369.7760513,
+    "ast_hash": "ae2515978dc11fa53e8b9efa3cfffbec",
+    "semantic_hash": ""
+  },
+  "src/game/ai/values.ts": {
+    "mtime": 1786015335.4585922,
+    "ast_hash": "5aad8655a32c518739b82749896476a4",
+    "semantic_hash": ""
+  },
+  "src/lib/stepFeedback.ts": {
+    "mtime": 1786020090.7506573,
+    "ast_hash": "f71ee01f58820ee37e64f9f83048e036",
+    "semantic_hash": ""
+  },
+  "src/components/scene/BankFoliageSvg.tsx": {
+    "mtime": 1786016741.693055,
+    "ast_hash": "18ccb3017827a21ce5da81ef99781855",
+    "semantic_hash": ""
+  },
+  "src/components/scene/BranchSvg.tsx": {
+    "mtime": 1786016741.6721826,
+    "ast_hash": "605c43695fadc6951c5542519c93686b",
+    "semantic_hash": ""
+  },
+  "src/components/scene/ReedSvg.tsx": {
+    "mtime": 1786016741.6823995,
+    "ast_hash": "a47cf8b8836e11f3d3e6c6b24a84d01e",
+    "semantic_hash": ""
+  },
+  "src/components/StatusLine.tsx": {
+    "mtime": 1786019131.853032,
+    "ast_hash": "c6500213329ab70e3c51b4ea431bc382",
+    "semantic_hash": ""
+  },
+  "src/lib/boardChrome.tsx": {
+    "mtime": 1786019437.4654155,
+    "ast_hash": "e5b0744d418622f16b09b626f7af9ea8",
+    "semantic_hash": ""
+  },
+  "src/components/RosterButton.tsx": {
+    "mtime": 1786019998.8609054,
+    "ast_hash": "9257d2baf070b20f40d1af131bec6948",
+    "semantic_hash": ""
+  },
+  "src/components/RosterSheet.tsx": {
+    "mtime": 1786017766.9120302,
+    "ast_hash": "5a1d719abb4f6a86c9b66470cf098f43",
+    "semantic_hash": ""
+  },
+  "src/components/scene/WaterPuddleSvg.tsx": {
+    "mtime": 1786023448.462575,
+    "ast_hash": "71881feb450fd4bbf0f581251c9c65bb",
+    "semantic_hash": ""
+  },
+  "src/game/hoverPeek.ts": {
+    "mtime": 1786019415.2832484,
+    "ast_hash": "cf4d945f81fdd07c71a7533e334fd561",
+    "semantic_hash": ""
+  },
+  "src/components/RulesCheatsheet.tsx": {
+    "mtime": 1786021103.8817132,
+    "ast_hash": "82fbcfd7794be91a209b62d97b9ef816",
+    "semantic_hash": ""
+  },
+  "src/components/scene/waterRecipes.ts": {
+    "mtime": 1786023438.8785434,
+    "ast_hash": "337a25d725e9c135fa6c18e19c6893e4",
+    "semantic_hash": ""
+  }
+}

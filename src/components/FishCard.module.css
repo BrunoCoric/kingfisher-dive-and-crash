@@ -1,0 +1,121 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.05rem;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.55rem;
+  background:
+    radial-gradient(120% 80% at 30% 0%, rgba(255, 255, 255, 0.55), transparent 50%),
+    linear-gradient(160deg, var(--parchment), var(--parchment-deep));
+  border: 1.5px solid rgba(43, 36, 32, 0.16);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.55) inset,
+    0 3px 8px rgba(15, 61, 79, 0.35),
+    0 1px 3px var(--shadow-soft);
+  color: var(--ink);
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: var(--paper-grain);
+  background-size: 80px 80px;
+  opacity: 0.08;
+  mix-blend-mode: multiply;
+  border-radius: inherit;
+}
+
+.glyph {
+  width: 1.35rem;
+  height: 1.35rem;
+  opacity: 0.72;
+}
+
+.points {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+}
+
+.trout {
+  border-color: var(--gold);
+  background:
+    radial-gradient(120% 80% at 30% 0%, rgba(255, 252, 230, 0.8), transparent 50%),
+    linear-gradient(160deg, #f9e9b6, #e5c25f);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.55) inset,
+    0 3px 10px rgba(217, 164, 22, 0.5),
+    0 1px 3px var(--shadow-soft);
+}
+
+.trout .points {
+  color: #7a5a10;
+}
+
+.trash {
+  background: linear-gradient(160deg, #e8e0d2, #d5c9b4);
+}
+
+.trash .points {
+  color: rgba(43, 36, 32, 0.5);
+}
+
+.pike {
+  border: 2px dashed var(--status-crash);
+  background:
+    radial-gradient(120% 80% at 30% 0%, rgba(255, 255, 255, 0.5), transparent 50%),
+    linear-gradient(160deg, #f6e3d8, #ecc9bd);
+}
+
+.pike .glyph {
+  color: var(--status-crash);
+  opacity: 0.9;
+}
+
+.pike .points {
+  color: var(--status-crash);
+}
+
+.hazardMark {
+  position: absolute;
+  top: 0.12rem;
+  right: 0.28rem;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--status-crash);
+}
+
+.shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent 35%, rgba(255, 255, 255, 0.65) 50%, transparent 65%);
+  background-size: 250% 100%;
+  animation: shimmer 2.6s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 130% 0;
+  }
+  to {
+    background-position: -130% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shimmer {
+    animation: none;
+    opacity: 0;
+  }
+}

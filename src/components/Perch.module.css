@@ -1,0 +1,458 @@
+.perch {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  min-height: 5.15rem;
+  transition: filter 0.15s ease;
+  cursor: default;
+}
+
+.high {
+  min-height: 5.6rem;
+}
+
+.low {
+  min-height: 4.6rem;
+}
+
+/* ---- Perch art: SVG branch (high) or reeds (low) ---- */
+
+.art {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.branchSvg {
+  position: absolute;
+  bottom: 1.15rem;
+  width: 4.35rem;
+  height: 3.45rem;
+}
+
+/* overhang toward the river so birds sit on the water’s edge */
+.left .branchSvg {
+  right: -0.65rem;
+}
+
+.right .branchSvg {
+  left: -0.65rem;
+}
+
+.reedSvg {
+  width: 3.9rem;
+  height: 3.05rem;
+}
+
+.left .reedSvg {
+  transform: translateX(0.3rem);
+}
+
+.right .reedSvg {
+  transform: translateX(-0.3rem);
+}
+
+/* ---- Pawn: elevation = distance (2.5D fake) ---- */
+
+.pawn {
+  position: relative;
+  display: block;
+  width: 3.15rem;
+  height: 3.15rem;
+  z-index: 2;
+}
+
+.high .pawn {
+  transform: translateY(-1rem) scale(1.12);
+  margin-bottom: 1.35rem;
+}
+
+.low .pawn {
+  transform: translateY(0.05rem) scale(0.88);
+  margin-bottom: 0.1rem;
+}
+
+.bobber {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  animation: bob 3s ease-in-out infinite;
+}
+
+.sprite,
+.spriteFlip {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+}
+
+.spriteFlip {
+  transform: scaleX(-1);
+}
+
+/* grounded presence: shadow stays anchored while the sprite bobs */
+.pawnShadow {
+  position: absolute;
+  bottom: -0.1rem;
+  left: 50%;
+  width: 2.15rem;
+  height: 0.48rem;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  background: rgba(43, 36, 32, 0.3);
+  filter: blur(3px);
+  animation: shadowPulse 3s ease-in-out infinite;
+}
+
+.firstStar {
+  position: absolute;
+  top: -0.45rem;
+  right: -0.3rem;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 1.05rem;
+  height: 1.05rem;
+  border-radius: 50%;
+  background: var(--status-highlight);
+  border: 1.5px solid var(--parchment);
+  color: var(--ink);
+  font-size: 0.6rem;
+  box-shadow: 0 2px 4px var(--shadow-soft);
+}
+
+/* ---- Movable target state — soft sun glow on the perch, not an app button ---- */
+
+.movable {
+  cursor: pointer;
+}
+
+.movable::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0.15rem;
+  z-index: 1;
+  width: 2.9rem;
+  height: 2.9rem;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    circle,
+    rgba(242, 193, 78, 0.5) 0%,
+    rgba(242, 193, 78, 0.18) 48%,
+    transparent 72%
+  );
+  animation: sunGlow 1.6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.movable:hover {
+  filter: brightness(1.08);
+}
+
+.movable .art {
+  filter: drop-shadow(0 0 4px rgba(242, 193, 78, 0.55));
+}
+
+.moveHalo {
+  position: absolute;
+  bottom: 0.85rem;
+  left: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 1.55rem;
+  height: 1.55rem;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  color: var(--forest-deep);
+  background: rgba(250, 243, 227, 0.88);
+  border: 1.5px solid rgba(242, 193, 78, 0.85);
+  box-shadow: 0 1px 4px rgba(43, 36, 32, 0.18);
+  animation: haloPulse 1.4s ease-out infinite;
+  pointer-events: none;
+}
+
+.high .moveHalo {
+  bottom: 1.85rem;
+}
+
+.low .moveHalo {
+  bottom: 0.55rem;
+}
+
+.moveArrow {
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes shadowPulse {
+  0%,
+  100% {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(-50%) scale(0.86);
+    opacity: 0.72;
+  }
+}
+
+@keyframes haloPulse {
+  0%,
+  100% {
+    box-shadow: 0 1px 4px rgba(43, 36, 32, 0.18), 0 0 0 0 rgba(242, 193, 78, 0.45);
+  }
+  70% {
+    box-shadow: 0 1px 4px rgba(43, 36, 32, 0.18), 0 0 0 0.4rem rgba(242, 193, 78, 0);
+  }
+}
+
+@keyframes sunGlow {
+  0%,
+  100% {
+    opacity: 0.75;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.08);
+  }
+}
+
+/* ---- Step outcome reactions on the bird ---- */
+
+.reactCatch .bobber {
+  animation: catchBounce 0.55s cubic-bezier(0.2, 1.4, 0.4, 1);
+}
+
+.reactCrash .bobber {
+  animation: crashTilt 0.5s ease-in-out;
+}
+
+.reactSteal .bobber {
+  animation: stealLean 0.55s ease-out;
+}
+
+.reactBlocked .bobber {
+  animation: wetShake 0.55s ease-in-out;
+}
+
+.reactPike .bobber {
+  animation: pikeRecoil 0.55s ease-out;
+}
+
+.cueCatch,
+.cueCrash,
+.cueSteal,
+.cueBlocked,
+.cuePike {
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
+  animation: cuePop 0.55s ease-out both;
+}
+
+.cueCatch {
+  top: -0.35rem;
+  left: 0.15rem;
+  color: var(--status-success);
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 800;
+  text-shadow: 0 1px 0 var(--parchment);
+}
+
+.cueCrash {
+  top: -0.4rem;
+  right: 0.1rem;
+  display: grid;
+  place-items: center;
+  width: 1.15rem;
+  height: 1.15rem;
+  border-radius: 50%;
+  background: var(--status-crash);
+  color: var(--parchment);
+  font-size: 0.85rem;
+  font-weight: 800;
+  line-height: 1;
+  border: 1.5px solid var(--parchment);
+}
+
+.cueSteal {
+  top: -0.55rem;
+  left: 0;
+  right: 0;
+  width: max-content;
+  margin-inline: auto;
+  padding: 0.08rem 0.35rem;
+  border-radius: 0.3rem;
+  background: var(--flame);
+  color: var(--parchment);
+  font-family: var(--font-display);
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  border: 1.5px solid var(--parchment);
+  white-space: nowrap;
+}
+
+.cueBlocked {
+  bottom: -0.15rem;
+  left: 50%;
+  width: 0.55rem;
+  height: 0.7rem;
+  border-radius: 50% 50% 45% 45%;
+  transform: translateX(-50%);
+  background: var(--status-hazard);
+  opacity: 0.85;
+  box-shadow:
+    -0.45rem -0.1rem 0 -0.08rem var(--status-hazard),
+    0.45rem -0.05rem 0 -0.1rem var(--status-hazard);
+}
+
+.cuePike {
+  top: -0.35rem;
+  right: 0.05rem;
+  display: grid;
+  place-items: center;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 0.25rem;
+  background: var(--status-crash);
+  color: var(--parchment);
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 800;
+  border: 1.5px dashed var(--parchment);
+}
+
+@keyframes catchBounce {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  35% {
+    transform: translateY(-10px) scale(1.12);
+  }
+  70% {
+    transform: translateY(-2px) scale(1.04);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes crashTilt {
+  0%,
+  100% {
+    transform: translateX(0) rotate(0);
+  }
+  20% {
+    transform: translateX(-5px) rotate(-12deg);
+  }
+  40% {
+    transform: translateX(5px) rotate(10deg);
+  }
+  60% {
+    transform: translateX(-3px) rotate(-6deg);
+  }
+  80% {
+    transform: translateX(2px) rotate(3deg);
+  }
+}
+
+@keyframes stealLean {
+  0% {
+    transform: translateY(0) rotate(0);
+  }
+  40% {
+    transform: translateY(6px) rotate(14deg) scale(1.05);
+  }
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+}
+
+@keyframes wetShake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-3px) rotate(-4deg);
+  }
+  40% {
+    transform: translateX(3px) rotate(4deg);
+  }
+  60% {
+    transform: translateX(-2px);
+  }
+  80% {
+    transform: translateX(2px);
+  }
+}
+
+@keyframes pikeRecoil {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  35% {
+    transform: translateY(-8px) translateX(-6px) scale(0.92) rotate(-8deg);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes cuePop {
+  0% {
+    opacity: 0;
+    transform: translateY(4px) scale(0.6);
+  }
+  40% {
+    opacity: 1;
+    transform: translateY(0) scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bobber,
+  .pawnShadow,
+  .moveHalo,
+  .movable::before,
+  .reactCatch .bobber,
+  .reactCrash .bobber,
+  .reactSteal .bobber,
+  .reactBlocked .bobber,
+  .reactPike .bobber,
+  .cueCatch,
+  .cueCrash,
+  .cueSteal,
+  .cueBlocked,
+  .cuePike {
+    animation: none;
+  }
+}

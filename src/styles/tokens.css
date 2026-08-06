@@ -1,0 +1,64 @@
+:root {
+  /* Water / River — soft watercolor washes (match bird art) */
+  --water-deep: #3a7a96;
+  --water-mid: #5a9eb8;
+  --water-cyan: #7eb8cc;
+  --water-wash: #a8cfdc;
+  --water-foam: #d4e8ef;
+  --water-glare: #f2f8fa;
+  --water-bloom: #4f8fad;
+  --water-ink: #2d5f78;
+
+  /* Banks / Nature */
+  --bank-sand: #e9d3a3;
+  --bank-deep: #d8bc82;
+  --bank-cliff: #c4a46a;
+  --reed-amber: #c98f3e;
+  --leaf-green: #4c7a3d;
+  --leaf-sun: #6a9a52;
+  --forest-deep: #2e4b2a;
+  --wood: #8a5a33;
+  --wood-dark: #6b4423;
+  --wood-bark: #5a3818;
+
+  /* Water depth — soft pigment, not glass */
+  --water-shadow: rgba(45, 95, 120, 0.28);
+  --water-foam-soft: rgba(212, 232, 239, 0.65);
+
+  /* Card / UI Surfaces */
+  --parchment: #faf3e3;
+  --parchment-deep: #efe2c2;
+  --ink: #2b2420;
+  --shadow-soft: rgba(43, 36, 32, 0.18);
+  --shadow-lift: rgba(43, 36, 32, 0.3);
+  --shadow-ground: rgba(43, 36, 32, 0.22);
+
+  /* Soft paper speckles — pre-baked dots, no feTurbulence (perf) */
+  --paper-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='12' cy='18' r='0.8' fill='%232b2420' opacity='0.18'/%3E%3Ccircle cx='48' cy='8' r='0.6' fill='%232b2420' opacity='0.12'/%3E%3Ccircle cx='64' cy='36' r='0.7' fill='%232b2420' opacity='0.15'/%3E%3Ccircle cx='28' cy='52' r='0.5' fill='%232b2420' opacity='0.14'/%3E%3Ccircle cx='72' cy='62' r='0.9' fill='%232b2420' opacity='0.1'/%3E%3Ccircle cx='8' cy='68' r='0.6' fill='%232b2420' opacity='0.16'/%3E%3Ccircle cx='40' cy='30' r='0.5' fill='%232b2420' opacity='0.12'/%3E%3Ccircle cx='56' cy='70' r='0.7' fill='%232b2420' opacity='0.13'/%3E%3C/svg%3E");
+
+  /* Status */
+  --status-success: #3e9c50;
+  --status-crash: #c93a3a;
+  --status-hazard: #7a5ba6;
+  --status-highlight: #f2c14e;
+  --flame: #e8732a;
+  --gold: #d9a416;
+
+  /* Player accents (species order, see src/game/kingfishers.ts) */
+  --player-0: #2b5fbf;
+  --player-1: #3a3a3a;
+  --player-2: #e8732a;
+  --player-3: #1fa08c;
+  --player-4: #2e9fd6;
+
+  /* Backdrop for modals */
+  --backdrop: rgba(43, 36, 32, 0.4);
+
+  /* Typography */
+  --font-display: 'Baloo 2', 'Fredoka', 'Nunito', system-ui, sans-serif;
+  --font-body: 'Nunito Sans', Inter, system-ui, Arial, sans-serif;
+
+  /* Radii */
+  --radius-card: 0.8rem;
+  --radius-panel: 1.25rem;
+}

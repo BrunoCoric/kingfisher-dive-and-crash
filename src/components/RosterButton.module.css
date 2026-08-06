@@ -1,0 +1,119 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 2rem;
+  padding: 0.15rem 0.5rem 0.15rem 0.25rem;
+  border: 1.5px solid rgba(46, 75, 42, 0.2);
+  border-radius: 999px;
+  background: rgba(250, 243, 227, 0.78);
+  box-shadow: 0 2px 6px var(--shadow-soft);
+  color: var(--forest-deep);
+  backdrop-filter: blur(5px);
+}
+
+.btn:hover {
+  border-color: rgba(46, 75, 42, 0.4);
+}
+
+.deck {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 1.55rem;
+  height: 1.55rem;
+  flex: none;
+  margin-left: 0.1rem;
+}
+
+.deckStack {
+  position: absolute;
+  inset: 0.12rem 0.18rem 0.08rem;
+  border-radius: 0.22rem;
+  background:
+    linear-gradient(160deg, #d7e8f0, #7eafc4 55%, #4a839c);
+  border: 1.5px solid rgba(45, 95, 120, 0.45);
+  box-shadow:
+    2px -1px 0 rgba(250, 243, 227, 0.95),
+    3px -2px 0 rgba(45, 95, 120, 0.28);
+}
+
+.deckCount {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: var(--parchment);
+  text-shadow: 0 1px 1px rgba(45, 95, 120, 0.55);
+}
+
+.flock {
+  display: flex;
+  align-items: center;
+  padding-left: 0.15rem;
+}
+
+.face {
+  display: grid;
+  place-items: center;
+  width: 1.45rem;
+  height: 1.45rem;
+  margin-left: -0.4rem;
+  border-radius: 50%;
+  background: var(--parchment);
+  border: 1.5px solid var(--face-accent, var(--forest-deep));
+  overflow: hidden;
+  box-shadow: 0 1px 3px var(--shadow-soft);
+}
+
+.face:first-child {
+  margin-left: 0;
+}
+
+.face.mine {
+  box-shadow:
+    0 0 0 1.5px var(--status-highlight),
+    0 1px 3px var(--shadow-soft);
+}
+
+.face img {
+  width: 1.3rem;
+  height: 1.3rem;
+  object-fit: contain;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.05;
+}
+
+.label {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.sub {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.6rem;
+  font-weight: 700;
+  opacity: 0.7;
+}
+
+.firstMark {
+  padding: 0.02rem 0.22rem;
+  border-radius: 999px;
+  background: linear-gradient(160deg, #f7cd6a, var(--status-highlight));
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 0.52rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  opacity: 1;
+}

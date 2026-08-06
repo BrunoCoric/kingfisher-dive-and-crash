@@ -1,0 +1,101 @@
+export type CardType = 'Dive' | 'Drop' | 'Splash' | 'Hover'
+
+export type FishType = 'Minnow' | 'Perch' | 'Trout' | 'Trash' | 'Pike'
+
+export interface FishCard {
+  id: string
+  type: FishType
+  points: number
+}
+
+/** Sentinel for a face-down fish as seen through a player view. */
+export const HIDDEN_FISH = 'hidden' as const
+
+export type ZoneFish = FishCard | typeof HIDDEN_FISH | null
+
+/** Narrows a zone's fish to a real card (full-state alias for engine code). */
+export function isFish(fish: ZoneFish): fish is FishCard {
+  return fish !== null && fish !== HIDDEN_FISH
+}
+
+export type PerchLevel = 'high' | 'low'
+
+export interface Perch {
+  id: string
+  level: PerchLevel
+  zone: number
+  bank: 'left' | 'right'
+}
+
+export interface RiverZone {
+  id: number
+  fish: ZoneFish
+}
+
+export type GamePhase =
+  | 'placement'
+  | 'step1'
+  | 'step2'
+  | 'step3'
+  | 'hover1'
+  | 'hover2'
+  | 'hover3'
+  | 'cleanup'
+
+export interface StepSelection {
+  card: CardType
+  target?: number
+  moveTo?: string
+  peek?: number
+}
+
+export type CalloutKind = 'catch' | 'crash' | 'steal' | 'blocked' | 'pike'
+
+export interface OutcomeCallout {
+  zone: number
+  kind: CalloutKind
+  actor?: string
+  /** Points gained on catch / steal (public table info). */
+  points?: number
+}
+
+export interface PlayerState {
+  hand: CardType[]
+  score: number
+  fishCount: number
+  scored: FishCard[]
+  perch: string
+}
+
+export interface GameState {
+  zones: RiverZone[]
+  perches: Perch[]
+  deck: FishCard[]
+  /** Public remaining fish-deck size (card faces stay hidden via playerView). */
+  deckCount: number
+  discard: FishCard[]
+  players: Record<string, PlayerState>
+  currentPhase: GamePhase
+  firstPlayer: string
+  round: number
+  step: number
+  selections: Record<string, StepSelection | null>
+  /** Selections from the previous step, kept for zone chips / opponent reveal rows. */
+  lastReveals: Record<string, StepSelection | null>
+  /** Zone each low-perch player peeked during placement (private sightline). */
+  sightlinePeek: Record<string, number>
+  /** Zones revealed face-up to each player this round (Hover peeks + sightline). */
+  peeked: Record<string, number[]>
+  /** Players who have locked in a selection / placement for the current step. */
+  locked: Record<string, boolean>
+  /** Players who have resolved their Hover move in the current hover phase. */
+  hovered: string[]
+  splashes: number[]
+  outcomeLog: OutcomeCallout[]
+  winner: string | null
+  /**
+   * Seats that must click Next round at cleanup. Empty = anyone (pass-and-play /
+   * headless sims). Vs-bots sets the human seat so bots don't auto-skip the review.
+   */
+  humanSeats: string[]
+}
