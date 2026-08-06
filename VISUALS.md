@@ -166,7 +166,7 @@ Guidelines:
 
 ### Rules cheatsheet (bottom-right overlay)
 - Compact **? Rules** pill sits bottom-right over the river (mirrors the hand’s corner, does not compete with it).
-- Tap opens a parchment sheet: define **Crash** once (spent + discard 1 + fish gone), then resolve order and short collision rows that just say Crash / Steal / Block.
+- Tap opens a parchment sheet: define **Crash** once (spent card + random extra discard; fish stays), then resolve order and short collision rows that just say Crash / Steal / Block.
 - Backdrop dismiss / Close; ≥44px hit target. Keep copy short — this is a mid-game glance, not the full rulebook.
 
 ---
@@ -223,7 +223,7 @@ Board is the source of truth; HUD story line is the accessible companion (`aria-
 
 ### Step 4b — Personal outcome splash (local player only)
 
-River feedback stays the shared truth. On top of that, the **local seat** gets a personal bird burst for the beats that matter — fish in the beak, or a Crash that costs an extra card.
+River feedback stays the shared truth. On top of that, the **local seat** gets a personal bird burst for the beats that matter — fish in the beak, or a Crash that burns tempo.
 
 - **Audience:** only the viewing player’s own outcome for the step that just resolved. Opponents never see your splash; you never see theirs. Pass-and-play: show for the seat that just became human-active / the seat whose device this is.
 - **Form:** a brief full-bleed **bird splash** — large species sprite + valence word — over a soft parchment / sun-glare veil. Not a modal dialog (no buttons, no scoreboard). Auto-dismisses; tap anywhere to skip early.
@@ -232,7 +232,7 @@ River feedback stays the shared truth. On top of that, the **local seat** gets a
   | Feel | When | Look |
   |---|---|---|
   | **Good** | You keep a fish — Catch or Steal | Happy bird, green rim, “CATCH +N” / “STEAL +N” |
-  | **Bad** | You Crash (spent card + discard 1) | Startled bird, brick-red, “CRASH!” |
+  | **Bad** | You Crash (spent card + random extra discard; fish stays) | Startled bird, brick-red, “CRASH!” |
 
 - **Timing:** ~900ms after river badges/pawn reactions start, then splash ~1.4s on screen. Never queues multiple splashes in one step.
 - **Does not replace** zone badges, pawn reactions, or the outcome story — those stay for the whole selection window so everyone can still read the river.
@@ -258,8 +258,6 @@ Two clear sub-moments, both surfaced with distinct UI:
 2. **Move:** after the step resolves into the hover phase, arrows appear on adjacent perches; one tap = move (or Stay). If no adjacent perch is free, Stay happens automatically.
 
 ### Crash / Penalty Feedback
-When a player must discard an extra card, their hand visually "rejects" a card with a shake — makes the penalty physical and memorable.
-
 ### Score & Fish Flow
 - Live totals live in the **Scores roster** (flock chip + sheet). Catch animations still go to the owner's pile; a +N floating number on arrival.
 
@@ -294,13 +292,13 @@ When a player must discard an extra card, their hand visually "rejects" a card w
 
 | Screen | Notes |
 |---|---|
-| **Lobby / Setup** | Player count, color pick, name, "Start". Then a setup checklist (deal fish, choose perch, take deck). |
+| **Lobby / Setup** | Title screen is a mini river **diorama** (board banks/water/branches, fish token, wood plaque title) + wooden menu plaques. Then Games list → Create game. |
 | **Board (main)** | The full game loop lives here: selection, reveal, resolution, cleanup. |
 | **Peek modal** | Hover peeks, face-down fish reveal. |
 | **Crash / outcome overlay** | Zone-anchored badges + pawn reactions + `OutcomeStory` line (not modal dialogs). |
 | **Personal outcome splash** | Local-only bird burst on catch / steal / crash; auto-dismiss; does not replace river feedback. |
 | **Round review** | Same board + status-line **Next round** (no modal). |
-| **Game over** | Winner celebration, final scoreboard, rematch button. |
+| **Game over** | Winner celebration, final scoreboard, main menu button. |
 | **Rules cheatsheet** | Bottom-right `? Rules` → parchment collision reference. |
 
 ---

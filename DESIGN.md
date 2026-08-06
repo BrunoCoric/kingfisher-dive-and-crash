@@ -8,6 +8,7 @@ Single source of truth for implementation status. Refer to `README.md` for the g
 - boardgame.io for turn/move/phase logic
 - CSS Modules for component styles; global styles in `src/styles/`
 - Shared game types in `src/game/types.ts`
+- Nest profile (localStorage) in `src/profile/` — match stats & unlock badges for vs-bots
 
 ## Project Structure
 
@@ -36,6 +37,8 @@ Single source of truth for implementation status. Refer to `README.md` for the g
   - `src/lib/sfx.ts` / `src/lib/stepSfx.ts` — WAV playback (`public/sounds/`) + once-per-step resolve cues
   - `src/lib/boardChrome.tsx` — status-line hint/action builders for the mobile HUD
   - `src/components/OutcomeSplash.tsx` — personal bird burst overlay (local seat only)
+  - `src/profile/` — Nest localStorage profile, unlocks, match summarize
+  - `src/components/NestPanel.tsx` — start-screen Nest / field notes
 
 ## Progress
 
@@ -52,13 +55,14 @@ Single source of truth for implementation status. Refer to `README.md` for the g
 - [x] Fish deck builder in `fish.ts` (per player count)
 
 ### Clarified Rules (2026-08-06)
-- Fish deck totals (code `fish.ts` is authoritative): 2p:27, 3p:34, 4p:42, 5p:46.
+- Fish deck totals (code `fish.ts` is authoritative): 2p:25, 3p:32, 4p:39, 5p:43.
 - Reach: Zone 1 is most upstream, zone # increases downstream. Low perch = own zone + downstream (or upstream at the end); High perch = own zone + downstream + upstream (using two upstream/downstream at edges).
 - Splash, Drop, Dive, Hover effects apply only within the Step they are played.
 - Low-perch sightline: automatic, private, at round start; player picks one reachable zone card.
-- Hover repositioning order: First Player first, then clockwise.
+- Hover: Scout (peek anywhere) XOR Relocate (adjacent free perch at lock-in). Hover phase auto-applies declared Relocate in First Player order (taken perch → stay).
 - Diving an empty zone (fish caught earlier this round) is illegal and fails.
-- Crash/Splash penalty: played card spent + discard 1 additional card from hand.
+- Crash/Splash-block: Crash = spent played card + one random extra hand discard; fish stays. Splash-block = Dive spent only; fish stays.
+- Pike: discard a Minnow from the scorer’s pile if they have one; Pike itself is discarded (0 VP).
 - Demo flow: the four-seat pass-and-play starts with a randomized First Player; players place pawns once in clockwise order, then resolve three simultaneous card steps (4-card hand, one card left unplayed).
 - Round length: `STEPS_PER_ROUND = 3` in `cards.ts` — phases are `step1`–`step3` (plus optional `hover1`–`hover3`).
 
@@ -67,6 +71,7 @@ Single source of truth for implementation status. Refer to `README.md` for the g
 - [x] Action selection (face-down simultaneous) moves
 - [x] Step resolution priority (Hover → Splash → Dive → Drop)
 - [x] Crash / splash / drop collision rules
+- [x] Crash keeps fish on zone; crashers discard one extra random hand card (all same-action crashes)
 - [x] Fish drift downstream + restock at end of round
 - [x] Win condition (deck exhausted, highest points wins)
 - [x] Perch sightline & reach (peek / dive range) model
@@ -90,23 +95,30 @@ Single source of truth for implementation status. Refer to `README.md` for the g
 - [x] Bottom-right rules cheatsheet (`RulesCheatsheet`): tap `? Rules` for priority order + crash / splash / steal interactions
 - [x] Personal outcome splash (local seat only): `OutcomeSplash` + `personalSplash.ts` — slower bird burst on catch / steal / crash only; river feedback remains shared truth (VISUALS §6 Step 4b)
 - [x] Scripted interactive tutorial: Start Screen **Tutorial** → rules intro slides (goal / VPs / reach / round / cards) then 3-seat sandbox (`tutorial: true` setup, `TutorialBot` seats 1–2, gated `TutorialBoard` + coach). Human only taps highlighted targets; opponents play a fixed script across 4 rounds covering place/peek, solo Dive, empty Drop, Hover move, Splash block, Drop steal, Dive Crash, Drop+Drop Crash, and Pike. Smoke: `npx tsx _tutorial_smoke.mts`.
-- [x] SFX pack wired (`public/sounds/*.wav`): card select/lock, peek, step resolve + all four card reveals, outcome kinds (catch/crash/steal/blocked/pike), fish-value flavors, personal splash good/bad, bird perch hops, fish drift → restock → round start, game win, looping ambience on mode select. Skips when `prefers-reduced-motion`.
+- [x] SFX pack wired (`public/sounds/*.wav`): card select/lock, peek, step resolve + all four card reveals, outcome kinds (catch/crash/steal/blocked/pike), fish-value flavors, personal splash good/bad, bird perch hops, fish drift → restock → round start, game win, looping ambience from main menu (unlocked on first menu click, kept across Main menu returns). Skips when `prefers-reduced-motion`.
+- [x] Nest profile (localStorage): `src/profile/` types + store + unlocks + match summarize; vs-bots only
+- [x] Match-long tallies on `G`: `matchPlays` / `matchOutcomes` (append in `resolveStep`, never cleared mid-game)
+- [x] GameOver records Nest once (`recordMatchOnce`) and shows newly unlocked badges; CTA is **Main menu** (returns to Start Screen — in-client rematch stalled vs Local bots)
+- [x] Start Screen main menu: **Play** / **Nest** / **Tutorial** (`card_select` on click); no Pass & Play
+- [x] Play → local **Game lobby** (empty list for now) → **Create game** (bird pick + bot slots, default 4 players) → vs-bots match
+- [x] Menu / lobby / create: clean title (brand + flock + pill CTAs); lobby/create bank-sand panels
+- [x] Start Screen **Nest** panel: lifetime stats, badge list, recent matches
 
 ### Implementation Notes
-- The local browser build is a four-seat pass-and-play: one shared boardgame.io `Local` client switches between Player 0 through Player 3 with the seat control. Hidden-information secrecy is intentionally deferred, as recorded in the implementation plan.
-- **Tutorial mode:** Opens with four primer slides (`src/tutorial/intro.ts` / `TutorialIntro`) before the Local client mounts — goal & end condition, reach, round cadence, then the four cards. `setup(..., { humanSeats: ['0'], tutorial: true })` deals a fixed river/deck and First Player `0`. Crash discards prefer burning Hover so mid-round Splash/Drop lessons stay legal. Lessons derive from phase/round/outcomes (`src/tutorial/lesson.ts`); review beats use Got it before unlocking the next gate.
+- Local browser play is vs-bots only from Create game (2–5 seats). Pass-and-play entry is removed from the Start Screen. Hidden-information secrecy for true multiplayer is deferred.
+- **Tutorial mode:** Opens with four primer slides (`src/tutorial/intro.ts` / `TutorialIntro`) before the Local client mounts — goal & end condition, reach, round cadence, then the four cards. `setup(..., { humanSeats: ['0'], tutorial: true })` deals a fixed river/deck and First Player `0`. Crash discards prefer burning Splash first so Hover lessons stay legal after a Dive Crash. Lessons derive from phase/round/outcomes (`src/tutorial/lesson.ts`); review beats use Got it before unlocking the next gate.
 - The opening placement phase randomizes the First Player, then lets each player choose one unoccupied perch in clockwise order before the first simultaneous card step.
-- Crash always discards the zone’s fish (Splash+Splash, Dive+Dive, Drop+Drop). Solo Dive grant is deferred until after Drops so a Drop+Drop Crash never briefly awards the catch.
-- Splash blocks Dives only (blocked = discard penalty). Drop steals only from a successful solo Dive — Splash-blocked / crashed Dive → Drop does nothing. Drops Crash when 2+ share a zone (even if the Dive failed).
-- Pike catches discard the Pike and automatically return the lowest previously scored fish, if one exists. This makes the hazard deterministic without adding a second decision prompt.
-- Hover peek: select Hover, tap one face-down fish zone — that immediately locks the card and adds the zone to `G.peeked` (no second confirm, no switching). Empty / already-seen zones are not targets; if none remain, **Skip peek** locks Hover with no peek. Reposition still happens afterward in the hover phase; if no adjacent perch is free, the turn auto-stays. Peeks persist across rounds: `endOfRoundCleanup` drifts each seat's `peeked` zone ids +1 with the fish (drops washed-off / caught slots) instead of clearing the map, so the card stays face-up for that player. `playerView` only exposes the viewing seat's `peeked` list.
+- Crash never discards the zone’s fish (Splash+Splash, Dive+Dive, Drop+Drop). Crashers spend the played card and discard one extra random hand card. Solo Dive grant is deferred until after Drops so a Drop+Drop Crash can return the fish to the zone.
+- Splash blocks Dives only (blocked = Dive spent; fish stays). Drop steals only from a successful solo Dive — Splash-blocked / crashed Dive → Drop does nothing. Drops Crash when 2+ share a zone (even if the Dive failed).
+- Pike catches discard the Pike and a Minnow from the scorer’s pile if one exists (otherwise no scored fish is lost).
+- Hover Scout XOR Relocate: `selectCard` locks either `peek` or `moveTo` (never both). Empty Hover only when neither Scout nor Relocate targets exist. Hover phase auto-applies `moveTo` if still free.
 - Low-perch sightline is now live during placement: after `placePawn` on a low perch the turn stays open (guarded by `maxMoves: 2`), the player picks a reachable zone with the `peekSightline` move, and the chosen card flips face-up in the tile until the turn ends. The peeked zone is stored in `G.sightlinePeek`.
 - Placement every round: `cleanup` → `placement`. `placement.onBegin` clears every `player.perch` (and `locked`) so the river starts empty; First Player then clockwise each place onto any free perch. Low branch still peeks via `peekSightline` (`maxMoves: 2`). Roster “ready” during placement = `perch !== ''`, so who already sat down vs who still waits is obvious.
-- Round transition pauses in `cleanup` so step-3 chips / outcomes stay on the river until someone taps **Next round** (`continueRound`). Vs-bots passes `humanSeats` in setup so Local bots are not active during the review (they would otherwise auto-advance in ~100ms). Headless sims / pass-and-play leave `humanSeats` empty → anyone may advance. `endOfRoundCleanup` runs in phase `onEnd` before `next: 'placement'`.
+- Round transition pauses in `cleanup` so step-3 chips / outcomes stay on the river until someone taps **Next round** (`continueRound`). Vs-bots passes `humanSeats` in setup so Local bots are not active during the review (they would otherwise auto-advance in ~100ms). Headless sims leave `humanSeats` empty → anyone may advance. `endOfRoundCleanup` runs in phase `onEnd` before `next: 'placement'`.
 - Headless validation lives in `_bot_sim.mts`: it drives every seat with `KingfisherBot` through the reducer and asserts a non-null winner. `npm run build && npx tsx _bot_sim.mts` should print `_ok (12/12)` across 2–5 players.
 - **Legacy bot** (`LegacyKingfisherBot` in `src/game/ai/legacy.ts`): pure argmax over a one-ply heuristic. Per-(bot, zone) `hashOffset` diversifies blind Dive targets so mirror matches rarely crash. No hand tracking, no fish memory, fully predictable once you know the hash.
 - **Smart bot** (`KingfisherBot` in `src/game/bot.ts` + `src/game/ai/`):
-  - `belief.ts` — exact distribution over each opponent's remaining hand (plays, crash discards, Dive bounce). Uses a separate `beliefRound` from fish-drift's `lastRound` so round reset isn't skipped.
+  - `belief.ts` — exact distribution over each opponent's remaining hand (plays, Dive bounce). Uses a separate `beliefRound` from fish-drift's `lastRound` so round reset isn't skipped.
   - `memory.ts` — remembers peeked fish and drifts them +1 zone each round.
   - `values.ts` / `risk.ts` / `scoring.ts` — zone EV, belief-scaled collision/Drop probs (opponents scored from *their* info set, not our peeks), Splash-Splash penalty, score-aware `riskFactor`. Placement / Hover use `contestedPerchValue`: own reach EV plus `denyWeight`×exclusive-lane deny (lonely fish corridors weighted ~1.8×) so later placers invade a claimed bank instead of opening free pickings elsewhere.
   - `select.ts` — near-greedy softmax over a tight best-score band (wide temperature was re-colliding bots with the same info).
@@ -115,6 +127,7 @@ Single source of truth for implementation status. Refer to `README.md` for the g
 - **Contest retune:** `denyWeight` 0.25→0.7, `repositionWeight` 0.3→0.45; `denyValue` scales by how exclusive a zone already is (1 bird ≫ crowded). Fixes bots herding mid-river while a human farms one side alone.
 - Enumerate fix: a seat with no legal card must emit `skipTurn` (not bare `endStage`), or simultaneous steps stall with `activePlayers: null` and a missing selection.
 - Outcome log is cleared at the start of `resolveStep`, not on the first `selectCard` of the next step — otherwise later seats never see crashes/steals for belief updates. UI feedback (status story, zone badges, pawn reactions, roster reveals) stays visible through the following selection phase via the same `outcomeLog` / `lastReveals` window. `resolveStep` also snapshots `G.selections` into `G.lastReveals` so chips match the step that just resolved, and appends each seat's card into `G.roundPlays` for the roster history strip. After step 3, the `cleanup` review beat keeps that window until `continueRound`; only then does `endOfRoundCleanup` clear it (including `roundPlays`), drift/restock fish, and reset hands (bot belief round-resets cleanly).
+- **Nest (v1):** Finished vs-bots matches (`humanSeats.length === 1`, not tutorial) write into `localStorage` key `kingfisher-nest-v1` via `recordMatchOnce` on GameOver. `G.matchPlays` / `G.matchOutcomes` accumulate for the whole match; fish types come from the human seat’s final `scored` pile. Unlock badges: first-win, drop-only-win, first-trout, crash-and-place, five-matches.
 - [x] End-of-round review beat: `cleanup` waits for **Next round** in the status line (`continueRound`); river chips stay up; vs-bots holds on the human seat so bots don’t auto-skip
 - Hover zone chips need the peek *zone* in public `lastReveals`. `playerView` no longer strips `peek` from revealed selections — only the fish face stays private (via `peeked` / zone filtering). Pending `selections` remain seat-private until resolve.
 - A/B harness: `npx tsx _bot_ab.mts` (all-smart / all-legacy / mixed). Probe: `npx tsx _bot_probe.mts`. Diag: `npx tsx _bot_diag.mts`. Against legacy, smart typically wins mixed seats; all-smart mirror still crashes more than all-legacy because legacy's hash argmax is a near-perfect anti-collision coordination device.

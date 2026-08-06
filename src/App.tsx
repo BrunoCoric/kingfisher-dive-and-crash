@@ -9,51 +9,12 @@ import { TutorialBoard } from './TutorialBoard'
 import { TutorialIntro } from './components/TutorialIntro'
 import { TUTORIAL_INTRO } from './tutorial/intro'
 import { StartScreen, type StartConfig } from './StartScreen'
-import { kingfisher, speciesShort } from './lib/presentation'
-import { stopAmbience } from './lib/sfx'
+import { startAmbience } from './lib/sfx'
 import './styles/global.css'
 import './styles/tokens.css'
 
 type BotsMode = { kind: 'bots'; numPlayers: number; humanSeat: string; botSeats: string[] }
-type Mode = { kind: 'pick' } | { kind: 'passplay' } | { kind: 'tutorial' } | BotsMode
-
-const PassPlayClient = Client({
-  game: Game,
-  board: Board,
-  numPlayers: 4,
-  debug: false,
-  multiplayer: Local(),
-})
-
-function PassPlayGame() {
-  const [seat, setSeat] = useState('0')
-  const [matchID] = useState(() => crypto.randomUUID())
-
-  return (
-    <main className="app-shell">
-      <nav className="seat-switcher" aria-label="Local player seat">
-        <span>Viewing seat:</span>
-        {['0', '1', '2', '3'].map((id) => {
-          const k = kingfisher(Number(id))
-          return (
-            <button
-              key={id}
-              className={seat === id ? 'seat-active' : ''}
-              style={{ ['--seat-accent' as string]: k.accent }}
-              onClick={() => setSeat(id)}
-            >
-              <img src={k.sprite} alt="" />
-              {speciesShort(Number(id))}
-            </button>
-          )
-        })}
-      </nav>
-      <div className="seat">
-        <PassPlayClient key={matchID} matchID={matchID} playerID={seat} />
-      </div>
-    </main>
-  )
-}
+type Mode = { kind: 'pick' } | { kind: 'tutorial' } | BotsMode
 
 function BotsGame({ mode, onMenu }: { mode: BotsMode; onMenu: () => void }) {
   const [matchID] = useState(() => crypto.randomUUID())
@@ -82,7 +43,7 @@ function BotsGame({ mode, onMenu }: { mode: BotsMode; onMenu: () => void }) {
         Menu
       </button>
       <div className="seat">
-        <BotsClient key={matchID} matchID={matchID} playerID={mode.humanSeat} />
+        <BotsClient key={matchID} matchID={matchID} playerID={mode.humanSeat} onMenu={onMenu} />
       </div>
     </main>
   )
@@ -137,7 +98,7 @@ function TutorialGame({ onMenu }: { onMenu: () => void }) {
         Menu
       </button>
       <div className="seat">
-        <TutorialClient key={matchID} matchID={matchID} playerID="0" />
+        <TutorialClient key={matchID} matchID={matchID} playerID="0" onMenu={onMenu} />
       </div>
     </main>
   )
@@ -146,7 +107,7 @@ function TutorialGame({ onMenu }: { onMenu: () => void }) {
 function App() {
   const [mode, setMode] = useState<Mode>({ kind: 'pick' })
   const backToMenu = () => {
-    stopAmbience()
+    startAmbience()
     setMode({ kind: 'pick' })
   }
 
@@ -156,10 +117,7 @@ function App() {
   if (mode.kind === 'tutorial') {
     return <TutorialGame onMenu={backToMenu} />
   }
-  if (mode.kind === 'bots') {
-    return <BotsGame mode={mode} onMenu={backToMenu} />
-  }
-  return <PassPlayGame />
+  return <BotsGame mode={mode} onMenu={backToMenu} />
 }
 
 export default App

@@ -1,94 +1,98 @@
 import { useState } from 'react'
-import { kingfisher, speciesShort } from './lib/presentation'
-import { startAmbience } from './lib/sfx'
+import { kingfisher } from './lib/presentation'
+import { playSfx, startAmbience } from './lib/sfx'
+import { NestPanel } from './components/NestPanel'
+import { GameLobby } from './components/GameLobby'
+import { CreateGame } from './components/CreateGame'
+import { TitleDiorama } from './components/TitleDiorama'
+import type { StartConfig } from './startConfig'
 import styles from './StartScreen.module.css'
 
-export type StartConfig =
-  | { kind: 'passplay' }
-  | { kind: 'tutorial' }
-  | { kind: 'bots'; numPlayers: number; humanSeat: string; botSeats: string[] }
+export type { StartConfig }
+
+type View = 'menu' | 'lobby' | 'create'
+
+function cueMenu() {
+  playSfx('card_select')
+  startAmbience()
+}
 
 export function StartScreen({ onStart }: { onStart: (config: StartConfig) => void }) {
-  const [botCount, setBotCount] = useState(3)
-  const [seatPref, setSeatPref] = useState(0)
-  const seat = Math.min(seatPref, botCount)
+  const [view, setView] = useState<View>('menu')
+  const [nestOpen, setNestOpen] = useState(false)
 
-  const begin = (config: StartConfig) => {
-    startAmbience()
-    onStart(config)
+  if (view === 'lobby') {
+    return (
+      <GameLobby
+        onCreate={() => setView('create')}
+        onBack={() => setView('menu')}
+      />
+    )
   }
 
-  const startBots = () => {
-    const seats = Array.from({ length: 1 + botCount }, (_, i) => String(i))
-    begin({
-      kind: 'bots',
-      numPlayers: seats.length,
-      humanSeat: String(seat),
-      botSeats: seats.filter((id) => id !== String(seat)),
-    })
+  if (view === 'create') {
+    return (
+      <CreateGame
+        onStart={onStart}
+        onBack={() => setView('lobby')}
+      />
+    )
   }
 
   return (
     <main className={styles.shell}>
-      <h1 className={styles.title}>Kingfisher</h1>
-      <p className={styles.subtitle}>dive &amp; crash</p>
-
-      <div className={styles.cards}>
-        <button className={styles.modeCard} onClick={() => begin({ kind: 'tutorial' })}>
-          <span className={styles.modeName}>Tutorial</span>
-          <span className={styles.modeDesc}>
-            Guided clicks through catch, crash, splash, steal, Hover, and Pike. Opponents play a fixed script.
-          </span>
-        </button>
-
-        <button className={styles.modeCard} onClick={() => begin({ kind: 'passplay' })}>
-          <span className={styles.modeName}>Pass &amp; Play</span>
-          <span className={styles.modeDesc}>
-            Four seats on one device. Switch seats as pawns are placed, then after each card locks.
-          </span>
-        </button>
-
-        <div className={styles.modeCard}>
-          <button className={styles.modeButton} onClick={startBots}>
-            <span className={styles.modeName}>Play vs Bots</span>
-            <span className={styles.modeDesc}>
-              You keep one seat; the kingfisher bots fill the rest of the river.
-            </span>
-          </button>
-          <div className={styles.options}>
-            <label className={styles.field}>
-              <span>Bot opponents</span>
-              <select value={botCount} onChange={(e) => setBotCount(Number(e.target.value))}>
-                {[1, 2, 3, 4].map((n) => (
-                  <option key={n} value={n}>
-                    {n} ({n + 1} players)
-                  </option>
-                ))}
-              </select>
-            </label>
-            <div className={styles.field}>
-              <span>Your seat</span>
-              <div className={styles.seatRow}>
-                {Array.from({ length: 1 + botCount }, (_, i) => i).map((i) => {
-                  const k = kingfisher(i)
-                  return (
-                    <button
-                      key={i}
-                      className={seat === i ? styles.seatActive : styles.seat}
-                      style={{ ['--seat-accent' as string]: k.accent }}
-                      onClick={() => setSeatPref(i)}
-                      aria-pressed={seat === i}
-                    >
-                      <img src={k.sprite} alt="" />
-                      {speciesShort(i)}
-                    </button>
-                  )
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
+      <div className={styles.stage}>
+        <TitleDiorama />
       </div>
+
+      <nav className={styles.menu} aria-label="Main menu">
+        <button
+          type="button"
+          className={styles.plaque}
+          onClick={() => {
+            cueMenu()
+            setView('lobby')
+          }}
+        >
+          <img className={styles.icon} src={kingfisher(0).sprite} alt="" />
+          <span className={styles.copy}>
+            <span className={styles.label}>Play</span>
+            <span className={styles.hint}>Host a river match</span>
+          </span>
+        </button>
+        <button
+          type="button"
+          className={styles.plaque}
+          onClick={() => {
+            cueMenu()
+            setNestOpen(true)
+          }}
+        >
+          <span className={styles.nestIcon} aria-hidden>
+            ✦
+          </span>
+          <span className={styles.copy}>
+            <span className={styles.label}>Nest</span>
+            <span className={styles.hint}>Field notes &amp; unlocks</span>
+          </span>
+        </button>
+        <button
+          type="button"
+          className={styles.plaque}
+          onClick={() => {
+            cueMenu()
+            onStart({ kind: 'tutorial' })
+          }}
+        >
+          <img className={styles.icon} src={kingfisher(2).sprite} alt="" />
+          <span className={styles.copy}>
+            <span className={styles.label}>Tutorial</span>
+            <span className={styles.hint}>Learn the river</span>
+          </span>
+        </button>
+      </nav>
+
+      {nestOpen && <NestPanel onClose={() => setNestOpen(false)} />}
     </main>
   )
 }

@@ -47,7 +47,7 @@ function phaseText(G: GameState, isActive: boolean, isSighting: boolean): string
     return 'Waiting for perch placement'
   }
   if (G.currentPhase.startsWith('hover')) {
-    return isActive ? 'Hover — move or stay' : 'Hover — resolving moves'
+    return 'Hover — resolving Scout / Relocate'
   }
   if (G.currentPhase === 'cleanup') {
     return isActive ? 'Round over — tap Next round when ready' : 'Round over — waiting for Next round'

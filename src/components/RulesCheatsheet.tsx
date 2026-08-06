@@ -20,7 +20,7 @@ const ROWS: Row[] = [
   },
   {
     title: 'Splash on a zone',
-    body: 'Blocks Dives only (same card penalty as Crash).',
+    body: 'Blocks Dives only (fish flees; Dive spent).',
     tone: 'hazard',
   },
   {
@@ -82,7 +82,7 @@ export function RulesCheatsheet() {
             <div className={`${styles.row} ${styles.tone_crash} ${styles.crashDef}`}>
               <strong className={styles.rowTitle}>Crash</strong>
               <span className={styles.rowBody}>
-                Spent card + discard 1 more from hand. Fish on that zone is discarded.
+                Played card spent + one random extra hand discard. Fish stays.
               </span>
             </div>
 

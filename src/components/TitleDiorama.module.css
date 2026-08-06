@@ -1,0 +1,124 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(22rem, 100%);
+  animation: rise 0.5s cubic-bezier(0.2, 1.15, 0.4, 1) both;
+}
+
+.brand {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.9rem, 9vw, 3.9rem);
+  font-weight: 800;
+  line-height: 0.92;
+  color: var(--forest-deep);
+  text-shadow: 0 3px 0 rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.01em;
+  text-align: center;
+}
+
+.tag {
+  margin: 0.2rem 0 0.9rem;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--reed-amber);
+  text-align: center;
+}
+
+.flock {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0.1rem;
+  width: 100%;
+  min-height: 6.5rem;
+  padding-bottom: 0.85rem;
+}
+
+.glow {
+  position: absolute;
+  left: 18%;
+  right: 18%;
+  bottom: 0.4rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(255, 248, 214, 0.85), transparent 70%);
+  pointer-events: none;
+}
+
+.ground {
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  bottom: 0.15rem;
+  height: 0.85rem;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(43, 36, 32, 0.16), transparent 70%);
+  pointer-events: none;
+}
+
+.bird,
+.heroBird {
+  position: relative;
+  z-index: 1;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 8px rgba(43, 36, 32, 0.28));
+  animation: bob 2.8s ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+  transform-origin: center bottom;
+}
+
+.bird {
+  width: clamp(3rem, 13vw, 3.8rem);
+  height: clamp(3rem, 13vw, 3.8rem);
+  margin-bottom: 0.35rem;
+}
+
+.bird:first-child,
+.bird:last-child {
+  width: clamp(2.5rem, 11vw, 3.1rem);
+  height: clamp(2.5rem, 11vw, 3.1rem);
+  margin-bottom: 0.55rem;
+  opacity: 0.95;
+}
+
+.heroBird {
+  width: clamp(4.2rem, 18vw, 5.4rem);
+  height: clamp(4.2rem, 18vw, 5.4rem);
+  z-index: 2;
+  margin: 0 0.1rem;
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero,
+  .bird,
+  .heroBird {
+    animation: none;
+  }
+}

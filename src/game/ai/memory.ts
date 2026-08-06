@@ -60,15 +60,12 @@ export function absorbReveals(memory: BotMemory, view: GameState): void {
 
 /**
  * Drop remembered fish that the outcome log shows leaving the river this step:
- * caught, pike-discarded, stolen, or Crash (always discards the zone's fish).
+ * caught, pike-discarded, or stolen. Crash leaves the fish on the zone.
  */
 export function pruneCaught(memory: BotMemory, view: GameState): void {
   const gone = new Set<number>()
   for (const callout of view.outcomeLog) {
     if (callout.kind === 'catch' || callout.kind === 'steal' || callout.kind === 'pike') {
-      gone.add(callout.zone)
-    }
-    if (callout.kind === 'crash' && view.zones[callout.zone]?.fish === null) {
       gone.add(callout.zone)
     }
   }

@@ -1,7 +1,6 @@
 import { CreateGameReducer, InitializeGame } from 'boardgame.io/dist/cjs/internal.js'
 import { Game } from './src/game/Game'
-import { isHoverPeekTarget } from './src/game/hoverPeek'
-import { openHoverPerches } from './src/game/reach'
+import { enumerateLegalMoves } from './src/game/enumerate'
 
 const numPlayers = 4
 const reducer = CreateGameReducer({ game: Game, numPlayers })
@@ -37,46 +36,45 @@ const beforeHover = perchOf()
 
 let steps = 0
 let iter = 0
-while (steps < 4 && !state.ctx.gameover && state.ctx.phase !== 'cleanup' && iter++ < 80) {
+while (steps < 4 && !state.ctx.gameover && state.ctx.phase !== 'cleanup' && iter++ < 120) {
   if (state.ctx.phase.startsWith('step')) {
-    const anyone = order.find(
-      (q) => state.G.selections[q] === undefined && state.G.players[q].hand.length > 0,
+    const active = state.ctx.activePlayers ? Object.keys(state.ctx.activePlayers) : order
+    const anyone = active.find(
+      (q: string) => state.G.selections[q] === undefined && state.G.players[q].hand.length > 0,
     )
     if (!anyone) {
       steps++
       continue
     }
-    const i = order.indexOf(anyone)
-    const hand: string[] = state.G.players[anyone].hand
-    if ((steps + i) % 2 === 0 && hand.includes('Hover')) {
-      const peek = state.G.zones.find((z: { id: number }) => isHoverPeekTarget(state.G, anyone, z.id))
-      mm(anyone, 'selectCard', peek ? ['Hover', { peek: peek.id }] : ['Hover', {}])
-    } else {
-      const card = hand.find((c) => c !== 'Hover') ?? hand[0]
-      const perch = state.G.perches.find((p: { id: string }) => p.id === state.G.players[anyone].perch)
-      const target = state.G.zones.find((z: { id: number; fish: unknown }) => z.fish && Math.abs(z.id - perch.zone) <= 1)?.id
-      if (card === 'Hover') {
-        const peek = state.G.zones.find((z: { id: number }) => isHoverPeekTarget(state.G, anyone, z.id))
-        mm(anyone, 'selectCard', peek ? ['Hover', { peek: peek.id }] : ['Hover', {}])
-      } else if (target !== undefined) {
-        mm(anyone, 'selectCard', [card, { target }])
-      } else {
-        mm(anyone, 'skipTurn', [])
-      }
-    }
+    const legal = enumerateLegalMoves(state.G, state.ctx, anyone).filter(
+      (a: { move?: string }) => a.move === 'selectCard' || a.move === 'skipTurn',
+    )
+    const preferHover = legal.find(
+      (a: { move?: string; args?: unknown[] }) =>
+        a.move === 'selectCard' && a.args?.[0] === 'Hover' && (a.args[1] as { moveTo?: string })?.moveTo,
+    )
+    const anyHover = legal.find(
+      (a: { move?: string; args?: unknown[] }) => a.move === 'selectCard' && a.args?.[0] === 'Hover',
+    )
+    const pick =
+      preferHover ??
+      anyHover ??
+      legal.find((a: { move?: string; args?: unknown[] }) => a.move === 'selectCard') ??
+      legal[0]
+    if (!pick?.move) throw new Error(`no legal move for ${anyone}`)
+    mm(anyone, pick.move, (pick as { args?: unknown[] }).args ?? [])
   } else if (state.ctx.phase.startsWith('hover')) {
+    // Auto-apply in onBegin should clear seats; race fallback only.
     const pid = state.ctx.currentPlayer
-    // Auto-stay may already have resolved this seat.
     if (state.G.selections[pid]?.card === 'Hover' && !state.G.hovered.includes(pid)) {
-      const open = openHoverPerches(
-        state.G.perches,
-        state.G.players[pid].perch,
-        Object.values(state.G.players).map((p: { perch: string }) => p.perch).filter(Boolean),
-      )
-      mm(pid, 'hoverMove', open.length ? [open[0].id] : [])
+      mm(pid, 'hoverMove', [])
     }
   }
   if (phaseLog[phaseLog.length - 1] !== state.ctx.phase) phaseLog.push(state.ctx.phase)
+  if (state.ctx.phase.startsWith('step')) {
+    const done = order.every((q) => state.G.selections[q] !== undefined)
+    if (done) steps++
+  }
 }
 
 console.log('phase transitions:', JSON.stringify(phaseLog))

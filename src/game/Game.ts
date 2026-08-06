@@ -112,6 +112,8 @@ export function setup(
     selections: {},
     lastReveals: {},
     roundPlays: {},
+    matchPlays: {},
+    matchOutcomes: {},
     sightlinePeek: {},
     peeked: {},
     locked: {},
@@ -205,15 +207,19 @@ function hoverPhase(step: number, phase: GamePhase, next: string): PhaseConfig<G
       onBegin: ({ G, ctx, events }: FnContext<GameState>) => {
         G.currentPhase = phase
         G.step = step
-        // No free adjacent perch → auto-stay so the player isn't stuck on Stay.
+        // Scout / empty Hover stay; Relocate applies declared moveTo if still free.
         const pid = ctx.currentPlayer
         const player = G.players[pid]
-        if (!player || G.selections[pid]?.card !== 'Hover' || G.hovered.includes(pid)) return
-        const occupied = Object.values(G.players).map((p) => p.perch).filter(Boolean)
-        if (openHoverPerches(G.perches, player.perch, occupied).length === 0) {
-          G.hovered.push(pid)
-          events.endTurn()
+        const sel = G.selections[pid]
+        if (!player || sel?.card !== 'Hover' || G.hovered.includes(pid)) return
+        if (sel.moveTo !== undefined) {
+          const occupied = Object.values(G.players).map((p) => p.perch).filter(Boolean)
+          if (openHoverPerches(G.perches, player.perch, occupied).some((p) => p.id === sel.moveTo)) {
+            player.perch = sel.moveTo
+          }
         }
+        G.hovered.push(pid)
+        events.endTurn()
       },
     },
     moves: { hoverMove },

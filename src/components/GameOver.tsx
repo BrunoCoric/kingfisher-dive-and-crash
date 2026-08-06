@@ -1,11 +1,23 @@
 import type { GameState } from '../game/types'
 import { kingfisher, species } from '../lib/presentation'
 import { cueWinSfx } from '../lib/sfx'
+import { recordMatchOnce } from '../profile/store'
+import { summarizeMatch } from '../profile/summarize'
+import { UNLOCK_META } from '../profile/unlocks'
+import type { UnlockId } from '../profile/types'
 import styles from './GameOver.module.css'
 
-export function GameOver({ game, playOrder, onReset }: { game: GameState; playOrder: string[]; onReset: () => void }) {
+function maybeRecord(game: GameState, playOrder: string[]): UnlockId[] {
+  if (game.tutorial || game.humanSeats.length !== 1 || game.winner === null) return []
+  const seat = game.humanSeats[0]
+  const matchKey = `${game.winner}:${seat}:${game.round}:${game.players[seat].score}`
+  return recordMatchOnce(matchKey, summarizeMatch(game, playOrder, seat))
+}
+
+export function GameOver({ game, playOrder, onMenu }: { game: GameState; playOrder: string[]; onMenu: () => void }) {
   if (game.winner === null) return null
   cueWinSfx(game.winner)
+  const newlyUnlocked = maybeRecord(game, playOrder)
   const winner = kingfisher(Number(game.winner))
   const standings = [...playOrder].sort((a, b) => {
     const scoreDiff = game.players[b].score - game.players[a].score
@@ -36,8 +48,19 @@ export function GameOver({ game, playOrder, onReset }: { game: GameState; playOr
             )
           })}
         </ol>
-        <button className={styles.reset} onClick={onReset}>
-          Play again
+        {newlyUnlocked.length > 0 && (
+          <ul className={styles.unlocks} aria-label="New nest unlocks">
+            {newlyUnlocked.map((id) => (
+              <li key={id}>
+                <span className={styles.unlockLabel}>Unlocked</span>
+                <strong>{UNLOCK_META[id].name}</strong>
+                <span className={styles.unlockFlavor}>{UNLOCK_META[id].flavor}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+        <button className={styles.reset} onClick={onMenu}>
+          Main menu
         </button>
       </div>
     </div>

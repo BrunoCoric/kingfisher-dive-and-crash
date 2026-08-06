@@ -62,12 +62,9 @@ export function playerReactions(G: GameState): Record<string, CalloutKind> {
 /** Short target label for a revealed selection, e.g. "→ Z3". */
 export function selectionDetail(sel: StepSelection): string {
   if (sel.card === 'Hover') {
-    return [
-      sel.peek !== undefined ? `peek Z${sel.peek + 1}` : null,
-      sel.moveTo ? `→ ${sel.moveTo}` : null,
-    ]
-      .filter(Boolean)
-      .join(' · ')
+    if (sel.peek !== undefined) return `scout Z${sel.peek + 1}`
+    if (sel.moveTo) return `→ ${sel.moveTo}`
+    return 'stay'
   }
   return sel.target !== undefined ? `→ Z${sel.target + 1}` : ''
 }

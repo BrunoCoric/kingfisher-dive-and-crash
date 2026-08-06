@@ -31,10 +31,11 @@ export type BoardExtra = {
   guide?: TutorialGate | null
   coach?: TutorialLesson | null
   onDismissReview?: () => void
+  onMenu?: () => void
 }
 
 export function Board(props: BoardProps<GameState> & BoardExtra) {
-  const { G, ctx, moves, playerID, isActive, reset, guided, guide, coach, onDismissReview } = props
+  const { G, ctx, moves, playerID, isActive, guided, guide, coach, onDismissReview, onMenu } = props
   const [pending, setPending] = useState<PendingSelection | null>(null)
   const [rosterOpen, setRosterOpen] = useState(false)
   const [drifting, setDrifting] = useState(false)
@@ -84,17 +85,24 @@ export function Board(props: BoardProps<GameState> & BoardExtra) {
     myPerch.level === 'low' &&
     G.sightlinePeek[myID] === undefined
   const occupiedIds = new Set(Object.values(G.players).map((p) => p.perch).filter(Boolean))
+  const hoverOpenPerches =
+    me !== undefined
+      ? openHoverPerches(G.perches, me.perch, occupiedIds).map((p) => p.id)
+      : []
+  const hoverRelocateAvailable = hoverOpenPerches.length > 0
+  // Relocate targets light during pending Hover (step); hover phase auto-applies.
   let movablePerches =
     placing && canPlace
       ? G.perches.filter((perch) => !occupiedIds.has(perch.id)).map((p) => p.id)
-      : canHover && me
-        ? openHoverPerches(G.perches, me.perch, occupiedIds).map((p) => p.id)
+      : pending?.card === 'Hover' && canAct
+        ? hoverOpenPerches
         : []
   if (guided && guide?.perchId) {
     movablePerches = movablePerches.filter((id) => id === guide.perchId)
   } else if (guided && placing) {
     movablePerches = []
-  } else if (guided && hopping && guide?.action === 'stay') {
+  } else if (guided && pending?.card === 'Hover' && guide?.zoneId !== undefined) {
+    // Scout lesson: only the coached zone; hide Relocate perches.
     movablePerches = []
   }
 
@@ -126,6 +134,11 @@ export function Board(props: BoardProps<GameState> & BoardExtra) {
       targetStates[zone.id] = null
       continue
     }
+    if (guided && guide?.perchId && guide.zoneId === undefined && pending?.card === 'Hover') {
+      // Relocate lesson: dim zones so only the coached perch is the target.
+      targetStates[zone.id] = 'illegal'
+      continue
+    }
     if (pending && canAct) {
       if (guided && guide?.card && pending.card !== guide.card) {
         targetStates[zone.id] = null
@@ -150,6 +163,7 @@ export function Board(props: BoardProps<GameState> & BoardExtra) {
     if (pending) {
       playSfx('card_lock')
       if (sel.card === 'Hover' && sel.peek !== undefined) playSfx('peek', 80)
+      if (sel.card === 'Hover' && sel.moveTo !== undefined) playSfx('bird_move', 80)
       moves.selectCard(pending.card, sel)
     }
     setPending(null)
@@ -172,14 +186,16 @@ export function Board(props: BoardProps<GameState> & BoardExtra) {
         canHover,
         noLegalStepMove,
         hoverPeekAvailable,
+        hoverRelocateAvailable,
       })
   const rawActions = statusActionsFor({
     pending,
     canAct,
-    canHover: canHover && (!guided || guide?.action === 'stay' || guide?.perchId !== undefined),
+    canHover: false,
     canContinue,
     noLegalStepMove,
     hoverPeekAvailable,
+    hoverRelocateAvailable,
     onSkipPeek: () => commit({ card: 'Hover' }),
     onCancel: cancel,
     onStay: () => moves.hoverMove(undefined),
@@ -187,37 +203,26 @@ export function Board(props: BoardProps<GameState> & BoardExtra) {
     onContinue: beginDrift,
   })
   const statusActions =
-    guided && guide?.action === 'stay'
-      ? statusActionsFor({
-          pending: null,
-          canAct: false,
-          canHover: true,
-          canContinue: false,
-          noLegalStepMove: false,
-          onSkipPeek: () => undefined,
-          onCancel: () => undefined,
-          onStay: () => moves.hoverMove(undefined),
-          onSkip: () => undefined,
-        })
-      : guided && guide?.action === 'continue'
-        ? rawActions
-        : guided && !guide?.action
-          ? // Hide stray Skip / Cancel noise during gated card play; keep Cancel if pending
-            pending && canAct
-              ? statusActionsFor({
-                  pending,
-                  canAct,
-                  canHover: false,
-                  canContinue: false,
-                  noLegalStepMove: false,
-                  hoverPeekAvailable,
-                  onSkipPeek: () => commit({ card: 'Hover' }),
-                  onCancel: cancel,
-                  onStay: () => undefined,
-                  onSkip: () => undefined,
-                })
-              : undefined
-          : rawActions
+    guided && guide?.action === 'continue'
+      ? rawActions
+      : guided && !guide?.action
+        ? // Hide stray Skip / Cancel noise during gated card play; keep Cancel if pending
+          pending && canAct
+            ? statusActionsFor({
+                pending,
+                canAct,
+                canHover: false,
+                canContinue: false,
+                noLegalStepMove: false,
+                hoverPeekAvailable,
+                hoverRelocateAvailable,
+                onSkipPeek: () => commit({ card: 'Hover' }),
+                onCancel: cancel,
+                onStay: () => undefined,
+                onSkip: () => undefined,
+              })
+            : undefined
+        : rawActions
   const lockedCard = G.selections[myID]?.card ?? null
 
   const selectCard = (card: CardType) => {
@@ -323,9 +328,8 @@ export function Board(props: BoardProps<GameState> & BoardExtra) {
             }}
             onPerchClick={(id) => {
               if (guided && guide?.perchId && id !== guide.perchId) return
-              if (canHover && movablePerches.includes(id)) {
-                if (me && id !== me.perch) playSfx('bird_move')
-                moves.hoverMove(id)
+              if (pending?.card === 'Hover' && canAct && movablePerches.includes(id)) {
+                commit({ card: 'Hover', moveTo: id })
               } else if (canPlace && movablePerches.includes(id)) {
                 if (!me?.perch || id !== me.perch) playSfx('bird_move')
                 moves.placePawn(id)
@@ -335,7 +339,7 @@ export function Board(props: BoardProps<GameState> & BoardExtra) {
         </div>
       </div>
 
-      <GameOver game={G} playOrder={ctx.playOrder as string[]} onReset={reset} />
+      {onMenu && <GameOver game={G} playOrder={ctx.playOrder as string[]} onMenu={onMenu} />}
     </div>
   )
 }

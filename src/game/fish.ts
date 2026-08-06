@@ -9,10 +9,10 @@ export const FISH_POINTS: Record<FishType, number> = {
 }
 
 export const FISH_COUNTS: Record<number, { Minnow: number; Perch: number; Trout: number; Trash: number; Pike: number }> = {
-  2: { Minnow: 10, Perch: 8, Trout: 3, Trash: 3, Pike: 3 }, // 27
-  3: { Minnow: 12, Perch: 10, Trout: 4, Trash: 4, Pike: 4 }, // 34
-  4: { Minnow: 13, Perch: 11, Trout: 6, Trash: 6, Pike: 6 }, // 42
-  5: { Minnow: 14, Perch: 12, Trout: 8, Trash: 4, Pike: 8 }, // 46
+  2: { Minnow: 10, Perch: 8, Trout: 3, Trash: 2, Pike: 2 }, // 25
+  3: { Minnow: 12, Perch: 10, Trout: 4, Trash: 3, Pike: 3 }, // 32
+  4: { Minnow: 13, Perch: 11, Trout: 6, Trash: 4, Pike: 5 }, // 39
+  5: { Minnow: 14, Perch: 12, Trout: 8, Trash: 3, Pike: 6 }, // 43
 }
 
 const RIVER_ZONES: Record<number, number> = { 2: 4, 3: 5, 4: 6, 5: 7 }

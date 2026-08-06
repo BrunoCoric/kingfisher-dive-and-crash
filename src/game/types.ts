@@ -59,6 +59,15 @@ export interface OutcomeCallout {
   points?: number
 }
 
+/** Per-seat outcome counts across the whole match (Nest / unlocks). */
+export interface MatchOutcomeTallies {
+  catch: number
+  steal: number
+  crash: number
+  blocked: number
+  pike: number
+}
+
 export interface PlayerState {
   hand: CardType[]
   score: number
@@ -88,6 +97,13 @@ export interface GameState {
    * remaining-hand inference across the 3 steps.
    */
   roundPlays: Record<string, CardType[]>
+  /**
+   * Cards each seat played across the whole match (never cleared mid-game).
+   * Used by Nest match summaries / unlocks at game over.
+   */
+  matchPlays: Record<string, CardType[]>
+  /** Per-seat outcome tallies for the whole match (Nest). */
+  matchOutcomes: Record<string, MatchOutcomeTallies>
   /** Zone each low-perch player peeked during placement (private sightline). */
   sightlinePeek: Record<string, number>
   /**

@@ -5,14 +5,14 @@ Players: 2–5 players
 Playtime: 15–20 minutes
 Setup Time: ~1 minute
 Core Mechanics: Simultaneous Action Selection, Bluffing, Spatial Positioning, Push-Your-Luck
-In Kingfisher: Dash & Dive, players control hungry kingfishers competing along a narrow stretch of river. By maneuvering along low and high perches, players scan for fish, read their opponents' intentions, and execute simultaneous high-speed dives. But watch out—if two kingfishers dive into the same water zone at once, they crash, scaring the fish away!
+In Kingfisher: Dash & Dive, players control hungry kingfishers competing along a narrow stretch of river. By maneuvering along low and high perches, players scan for fish, read their opponents' intentions, and execute simultaneous high-speed dives. But watch out—if two kingfishers dive into the same water zone at once, they crash and burn tempo while the fish stays put!
 Components
 1 River Board
 Center Track: River zones (depending on number of players, 2: 4, 3: 5, 4: 6, 5: 7)
 Left & Right Banks: Perch locations flanking the river.
 5 Kingfisher Pawns (Blue, Orange, Teal, Green, Purple)
 5 Action Decks (4 cards per player)
-1 Fish Deck (2: 27, 3: 34, 4: 42, 5: 46)
+1 Fish Deck (2: 25, 3: 32, 4: 39, 5: 43)
 1 First Player / Season Marker
 Board Layout & Perch System
 The River Board consists of 5 central water spaces flanked by perches on the riverbanks.
@@ -41,18 +41,18 @@ Each player receives an identical 4-card deck:
 Dive: Target 1 adjacent tile to catch the fish on it..
 Drop: Target 1 adjacent zone to ambush and steal a fish being caught by a player in the exact same Step
 Splash: Target 1 adjacent zone to create a hazard block. Cancels all Dives on that zone (Drops are unaffected).
-Hover: Peek at 1 face-down card anywhere on the board AND/OR optionally move your pawn to an adjacent perch (across or next to your current position). Your peeked cards stay face-up for you across rounds as they drift.
-2. Fish Deck (46 Cards Total) - 5 player game
+Hover: Scout 1 face-down card anywhere on the board OR Relocate to an adjacent perch (not both). Scouted cards stay face-up for you across rounds as they drift.
+2. Fish Deck (43 Cards Total) - 5 player game
 Small Minnows (x14): 1 Point (Easy catch, reliable).
 Medium Perch (x12): 2 Points.
 Golden Trout (x8): 3 Points (High value, heavily contested).
-Old Boot / Trash (x4): 0 Points (Worthless clutter).
-Pike Hazard (x8): discard a fish (take one from your scoring pile, if you have one; the Pike itself is worth 0).
+Old Boot / Trash (x3): 0 Points (Worthless clutter).
+Pike Hazard (x6): discard a Minnow from your scoring pile if you have one; the Pike itself is worth 0.
 
-4 player game (42) -> 13-11-6-6-6
-3 player game (34) -> 12-10-4-4-4
+4 player game (39) -> 13-11-6-4-5
+3 player game (32) -> 12-10-4-3-3
 
-2 player game (27) -> 10-8-3-3-3
+2 player game (25) -> 10-8-3-2-2
 
 Setup (60 Seconds)
 Place the River Board in the center of the table.
@@ -74,7 +74,7 @@ Action
 Resolution Rules
 1
 Hover
-Resolves first. Players peek at face-down cards anywhere on the board and/or reposition to an adjacent perch. (Repositioning adjusts target ranges for subsequent actions). Repositioning order: the First Player moves first, then clockwise. 
+Resolves first. Scout: peek at one face-down card anywhere. Relocate: move to an adjacent perch chosen when the card was locked (First Player order if several Relocate). Never both on one play. 
 2
 Splash
 Resolves second. Places an active hazard block on the targeted adjacent tile. All dives on that tile Crash.
@@ -88,12 +88,12 @@ Resolves last. Checks if a solo Dive succeeded on the targeted tile during this 
 3. Universal Collision & Interaction Rules
 All action effects are temporary and apply only for the Step in which they are played (Splash hazards, Drops, and Dives do not persist to later Steps).
 The Symmetrical Crash Principle
-If two or more players attempt the same offensive or defensive action on the exact same tile in the same Step, they crash and fail. Crash always discards the fish on that tile (if any), and each crashing player spends their played card plus one more from hand.
+If two or more players attempt the same offensive or defensive action on the exact same tile in the same Step, they crash and fail. The fish on that tile stays; each crashing player spends their played card and discards one extra random card from hand.
 Action Combinations on a Single Tile
 Solo Dive: Fish is caught successfully.
-Dive + Dive: Crash! Both players collide underwater. No fish is caught.
+Dive + Dive: Crash! Both players collide underwater. No fish is caught; the fish stays on the tile.
 Solo Drop + Solo Dive: Steal! The Drop player ambushes the Diver and takes the fish.
-Drop + Drop + Solo Dive: Crash! Both Drop players collide mid-air. The Dive fails and no fish is taken.
+Drop + Drop + Solo Dive: Crash! Both Drop players collide mid-air. The Dive fails; the fish stays on the tile.
 Splash + Dive: Blocked! Splash cancels Dives on that tile. A Drop on the same tile steals nothing (no successful Dive). Drops only Crash when 2+ Drops share a tile.
 Diving empty zone: A Dive may not target an empty zone (one whose fish was already caught this round). A Dive on an empty zone fails.
 4. Card Outcomes & Recovery / Discard Penalties
@@ -110,11 +110,11 @@ Stolen From (Dive vs Drop)
 Fish lost to Drop player
 Dive Bounces Back: Diver receives their Dive card back into their hand and may play it in a future Step (if steps remain).
 Crash (same action twice — Splash / Dive / Drop)
-Discard fish
-Discard Penalty: Played card is spent AND player must discard 1 additional card from their hand. The fish on that tile is always discarded.
+Fish stays
+Played card is spent, plus one extra random card from hand is discarded.
 Splashed Dive (Hit by Splash)
-Discard fish
-Discard Penalty: Played card is spent AND player must discard 1 additional card from their hand. (Drops are never splashed.)
+Fish stays
+Played card is spent. (Drops are never splashed.)
 
 5. End of Round Cleanup & Win Condition
 Secure Catches: Players add all caught fish cards to their personal scoring pile.

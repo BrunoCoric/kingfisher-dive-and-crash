@@ -48,6 +48,12 @@ function peekOf(args: unknown[]): number | undefined {
   return typeof sel.peek === 'number' ? sel.peek : undefined
 }
 
+function moveToOf(args: unknown[]): string | undefined {
+  const sel = args[1] as { moveTo?: string } | undefined
+  if (!sel || typeof sel !== 'object') return undefined
+  return typeof sel.moveTo === 'string' ? sel.moveTo : undefined
+}
+
 /** Opponents' upside on a target fish — a fly-to-we claim that contested fish denies. */
 function denyTargetUps(G: GameState, target: number, b: BeliefContext): number {
   let sum = 0
@@ -80,16 +86,10 @@ export function scoreMove(
     case 'selectCard': {
       const card = args[0]
       if (card === 'Hover') {
-        const current = perchOf(G, playerID)
-        const relocateGain = current
-          ? Math.max(
-              0,
-              bestContestedPerchValue(G, playerID, W, b.memory) -
-                contestedPerchValue(G, current, playerID, W, b.memory),
-            )
-          : 0
         const peek = peekOf(args)
+        const moveTo = moveToOf(args)
         let intel = 0
+        let relocateGain = 0
         if (peek !== undefined) {
           const fish = G.zones[peek]?.fish
           if (fish === HIDDEN_FISH) {
@@ -98,6 +98,16 @@ export function scoreMove(
             if (Number.isFinite(reachBonus) && reachBonus > 0) intel += reachBonus * W.peekWeight
           } else if (fish && fish !== null) {
             intel = Math.max(0, fish.points) * W.peekWeight * 0.25
+          }
+        } else if (moveTo !== undefined) {
+          const target = G.perches.find((p) => p.id === moveTo)
+          const current = perchOf(G, playerID)
+          if (target && current) {
+            relocateGain = Math.max(
+              0,
+              contestedPerchValue(G, target, playerID, W, b.memory) -
+                contestedPerchValue(G, current, playerID, W, b.memory),
+            )
           }
         }
         // Steeper with 3 steps: Hover on step 3 rarely pays before round end.

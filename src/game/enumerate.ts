@@ -1,7 +1,7 @@
 import type { Ctx, PlayerID } from 'boardgame.io'
 import type { AiEnumerate } from 'boardgame.io'
 import { reachableZones, openHoverPerches } from './reach'
-import { hasHoverPeekTarget, isHoverPeekTarget } from './hoverPeek'
+import { isHoverPeekTarget } from './hoverPeek'
 import type { GameState } from './types'
 
 /**
@@ -49,15 +49,20 @@ export function enumerateLegalMoves(G: GameState, ctx: Ctx, playerID: PlayerID):
 
     for (const card of player.hand) {
       if (card === 'Hover') {
-        if (!hasHoverPeekTarget(G, playerID)) {
-          candidates.push({ move: 'selectCard', args: ['Hover', {}] })
-        } else {
-          for (const zone of G.zones) {
-            if (isHoverPeekTarget(G, playerID, zone.id)) {
-              candidates.push({ move: 'selectCard', args: ['Hover', { peek: zone.id }] })
-            }
+        const occupied = Object.values(G.players).map((p) => p.perch).filter(Boolean)
+        const open = openHoverPerches(G.perches, player.perch, occupied)
+        let any = false
+        for (const zone of G.zones) {
+          if (isHoverPeekTarget(G, playerID, zone.id)) {
+            candidates.push({ move: 'selectCard', args: ['Hover', { peek: zone.id }] })
+            any = true
           }
         }
+        for (const perch of open) {
+          candidates.push({ move: 'selectCard', args: ['Hover', { moveTo: perch.id }] })
+          any = true
+        }
+        if (!any) candidates.push({ move: 'selectCard', args: ['Hover', {}] })
         continue
       }
       for (const target of reach) {
@@ -75,13 +80,8 @@ export function enumerateLegalMoves(G: GameState, ctx: Ctx, playerID: PlayerID):
   if (G.currentPhase.startsWith('hover')) {
     const sel = G.selections[playerID]
     if (sel?.card === 'Hover' && !G.hovered.includes(playerID)) {
-      const occupied = Object.values(G.players).map((p) => p.perch).filter(Boolean)
-      const open = openHoverPerches(G.perches, player.perch, occupied)
-      // Engine auto-stays when open is empty; keep stay for bots / race safety.
+      // Phase onBegin auto-applies declared Relocate / Scout stay; race fallback only.
       candidates.push({ move: 'hoverMove', args: [] })
-      for (const perch of open) {
-        candidates.push({ move: 'hoverMove', args: [perch.id] })
-      }
     }
     return fallback(ctx, candidates)
   }

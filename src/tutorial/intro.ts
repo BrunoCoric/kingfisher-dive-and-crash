@@ -13,7 +13,7 @@ export const TUTORIAL_INTRO: IntroSlide[] = [
     body: 'You are a kingfisher on the river. Score the most victory points from caught fish.',
     bullets: [
       'Minnow 1 · Perch 2 · Trout 3 · Trash 0',
-      'Pike is a hazard: 0 points, and you return your lowest scored fish',
+      'Pike is a hazard: 0 points, and you discard a Minnow if you have one',
       'Game ends when the fish deck cannot fill an empty river zone',
       'Highest points wins; ties go to most fish cards',
     ],
@@ -50,8 +50,8 @@ export const TUTORIAL_INTRO: IntroSlide[] = [
       'Dive — catch a fish on a reachable zone (solo only)',
       'Splash — block Dives on a zone this step',
       'Drop — steal from a successful solo Dive this step',
-      'Hover — peek any face-down fish, then hop to an adjacent perch or stay',
-      'Same action twice on one zone = Crash (fish flees + discard penalty)',
+      'Hover — Scout one face-down fish anywhere, or Relocate to an adjacent perch (not both)',
+      'Same action twice on one zone = Crash (fish stays; spent card + random extra discard)',
     ],
   },
 ]

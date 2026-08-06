@@ -5,8 +5,9 @@ import type { BotMemory, OpponentHand } from './types'
 /**
  * Opponent hand inference, purely a function of an (already filtered) player
  * view plus the bot's per-instance accumulated belief. The hand space is tiny
- * (4 cards), so an exact distribution over subsets is both cheap and immune to
- * belief-drift from the random discard that follows a crash/block.
+ * (4 cards), so an exact distribution over subsets is both cheap and exact.
+ * Crash adds one random extra discard after the played card leaves — fold that
+ * with `randomDiscard` so belief doesn't assume a known leftover.
  */
 export function freshHand(): OpponentHand {
   const dist = new Map<string, number>()
@@ -52,7 +53,7 @@ export function playCard(hand: OpponentHand, card: CardType): OpponentHand {
   return { dist }
 }
 
-/** A crash/block causes one *random* discard; each held card is equally likely. */
+/** Crash causes one *random* extra discard; each held card is equally likely. */
 export function randomDiscard(hand: OpponentHand): OpponentHand {
   const dist = new Map<string, number>()
   for (const [key, prob] of hand.dist) {
@@ -113,10 +114,8 @@ export function syncBelief(memory: BotMemory, view: GameState, playerID: string)
     if (sel && sel.card) memory.oppHands[opp] = playCard(memory.oppHands[opp], sel.card)
   }
   for (const callout of view.outcomeLog) {
-    if (!callout.actor) continue
-    if (callout.kind === 'crash' || callout.kind === 'blocked') {
-      const hand = memory.oppHands[callout.actor]
-      if (hand) memory.oppHands[callout.actor] = randomDiscard(hand)
+    if (callout.kind === 'crash' && callout.actor && memory.oppHands[callout.actor]) {
+      memory.oppHands[callout.actor] = randomDiscard(memory.oppHands[callout.actor])
     }
   }
   for (const callout of view.outcomeLog) {

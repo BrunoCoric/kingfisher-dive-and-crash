@@ -9,5 +9,5 @@ export const VALID_CARDS: Record<CardType, string> = {
   Dive: 'Catch a fish on one adjacent zone.',
   Drop: 'Steal a fish only if a solo Dive succeeded on that zone this step.',
   Splash: 'Block all Dives on one adjacent zone for this step.',
-  Hover: 'Peek at one face-down card, then move to an adjacent perch or stay.',
+  Hover: 'Scout one face-down fish anywhere, or relocate to an adjacent perch (not both).',
 }

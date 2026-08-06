@@ -97,7 +97,7 @@ function reviewLesson(G: GameState, kinds: Set<string>, rk: string): TutorialLes
     return {
       id: 'review-pike',
       title: 'Pike!',
-      body: 'Catching a Pike discards it and returns your lowest scored fish.',
+      body: 'Catching a Pike discards it and a Minnow from your pile if you have one.',
       gate: null,
       reviewKey: rk,
     }
@@ -115,7 +115,7 @@ function reviewLesson(G: GameState, kinds: Set<string>, rk: string): TutorialLes
     return {
       id: 'review-splash',
       title: 'Splash block',
-      body: 'Splash cancels Dives on that zone (same discard penalty as a Crash). Drops are not splashed.',
+      body: 'Splash cancels Dives on that zone. The fish stays; the Dive card is spent. Drops are not splashed.',
       gate: null,
       reviewKey: rk,
     }
@@ -124,7 +124,7 @@ function reviewLesson(G: GameState, kinds: Set<string>, rk: string): TutorialLes
     return {
       id: 'review-dive-crash',
       title: 'Dive Crash!',
-      body: 'Two Dives on the same zone collide. The fish flees; each bird spends the card plus one more.',
+      body: 'Two Dives collide. Fish stays; each bird spends Dive and discards one extra random hand card.',
       gate: null,
       reviewKey: rk,
     }
@@ -133,7 +133,7 @@ function reviewLesson(G: GameState, kinds: Set<string>, rk: string): TutorialLes
     return {
       id: 'review-drop-crash',
       title: 'Drop + Drop Crash!',
-      body: 'Two or more Drops on one zone always crash — the Dive fails and the fish flees.',
+      body: 'Two or more Drops crash — no steal, fish stays, each Dropper loses an extra random hand card.',
       gate: null,
       reviewKey: rk,
     }
@@ -142,7 +142,7 @@ function reviewLesson(G: GameState, kinds: Set<string>, rk: string): TutorialLes
     return {
       id: 'review-dive-crash',
       title: 'Dive Crash!',
-      body: 'Two Dives on the same zone collide. The fish flees; each bird spends the card plus one more.',
+      body: 'Same-action Crash: fish stays; played card spent plus one random extra hand discard.',
       gate: null,
       reviewKey: rk,
     }
@@ -184,12 +184,8 @@ function actionLesson(key: string, gate: TutorialGate): TutorialLesson {
       body: 'Tap Drop on the highlighted zone. With no successful Dive there, Drop does nothing.',
     },
     '1|step3': {
-      title: 'Hover peek',
-      body: 'Tap Hover, then a face-down card anywhere. You will move next.',
-    },
-    '1|hover3': {
-      title: 'Hover move',
-      body: 'Tap the highlighted adjacent perch to reposition.',
+      title: 'Hover Relocate',
+      body: 'Tap Hover, then the highlighted adjacent perch. Scout (peek) or Relocate — not both.',
     },
     '2|placement|place': {
       title: 'High perch',
@@ -204,12 +200,8 @@ function actionLesson(key: string, gate: TutorialGate): TutorialLesson {
       body: 'Tap Drop on the highlighted zone. Steal the fish from a successful solo Dive.',
     },
     '2|step3': {
-      title: 'Hover again',
-      body: 'Tap Hover and peek the highlighted zone, then stay on your perch.',
-    },
-    '2|hover3': {
-      title: 'Stay put',
-      body: 'Tap Stay — keep your high perch for the next round.',
+      title: 'Hover Scout',
+      body: 'Tap Hover and peek the highlighted face-down zone. You stay on your perch.',
     },
     '3|placement|place': {
       title: 'Hold the high perch',
@@ -220,8 +212,12 @@ function actionLesson(key: string, gate: TutorialGate): TutorialLesson {
       body: 'Tap Dive on the highlighted zone. Another bird will Dive the same water — Crash!',
     },
     '3|step2': {
-      title: 'Join a Drop Crash',
-      body: 'Tap Drop on the highlighted zone. Two Drops collide — the Dive fails and the fish flees.',
+      title: 'Scout the contested fish',
+      body: 'Tap Hover and peek the crash zone — the fish is still there. Rivals Drop+Drop elsewhere.',
+    },
+    '3|step3': {
+      title: 'Spend the leftover',
+      body: 'Tap Drop on the highlighted zone. After a Crash you lost an extra card — tempo matters.',
     },
     '4|placement|place': {
       title: 'Line up on Pike',
@@ -229,15 +225,11 @@ function actionLesson(key: string, gate: TutorialGate): TutorialLesson {
     },
     '4|step1': {
       title: 'Pike hazard',
-      body: 'Tap Dive on the highlighted zone. Catching a Pike returns your lowest scored fish.',
+      body: 'Tap Dive on the highlighted zone. Catching a Pike discards a Minnow if you have one.',
     },
     '4|step2': {
       title: 'Almost done',
-      body: 'Tap Hover and peek to burn the middle step.',
-    },
-    '4|hover2': {
-      title: 'Stay put',
-      body: 'Tap Stay.',
+      body: 'Tap Hover and Scout an unseen zone to burn the middle step.',
     },
     '4|step3': {
       title: 'Last Splash',

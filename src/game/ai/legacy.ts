@@ -5,7 +5,7 @@ import { filterPlayerView } from '../playerView'
 import { ACTION_DECK } from '../cards'
 import type { GameState, Perch } from '../types'
 import { HIDDEN_FISH } from '../types'
-import { expectedFishValue, zoneValue, perchValue, opponentsReaching, bestPerchValue, opponentDiveZones } from './scoring'
+import { expectedFishValue, zoneValue, perchValue, opponentsReaching, opponentDiveZones } from './scoring'
 import type { BotAction } from './select'
 
 /**
@@ -82,6 +82,12 @@ function peekOf(args: unknown[]): number | undefined {
   return typeof sel.peek === 'number' ? sel.peek : undefined
 }
 
+function moveToOf(args: unknown[]): string | undefined {
+  const sel = args[1] as { moveTo?: string } | undefined
+  if (!sel || typeof sel !== 'object') return undefined
+  return typeof sel.moveTo === 'string' ? sel.moveTo : undefined
+}
+
 function perchOf(G: GameState, playerID: string): Perch | undefined {
   return G.perches.find((p) => p.id === G.players[playerID]?.perch)
 }
@@ -98,10 +104,10 @@ function evaluateMove(G: GameState, player: string, move: string, args: unknown[
     case 'selectCard': {
       const card = args[0]
       if (card === 'Hover') {
-        const current = perchOf(G, player)
-        const repositionGain = current ? Math.max(0, bestPerchValue(G, player) - perchValue(G, current, player)) : 0
         const peek = peekOf(args)
+        const moveTo = moveToOf(args)
         let intelGain = 0
+        let repositionGain = 0
         if (peek !== undefined) {
           const fish = G.zones[peek]?.fish
           if (fish === HIDDEN_FISH) {
@@ -109,6 +115,12 @@ function evaluateMove(G: GameState, player: string, move: string, args: unknown[
             intelGain += Math.max(0, zoneValue(G, peek, player)) * PEEK_WEIGHT
           } else if (fish && fish !== null) {
             intelGain = Math.max(0, fish.points) * PEEK_WEIGHT
+          }
+        } else if (moveTo !== undefined) {
+          const target = G.perches.find((p) => p.id === moveTo)
+          const current = perchOf(G, player)
+          if (target && current) {
+            repositionGain = Math.max(0, perchValue(G, target, player) - perchValue(G, current, player))
           }
         }
         return repositionGain * REPOSITION_WEIGHT + intelGain + HOVER_BIAS

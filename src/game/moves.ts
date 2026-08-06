@@ -68,10 +68,19 @@ export function selectCard(
   }
 
   if (card === 'Hover') {
-    if (selection.peek !== undefined) {
-      if (!isHoverPeekTarget(G, pid, selection.peek)) return
-    } else if (hasHoverPeekTarget(G, pid)) {
-      // Must peek exactly one face-down card when any remain.
+    const peek = selection.peek
+    const moveTo = selection.moveTo
+    if (peek !== undefined && moveTo !== undefined) return
+    const occupied = Object.values(G.players).map((p) => p.perch).filter(Boolean)
+    const open = openHoverPerches(G.perches, player.perch, occupied)
+    const canScout = hasHoverPeekTarget(G, pid)
+    const canRelocate = open.length > 0
+    if (peek !== undefined) {
+      if (!isHoverPeekTarget(G, pid, peek)) return
+    } else if (moveTo !== undefined) {
+      if (!open.some((p) => p.id === moveTo)) return
+    } else if (canScout || canRelocate) {
+      // Scout XOR Relocate: must pick a zone or a free adjacent perch when either exists.
       return
     }
   }
@@ -110,7 +119,10 @@ export function skipTurn(
   else events.endStage()
 }
 
-/** Turn-order Hover resolution: move to an adjacent unoccupied perch, or stay (undefined). */
+/**
+ * Apply a declared Hover Relocate (or stay). Scout / empty Hover auto-resolve in
+ * hoverPhase.onBegin; this move remains for bots / race safety.
+ */
 export function hoverMove(
   { G, playerID, events }: FnContext<GameState> & { playerID: PlayerID },
   moveTo?: string,
@@ -120,10 +132,12 @@ export function hoverMove(
   if (!player || !sel || sel.card !== 'Hover') return
   if (G.hovered.includes(playerID)) return
 
-  if (moveTo !== undefined) {
+  const target = moveTo ?? sel.moveTo
+  if (target !== undefined) {
     const occupied = Object.values(G.players).map((p) => p.perch).filter(Boolean)
-    if (!openHoverPerches(G.perches, player.perch, occupied).some((p) => p.id === moveTo)) return
-    player.perch = moveTo
+    if (openHoverPerches(G.perches, player.perch, occupied).some((p) => p.id === target)) {
+      player.perch = target
+    }
   }
   G.hovered.push(playerID)
   events.endTurn()

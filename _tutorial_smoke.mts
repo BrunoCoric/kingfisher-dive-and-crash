@@ -49,14 +49,12 @@ function humanAct(state: any): any {
   if (gate.card && G.currentPhase.startsWith('step')) {
     const sel =
       gate.card === 'Hover'
-        ? { peek: gate.zoneId }
+        ? gate.perchId
+          ? { moveTo: gate.perchId }
+          : { peek: gate.zoneId }
         : { target: gate.zoneId }
     return makeMove(state, '0', 'selectCard', [gate.card, sel])
   }
-  if (gate.perchId && G.currentPhase.startsWith('hover')) {
-    return makeMove(state, '0', 'hoverMove', [gate.perchId])
-  }
-  if (gate.action === 'stay') return makeMove(state, '0', 'hoverMove', [])
   if (gate.action === 'continue') return makeMove(state, '0', 'continueRound', [])
   throw new Error(`unhandled gate ${JSON.stringify(gate)}`)
 }

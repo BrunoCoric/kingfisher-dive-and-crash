@@ -13,7 +13,7 @@ function pointsSuffix(points: number | undefined): string {
 }
 
 /**
- * Local-seat splash for fish gains (catch / steal) or Crash (extra card lost).
+ * Local-seat splash for fish gains (catch / steal) or Crash (tempo loss).
  * Crash beats fish if both somehow appear. Null = no splash.
  */
 export function personalOutcomeSplash(G: GameState, pid: string): PersonalSplash | null {

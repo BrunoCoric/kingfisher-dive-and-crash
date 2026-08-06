@@ -1,7 +1,24 @@
 import type { Ctx, FnContext } from 'boardgame.io'
 type Random = FnContext['random']
 import { isFish } from './types'
-import type { CardType, FishCard, GameState } from './types'
+import type { CalloutKind, CardType, FishCard, GameState, MatchOutcomeTallies } from './types'
+
+const EMPTY_OUTCOMES: MatchOutcomeTallies = {
+  catch: 0,
+  steal: 0,
+  crash: 0,
+  blocked: 0,
+  pike: 0,
+}
+
+function tallyOutcomes(G: GameState): void {
+  for (const callout of G.outcomeLog) {
+    if (!callout.actor) continue
+    const row = (G.matchOutcomes[callout.actor] ??= { ...EMPTY_OUTCOMES })
+    const key = callout.kind as CalloutKind
+    row[key]++
+  }
+}
 
 function rotateOrder(playOrder: string[], first: string): string[] {
   const idx = playOrder.indexOf(first)
@@ -9,11 +26,11 @@ function rotateOrder(playOrder: string[], first: string): string[] {
   return [...playOrder.slice(idx), ...playOrder.slice(0, idx)]
 }
 
+/** Extra hand tax on Crash. Tutorial burns Splash first so later Hover lessons stay legal. */
 function discardOneCard(hand: CardType[], random: Random, tutorial: boolean): void {
   if (hand.length === 0) return
   if (tutorial) {
-    // Prefer burning Hover so scripted mid-round Splash/Drop/Dive lessons stay legal.
-    const prefer: CardType[] = ['Hover', 'Splash', 'Drop', 'Dive']
+    const prefer: CardType[] = ['Splash', 'Drop', 'Dive', 'Hover']
     const pick = prefer.find((c) => hand.includes(c)) ?? hand[0]
     hand.splice(hand.indexOf(pick), 1)
     return
@@ -30,18 +47,14 @@ function grantFish(G: GameState, pid: string, fish: FishCard, zone: number): voi
   if (fish.type === 'Pike') returnPikePenalty(G, pid, zone)
 }
 
+/** Pike is 0 VP; if the catcher holds a Minnow, discard that Minnow too. */
 function returnPikePenalty(G: GameState, pid: string, zone: number): void {
   const player = G.players[pid]
-  const lowest = player.scored
-    .filter((fish) => fish.type !== 'Pike')
-    .reduce<FishCard | undefined>((lowestFish, fish) =>
-      !lowestFish || fish.points < lowestFish.points ? fish : lowestFish,
-    undefined)
-  if (lowest) {
-    const idx = player.scored.indexOf(lowest)
-    player.scored.splice(idx, 1)
-    player.score -= lowest.points
-    G.discard.push(lowest)
+  const minnowIndex = player.scored.findIndex((fish) => fish.type === 'Minnow')
+  if (minnowIndex !== -1) {
+    const minnow = player.scored.splice(minnowIndex, 1)[0]
+    player.score -= minnow.points
+    G.discard.push(minnow)
   }
   const pikeIndex = player.scored.findIndex((fish) => fish.type === 'Pike')
   if (pikeIndex !== -1) {
@@ -53,17 +66,13 @@ function returnPikePenalty(G: GameState, pid: string, zone: number): void {
   G.outcomeLog.push({ zone, kind: 'pike', actor: pid })
 }
 
-function discardExtraCard(G: GameState, pid: string, random: Random): void {
-  discardOneCard(G.players[pid].hand, random, G.tutorial)
-}
-
+/** Crash: spent played card + one random extra hand card; fish stays on the zone. */
 function crashPlayer(G: GameState, pid: string, zone: number, random: Random): void {
-  discardExtraCard(G, pid, random)
+  discardOneCard(G.players[pid].hand, random, G.tutorial)
   G.outcomeLog.push({ zone, kind: 'crash', actor: pid })
 }
 
-function blockPlayer(G: GameState, pid: string, zone: number, random: Random): void {
-  discardExtraCard(G, pid, random)
+function blockPlayer(G: GameState, pid: string, zone: number): void {
   G.outcomeLog.push({ zone, kind: 'blocked', actor: pid })
 }
 
@@ -83,6 +92,7 @@ export function resolveStep(G: GameState, ctx: Ctx, random: Random): void {
     const card = G.selections[pid]?.card
     if (!card) continue
     ;(G.roundPlays[pid] ??= []).push(card)
+    ;(G.matchPlays[pid] ??= []).push(card)
   }
   G.outcomeLog = []
   const order = rotateOrder(ctx.playOrder, G.firstPlayer)
@@ -90,6 +100,7 @@ export function resolveStep(G: GameState, ctx: Ctx, random: Random): void {
   const diveResults = resolveDives(G, order, random)
   resolveDrops(G, order, diveResults, random)
   pruneSettledLog(G)
+  tallyOutcomes(G)
 }
 
 function resolveSplashes(G: GameState, order: string[], random: Random): void {
@@ -104,18 +115,11 @@ function resolveSplashes(G: GameState, order: string[], random: Random): void {
   for (const [zone, pids] of byZone) {
     if (pids.length > 1) {
       for (const pid of pids) crashPlayer(G, pid, zone, random)
-      discardZoneFish(G, zone)
+      // Fish stays — Crash taxes hands, not the prize.
     } else {
       G.splashes.push(zone)
     }
   }
-}
-
-function discardZoneFish(G: GameState, zone: number): void {
-  const fish = G.zones[zone].fish
-  if (!isFish(fish)) return
-  G.zones[zone].fish = null
-  G.discard.push(fish)
 }
 
 function resolveDives(G: GameState, order: string[], random: Random): Map<number, DiveResult> {
@@ -134,18 +138,17 @@ function resolveDives(G: GameState, order: string[], random: Random): Map<number
     if (!isFish(fish)) continue
     if (G.splashes.includes(zone)) {
       for (const pid of pids) {
-        blockPlayer(G, pid, zone, random)
+        blockPlayer(G, pid, zone)
       }
       results.set(zone, { solo: false })
       continue
     }
     if (pids.length === 1) {
-      // Defer grant until after Drops — Drop+Drop Crash discards the fish.
+      // Lift fish pending Drop resolution; Drop+Drop Crash returns it to the zone.
       G.zones[zone].fish = null
       results.set(zone, { solo: true, diver: pids[0], fish })
     } else {
       for (const pid of pids) crashPlayer(G, pid, zone, random)
-      discardZoneFish(G, zone)
       results.set(zone, { solo: false })
     }
   }
@@ -160,7 +163,12 @@ function grantSoloCatch(G: GameState, zone: number, dive: DiveResult): void {
   }
 }
 
-function resolveDrops(G: GameState, order: string[], diveResults: Map<number, DiveResult>, random: Random): void {
+function resolveDrops(
+  G: GameState,
+  order: string[],
+  diveResults: Map<number, DiveResult>,
+  random: Random,
+): void {
   const byZone = new Map<number, string[]>()
   for (const pid of order) {
     const sel = G.selections[pid]
@@ -180,9 +188,7 @@ function resolveDrops(G: GameState, order: string[], diveResults: Map<number, Di
       for (const pid of pids) crashPlayer(G, pid, zone, random)
       if (successful && dive?.fish) {
         settled.add(zone)
-        G.discard.push(dive.fish)
-      } else {
-        discardZoneFish(G, zone)
+        G.zones[zone].fish = dive.fish
       }
       continue
     }
