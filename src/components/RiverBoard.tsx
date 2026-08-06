@@ -5,6 +5,8 @@ import type { ZoneAction } from '../lib/stepFeedback'
 import { Perch } from './Perch'
 import { ZoneTile } from './ZoneTile'
 import { BankFoliageSvg } from './scene/BankFoliageSvg'
+import { MossTuftSvg } from './scene/MossTuftSvg'
+import { RiverChannelSvg } from './scene/RiverChannelSvg'
 import styles from './RiverBoard.module.css'
 
 export interface PerchOccupant {
@@ -78,8 +80,11 @@ export function RiverBoard({
   return (
     <div className={styles.frame}>
       <div className={`${styles.board} ${drifting ? styles.boardDrifting : ''}`}>
-        <span className={styles.spine} aria-hidden />
-        <span className={styles.spineSheen} aria-hidden />
+        <span className={styles.channel} aria-hidden>
+          <RiverChannelSvg />
+        </span>
+        <span className={`${styles.bankWash} ${styles.bankWashL}`} aria-hidden />
+        <span className={`${styles.bankWash} ${styles.bankWashR}`} aria-hidden />
         <span className={styles.grain} aria-hidden />
         {drifting && (
           <span
@@ -112,6 +117,25 @@ export function RiverBoard({
         </span>
         <span className={`${styles.foliage} ${styles.foliageBR}`} aria-hidden>
           <BankFoliageSvg corner="br" />
+        </span>
+
+        <span className={`${styles.moss} ${styles.mossL1}`} aria-hidden>
+          <MossTuftSvg />
+        </span>
+        <span className={`${styles.moss} ${styles.mossL2}`} aria-hidden>
+          <MossTuftSvg />
+        </span>
+        <span className={`${styles.moss} ${styles.mossL3}`} aria-hidden>
+          <MossTuftSvg />
+        </span>
+        <span className={`${styles.moss} ${styles.mossR1}`} aria-hidden>
+          <MossTuftSvg flip />
+        </span>
+        <span className={`${styles.moss} ${styles.mossR2}`} aria-hidden>
+          <MossTuftSvg flip />
+        </span>
+        <span className={`${styles.moss} ${styles.mossR3}`} aria-hidden>
+          <MossTuftSvg flip />
         </span>
 
         {zones.map((zone, index) => {

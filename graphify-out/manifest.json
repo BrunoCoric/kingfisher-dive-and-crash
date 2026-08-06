@@ -40,8 +40,8 @@
     "semantic_hash": ""
   },
   "src/components/RiverBoard.tsx": {
-    "mtime": 1786034470.1328392,
-    "ast_hash": "f55acc5f39de2518f429744fe51fa081",
+    "mtime": 1786035125.1744213,
+    "ast_hash": "f69aae77a670b3bb673e320167b1eef0",
     "semantic_hash": ""
   },
   "src/components/ZoneTile.tsx": {
@@ -135,8 +135,8 @@
     "semantic_hash": ""
   },
   "DESIGN.md": {
-    "mtime": 1786034480.7333674,
-    "ast_hash": "f2366f13a8eaee4c526d408a3b63a89f",
+    "mtime": 1786035133.5767565,
+    "ast_hash": "43b13956933a59a60abe4460667ba9b0",
     "semantic_hash": ""
   },
   "README.md": {
@@ -145,8 +145,8 @@
     "semantic_hash": ""
   },
   "VISUALS.md": {
-    "mtime": 1786033327.5442543,
-    "ast_hash": "b1e142a7f6932ae37e675cb52252bd87",
+    "mtime": 1786034929.2251656,
+    "ast_hash": "272a288b738bbcd2fe257be13d3ea43a",
     "semantic_hash": ""
   },
   "index.html": {
@@ -290,8 +290,8 @@
     "semantic_hash": ""
   },
   "src/components/scene/BankFoliageSvg.tsx": {
-    "mtime": 1786016741.693055,
-    "ast_hash": "18ccb3017827a21ce5da81ef99781855",
+    "mtime": 1786034708.3150349,
+    "ast_hash": "6235923280ad2d5bb2eecaafbc82e23c",
     "semantic_hash": ""
   },
   "src/components/scene/BranchSvg.tsx": {
@@ -325,8 +325,8 @@
     "semantic_hash": ""
   },
   "src/components/scene/WaterPuddleSvg.tsx": {
-    "mtime": 1786023448.462575,
-    "ast_hash": "71881feb450fd4bbf0f581251c9c65bb",
+    "mtime": 1786035122.4038768,
+    "ast_hash": "50b08dc50a23fb606c0933ec2bfd3d19",
     "semantic_hash": ""
   },
   "src/game/hoverPeek.ts": {
@@ -340,8 +340,8 @@
     "semantic_hash": ""
   },
   "src/components/scene/waterRecipes.ts": {
-    "mtime": 1786023438.8785434,
-    "ast_hash": "337a25d725e9c135fa6c18e19c6893e4",
+    "mtime": 1786035118.3184352,
+    "ast_hash": "53861451b2e296026dd2ba01b290ba2e",
     "semantic_hash": ""
   },
   "src/components/OutcomeSplash.tsx": {
@@ -532,6 +532,16 @@
   "public/sounds/round_start.wav": {
     "mtime": 1786029268.301001,
     "ast_hash": "0844c83a0c58027781b5c779d54b41f6",
+    "semantic_hash": ""
+  },
+  "src/components/scene/MossTuftSvg.tsx": {
+    "mtime": 1786034679.6530452,
+    "ast_hash": "ff3735fce33fb7a86cf6cede54ce7b8a",
+    "semantic_hash": ""
+  },
+  "src/components/scene/RiverChannelSvg.tsx": {
+    "mtime": 1786035107.038034,
+    "ast_hash": "7ec8025f82069590c8ea894926bf4fe8",
     "semantic_hash": ""
   }
 }

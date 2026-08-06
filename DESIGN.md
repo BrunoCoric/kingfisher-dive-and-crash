@@ -30,7 +30,7 @@ Single source of truth for implementation status. Refer to `README.md` for the g
   - `src/components/` — river board, held hand, scores roster sheet, rules cheatsheet, status line, end-state panels, tutorial coach
   - `src/tutorial/` — scripted bot moves, lesson copy, `TutorialBot`
   - `src/TutorialBoard.tsx` — coach + click-gate wrapper for tutorial mode
-  - `scene/` — SVG board props (`BranchSvg`, `ReedSvg`, `BankFoliageSvg`, `WaterPuddleSvg`)
+  - `scene/` — SVG board props (`BranchSvg`, `ReedSvg`, `BankFoliageSvg`, `MossTuftSvg`, `RiverChannelSvg`, `WaterPuddleSvg`)
   - `src/lib/stepFeedback.ts` — pure helpers: zone actions/outcomes, pawn reactions, outcome story
   - `src/lib/personalSplash.ts` — local-seat good/neutral/bad splash valence from outcomeLog + lastReveals
   - `src/lib/sfx.ts` / `src/lib/stepSfx.ts` — WAV playback (`public/sounds/`) + once-per-step resolve cues
@@ -76,8 +76,9 @@ Single source of truth for implementation status. Refer to `README.md` for the g
 - [x] Smart bot stack (`src/game/ai/*`): hand belief, fish memory, risk scoring, near-greedy sampling
 - [x] Legacy greedy bot preserved (`LegacyKingfisherBot`) for A/B via `_bot_ab.mts` / `_sim_legacy.mts`
 - [x] "Read it on the river" step feedback: zone action chips + outcome badges, pawn reaction CSS, opponent reveals on the player rail, status-line story (`src/lib/stepFeedback.ts`)
-- [x] Handcrafted river board diorama: SVG scene pieces (`BranchSvg` / `ReedSvg` / `BankFoliageSvg` / `WaterPuddleSvg`), paper-grain tokens, 2.5D row depth, watercolor puddle zones
+- [x] Handcrafted river board diorama: SVG scene pieces (`BranchSvg` / `ReedSvg` / `BankFoliageSvg` / `WaterPuddleSvg` / `MossTuftSvg`), paper-grain tokens, 2.5D row depth, watercolor puddle zones
 - [x] Field-guide polish: organic per-zone puddle silhouettes (`waterRecipes.ts`), parchment fish backs, soft sun-glow perch targets (not yellow app buttons), clearer high/low perch elevation, dappled bank light
+- [x] River depth polish: softer broken-bloom channel (no hard tube), mid-board moss balance on both banks, per-zone puddle glare/ripples
 - [x] Targeting contrast: Splash/Drop/Dive (and Hover peek / sightline) light legal zones with a sun halo + badge and dim out-of-reach / illegal zones so reach is obvious at a glance
 - [x] Perch hover reach preview: hovering (or focusing) any perch soft-glows its reachable zones in water-cyan and dims the rest — suppressed while card/sightline targeting is active so it never fights the sun/peek highlights
 - [x] Round-start placement clears all birds off perches, then players place in First-Player order (empty → seated makes turn order readable)

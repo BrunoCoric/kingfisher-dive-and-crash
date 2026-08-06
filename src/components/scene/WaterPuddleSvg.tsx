@@ -13,6 +13,7 @@ export function WaterPuddleSvg({ zoneId, className }: WaterPuddleSvgProps) {
   const gradId = `puddle-${uid}`
   const clipId = `clip-${uid}`
   const haloId = `halo-${uid}`
+  const depthId = `depth-${uid}`
 
   return (
     <svg
@@ -24,9 +25,14 @@ export function WaterPuddleSvg({ zoneId, className }: WaterPuddleSvgProps) {
       <defs>
         <linearGradient id={gradId} x1="0.2" y1="0" x2="0.8" y2="1">
           <stop offset="0%" stopColor={recipe.light} />
-          <stop offset="48%" stopColor={recipe.mid} />
+          <stop offset="42%" stopColor={recipe.mid} />
           <stop offset="100%" stopColor={recipe.deep} />
         </linearGradient>
+        <radialGradient id={depthId} cx="52%" cy="62%" r="58%">
+          <stop offset="0%" stopColor="rgba(30, 80, 110, 0)" />
+          <stop offset="55%" stopColor="rgba(30, 80, 110, 0.08)" />
+          <stop offset="100%" stopColor="rgba(30, 80, 110, 0.32)" />
+        </radialGradient>
         <radialGradient id={haloId} cx="50%" cy="50%" r="55%">
           <stop offset="70%" stopColor="rgba(250,243,227,0)" />
           <stop offset="100%" stopColor="rgba(250,243,227,0.55)" />
@@ -36,27 +42,18 @@ export function WaterPuddleSvg({ zoneId, className }: WaterPuddleSvgProps) {
         </clipPath>
       </defs>
 
-      {/* soft deckled paper-edge halo + ground shadow */}
       <path
         d={recipe.path}
-        fill="rgba(250,243,227,0.5)"
-        transform="translate(50 41) scale(1.045) translate(-50 -41)"
+        fill="rgba(250,243,227,0.55)"
+        transform="translate(50 41) scale(1.05) translate(-50 -41)"
       />
-      <ellipse cx="50" cy="73" rx="34" ry="4.5" fill="rgba(45,95,120,0.16)" />
+      <ellipse cx="50" cy="74" rx="36" ry="5.2" fill="rgba(45,95,120,0.22)" />
+      <ellipse cx="50" cy="72" rx="28" ry="3.2" fill="rgba(45,95,120,0.14)" />
 
       <path d={recipe.path} fill={`url(#${gradId})`} />
-      <path
-        d={recipe.path}
-        fill="none"
-        stroke="rgba(255,252,245,0.4)"
-        strokeWidth="1.6"
-      />
-      <path
-        d={recipe.path}
-        fill="none"
-        stroke="rgba(45,95,120,0.22)"
-        strokeWidth="0.9"
-      />
+      <path d={recipe.path} fill={`url(#${depthId})`} />
+      <path d={recipe.path} fill="none" stroke="rgba(255,252,245,0.45)" strokeWidth="1.7" />
+      <path d={recipe.path} fill="none" stroke="rgba(45,95,120,0.26)" strokeWidth="1" />
 
       <g clipPath={`url(#${clipId})`}>
         {recipe.blooms.map((b, i) => (
@@ -64,6 +61,28 @@ export function WaterPuddleSvg({ zoneId, className }: WaterPuddleSvgProps) {
         ))}
         {recipe.speckles.map((s, i) => (
           <circle key={`s${i}`} cx={s.cx} cy={s.cy} r={s.r} fill={s.fill} />
+        ))}
+        {recipe.glare.map((g, i) => (
+          <path
+            key={`g${i}`}
+            d={g.d}
+            fill="none"
+            stroke="rgba(255,252,245,0.9)"
+            strokeWidth={g.width}
+            strokeLinecap="round"
+            opacity={g.opacity}
+          />
+        ))}
+        {recipe.ripples.map((r, i) => (
+          <path
+            key={`r${i}`}
+            d={r.d}
+            fill="none"
+            stroke="rgba(212,232,239,0.9)"
+            strokeWidth={r.width}
+            strokeLinecap="round"
+            opacity={r.opacity}
+          />
         ))}
         <path d={recipe.path} fill={`url(#${haloId})`} />
       </g>

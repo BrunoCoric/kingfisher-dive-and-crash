@@ -15,19 +15,24 @@
   padding: 1rem 0.5rem 1.1rem;
   border-radius: 2rem 2.4rem 2.1rem 1.8rem / 2.2rem 1.85rem 2.4rem 2rem;
   background:
+    radial-gradient(14% 10% at 18% 28%, rgba(76, 122, 61, 0.18), transparent 70%),
+    radial-gradient(12% 9% at 82% 58%, rgba(76, 122, 61, 0.14), transparent 70%),
+    radial-gradient(10% 8% at 14% 68%, rgba(201, 143, 62, 0.16), transparent 72%),
     radial-gradient(18% 14% at 22% 18%, rgba(255, 252, 230, 0.55), transparent 70%),
     radial-gradient(16% 12% at 78% 42%, rgba(255, 248, 214, 0.4), transparent 70%),
     radial-gradient(20% 16% at 40% 72%, rgba(255, 250, 220, 0.35), transparent 72%),
     radial-gradient(130% 55% at 50% -6%, rgba(255, 246, 214, 0.82), transparent 58%),
-    radial-gradient(40% 30% at 8% 40%, rgba(196, 164, 106, 0.35), transparent 70%),
-    radial-gradient(40% 30% at 92% 60%, rgba(196, 164, 106, 0.3), transparent 70%),
+    radial-gradient(40% 30% at 8% 40%, rgba(196, 164, 106, 0.4), transparent 70%),
+    radial-gradient(40% 30% at 92% 60%, rgba(196, 164, 106, 0.35), transparent 70%),
     linear-gradient(
       90deg,
       var(--bank-cliff) 0%,
-      var(--bank-deep) 10%,
-      var(--bank-sand) 18%,
-      var(--bank-sand) 82%,
-      var(--bank-deep) 90%,
+      var(--bank-deep) 9%,
+      var(--bank-sand) 17%,
+      #e8d4a0 30%,
+      #e8d4a0 70%,
+      var(--bank-sand) 83%,
+      var(--bank-deep) 91%,
       var(--bank-cliff) 100%
     );
   border: 3px solid rgba(46, 75, 42, 0.32);
@@ -74,42 +79,53 @@
   border-radius: inherit;
 }
 
-/* Soft river sheen under the puddles — pigment wash, not a glass strip */
-.spine {
+/* Organic SVG channel — soft meander under puddles, not a blue column */
+.channel {
   position: absolute;
-  top: 8%;
-  bottom: 6%;
+  top: 6%;
+  bottom: 5%;
   left: 50%;
   z-index: 0;
-  width: 58%;
+  width: 48%;
   transform: translateX(-50%);
-  border-radius: 48% / 8%;
-  background: linear-gradient(
-    180deg,
-    rgba(90, 158, 184, 0.12) 0%,
-    rgba(90, 158, 184, 0.06) 45%,
-    rgba(90, 158, 184, 0.14) 100%
-  );
   pointer-events: none;
+  opacity: 0.72;
+  mix-blend-mode: multiply;
 }
 
-.spineSheen {
+.channel svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Warm bank wash so sand reads as textured shore, not flat fill */
+.bankWash {
   position: absolute;
-  top: 10%;
-  bottom: 8%;
-  left: 50%;
+  top: 4%;
+  bottom: 4%;
   z-index: 0;
-  width: 42%;
-  transform: translateX(-50%);
-  border-radius: 50% / 10%;
-  background: linear-gradient(
-    105deg,
-    transparent 30%,
-    rgba(255, 252, 245, 0.22) 48%,
-    transparent 66%
-  );
+  width: 22%;
   pointer-events: none;
-  animation: washBreathe 8s ease-in-out infinite;
+  opacity: 0.85;
+}
+
+.bankWashL {
+  left: 0;
+  background:
+    radial-gradient(ellipse 70% 18% at 40% 22%, rgba(76, 122, 61, 0.22), transparent 70%),
+    radial-gradient(ellipse 60% 14% at 55% 48%, rgba(201, 143, 62, 0.16), transparent 72%),
+    radial-gradient(ellipse 65% 16% at 35% 78%, rgba(76, 122, 61, 0.18), transparent 70%),
+    linear-gradient(90deg, rgba(196, 164, 106, 0.35), transparent 85%);
+}
+
+.bankWashR {
+  right: 0;
+  background:
+    radial-gradient(ellipse 70% 18% at 60% 30%, rgba(76, 122, 61, 0.2), transparent 70%),
+    radial-gradient(ellipse 60% 14% at 45% 62%, rgba(201, 143, 62, 0.14), transparent 72%),
+    radial-gradient(ellipse 65% 16% at 65% 85%, rgba(76, 122, 61, 0.16), transparent 70%),
+    linear-gradient(270deg, rgba(196, 164, 106, 0.32), transparent 85%);
 }
 
 .foliage {
@@ -118,7 +134,7 @@
   height: 6.4rem;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.9;
+  opacity: 0.92;
 }
 
 .foliageTL {
@@ -139,6 +155,57 @@
 .foliageBR {
   right: -1.6rem;
   bottom: -1.8rem;
+}
+
+.moss {
+  position: absolute;
+  z-index: 0;
+  width: 2.85rem;
+  height: 2.35rem;
+  pointer-events: none;
+  opacity: 0.82;
+}
+
+.mossL1 {
+  top: 28%;
+  left: 0.05rem;
+}
+
+.mossL2 {
+  top: 48%;
+  left: -0.2rem;
+  width: 2.45rem;
+  height: 2.05rem;
+  opacity: 0.68;
+}
+
+.mossL3 {
+  top: 72%;
+  left: 0.1rem;
+  width: 2.65rem;
+  height: 2.2rem;
+  opacity: 0.74;
+}
+
+.mossR1 {
+  top: 36%;
+  right: 0.05rem;
+}
+
+.mossR2 {
+  top: 55%;
+  right: -0.15rem;
+  width: 2.55rem;
+  height: 2.1rem;
+  opacity: 0.7;
+}
+
+.mossR3 {
+  top: 78%;
+  right: 0.05rem;
+  width: 2.4rem;
+  height: 2rem;
+  opacity: 0.66;
 }
 
 .row {
@@ -196,16 +263,6 @@
   }
 }
 
-@keyframes washBreathe {
-  0%,
-  100% {
-    opacity: 0.65;
-  }
-  50% {
-    opacity: 0.9;
-  }
-}
-
 @media (max-width: 560px) {
   .board {
     gap: 0.06rem;
@@ -238,10 +295,22 @@
     width: 0.82rem;
     height: 0.82rem;
   }
+
+  .moss {
+    width: 2.4rem;
+    height: 2rem;
+  }
+
+  .mossL2,
+  .mossL3,
+  .mossR2,
+  .mossR3 {
+    width: 2.15rem;
+    height: 1.8rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .spineSheen,
   .driftBeat {
     animation: none;
   }
