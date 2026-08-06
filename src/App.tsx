@@ -10,6 +10,7 @@ import { TutorialIntro } from './components/TutorialIntro'
 import { TUTORIAL_INTRO } from './tutorial/intro'
 import { StartScreen, type StartConfig } from './StartScreen'
 import { startAmbience } from './lib/sfx'
+import type { KingfisherID } from './game/kingfishers'
 import './styles/global.css'
 import './styles/tokens.css'
 
@@ -19,6 +20,7 @@ type BotsMode = {
   humanSeat: string
   botSeats: string[]
   speciesPowers: boolean
+  humanSpecies: KingfisherID
 }
 type Mode = { kind: 'pick' } | { kind: 'tutorial' } | BotsMode
 
@@ -38,6 +40,7 @@ function BotsGame({ mode, onMenu }: { mode: BotsMode; onMenu: () => void }) {
             setup(context, {
               humanSeats: [mode.humanSeat],
               speciesPowers: mode.speciesPowers,
+              humanSpecies: mode.humanSpecies,
             }),
         },
         board: Board,

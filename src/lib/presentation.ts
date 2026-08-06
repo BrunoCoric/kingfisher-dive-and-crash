@@ -1,31 +1,43 @@
-import type { CardType, FishType } from '../game/types'
-import { KINGFISHERS, type Kingfisher } from '../game/kingfishers'
+import type { CardType, FishType, GameState } from '../game/types'
+import { KINGFISHERS, type Kingfisher, type KingfisherID } from '../game/kingfishers'
+import { SPECIES_ORDER, speciesIdForSeat } from '../game/powers'
 
-export const SPECIES = [
-  'Common Kingfisher',
-  'Pied Kingfisher',
-  'Oriental Dwarf Kingfisher',
-  'Belted Kingfisher',
-  'Azure Kingfisher',
-]
+export const SPECIES_SHORT: Record<KingfisherID, string> = {
+  common: 'Common',
+  pied: 'Pied',
+  orientalDwarf: 'Dwarf',
+  belted: 'Belted',
+  azure: 'Azure',
+}
 
-export const SPECIES_SHORT = ['Common', 'Pied', 'Dwarf', 'Belted', 'Azure']
+export function kingfisherById(id: KingfisherID): Kingfisher {
+  return KINGFISHERS[id]
+}
 
+/** Flock-order lookup (menus / diorama). Prefer `seatKingfisher` in-match. */
 export function kingfisher(index: number): Kingfisher {
-  return Object.values(KINGFISHERS)[index % Object.values(KINGFISHERS).length]
+  return KINGFISHERS[SPECIES_ORDER[index % SPECIES_ORDER.length]]
+}
+
+export function seatKingfisher(G: GameState, pid: string): Kingfisher {
+  return kingfisherById(speciesIdForSeat(G, pid))
 }
 
 /** UI accent for a seat — sourced from the species manifest (single source of truth). */
-export function playerColor(index: number): string {
-  return kingfisher(index).accent
+export function playerColor(G: GameState, pid: string): string {
+  return seatKingfisher(G, pid).accent
 }
 
-export function species(index: number): string {
-  return SPECIES[index % SPECIES.length]
+export function speciesName(G: GameState, pid: string): string {
+  return seatKingfisher(G, pid).displayName
 }
 
-export function speciesShort(index: number): string {
-  return SPECIES_SHORT[index % SPECIES_SHORT.length]
+export function speciesShort(G: GameState, pid: string): string {
+  return SPECIES_SHORT[speciesIdForSeat(G, pid)]
+}
+
+export function speciesShortById(id: KingfisherID): string {
+  return SPECIES_SHORT[id]
 }
 
 export const CARD_ACCENT: Record<CardType, string> = {

@@ -2,8 +2,8 @@ import type { KingfisherID } from './kingfishers'
 import { adjacentPerches, openHoverPerches, reachableZones } from './reach'
 import type { GameState, Perch, PerchLevel } from './types'
 
-/** Seat index → species (must match `KINGFISHERS` insertion order / UI seats). */
-const SPECIES_ORDER: KingfisherID[] = [
+/** Default flock order when no Create-game map is provided (tutorial / headless). */
+export const SPECIES_ORDER: KingfisherID[] = [
   'common',
   'pied',
   'orientalDwarf',
@@ -11,8 +11,29 @@ const SPECIES_ORDER: KingfisherID[] = [
   'azure',
 ]
 
-export function speciesIdForSeat(pid: string): KingfisherID {
-  return SPECIES_ORDER[Number(pid) % SPECIES_ORDER.length]
+/** Assign distinct species: human seat gets `humanSpecies`, others fill flock order. */
+export function buildSpeciesBySeat(
+  playOrder: string[],
+  humanSpecies: KingfisherID,
+  humanSeat = '0',
+): Record<string, KingfisherID> {
+  const rest = SPECIES_ORDER.filter((id) => id !== humanSpecies)
+  const map: Record<string, KingfisherID> = {}
+  let botIdx = 0
+  for (const pid of playOrder) {
+    if (pid === humanSeat) {
+      map[pid] = humanSpecies
+    } else {
+      map[pid] = rest[botIdx % rest.length]
+      botIdx += 1
+    }
+  }
+  return map
+}
+
+/** Seat → species from G, or flock order fallback. */
+export function speciesIdForSeat(G: GameState, pid: string): KingfisherID {
+  return G.speciesBySeat[pid] ?? SPECIES_ORDER[Number(pid) % SPECIES_ORDER.length]
 }
 
 export type PowerId =
@@ -59,7 +80,7 @@ export const SPECIES_POWERS: Record<KingfisherID, SpeciesPower> = {
 
 export function powerForSeat(G: GameState, pid: string): SpeciesPower | null {
   if (!G.speciesPowers) return null
-  return SPECIES_POWERS[speciesIdForSeat(pid)]
+  return SPECIES_POWERS[speciesIdForSeat(G, pid)]
 }
 
 export function hasPower(G: GameState, pid: string, id: PowerId): boolean {

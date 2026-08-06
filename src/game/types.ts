@@ -1,3 +1,5 @@
+import type { KingfisherID } from './kingfishers'
+
 export type CardType = 'Dive' | 'Drop' | 'Splash' | 'Hover'
 
 export type FishType = 'Minnow' | 'Perch' | 'Trout' | 'Trash' | 'Pike'
@@ -133,4 +135,6 @@ export interface GameState {
    * Off for tutorial / classic symmetric play.
    */
   speciesPowers: boolean
+  /** Seat → species (Create game picks human bird; bots fill the rest). */
+  speciesBySeat: Record<string, KingfisherID>
 }

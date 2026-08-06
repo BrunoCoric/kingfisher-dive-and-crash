@@ -1,7 +1,9 @@
 import type { CalloutKind, OutcomeCallout, RiverZone } from '../game/types'
 import { HIDDEN_FISH } from '../game/types'
+import type { KingfisherID } from '../game/kingfishers'
+import { KINGFISHERS } from '../game/kingfishers'
 import { outcomeLabel, primaryZoneCallout, type ZoneAction } from '../lib/stepFeedback'
-import { ACTION_LABEL, playerColor, speciesShort } from '../lib/presentation'
+import { ACTION_LABEL, SPECIES_SHORT } from '../lib/presentation'
 import { ActionIcon } from './ActionIcon'
 import { FishCard } from './FishCard'
 import { FishCardBack } from './FishCardBack'
@@ -28,6 +30,7 @@ interface ZoneTileProps {
   drifting?: boolean
   /** Last zone — fish washes off the board instead of landing. */
   driftOff?: boolean
+  speciesBySeat: Record<string, KingfisherID>
   onClick?: () => void
 }
 
@@ -40,6 +43,7 @@ export function ZoneTile({
   outcomes = [],
   drifting,
   driftOff,
+  speciesBySeat,
   onClick,
 }: ZoneTileProps) {
   const primaryCallout = primaryZoneCallout(outcomes)
@@ -102,13 +106,14 @@ export function ZoneTile({
       {actions.length > 0 && (
         <div className={styles.actionChips}>
           {actions.map((a) => {
-            const who = speciesShort(Number(a.playerId))
+            const birdId = speciesBySeat[a.playerId] ?? 'common'
+            const who = SPECIES_SHORT[birdId]
             const action = ACTION_LABEL[a.card]
             return (
               <span
                 key={`${a.playerId}-${a.card}`}
                 className={styles.actionChip}
-                style={{ ['--chip-accent' as string]: playerColor(Number(a.playerId)) }}
+                style={{ ['--chip-accent' as string]: KINGFISHERS[birdId].accent }}
                 aria-label={`${who} ${action}`}
               >
                 <span className={styles.chipGlyph}>

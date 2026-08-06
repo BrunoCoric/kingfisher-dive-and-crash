@@ -1,7 +1,11 @@
 import { useState } from 'react'
-import { kingfisher, speciesShort } from '../lib/presentation'
-import { SPECIES_POWERS, speciesIdForSeat } from '../game/powers'
+import { KINGFISHERS, type KingfisherID } from '../game/kingfishers'
+import { SPECIES_ORDER, SPECIES_POWERS, buildSpeciesBySeat } from '../game/powers'
+import { kingfisherById, speciesShortById } from '../lib/presentation'
 import { playSfx } from '../lib/sfx'
+import { loadProfile } from '../profile/store'
+import { isBirdUnlocked, UNLOCK_META } from '../profile/unlocks'
+import type { UnlockId } from '../profile/types'
 import type { StartConfig } from '../startConfig'
 import surface from './menuSurface.module.css'
 import styles from './CreateGame.module.css'
@@ -9,6 +13,7 @@ import styles from './CreateGame.module.css'
 const MIN_PLAYERS = 2
 const MAX_PLAYERS = 5
 const DEFAULT_PLAYERS = 4
+const HUMAN_SEAT = '0'
 
 export function CreateGame({
   onStart,
@@ -17,24 +22,26 @@ export function CreateGame({
   onStart: (config: StartConfig) => void
   onBack: () => void
 }) {
+  const profile = loadProfile()
   const [playerCount, setPlayerCount] = useState(DEFAULT_PLAYERS)
-  const [birdPref, setBirdPref] = useState(0)
+  const [humanSpecies, setHumanSpecies] = useState<KingfisherID>('common')
   const [speciesPowers, setSpeciesPowers] = useState(true)
-  const bird = Math.min(birdPref, playerCount - 1)
-  const botCount = playerCount - 1
-  const you = kingfisher(bird)
-  const yourPower = SPECIES_POWERS[speciesIdForSeat(String(bird))]
+
+  const seats = Array.from({ length: playerCount }, (_, i) => String(i))
+  const speciesBySeat = buildSpeciesBySeat(seats, humanSpecies, HUMAN_SEAT)
+  const you = kingfisherById(humanSpecies)
+  const yourPower = SPECIES_POWERS[humanSpecies]
 
   const start = () => {
+    if (!isBirdUnlocked(profile, humanSpecies)) return
     playSfx('card_select')
-    const seats = Array.from({ length: playerCount }, (_, i) => String(i))
-    const humanSeat = String(bird)
     onStart({
       kind: 'bots',
       numPlayers: playerCount,
-      humanSeat,
-      botSeats: seats.filter((id) => id !== humanSeat),
+      humanSeat: HUMAN_SEAT,
+      botSeats: seats.filter((id) => id !== HUMAN_SEAT),
       speciesPowers,
+      humanSpecies,
     })
   }
 
@@ -60,7 +67,7 @@ export function CreateGame({
           <img src={you.sprite} alt="" />
           <div>
             <span className={styles.portraitLabel}>You play as</span>
-            <strong>{speciesShort(bird)}</strong>
+            <strong>{speciesShortById(humanSpecies)}</strong>
             {speciesPowers && (
               <p className={styles.powerHint}>
                 <em>{yourPower.name}</em> — {yourPower.blurb}
@@ -72,22 +79,41 @@ export function CreateGame({
         <div className={styles.field}>
           <span>Your bird</span>
           <div className={styles.seatRow}>
-            {Array.from({ length: playerCount }, (_, i) => i).map((i) => {
-              const k = kingfisher(i)
+            {SPECIES_ORDER.map((id) => {
+              const k = KINGFISHERS[id]
+              const unlocked = isBirdUnlocked(profile, id)
+              const active = humanSpecies === id
+              const hint =
+                id === 'common'
+                  ? 'Always available'
+                  : UNLOCK_META[id as UnlockId].flavor
               return (
                 <button
-                  key={i}
+                  key={id}
                   type="button"
-                  className={bird === i ? styles.seatActive : styles.seat}
+                  className={
+                    !unlocked
+                      ? styles.seatLocked
+                      : active
+                        ? styles.seatActive
+                        : styles.seat
+                  }
                   style={{ ['--seat-accent' as string]: k.accent }}
+                  disabled={!unlocked}
+                  title={unlocked ? k.displayName : `Locked — ${hint}`}
+                  aria-label={unlocked ? k.displayName : `Locked: ${hint}`}
                   onClick={() => {
+                    if (!unlocked) return
                     playSfx('card_select')
-                    setBirdPref(i)
+                    setHumanSpecies(id)
                   }}
-                  aria-pressed={bird === i}
-                  aria-label={speciesShort(i)}
+                  aria-pressed={active}
                 >
-                  <img src={k.sprite} alt="" />
+                  <img
+                    className={unlocked ? undefined : styles.lockedImg}
+                    src={k.sprite}
+                    alt=""
+                  />
                 </button>
               )
             })}
@@ -102,28 +128,30 @@ export function CreateGame({
               <div>
                 <strong>You</strong>
                 <span>
-                  {speciesShort(bird)}
+                  {speciesShortById(humanSpecies)}
                   {speciesPowers ? ` · ${yourPower.name}` : ''}
                 </span>
               </div>
             </li>
-            {Array.from({ length: botCount }, (_, i) => {
-              const seat = i < bird ? i : i + 1
-              const k = kingfisher(seat)
-              const power = SPECIES_POWERS[speciesIdForSeat(String(seat))]
-              return (
-                <li key={seat} className={styles.slot} style={{ ['--seat-accent' as string]: k.accent }}>
-                  <img src={k.sprite} alt="" />
-                  <div>
-                    <strong>Bot</strong>
-                    <span>
-                      {speciesShort(seat)}
-                      {speciesPowers ? ` · ${power.name}` : ''}
-                    </span>
-                  </div>
-                </li>
-              )
-            })}
+            {seats
+              .filter((id) => id !== HUMAN_SEAT)
+              .map((seat) => {
+                const birdId = speciesBySeat[seat]
+                const k = kingfisherById(birdId)
+                const power = SPECIES_POWERS[birdId]
+                return (
+                  <li key={seat} className={styles.slot} style={{ ['--seat-accent' as string]: k.accent }}>
+                    <img src={k.sprite} alt="" />
+                    <div>
+                      <strong>Bot</strong>
+                      <span>
+                        {speciesShortById(birdId)}
+                        {speciesPowers ? ` · ${power.name}` : ''}
+                      </span>
+                    </div>
+                  </li>
+                )
+              })}
           </ul>
           <div className={styles.slotActions}>
             <button

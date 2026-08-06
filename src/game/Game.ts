@@ -6,7 +6,8 @@ import { resolveStep } from './resolution'
 import { endOfRoundCleanup } from './cleanup'
 import { filterPlayerView } from './playerView'
 import { enumerateLegalMoves } from './enumerate'
-import { openHoverTargets } from './powers'
+import { buildSpeciesBySeat, SPECIES_ORDER, openHoverTargets } from './powers'
+import type { KingfisherID } from './kingfishers'
 import type { FishCard, FishType, GameState, GamePhase, Perch, PlayerState } from './types'
 
 function buildPerches(zoneCount: number): Perch[] {
@@ -31,6 +32,8 @@ export interface KingfisherSetupData {
   tutorial?: boolean
   /** Soft species passives; default false (tutorial / headless). */
   speciesPowers?: boolean
+  /** Human's chosen bird (vs-bots). Bots fill remaining flock seats. */
+  humanSpecies?: KingfisherID
 }
 
 function fish(type: FishType, id: string): FishCard {
@@ -101,6 +104,16 @@ export function setup(
     }
   })
 
+  const humanSeats = setupData?.humanSeats ?? []
+  const humanSeat = humanSeats[0] ?? '0'
+  const humanSpecies = setupData?.humanSpecies ?? SPECIES_ORDER[0]
+  const speciesBySeat =
+    setupData?.humanSpecies !== undefined
+      ? buildSpeciesBySeat(ctx.playOrder, humanSpecies, humanSeat)
+      : Object.fromEntries(
+          ctx.playOrder.map((pid) => [pid, SPECIES_ORDER[Number(pid) % SPECIES_ORDER.length]]),
+        )
+
   return {
     zones,
     perches,
@@ -124,9 +137,10 @@ export function setup(
     splashes: [],
     outcomeLog: [],
     winner: null,
-    humanSeats: setupData?.humanSeats ?? [],
+    humanSeats,
     tutorial,
     speciesPowers: setupData?.speciesPowers === true && !tutorial,
+    speciesBySeat,
   }
 }
 

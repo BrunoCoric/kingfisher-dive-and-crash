@@ -1,6 +1,6 @@
 import { useState, type AnimationEvent } from 'react'
 import type { GameState } from '../game/types'
-import { kingfisher } from '../lib/presentation'
+import { seatKingfisher } from '../lib/presentation'
 import { personalOutcomeSplash } from '../lib/personalSplash'
 import { playSfx } from '../lib/sfx'
 import styles from './OutcomeSplash.module.css'
@@ -22,7 +22,7 @@ export function OutcomeSplash({ G, playerID }: Props) {
   const splash = personalOutcomeSplash(G, playerID)
   if (!splash || dismissed || prefersReducedMotion()) return null
 
-  const bird = kingfisher(Number(playerID))
+  const bird = seatKingfisher(G, playerID)
   const dismiss = () => setDismissed(true)
   const onRootAnim = (e: AnimationEvent<HTMLButtonElement>, fn: () => void) => {
     if (e.target === e.currentTarget) fn()

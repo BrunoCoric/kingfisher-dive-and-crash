@@ -8,7 +8,7 @@ Single source of truth for implementation status. Refer to `README.md` for the g
 - boardgame.io for turn/move/phase logic
 - CSS Modules for component styles; global styles in `src/styles/`
 - Shared game types in `src/game/types.ts`
-- Nest profile (localStorage) in `src/profile/` — match stats & unlock badges for vs-bots
+- Nest profile (localStorage) in `src/profile/` — match stats & flock bird unlocks for vs-bots
 
 ## Project Structure
 
@@ -35,11 +35,11 @@ Single source of truth for implementation status. Refer to `README.md` for the g
   - `scene/` — SVG board props (`BranchSvg`, `ReedSvg`, `BankFoliageSvg`, `MossTuftSvg`, `RiverChannelSvg`, `WaterPuddleSvg`)
   - `src/lib/stepFeedback.ts` — pure helpers: zone actions/outcomes, pawn reactions, outcome story
   - `src/lib/personalSplash.ts` — local-seat good/neutral/bad splash valence from outcomeLog + lastReveals
-  - `src/lib/sfx.ts` / `src/lib/stepSfx.ts` — WAV playback (`public/sounds/`) + once-per-step resolve cues
+  - `src/lib/sfx.ts` / `src/lib/stepSfx.ts` — Web Audio WAV playback (`public/sounds/`; avoids mobile Now Playing) + once-per-step resolve cues
   - `src/lib/boardChrome.tsx` — status-line hint/action builders for the mobile HUD
   - `src/components/OutcomeSplash.tsx` — personal bird burst overlay (local seat only)
   - `src/profile/` — Nest localStorage profile, unlocks, match summarize
-  - `src/components/NestPanel.tsx` — start-screen Nest / field notes
+  - `src/components/NestPanel.tsx` — start-screen Nest / flock unlocks / field notes
 
 ## Progress
 
@@ -96,15 +96,17 @@ Single source of truth for implementation status. Refer to `README.md` for the g
 - [x] Bottom-right rules cheatsheet (`RulesCheatsheet`): tap `? Rules` for priority order + crash / splash / steal interactions
 - [x] Personal outcome splash (local seat only): `OutcomeSplash` + `personalSplash.ts` — slower bird burst on catch / steal / crash only; river feedback remains shared truth (VISUALS §6 Step 4b)
 - [x] Scripted interactive tutorial: Start Screen **Tutorial** → rules intro slides (goal / VPs / reach / round / cards) then 3-seat sandbox (`tutorial: true` setup, `TutorialBot` seats 1–2, gated `TutorialBoard` + coach). Human only taps highlighted targets; opponents play a fixed script across 4 rounds covering place/peek, solo Dive, empty Drop, Hover move, Splash block, Drop steal, Dive Crash, Drop+Drop Crash, and Pike. Smoke: `npx tsx _tutorial_smoke.mts`.
-- [x] SFX pack wired (`public/sounds/*.wav`): card select/lock, peek, step resolve + all four card reveals, outcome kinds (catch/crash/steal/blocked/pike), fish-value flavors, personal splash good/bad, bird perch hops, fish drift → restock → round start, game win, looping ambience from main menu (unlocked on first menu click, kept across Main menu returns). Skips when `prefers-reduced-motion`.
+- [x] SFX pack wired (`public/sounds/*.wav` via Web Audio API): card select/lock, peek, step resolve + all four card reveals, outcome kinds (catch/crash/steal/blocked/pike), fish-value flavors, personal splash good/bad, bird perch hops, fish drift → restock → round start, game win, looping ambience from main menu (unlocked on first menu click, kept across Main menu returns). Skips when `prefers-reduced-motion`. Web Audio avoids iOS/Android treating ambience as Now Playing / Control Center media.
 - [x] Nest profile (localStorage): `src/profile/` types + store + unlocks + match summarize; vs-bots only
 - [x] Match-long tallies on `G`: `matchPlays` / `matchOutcomes` (append in `resolveStep`, never cleared mid-game)
 - [x] GameOver records Nest once (`recordMatchOnce`) and shows newly unlocked badges; CTA is **Main menu** (returns to Start Screen — in-client rematch stalled vs Local bots)
 - [x] Start Screen main menu: **Play** / **Nest** / **Tutorial** (`card_select` on click); no Pass & Play
 - [x] Play → local **Game lobby** (empty list for now) → **Create game** (bird pick + bot slots, default 4 players) → vs-bots match
 - [x] Menu / lobby / create: clean title (brand + flock + pill CTAs); lobby/create bank-sand panels
-- [x] Start Screen **Nest** panel: lifetime stats, badge list, recent matches
+- [x] Start Screen **Nest** panel: lifetime stats, flock unlock gallery, recent matches
 - [x] Optional Species Powers (`src/game/powers.ts`): one soft passive per bird; Create game toggle (default on); tutorial forced off; Rules sheet lists them when active
+- [x] Nest flock unlocks: Common always free; Pied / Oriental Dwarf / Belted / Azure via vs-bots missions; Create game gates bird pick; `G.speciesBySeat` decouples seat from species
+- [x] App favicon: Common Kingfisher mark (`public/favicon.svg` + PNG fallbacks / apple-touch)
 
 ### Implementation Notes
 - Local browser play is vs-bots only from Create game (2–5 seats). Pass-and-play entry is removed from the Start Screen. Hidden-information secrecy for true multiplayer is deferred.
@@ -130,7 +132,7 @@ Single source of truth for implementation status. Refer to `README.md` for the g
 - **Contest retune:** `denyWeight` 0.25→0.7, `repositionWeight` 0.3→0.45; `denyValue` scales by how exclusive a zone already is (1 bird ≫ crowded). Fixes bots herding mid-river while a human farms one side alone.
 - Enumerate fix: a seat with no legal card must emit `skipTurn` (not bare `endStage`), or simultaneous steps stall with `activePlayers: null` and a missing selection.
 - Outcome log is cleared at the start of `resolveStep`, not on the first `selectCard` of the next step — otherwise later seats never see crashes/steals for belief updates. UI feedback (status story, zone badges, pawn reactions, roster reveals) stays visible through the following selection phase via the same `outcomeLog` / `lastReveals` window. `resolveStep` also snapshots `G.selections` into `G.lastReveals` so chips match the step that just resolved, and appends each seat's card into `G.roundPlays` for the roster history strip. After step 3, the `cleanup` review beat keeps that window until `continueRound`; only then does `endOfRoundCleanup` clear it (including `roundPlays`), drift/restock fish, and reset hands (bot belief round-resets cleanly).
-- **Nest (v1):** Finished vs-bots matches (`humanSeats.length === 1`, not tutorial) write into `localStorage` key `kingfisher-nest-v1` via `recordMatchOnce` on GameOver. `G.matchPlays` / `G.matchOutcomes` accumulate for the whole match; fish types come from the human seat’s final `scored` pile. Unlock badges: first-win, drop-only-win, first-trout, crash-and-place, five-matches.
+- **Nest (v1):** Finished vs-bots matches (`humanSeats.length === 1`, not tutorial) write into `localStorage` key `kingfisher-nest-v1` via `recordMatchOnce` on GameOver. `G.matchPlays` / `G.matchOutcomes` accumulate for the whole match; fish types come from the human seat’s final `scored` pile. Flock unlocks (playable birds): Common always free; Pied = win a match; Oriental Dwarf = keep a Trout; Belted = crash ≥3 and finish top two; Azure = five matches. Nest **Flock** gallery shows silhouettes + missions; Create game only offers unlocked birds. `G.speciesBySeat` (from `humanSpecies` setup) maps seats → species so the human can play any unlocked bird regardless of seat index. Legacy badge ids migrate on load.
 - [x] End-of-round review beat: `cleanup` waits for **Next round** in the status line (`continueRound`); river chips stay up; vs-bots holds on the human seat so bots don’t auto-skip
 - Hover zone chips need the peek *zone* in public `lastReveals`. `playerView` no longer strips `peek` from revealed selections — only the fish face stays private (via `peeked` / zone filtering). Pending `selections` remain seat-private until resolve.
 - A/B harness: `npx tsx _bot_ab.mts` (all-smart / all-legacy / mixed). Probe: `npx tsx _bot_probe.mts`. Diag: `npx tsx _bot_diag.mts`. Against legacy, smart typically wins mixed seats; all-smart mirror still crashes more than all-legacy because legacy's hash argmax is a near-perfect anti-collision coordination device.

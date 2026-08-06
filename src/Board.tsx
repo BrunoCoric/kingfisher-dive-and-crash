@@ -4,7 +4,7 @@ import type { CardType, GameState, StepSelection } from './game/types'
 import { canSightline, openHoverTargets, playerReach, reachFromPerch } from './game/powers'
 import { hasLegalStepMove } from './game/enumerate'
 import { hasHoverPeekTarget, isHoverPeekTarget } from './game/hoverPeek'
-import { kingfisher, playerColor } from './lib/presentation'
+import { seatKingfisher } from './lib/presentation'
 import { playerReactions, zoneActions, zoneOutcomes } from './lib/stepFeedback'
 import { statusActionsFor, statusHintFor } from './lib/boardChrome'
 import { cueRoundAdvanceSfx, playSfx } from './lib/sfx'
@@ -122,12 +122,13 @@ export function Board(props: BoardProps<GameState> & BoardExtra) {
   for (const pid of ctx.playOrder) {
     const p = G.players[pid]
     if (!p.perch) continue
+    const bird = seatKingfisher(G, pid)
     occupants[p.perch] = {
       id: pid,
-      color: playerColor(Number(pid)),
+      color: bird.accent,
       isFirst: pid === G.firstPlayer,
-      sprite: kingfisher(Number(pid)).sprite,
-      facing: kingfisher(Number(pid)).facing,
+      sprite: bird.sprite,
+      facing: bird.facing,
       reaction: reactions[pid],
       feedbackKey: reactions[pid] ? feedbackKey : undefined,
     }
@@ -317,6 +318,7 @@ export function Board(props: BoardProps<GameState> & BoardExtra) {
             zoneOutcomes={outcomesByZone}
             drifting={drifting}
             previewReach={me ? previewReachFor : undefined}
+            speciesBySeat={G.speciesBySeat}
             onDriftEnd={finishDrift}
             onZoneClick={(id) => {
               if (guided && guide?.zoneId !== undefined && id !== guide.zoneId) return

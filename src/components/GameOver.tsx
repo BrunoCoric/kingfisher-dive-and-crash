@@ -1,5 +1,5 @@
 import type { GameState } from '../game/types'
-import { kingfisher, species } from '../lib/presentation'
+import { seatKingfisher, speciesName } from '../lib/presentation'
 import { cueWinSfx } from '../lib/sfx'
 import { recordMatchOnce } from '../profile/store'
 import { summarizeMatch } from '../profile/summarize'
@@ -18,7 +18,7 @@ export function GameOver({ game, playOrder, onMenu }: { game: GameState; playOrd
   if (game.winner === null) return null
   cueWinSfx(game.winner)
   const newlyUnlocked = maybeRecord(game, playOrder)
-  const winner = kingfisher(Number(game.winner))
+  const winner = seatKingfisher(game, game.winner)
   const standings = [...playOrder].sort((a, b) => {
     const scoreDiff = game.players[b].score - game.players[a].score
     return scoreDiff || game.players[b].fishCount - game.players[a].fishCount
@@ -31,17 +31,18 @@ export function GameOver({ game, playOrder, onMenu }: { game: GameState; playOrd
         <div className={styles.winnerCard} style={{ ['--win-accent' as string]: winner.accent }}>
           <img className={styles.winnerSprite} src={winner.sprite} alt="" />
           <p className={styles.winner}>
-            <strong>{species(Number(game.winner))}</strong> wins with{' '}
+            <strong>{speciesName(game, game.winner)}</strong> wins with{' '}
             <strong>{game.players[game.winner].score}</strong> points!
           </p>
         </div>
         <ol className={styles.standings}>
           {standings.map((pid, i) => {
             const p = game.players[pid]
+            const bird = seatKingfisher(game, pid)
             return (
-              <li key={pid} style={{ ['--row-accent' as string]: kingfisher(Number(pid)).accent }}>
+              <li key={pid} style={{ ['--row-accent' as string]: bird.accent }}>
                 <span className={styles.rank}>{i + 1}</span>
-                <span className={styles.rowName}>{species(Number(pid))}</span>
+                <span className={styles.rowName}>{speciesName(game, pid)}</span>
                 <span className={styles.rowScore}>{p.score} pts</span>
                 <span className={styles.rowFish}>{p.fishCount} fish</span>
               </li>

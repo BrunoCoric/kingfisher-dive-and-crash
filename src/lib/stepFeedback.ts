@@ -74,7 +74,7 @@ export function outcomeStory(G: GameState): string {
   if (G.outcomeLog.length === 0) return ''
   return G.outcomeLog
     .map((c) => {
-      const who = c.actor !== undefined ? speciesShort(Number(c.actor)) : '?'
+      const who = c.actor !== undefined ? speciesShort(G, c.actor) : '?'
       const where = c.zone >= 0 ? ` Z${c.zone + 1}` : ''
       const pts = c.points !== undefined ? ` +${c.points}` : ''
       return `${who} ${OUTCOME_LABEL[c.kind]}${pts}${where}`

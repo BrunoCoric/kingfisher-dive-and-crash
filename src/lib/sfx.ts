@@ -1,4 +1,4 @@
-/** ElevenLabs WAVs served from `public/sounds/`. */
+/** ElevenLabs WAVs via Web Audio — avoids mobile Now Playing / media session. */
 
 export type SfxId =
   | 'blocked'
@@ -28,8 +28,11 @@ export type SfxId =
 
 const AMBIENCE_VOLUME = 0.28
 
-const cache = new Map<SfxId, HTMLAudioElement>()
-let ambience: HTMLAudioElement | null = null
+let ctx: AudioContext | null = null
+const buffers = new Map<string, Promise<AudioBuffer>>()
+let ambienceSrc: AudioBufferSourceNode | null = null
+let ambienceGain: GainNode | null = null
+let ambienceWanted = false
 
 function muted(): boolean {
   return (
@@ -38,49 +41,91 @@ function muted(): boolean {
   )
 }
 
-function load(id: SfxId): HTMLAudioElement {
-  let audio = cache.get(id)
-  if (!audio) {
-    audio = new Audio(`/sounds/${id}.wav`)
-    audio.preload = 'auto'
-    cache.set(id, audio)
+async function ensureCtx(): Promise<AudioContext | null> {
+  if (typeof window === 'undefined') return null
+  if (!ctx) {
+    const AC =
+      window.AudioContext ||
+      (window as unknown as { webkitAudioContext: typeof AudioContext })
+        .webkitAudioContext
+    ctx = new AC()
   }
-  return audio
+  if (ctx.state === 'suspended') await ctx.resume()
+  return ctx
+}
+
+function loadBuffer(url: string): Promise<AudioBuffer> {
+  let pending = buffers.get(url)
+  if (!pending) {
+    pending = (async () => {
+      const c = await ensureCtx()
+      if (!c) throw new Error('no audio')
+      const res = await fetch(url)
+      if (!res.ok) throw new Error(`sfx ${url}`)
+      return c.decodeAudioData(await res.arrayBuffer())
+    })()
+    buffers.set(url, pending)
+  }
+  return pending
+}
+
+function playBuffer(
+  c: AudioContext,
+  buf: AudioBuffer,
+  when: number,
+  dest: AudioNode,
+  loop = false,
+): AudioBufferSourceNode {
+  const src = c.createBufferSource()
+  src.buffer = buf
+  src.loop = loop
+  src.connect(dest)
+  src.start(when)
+  return src
 }
 
 /** Fire-and-forget one-shot. Optional delay for layered step cues. */
 export function playSfx(id: SfxId, delayMs = 0): void {
   if (typeof window === 'undefined' || muted()) return
-  const go = () => {
-    const base = load(id)
-    const shot = base.cloneNode(true) as HTMLAudioElement
-    void shot.play().catch(() => {
-      /* autoplay / missing file — ignore */
-    })
-  }
-  if (delayMs <= 0) go()
-  else window.setTimeout(go, delayMs)
+  void (async () => {
+    const c = await ensureCtx()
+    if (!c || muted()) return
+    const buf = await loadBuffer(`/sounds/${id}.wav`)
+    playBuffer(c, buf, c.currentTime + delayMs / 1000, c.destination)
+  })().catch(() => {
+    /* autoplay / missing file — ignore */
+  })
 }
 
 /** Soft looping river bed. Call from a user gesture (mode start). */
 export function startAmbience(): void {
   if (typeof window === 'undefined' || muted()) return
-  if (!ambience) {
-    ambience = new Audio('/sounds/ambience.wav')
-    ambience.loop = true
-    ambience.preload = 'auto'
-    ambience.volume = AMBIENCE_VOLUME
-  }
-  if (!ambience.paused) return
-  void ambience.play().catch(() => {
+  ambienceWanted = true
+  void (async () => {
+    const c = await ensureCtx()
+    if (!c || muted() || !ambienceWanted || ambienceSrc) return
+    const buf = await loadBuffer('/sounds/ambience.wav')
+    if (!ambienceWanted || ambienceSrc) return
+    if (!ambienceGain) {
+      ambienceGain = c.createGain()
+      ambienceGain.gain.value = AMBIENCE_VOLUME
+      ambienceGain.connect(c.destination)
+    }
+    ambienceSrc = playBuffer(c, buf, c.currentTime, ambienceGain, true)
+  })().catch(() => {
     /* autoplay blocked — ignore until next gesture */
   })
 }
 
 export function stopAmbience(): void {
-  if (!ambience) return
-  ambience.pause()
-  ambience.currentTime = 0
+  ambienceWanted = false
+  if (!ambienceSrc) return
+  try {
+    ambienceSrc.stop()
+  } catch {
+    /* already stopped */
+  }
+  ambienceSrc = null
 }
 
 /** After fish drift + restock into the next round's placement. */

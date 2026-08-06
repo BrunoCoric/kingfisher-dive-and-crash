@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import type { CalloutKind, OutcomeCallout, Perch as PerchType, RiverZone } from '../game/types'
+import type { KingfisherID } from '../game/kingfishers'
 import { reachableZones } from '../game/reach'
 import type { ZoneAction } from '../lib/stepFeedback'
 import { Perch } from './Perch'
@@ -33,6 +34,7 @@ interface RiverBoardProps {
   drifting?: boolean
   /** Optional reach override for perch hover preview (species powers). */
   previewReach?: (perchId: string) => number[]
+  speciesBySeat: Record<string, KingfisherID>
   onDriftEnd?: () => void
   onZoneClick: (id: number) => void
   onPerchClick: (id: string) => void
@@ -49,6 +51,7 @@ export function RiverBoard({
   zoneOutcomes = {},
   drifting = false,
   previewReach,
+  speciesBySeat,
   onDriftEnd,
   onZoneClick,
   onPerchClick,
@@ -172,6 +175,7 @@ export function RiverBoard({
                 outcomes={zoneOutcomes[zone.id]}
                 drifting={drifting}
                 driftOff={drifting && zone.id === lastZone}
+                speciesBySeat={speciesBySeat}
                 onClick={() => onZoneClick(zone.id)}
               />
               {renderPerch(right)}

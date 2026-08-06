@@ -1,5 +1,5 @@
 import type { GameState } from '../game/types'
-import { kingfisher } from '../lib/presentation'
+import { seatKingfisher } from '../lib/presentation'
 import styles from './RosterButton.module.css'
 
 interface RosterButtonProps {
@@ -15,7 +15,7 @@ export function RosterButton({ G, playOrder, myID, placing, onOpen }: RosterButt
   const readyCount = playOrder.filter((pid) =>
     placing ? G.players[pid].perch !== '' : G.locked[pid] === true,
   ).length
-  const first = kingfisher(Number(G.firstPlayer))
+  const first = seatKingfisher(G, G.firstPlayer)
   const shown = playOrder.slice(0, 4)
 
   return (
@@ -31,7 +31,7 @@ export function RosterButton({ G, playOrder, myID, placing, onOpen }: RosterButt
       </span>
       <span className={styles.flock} aria-hidden>
         {shown.map((pid, i) => {
-          const k = kingfisher(Number(pid))
+          const k = seatKingfisher(G, pid)
           return (
             <span
               key={pid}

@@ -5,13 +5,13 @@
     "semantic_hash": ""
   },
   "src/App.tsx": {
-    "mtime": 1786042111.138914,
-    "ast_hash": "77b9a0dd33a8b460763a583027b09374",
+    "mtime": 1786043999.3692937,
+    "ast_hash": "5bb7160e0f3a19bb02f68667e2e21072",
     "semantic_hash": ""
   },
   "src/Board.tsx": {
-    "mtime": 1786042085.2334373,
-    "ast_hash": "320b332fdff2d468898e3cda707d16f0",
+    "mtime": 1786043971.5868726,
+    "ast_hash": "c78ec79fae77e94d8c2dfc1d26748a86",
     "semantic_hash": ""
   },
   "src/components/ActionCard.tsx": {
@@ -25,8 +25,8 @@
     "semantic_hash": ""
   },
   "src/components/GameOver.tsx": {
-    "mtime": 1786040371.1016903,
-    "ast_hash": "63d82b2501e255785b02a91c2a3a7606",
+    "mtime": 1786043994.1878042,
+    "ast_hash": "57e4a5a16d3f8838aed85c312f2c2168",
     "semantic_hash": ""
   },
   "src/components/Hand.tsx": {
@@ -40,18 +40,18 @@
     "semantic_hash": ""
   },
   "src/components/RiverBoard.tsx": {
-    "mtime": 1786042073.9404542,
-    "ast_hash": "abc445d2badda8fcc8e737fbee012dcb",
+    "mtime": 1786043969.8552139,
+    "ast_hash": "e044a005a36563971efdfd2722e383c8",
     "semantic_hash": ""
   },
   "src/components/ZoneTile.tsx": {
-    "mtime": 1786034449.2330084,
-    "ast_hash": "a1d90188a1b3dff18e459f89d9b8af52",
+    "mtime": 1786043974.655492,
+    "ast_hash": "4ad6b7dbd279b05877bc2a2a868e987f",
     "semantic_hash": ""
   },
   "src/game/Game.ts": {
-    "mtime": 1786041968.125219,
-    "ast_hash": "2ac9b5a67aeccec77fa888810d889af9",
+    "mtime": 1786044042.7609262,
+    "ast_hash": "7b0bf41af25967457e67dbf34a21e2e3",
     "semantic_hash": ""
   },
   "src/game/cards.ts": {
@@ -90,13 +90,13 @@
     "semantic_hash": ""
   },
   "src/game/types.ts": {
-    "mtime": 1786041939.2969866,
-    "ast_hash": "fa973176cb832e71a5b8873a0ef31a0e",
+    "mtime": 1786043938.5075772,
+    "ast_hash": "2e69612ff20f71caaac641ef26a3c4ea",
     "semantic_hash": ""
   },
   "src/lib/presentation.ts": {
-    "mtime": 1785998108.2840521,
-    "ast_hash": "36bb9b364d07d9db3a89513532bdd748",
+    "mtime": 1786044082.2638159,
+    "ast_hash": "5d4ae3d30a69a4acbce4d0fed0e5639f",
     "semantic_hash": ""
   },
   "src/main.tsx": {
@@ -135,8 +135,8 @@
     "semantic_hash": ""
   },
   "DESIGN.md": {
-    "mtime": 1786042162.4440582,
-    "ast_hash": "8f0c04e7cd7c0d0d2a73d3321fc4d175",
+    "mtime": 1786044332.8307009,
+    "ast_hash": "8cd53c8e5f88fd1c84a7268963d10fa5",
     "semantic_hash": ""
   },
   "README.md": {
@@ -150,8 +150,8 @@
     "semantic_hash": ""
   },
   "index.html": {
-    "mtime": 1785974374.3344305,
-    "ast_hash": "e2ad2499a32b5f3ee9b747a42b828682",
+    "mtime": 1786044226.9787774,
+    "ast_hash": "77ba0b1d41a0a5805ae755ba4de46fe3",
     "semantic_hash": ""
   },
   "src/assets/kingfishers/azure-kingfisher.png": {
@@ -285,8 +285,8 @@
     "semantic_hash": ""
   },
   "src/lib/stepFeedback.ts": {
-    "mtime": 1786036050.3430488,
-    "ast_hash": "ce68da7e643021815db9238f931c01d8",
+    "mtime": 1786043977.9180644,
+    "ast_hash": "ac25e94358e0cc927e2b3d956f1e6c8b",
     "semantic_hash": ""
   },
   "src/components/scene/BankFoliageSvg.tsx": {
@@ -315,13 +315,13 @@
     "semantic_hash": ""
   },
   "src/components/RosterButton.tsx": {
-    "mtime": 1786019998.8609054,
-    "ast_hash": "9257d2baf070b20f40d1af131bec6948",
+    "mtime": 1786043983.140029,
+    "ast_hash": "96bf6da2c3ab79f3ecfd836c2568aac7",
     "semantic_hash": ""
   },
   "src/components/RosterSheet.tsx": {
-    "mtime": 1786034257.4474514,
-    "ast_hash": "0c17e7e36983cd20a272e3f9493eed9d",
+    "mtime": 1786043987.7544787,
+    "ast_hash": "83d3e1a232c96b387b8e8a17d2665e02",
     "semantic_hash": ""
   },
   "src/components/scene/WaterPuddleSvg.tsx": {
@@ -345,8 +345,8 @@
     "semantic_hash": ""
   },
   "src/components/OutcomeSplash.tsx": {
-    "mtime": 1786028643.472581,
-    "ast_hash": "4919500e18f48114469df8efce985bec",
+    "mtime": 1786043993.2373421,
+    "ast_hash": "1c55172be98943a95f70a4dbbec4fe92",
     "semantic_hash": ""
   },
   "src/lib/personalSplash.ts": {
@@ -400,8 +400,8 @@
     "semantic_hash": ""
   },
   "src/lib/sfx.ts": {
-    "mtime": 1786029292.695467,
-    "ast_hash": "1c08923e94be3c2833afd317b1fad7d4",
+    "mtime": 1786044339.8757153,
+    "ast_hash": "e253e0e35f1bac0f8e54c4c17df2338a",
     "semantic_hash": ""
   },
   "src/lib/stepSfx.ts": {
@@ -545,13 +545,13 @@
     "semantic_hash": ""
   },
   "src/components/NestPanel.tsx": {
-    "mtime": 1786040012.6828012,
-    "ast_hash": "26cce82e542e780595d7d6ec75af8cf7",
+    "mtime": 1786044016.555178,
+    "ast_hash": "734de0378798be5f1f914dad34b7455f",
     "semantic_hash": ""
   },
   "src/profile/store.ts": {
-    "mtime": 1786039999.4657469,
-    "ast_hash": "09e7204366d2fe0431af5ad6e9c24cfb",
+    "mtime": 1786043930.1883686,
+    "ast_hash": "a9e3755e160697b4d79e8faafbeb1781",
     "semantic_hash": ""
   },
   "src/profile/summarize.ts": {
@@ -560,18 +560,18 @@
     "semantic_hash": ""
   },
   "src/profile/types.ts": {
-    "mtime": 1786039969.2873683,
-    "ast_hash": "f269e726e1e10548ecb29c82d229c1d9",
+    "mtime": 1786043924.0883548,
+    "ast_hash": "b000f6bc05499b37e46bfe1e9de506bf",
     "semantic_hash": ""
   },
   "src/profile/unlocks.ts": {
-    "mtime": 1786039971.8827932,
-    "ast_hash": "91e08868f52d76995d6767fd8794fc06",
+    "mtime": 1786043929.8809037,
+    "ast_hash": "a0dcc38334719649152beb885c43e829",
     "semantic_hash": ""
   },
   "src/components/CreateGame.tsx": {
-    "mtime": 1786042105.8739197,
-    "ast_hash": "2facef40526920d1d8504dbcde99115a",
+    "mtime": 1786044074.2394612,
+    "ast_hash": "2bbd09c96c5a561a61be0211b78b47bf",
     "semantic_hash": ""
   },
   "src/components/GameLobby.tsx": {
@@ -580,8 +580,8 @@
     "semantic_hash": ""
   },
   "src/startConfig.ts": {
-    "mtime": 1786041939.6144426,
-    "ast_hash": "27e61c0e102ab001346acfa9997c5fe1",
+    "mtime": 1786044043.5201344,
+    "ast_hash": "47d3aac7e9ce228d136fb12b4710b0b4",
     "semantic_hash": ""
   },
   "src/components/TitleDiorama.tsx": {
@@ -590,13 +590,38 @@
     "semantic_hash": ""
   },
   "src/game/powers.ts": {
-    "mtime": 1786042181.513024,
-    "ast_hash": "51776503bed3aac95a0eeff488d98fbc",
+    "mtime": 1786043940.2536724,
+    "ast_hash": "5b257f49bc2382ec26a36dbf72348fbd",
     "semantic_hash": ""
   },
   "_powers_smoke.mts": {
     "mtime": 1786042188.0111127,
     "ast_hash": "7f271ddef76cc448b8591205d07aa128",
+    "semantic_hash": ""
+  },
+  "public/apple-touch-icon.png": {
+    "mtime": 1786044225.767557,
+    "ast_hash": "98f876532ec2a1c603ceb613eb215234",
+    "semantic_hash": ""
+  },
+  "public/favicon-16.png": {
+    "mtime": 1786044225.7413175,
+    "ast_hash": "1ade81f4c4f9cb8e62c98b444f5d48f2",
+    "semantic_hash": ""
+  },
+  "public/favicon-32.png": {
+    "mtime": 1786044225.7171783,
+    "ast_hash": "eb4f4e78c4b6a6a65355f51e41a86478",
+    "semantic_hash": ""
+  },
+  "public/favicon.svg": {
+    "mtime": 1786044226.7456777,
+    "ast_hash": "0a67dd706f4ff776b0ddd2ab33d7d87e",
+    "semantic_hash": ""
+  },
+  "public/icon-192.png": {
+    "mtime": 1786044225.7933633,
+    "ast_hash": "9d7188a62a008d0436c6f71b9951bcde",
     "semantic_hash": ""
   }
 }

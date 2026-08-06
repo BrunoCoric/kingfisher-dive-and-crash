@@ -1,3 +1,5 @@
+import type { KingfisherID } from './game/kingfishers'
+
 export type StartConfig =
   | { kind: 'tutorial' }
   | {
@@ -7,4 +9,6 @@ export type StartConfig =
       botSeats: string[]
       /** Soft per-species passives; default on in Create game. */
       speciesPowers: boolean
+      /** Bird the human plays as (must be Nest-unlocked). */
+      humanSpecies: KingfisherID
     }

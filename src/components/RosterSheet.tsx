@@ -2,7 +2,7 @@ import { useState } from 'react'
 import type { CalloutKind, CardType, FishCard, GameState, StepSelection } from '../game/types'
 import { STEPS_PER_ROUND } from '../game/cards'
 import { selectionDetail } from '../lib/stepFeedback'
-import { FISH_LABEL, kingfisher, speciesShort, CARD_ACCENT } from '../lib/presentation'
+import { FISH_LABEL, seatKingfisher, speciesShort, CARD_ACCENT } from '../lib/presentation'
 import { ActionIcon } from './ActionIcon'
 import { FishIcon } from './FishIcon'
 import styles from './RosterSheet.module.css'
@@ -48,7 +48,7 @@ export function RosterSheet({
         <ul className={styles.list}>
           {playOrder.map((pid) => {
             const p = G.players[pid]
-            const k = kingfisher(Number(pid))
+            const k = seatKingfisher(G, pid)
             const mine = pid === myID
             const first = pid === G.firstPlayer
             const leading = p.score > 0 && p.score === best
@@ -74,7 +74,7 @@ export function RosterSheet({
                   </span>
                   <span className={styles.meta}>
                     <span className={styles.name}>
-                      {mine ? 'You' : speciesShort(Number(pid))}
+                      {mine ? 'You' : speciesShort(G, pid)}
                       {ready && !reveal && <span className={styles.readyDot} aria-label="Ready" />}
                     </span>
                     <span className={styles.sub}>

@@ -1,15 +1,16 @@
+import { KINGFISHERS, type KingfisherID } from '../game/kingfishers'
+import { SPECIES_POWERS } from '../game/powers'
 import { loadProfile } from '../profile/store'
-import { UNLOCK_META } from '../profile/unlocks'
+import { isBirdUnlocked, STARTER_FLAVOR, UNLOCK_META } from '../profile/unlocks'
 import type { UnlockId } from '../profile/types'
-import { CARD_TYPES, FISH_TYPES } from '../profile/types'
+import { CARD_TYPES, FISH_TYPES, LOCKED_BIRDS } from '../profile/types'
 import styles from './NestPanel.module.css'
 
-const ALL_UNLOCKS = Object.keys(UNLOCK_META) as UnlockId[]
+const FLOCK: KingfisherID[] = ['common', ...LOCKED_BIRDS]
 
 export function NestPanel({ onClose }: { onClose: () => void }) {
   const profile = loadProfile()
-  const { stats, matches, unlocked } = profile
-  const unlockedSet = new Set(unlocked)
+  const { stats, matches } = profile
 
   return (
     <div className={styles.backdrop} role="dialog" aria-labelledby="nest-title">
@@ -25,6 +26,42 @@ export function NestPanel({ onClose }: { onClose: () => void }) {
             Close
           </button>
         </header>
+
+        <section className={styles.section}>
+          <h3 className={styles.sectionTitle}>Flock</h3>
+          <ul className={styles.flock}>
+            {FLOCK.map((id) => {
+              const bird = KINGFISHERS[id]
+              const power = SPECIES_POWERS[id]
+              const unlocked = isBirdUnlocked(profile, id)
+              const mission =
+                id === 'common' ? STARTER_FLAVOR : UNLOCK_META[id as UnlockId].flavor
+              return (
+                <li
+                  key={id}
+                  className={unlocked ? styles.birdOn : styles.birdOff}
+                  style={{ ['--bird-accent' as string]: bird.accent }}
+                >
+                  <img
+                    className={unlocked ? styles.sprite : styles.silhouette}
+                    src={bird.sprite}
+                    alt=""
+                  />
+                  <div className={styles.birdCopy}>
+                    <strong>{bird.displayName}</strong>
+                    {unlocked ? (
+                      <span>
+                        {power.name} — {power.blurb}
+                      </span>
+                    ) : (
+                      <span>Unlock: {mission}</span>
+                    )}
+                  </div>
+                </li>
+              )
+            })}
+          </ul>
+        </section>
 
         <section className={styles.section}>
           <h3 className={styles.sectionTitle}>Lifetime</h3>
@@ -62,21 +99,6 @@ export function NestPanel({ onClose }: { onClose: () => void }) {
             Cards:{' '}
             {CARD_TYPES.map((c) => `${c} ${stats.cardsPlayed[c]}`).join(' · ')}
           </p>
-        </section>
-
-        <section className={styles.section}>
-          <h3 className={styles.sectionTitle}>Badges</h3>
-          <ul className={styles.badges}>
-            {ALL_UNLOCKS.map((id) => {
-              const on = unlockedSet.has(id)
-              return (
-                <li key={id} className={on ? styles.badgeOn : styles.badgeOff}>
-                  <strong>{UNLOCK_META[id].name}</strong>
-                  <span>{UNLOCK_META[id].flavor}</span>
-                </li>
-              )
-            })}
-          </ul>
         </section>
 
         <section className={styles.section}>
