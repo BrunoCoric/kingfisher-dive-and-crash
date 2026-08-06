@@ -15,8 +15,24 @@ type BotClient = ReturnType<typeof Client<GameState>>
 
 const sessions = new Map<string, () => void>()
 
-function botIsActive(state: { ctx: { gameover?: unknown; activePlayers: Record<string, string> | null; currentPlayer: string } }, playerID: string): boolean {
+/** One bot move at a time per match — avoids Socket.IO stateID races. */
+const matchQueues = new Map<string, Promise<void>>()
+
+function enqueue(matchID: string, task: () => Promise<void>): void {
+  const prev = matchQueues.get(matchID) ?? Promise.resolve()
+  const next = prev.then(task, task).catch((err) => {
+    console.warn(`online bot queue ${matchID}:`, err)
+  })
+  matchQueues.set(matchID, next)
+}
+
+function delay(ms: number): Promise<void> {
+  return new Promise((resolve) => window.setTimeout(resolve, ms))
+}
+
+function canAct(state: NonNullable<ReturnType<BotClient['getState']>>, playerID: string): boolean {
   if (state.ctx.gameover !== undefined) return false
+  if (!state.isActive) return false
   if (state.ctx.activePlayers) return playerID in state.ctx.activePlayers
   return state.ctx.currentPlayer === playerID
 }
@@ -30,6 +46,7 @@ export function ensureOnlineBots(
   if (seats.length === 0 || sessions.has(matchID)) return
 
   const stops: Array<() => void> = []
+  const server = gameServerUrl()
 
   for (const seat of seats) {
     const bot = new KingfisherBot({ enumerate: enumerateLegalMoves })
@@ -39,28 +56,56 @@ export function ensureOnlineBots(
       playerID: seat.playerID,
       matchID,
       credentials: seat.credentials,
-      multiplayer: SocketIO({ server: gameServerUrl() }),
+      multiplayer: SocketIO({ server }),
       debug: false,
     })
 
-    let busy = false
-    const unsubscribe = client.subscribe((state) => {
-      if (!state || busy || !botIsActive(state, seat.playerID)) return
-      busy = true
-      window.setTimeout(() => {
-        void (async () => {
-          try {
-            const latest = client.getState()
-            if (!latest || !botIsActive(latest, seat.playerID)) return
-            const { action } = await bot.play(latest, seat.playerID)
-            if (action) client.store.dispatch(action)
-          } catch (err) {
-            console.warn(`online bot ${seat.playerID}:`, err)
-          } finally {
-            busy = false
+    let scheduled = false
+    const tryPlay = () => {
+      if (scheduled) return
+      scheduled = true
+      enqueue(matchID, async () => {
+        scheduled = false
+        const latest = client.getState()
+        if (!latest || !canAct(latest, seat.playerID)) return
+
+        // Gather: Ready only — never emit endStage fallbacks.
+        if (latest.G.currentPhase === 'gather') {
+          if (latest.G.ready[seat.playerID] !== true) {
+            client.moves.setReady()
+            await delay(80)
           }
-        })()
-      }, 180)
+          return
+        }
+
+        // Already locked a card this step — wait for phase advance.
+        if (
+          latest.G.currentPhase.startsWith('step') &&
+          latest.G.selections[seat.playerID] !== undefined
+        ) {
+          return
+        }
+
+        try {
+          const { action } = await bot.play(latest, seat.playerID)
+          const type = action?.payload?.type
+          if (!type || typeof client.moves[type] !== 'function') return
+          const args = action.payload.args ?? []
+          // Re-check after async AI — another seat may have advanced stateID.
+          const fresh = client.getState()
+          if (!fresh || !canAct(fresh, seat.playerID)) return
+          if (fresh.G.currentPhase !== latest.G.currentPhase) return
+          client.moves[type](...args)
+          await delay(80)
+        } catch (err) {
+          console.warn(`online bot ${seat.playerID}:`, err)
+        }
+      })
+    }
+
+    const unsubscribe = client.subscribe((state) => {
+      if (!state || !canAct(state, seat.playerID)) return
+      tryPlay()
     })
 
     client.start()
@@ -73,6 +118,7 @@ export function ensureOnlineBots(
   sessions.set(matchID, () => {
     for (const stop of stops) stop()
     sessions.delete(matchID)
+    matchQueues.delete(matchID)
   })
 }
 

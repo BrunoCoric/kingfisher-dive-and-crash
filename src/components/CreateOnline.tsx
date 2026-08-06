@@ -79,10 +79,8 @@ export function CreateOnline({
         })
         bots.push({ playerID: joined.playerID, credentials: joined.playerCredentials })
       }
-      const tableFull = openSeats.length === 0
-      if (tableFull) {
-        ensureOnlineBots(matchID, playerCount, bots)
-      }
+      // Start bots immediately so they Ready in gather while open seats fill.
+      ensureOnlineBots(matchID, playerCount, bots)
       onStart({
         kind: 'online',
         matchID,
@@ -90,7 +88,7 @@ export function CreateOnline({
         credentials: host.playerCredentials,
         numPlayers: playerCount,
         playerName: playerName.trim() || 'Host',
-        tableFull,
+        tableFull: openSeats.length === 0,
         bots,
       })
     } catch (err) {

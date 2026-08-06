@@ -160,6 +160,12 @@ export function scoreMove(
     }
     case 'skipTurn':
       return -50
+    case 'setReady':
+      return 100
+    case 'continueRound':
+      return 50
+    case 'setSpecies':
+      return 10
     case 'endStage':
     case 'endTurn':
       return -1000
