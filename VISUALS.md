@@ -221,15 +221,32 @@ Board is the source of truth; HUD story line is the accessible companion (`aria-
 
 > Rule of thumb: players must be able to reconstruct exactly what happened by looking at the river + opponent rows. Color is never the only signal (icon + text).
 
+### Step 4b — Personal outcome splash (local player only)
+
+River feedback stays the shared truth. On top of that, the **local seat** gets a personal bird burst for the beats that matter — fish in the beak, or a Crash that costs an extra card.
+
+- **Audience:** only the viewing player’s own outcome for the step that just resolved. Opponents never see your splash; you never see theirs. Pass-and-play: show for the seat that just became human-active / the seat whose device this is.
+- **Form:** a brief full-bleed **bird splash** — large species sprite + valence word — over a soft parchment / sun-glare veil. Not a modal dialog (no buttons, no scoreboard). Auto-dismisses; tap anywhere to skip early.
+- **When (sparingly — no Hover / miss / blocked / pike noise):**
+
+  | Feel | When | Look |
+  |---|---|---|
+  | **Good** | You keep a fish — Catch or Steal | Happy bird, green rim, “CATCH +N” / “STEAL +N” |
+  | **Bad** | You Crash (spent card + discard 1) | Startled bird, brick-red, “CRASH!” |
+
+- **Timing:** ~900ms after river badges/pawn reactions start, then splash ~1.4s on screen. Never queues multiple splashes in one step.
+- **Does not replace** zone badges, pawn reactions, or the outcome story — those stay for the whole selection window so everyone can still read the river.
+- **Reduced motion:** skip the splash art; keep the status-line story + river badges only.
+
 ---
 
 ## 7. Motion Language
 
 - **Fast, light, springy.** The game is 15 minutes — nothing slow or ponderous.
-- Durations: micro-interactions 100–200ms; card flips 250–350ms; pawn reactions / badge pops ~400–700ms once.
+- Durations: micro-interactions 100–200ms; card flips 250–350ms; pawn reactions / badge pops ~400–700ms once; personal outcome splash ~1.4s once (local only; fish gain / crash).
 - Easing: ease-out for entrances, ease-in-out for flips/swooshes.
 - Ambient idles: water ripples (2s loop), pawn bob (3s loop), fish float (4s loop). Always subtle, never distracting.
-- **Respect `prefers-reduced-motion`:** fall back to instant state changes, no shake/burst.
+- **Respect `prefers-reduced-motion`:** fall back to instant state changes, no shake/burst; skip personal outcome splash.
 
 ---
 
@@ -281,6 +298,7 @@ When a player must discard an extra card, their hand visually "rejects" a card w
 | **Board (main)** | The full game loop lives here: selection, reveal, resolution, cleanup. |
 | **Peek modal** | Hover peeks, face-down fish reveal. |
 | **Crash / outcome overlay** | Zone-anchored badges + pawn reactions + `OutcomeStory` line (not modal dialogs). |
+| **Personal outcome splash** | Local-only bird burst on catch / steal / crash; auto-dismiss; does not replace river feedback. |
 | **Round review** | Same board + status-line **Next round** (no modal). |
 | **Game over** | Winner celebration, final scoreboard, rematch button. |
 | **Rules cheatsheet** | Bottom-right `? Rules` → parchment collision reference. |

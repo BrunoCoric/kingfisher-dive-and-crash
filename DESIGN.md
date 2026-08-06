@@ -30,7 +30,9 @@ Single source of truth for implementation status. Refer to `README.md` for the g
   - `src/components/` — river board, held hand, scores roster sheet, rules cheatsheet, status line, end-state panels
   - `scene/` — SVG board props (`BranchSvg`, `ReedSvg`, `BankFoliageSvg`, `WaterPuddleSvg`)
 - `src/lib/stepFeedback.ts` — pure helpers: zone actions/outcomes, pawn reactions, outcome story
+- `src/lib/personalSplash.ts` — local-seat good/neutral/bad splash valence from outcomeLog + lastReveals
 - `src/lib/boardChrome.tsx` — status-line hint/action builders for the mobile HUD
+- `src/components/OutcomeSplash.tsx` — personal bird burst overlay (local seat only)
 
 ## Progress
 
@@ -78,6 +80,7 @@ Single source of truth for implementation status. Refer to `README.md` for the g
 - [x] Scoring piles are public in `playerView` (hands stay private) so the roster can show each bird's fish
 - [x] Public fish-deck remaining count (`deckCount`) on the Scores chip; deck faces stay hidden
 - [x] Bottom-right rules cheatsheet (`RulesCheatsheet`): tap `? Rules` for priority order + crash / splash / steal interactions
+- [x] Personal outcome splash (local seat only): `OutcomeSplash` + `personalSplash.ts` — slower bird burst on catch / steal / crash only; river feedback remains shared truth (VISUALS §6 Step 4b)
 
 ### Implementation Notes
 - The local browser build is a four-seat pass-and-play: one shared boardgame.io `Local` client switches between Player 0 through Player 3 with the seat control. Hidden-information secrecy is intentionally deferred, as recorded in the implementation plan.

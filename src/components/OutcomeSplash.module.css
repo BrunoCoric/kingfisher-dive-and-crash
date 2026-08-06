@@ -1,0 +1,112 @@
+.splash {
+  position: absolute;
+  inset: 0;
+  z-index: 12;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 1rem;
+  border: none;
+  cursor: pointer;
+  pointer-events: none;
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 42%, rgba(250, 243, 227, 0.92), transparent 70%),
+    radial-gradient(ellipse 90% 70% at 50% 40%, color-mix(in srgb, var(--splash-accent, var(--status-highlight)) 22%, transparent), transparent 65%);
+  opacity: 0;
+  /* delay so river badges land first, then hold long enough to feel */
+  animation: splashBeat 1.4s cubic-bezier(0.2, 1.2, 0.4, 1) 0.9s both;
+}
+
+.splash.live {
+  pointer-events: auto;
+}
+
+.bird {
+  width: min(42vw, 11rem);
+  height: min(42vw, 11rem);
+  object-fit: contain;
+  filter: drop-shadow(0 8px 14px rgba(43, 36, 32, 0.35));
+  transform-origin: 50% 70%;
+}
+
+.label {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 8vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  text-shadow: 0 2px 0 rgba(250, 243, 227, 0.85);
+}
+
+.good .label {
+  color: var(--status-success);
+}
+
+.good .bird {
+  animation: joyBob 0.7s cubic-bezier(0.2, 1.4, 0.4, 1) 0.9s both;
+}
+
+.bad .label {
+  color: var(--status-crash);
+}
+
+.bad .bird {
+  animation: startled 0.7s ease-out 0.9s both;
+}
+
+@keyframes splashBeat {
+  0% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  12% {
+    opacity: 1;
+    transform: scale(1.03);
+  }
+  78% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes joyBob {
+  0% {
+    transform: translateY(0.6rem) scale(0.9) rotate(-4deg);
+  }
+  55% {
+    transform: translateY(-0.35rem) scale(1.08) rotate(3deg);
+  }
+  100% {
+    transform: translateY(0) scale(1) rotate(0);
+  }
+}
+
+@keyframes startled {
+  0% {
+    transform: translateY(0) rotate(0);
+  }
+  30% {
+    transform: translateY(0.2rem) rotate(-12deg);
+  }
+  60% {
+    transform: translateY(0) rotate(8deg);
+  }
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .splash,
+  .good .bird,
+  .bad .bird {
+    animation: none;
+  }
+}

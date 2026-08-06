@@ -10,8 +10,8 @@
     "semantic_hash": ""
   },
   "src/Board.tsx": {
-    "mtime": 1786023797.197673,
-    "ast_hash": "941d95177a3bb5c6ef9d6622fab9fa4e",
+    "mtime": 1786025830.52439,
+    "ast_hash": "29312106a864aa53f65ba1ac8f2eaf0d",
     "semantic_hash": ""
   },
   "src/components/ActionCard.tsx": {
@@ -135,8 +135,8 @@
     "semantic_hash": ""
   },
   "DESIGN.md": {
-    "mtime": 1786023798.8252766,
-    "ast_hash": "187d63c7db0a6280168bba4faf1f3f24",
+    "mtime": 1786025926.3286254,
+    "ast_hash": "2c4dbe7cbac2897ab86d2066ad3a99ce",
     "semantic_hash": ""
   },
   "README.md": {
@@ -145,8 +145,8 @@
     "semantic_hash": ""
   },
   "VISUALS.md": {
-    "mtime": 1786023800.7668083,
-    "ast_hash": "252cf61d29cb6cbad542eec6d21672fb",
+    "mtime": 1786025925.765152,
+    "ast_hash": "7f5d7a0a02c96ef3d51ed5520106e607",
     "semantic_hash": ""
   },
   "index.html": {
@@ -342,6 +342,16 @@
   "src/components/scene/waterRecipes.ts": {
     "mtime": 1786023438.8785434,
     "ast_hash": "337a25d725e9c135fa6c18e19c6893e4",
+    "semantic_hash": ""
+  },
+  "src/components/OutcomeSplash.tsx": {
+    "mtime": 1786025727.6157382,
+    "ast_hash": "8fb05a9361a3c790398adc92d3723823",
+    "semantic_hash": ""
+  },
+  "src/lib/personalSplash.ts": {
+    "mtime": 1786025921.6521778,
+    "ast_hash": "f6f267e9488013bf65e10a650271ab82",
     "semantic_hash": ""
   }
 }

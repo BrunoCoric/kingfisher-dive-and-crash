@@ -14,6 +14,7 @@ import { RosterSheet } from './components/RosterSheet'
 import { StatusLine } from './components/StatusLine'
 import { GameOver } from './components/GameOver'
 import { RulesCheatsheet } from './components/RulesCheatsheet'
+import { OutcomeSplash } from './components/OutcomeSplash'
 import styles from './Board.module.css'
 
 interface PendingSelection {
@@ -213,6 +214,9 @@ export function Board(props: BoardProps<GameState>) {
           />
         )}
         <RulesCheatsheet />
+        {myID !== '' && showStepFeedback && G.outcomeLog.length > 0 && (
+          <OutcomeSplash key={`${feedbackKey}:${myID}`} G={G} playerID={myID} />
+        )}
         <div className={styles.boardWrap}>
           <RiverBoard
             zones={G.zones}
