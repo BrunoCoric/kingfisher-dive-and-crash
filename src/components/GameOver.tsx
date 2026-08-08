@@ -1,6 +1,6 @@
 import type { GameState } from '../game/types'
 import { seatKingfisher, speciesName, spriteScaleStyle } from '../lib/presentation'
-import { cueWinSfx } from '../lib/sfx'
+import { cueGameOverSfx, cueUnlockSfx } from '../lib/sfx'
 import { recordMatchOnce } from '../profile/store'
 import { summarizeMatch } from '../profile/summarize'
 import { UNLOCK_META } from '../profile/unlocks'
@@ -16,8 +16,11 @@ function maybeRecord(game: GameState, playOrder: string[]): UnlockId[] {
 
 export function GameOver({ game, playOrder, onMenu }: { game: GameState; playOrder: string[]; onMenu: () => void }) {
   if (game.winner === null) return null
-  cueWinSfx(game.winner)
+  const humanSeat = game.humanSeats[0]
+  const humanWon = humanSeat !== undefined && game.winner === humanSeat
+  cueGameOverSfx(game.winner, humanWon || humanSeat === undefined)
   const newlyUnlocked = maybeRecord(game, playOrder)
+  cueUnlockSfx(newlyUnlocked)
   const winner = seatKingfisher(game, game.winner)
   const standings = [...playOrder].sort((a, b) => {
     const scoreDiff = game.players[b].score - game.players[a].score

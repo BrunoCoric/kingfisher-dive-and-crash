@@ -95,7 +95,7 @@ export function recordMatch(match: MatchSummary): RecordResult {
 let lastRecordKey = ''
 let lastNewUnlocks: UnlockId[] = []
 
-/** Dedupe GameOver re-renders (same pattern as cueWinSfx). */
+/** Dedupe GameOver re-renders (same pattern as cueGameOverSfx). */
 export function recordMatchOnce(matchKey: string, match: MatchSummary): UnlockId[] {
   if (matchKey === lastRecordKey) return lastNewUnlocks
   lastRecordKey = matchKey

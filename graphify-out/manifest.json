@@ -25,8 +25,8 @@
     "semantic_hash": ""
   },
   "src/components/GameOver.tsx": {
-    "mtime": 1786193043.1575408,
-    "ast_hash": "fa97db3b1c95cbfefc8acd47abffe681",
+    "mtime": 1786216788.7617843,
+    "ast_hash": "a2ef1af96d11382ba411eae96e1ad923",
     "semantic_hash": ""
   },
   "src/components/Hand.tsx": {
@@ -135,8 +135,8 @@
     "semantic_hash": ""
   },
   "DESIGN.md": {
-    "mtime": 1786216236.996944,
-    "ast_hash": "e551ff50c4779152baafdf9b8ba4314c",
+    "mtime": 1786216792.9460015,
+    "ast_hash": "4bdbc5b70aed640f4dffd72ff852e2ea",
     "semantic_hash": ""
   },
   "README.md": {
@@ -190,8 +190,8 @@
     "semantic_hash": ""
   },
   "src/StartScreen.tsx": {
-    "mtime": 1786216223.1175709,
-    "ast_hash": "0e1aa8c51bafac0ec7ee945059541dbd",
+    "mtime": 1786216789.190429,
+    "ast_hash": "b5b85c3176fbd04783934f18893c9a50",
     "semantic_hash": ""
   },
   "src/components/ActionIcon.tsx": {
@@ -400,8 +400,8 @@
     "semantic_hash": ""
   },
   "src/lib/sfx.ts": {
-    "mtime": 1786044339.8757153,
-    "ast_hash": "e253e0e35f1bac0f8e54c4c17df2338a",
+    "mtime": 1786216787.447451,
+    "ast_hash": "5b4b21a92f5a60d7f58a7ad07c03bbe3",
     "semantic_hash": ""
   },
   "src/lib/stepSfx.ts": {
@@ -545,8 +545,8 @@
     "semantic_hash": ""
   },
   "src/profile/store.ts": {
-    "mtime": 1786043930.1883686,
-    "ast_hash": "a9e3755e160697b4d79e8faafbeb1781",
+    "mtime": 1786216794.725375,
+    "ast_hash": "44462522f13513b7cdddb834a915a70f",
     "semantic_hash": ""
   },
   "src/profile/summarize.ts": {
@@ -875,8 +875,8 @@
     "semantic_hash": ""
   },
   "src/components/Nest.tsx": {
-    "mtime": 1786216204.492204,
-    "ast_hash": "c0b2fec1c196246f5c7c513ae9257d3b",
+    "mtime": 1786216791.2767477,
+    "ast_hash": "dea0c2a7d722c7a9e347fe8799ee0b73",
     "semantic_hash": ""
   },
   "src/components/NestFlock.tsx": {
@@ -892,6 +892,31 @@
   "src/content/fieldNotes.ts": {
     "mtime": 1786216164.881386,
     "ast_hash": "b7c1e7230c6d5105667bf390d0f2a6ad",
+    "semantic_hash": ""
+  },
+  "public/sounds/field_note.wav": {
+    "mtime": 1786216665.3206146,
+    "ast_hash": "7861f7ea7105d63169911d42ce8ef649",
+    "semantic_hash": ""
+  },
+  "public/sounds/game_lose.wav": {
+    "mtime": 1786216730.851102,
+    "ast_hash": "ca77e22af6cad0e262c00643f2cf2ced",
+    "semantic_hash": ""
+  },
+  "public/sounds/nest_open.wav": {
+    "mtime": 1786216698.9724598,
+    "ast_hash": "101179a1ea97bb7c314c3e193d94c989",
+    "semantic_hash": ""
+  },
+  "public/sounds/tab_switch.wav": {
+    "mtime": 1786216768.5960002,
+    "ast_hash": "e6fb860e0e3fb72a107d77007fa7ca7e",
+    "semantic_hash": ""
+  },
+  "public/sounds/unlock.wav": {
+    "mtime": 1786216632.288399,
+    "ast_hash": "334edb181c24a1ba838ac697caf9917a",
     "semantic_hash": ""
   }
 }

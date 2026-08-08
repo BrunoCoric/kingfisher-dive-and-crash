@@ -7,12 +7,15 @@ export type SfxId =
   | 'card_select'
   | 'catch'
   | 'crash'
+  | 'field_note'
   | 'fish_drift'
   | 'fish_minnow'
   | 'fish_perch'
   | 'fish_trash'
   | 'fish_trout'
+  | 'game_lose'
   | 'game_win'
+  | 'nest_open'
   | 'peek'
   | 'pike'
   | 'restock'
@@ -25,6 +28,8 @@ export type SfxId =
   | 'splash_good'
   | 'steal'
   | 'step_resolve'
+  | 'tab_switch'
+  | 'unlock'
 
 const AMBIENCE_VOLUME = 0.28
 
@@ -134,12 +139,22 @@ export function cueRoundAdvanceSfx(): void {
   playSfx('round_start', 520)
 }
 
-let lastWinKey = ''
+let lastGameOverKey = ''
+let lastUnlockKey = ''
 
-/** Once when the end screen appears for a given winner. */
-export function cueWinSfx(winner: string): void {
-  const key = winner
-  if (key === lastWinKey) return
-  lastWinKey = key
-  playSfx('game_win')
+/** Once when the end screen appears — win if local human won, else soft lose. */
+export function cueGameOverSfx(winner: string, humanWon: boolean): void {
+  const key = `${winner}:${humanWon ? 'w' : 'l'}`
+  if (key === lastGameOverKey) return
+  lastGameOverKey = key
+  playSfx(humanWon ? 'game_win' : 'game_lose')
+}
+
+/** Once when Nest unlocks appear on Game Over. */
+export function cueUnlockSfx(unlockIds: readonly string[]): void {
+  if (unlockIds.length === 0) return
+  const key = unlockIds.join(',')
+  if (key === lastUnlockKey) return
+  lastUnlockKey = key
+  playSfx('unlock', 380)
 }

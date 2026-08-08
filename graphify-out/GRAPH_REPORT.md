@@ -1,16 +1,16 @@
 # Graph Report - kingfisher-dive-and-crash  (2026-08-08)
 
 ## Corpus Check
-- 113 files · ~369,388 words
+- 113 files · ~369,519 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 703 nodes · 1807 edges · 38 communities (33 shown, 5 thin omitted)
+- 704 nodes · 1816 edges · 35 communities (30 shown, 5 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 12 edges (avg confidence: 0.75)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `a00cc3ca`
+- Built from commit: `3a86f5d7`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -37,18 +37,15 @@
 - MainActivity.java
 - capacitor.config.ts
 - game/types.ts
-- Perch.tsx
 - OutcomeSplash.tsx
 - WaterPuddleSvg.tsx
-- stepFeedback.ts
 - OutcomeSplash.tsx
-- presentation.ts
 - StatusLine.tsx
 - cutout_kingfisher.py
 
 ## God Nodes (most connected - your core abstractions)
 1. `GameState` - 48 edges
-2. `playSfx()` - 29 edges
+2. `playSfx()` - 33 edges
 3. `CardType` - 28 edges
 4. `KingfisherID` - 25 edges
 5. `spriteScaleStyle()` - 23 edges
@@ -63,25 +60,25 @@
   src/lib/onlineBots.ts → _powers_smoke.mts
 - `main()` --calls--> `hasPower()`  [EXTRACTED]
   _powers_smoke.mts → src/game/powers.ts
+- `main()` --calls--> `openHoverTargets()`  [EXTRACTED]
+  _powers_smoke.mts → src/game/powers.ts
 - `fresh()` --calls--> `setup()`  [EXTRACTED]
   _powers_smoke.mts → src/game/Game.ts
 - `main()` --calls--> `setup()`  [EXTRACTED]
   _powers_smoke.mts → src/game/Game.ts
-- `main()` --calls--> `openHoverTargets()`  [EXTRACTED]
-  _powers_smoke.mts → src/game/powers.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (38 total, 5 thin omitted)
+## Communities (35 total, 5 thin omitted)
 
 ### Community 0 - "VISUALS.md — Kingfisher: Dive & Crash"
 Cohesion: 0.05
 Nodes (38): 10. Implementation Notes (CSS Modules), 11. Screens Inventory, 1. Art Direction — "Sunlit Field Guide", 2. Color Palette, 3. Typography, 4. Layout Structure, 5. Card & Component System, 6. The Theatrical Core: Select → Lock → Reveal → Resolve (+30 more)
 
 ### Community 1 - "App.tsx"
-Cohesion: 0.07
-Nodes (48): App(), BotsGame(), BotsMode, Mode, OnlineGame(), OnlineMode, filledCount(), GameLobby() (+40 more)
+Cohesion: 0.12
+Nodes (23): App(), BotsMode, Mode, OnlineGame(), OnlineMode, MatchWaiting(), Props, TutorialIntro() (+15 more)
 
 ### Community 2 - "package.json"
 Cohesion: 0.04
@@ -92,12 +89,12 @@ Cohesion: 0.09
 Nodes (22): DOM, DOM.Iterable, ES2022, src, compilerOptions, allowImportingTsExtensions, isolatedModules, jsx (+14 more)
 
 ### Community 4 - "presentation.ts"
-Cohesion: 0.20
-Nodes (13): RiverBoardProps, BankFoliageSvg(), BankFoliageSvgProps, MossTuftSvg(), MossTuftSvgProps, RiverChannelSvg(), BADGE_CLASS, ZoneTile() (+5 more)
+Cohesion: 0.15
+Nodes (18): assert(), fresh(), main(), BotsGame(), TutorialGame(), buildDeck(), clampZoneCount(), countsTotal() (+10 more)
 
 ### Community 5 - "StatusLine.tsx"
-Cohesion: 0.08
-Nodes (62): CreateBotRoster(), CreateBotRosterProps, CreateGame(), CreateOnline(), SeatKind, GatherPanel(), Filter, Nest() (+54 more)
+Cohesion: 0.07
+Nodes (82): CreateBotRoster(), CreateBotRosterProps, CreateGame(), CreateOnline(), SeatKind, filledCount(), GameLobby(), MatchListItem (+74 more)
 
 ### Community 6 - "compilerOptions"
 Cohesion: 0.11
@@ -105,7 +102,7 @@ Nodes (18): ES2023, vite.config.ts, compilerOptions, allowImportingTsExtensions,
 
 ### Community 7 - "types.ts"
 Cohesion: 0.08
-Nodes (48): beforeHover, ev(), mm(), order, phaseLog, reducer, state, assert() (+40 more)
+Nodes (49): beforeHover, ev(), mm(), order, phaseLog, reducer, state, Board() (+41 more)
 
 ### Community 8 - "resolution.ts"
 Cohesion: 0.14
@@ -132,40 +129,28 @@ Cohesion: 0.83
 Nodes (3): gradlew script, die(), warn()
 
 ### Community 19 - "stepFeedback.ts"
-Cohesion: 0.07
-Nodes (42): avg(), BotKind, main(), makeBot(), newStats(), report(), simulate(), Stats (+34 more)
+Cohesion: 0.06
+Nodes (46): avg(), BotKind, main(), makeBot(), newStats(), report(), simulate(), Stats (+38 more)
 
 ### Community 20 - "lesson.ts"
-Cohesion: 0.12
-Nodes (25): TutorialGame(), BoardExtra, Props, TutorialCoach(), actionLesson(), cleanupReviewKey(), lessonFor(), outcomeKinds() (+17 more)
+Cohesion: 0.13
+Nodes (23): BoardExtra, Props, TutorialCoach(), actionLesson(), cleanupReviewKey(), lessonFor(), outcomeKinds(), reviewLesson() (+15 more)
 
 ### Community 29 - "game/types.ts"
-Cohesion: 0.20
-Nodes (8): FishCard(), FishCardBack(), FishIcon(), FishIconProps, RevealLine(), StepSelection, FISH_LABEL, selectionDetail()
-
-### Community 30 - "Perch.tsx"
-Cohesion: 0.16
-Nodes (14): Perch(), PerchProps, REACTION_CLASS, PerchOccupant, RosterSheetProps, BranchSvg(), BranchSvgProps, ReedSvg() (+6 more)
+Cohesion: 0.33
+Nodes (7): OutcomeSplash(), prefersReducedMotion(), Props, personalOutcomeSplash(), PersonalSplash, pointsSuffix(), SplashValence
 
 ### Community 31 - "OutcomeSplash.tsx"
-Cohesion: 0.12
-Nodes (25): GameOver(), maybeRecord(), OutcomeSplash(), prefersReducedMotion(), Props, powerForSeat(), speciesIdForSeat(), personalOutcomeSplash() (+17 more)
+Cohesion: 0.36
+Nodes (9): countCards(), countFish(), placeOf(), summarizeMatch(), emptyCardCounts(), emptyFishCounts(), emptyOutcomes(), emptyStats() (+1 more)
 
 ### Community 32 - "WaterPuddleSvg.tsx"
 Cohesion: 0.29
 Nodes (6): WaterPuddleSvg(), WaterPuddleSvgProps, Bloom, StrokeMark, WashRecipe, WATER_RECIPES
 
-### Community 33 - "stepFeedback.ts"
-Cohesion: 0.39
-Nodes (7): OUTCOME_LABEL, playerReactions(), primaryZoneCallout(), primaryZoneOutcome(), REACTION_PRIORITY, selectionZone(), zoneActions()
-
 ### Community 34 - "OutcomeSplash.tsx"
-Cohesion: 0.16
-Nodes (17): PendingSelection, ActionCard(), ActionCardProps, ActionIcon(), ActionIconProps, Hand(), HandProps, PRIORITY (+9 more)
-
-### Community 35 - "presentation.ts"
-Cohesion: 0.33
-Nodes (5): __dirname, distPath, hasDist, PORT, server
+Cohesion: 0.05
+Nodes (58): PendingSelection, ActionCard(), ActionCardProps, ActionIcon(), ActionIconProps, FishCard(), FishCardBack(), FishIcon() (+50 more)
 
 ### Community 36 - "StatusLine.tsx"
 Cohesion: 0.43
@@ -183,17 +168,17 @@ Nodes (9): Image, Path, collect_paths(), content_bbox(), main(), process(), Boun
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `GameState` connect `stepFeedback.ts` to `App.tsx`, `OutcomeSplash.tsx`, `stepFeedback.ts`, `StatusLine.tsx`, `StatusLine.tsx`, `types.ts`, `resolution.ts`, `legacy.ts`, `lesson.ts`, `game/types.ts`, `Perch.tsx`, `OutcomeSplash.tsx`?**
+- **Why does `GameState` connect `stepFeedback.ts` to `App.tsx`, `OutcomeSplash.tsx`, `presentation.ts`, `StatusLine.tsx`, `StatusLine.tsx`, `types.ts`, `resolution.ts`, `legacy.ts`, `lesson.ts`, `game/types.ts`, `OutcomeSplash.tsx`?**
   _High betweenness centrality (0.069) - this node is a cross-community bridge._
-- **Why does `KingfisherID` connect `StatusLine.tsx` to `App.tsx`, `OutcomeSplash.tsx`, `presentation.ts`, `types.ts`, `stepFeedback.ts`, `Perch.tsx`?**
+- **Why does `KingfisherID` connect `StatusLine.tsx` to `App.tsx`, `OutcomeSplash.tsx`, `stepFeedback.ts`, `types.ts`?**
   _High betweenness centrality (0.021) - this node is a cross-community bridge._
-- **Why does `CardType` connect `OutcomeSplash.tsx` to `stepFeedback.ts`, `App.tsx`, `presentation.ts`, `StatusLine.tsx`, `types.ts`, `resolution.ts`, `legacy.ts`, `lesson.ts`, `game/types.ts`, `Perch.tsx`, `OutcomeSplash.tsx`?**
+- **Why does `CardType` connect `OutcomeSplash.tsx` to `StatusLine.tsx`, `types.ts`, `resolution.ts`, `legacy.ts`, `lesson.ts`, `OutcomeSplash.tsx`?**
   _High betweenness centrality (0.018) - this node is a cross-community bridge._
 - **What connects `Stats`, `BotKind`, `Stats` to the rest of the system?**
   _179 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `VISUALS.md — Kingfisher: Dive & Crash` be split into smaller, more focused modules?**
   _Cohesion score 0.05128205128205128 - nodes in this community are weakly interconnected._
 - **Should `App.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.06927551560021153 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.12473118279569892 - nodes in this community are weakly interconnected._
 - **Should `package.json` be split into smaller, more focused modules?**
   _Cohesion score 0.043478260869565216 - nodes in this community are weakly interconnected._

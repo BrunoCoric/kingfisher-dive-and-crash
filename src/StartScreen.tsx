@@ -79,7 +79,8 @@ export function StartScreen({ onStart }: { onStart: (config: StartConfig) => voi
           type="button"
           className={styles.plaque}
           onClick={() => {
-            cueMenu()
+            playSfx('nest_open')
+            startAmbience()
             setView('nest')
           }}
         >

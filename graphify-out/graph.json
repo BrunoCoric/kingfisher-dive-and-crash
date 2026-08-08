@@ -329,8 +329,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "powers_smoke",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "_powers_smoke.mts"
     },
     {
@@ -340,8 +340,8 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "powers_smoke_assert",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "assert()"
     },
     {
@@ -351,8 +351,8 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "powers_smoke_fresh",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "fresh()"
     },
     {
@@ -362,8 +362,8 @@
       "source_location": "L33",
       "_origin": "ast",
       "id": "powers_smoke_main",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "main()"
     },
     {
@@ -1379,8 +1379,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "server_index",
-      "community": 35,
-      "community_name": "presentation.ts",
+      "community": 19,
+      "community_name": "stepFeedback.ts",
       "norm_label": "index.ts"
     },
     {
@@ -1390,8 +1390,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "server_index_port",
-      "community": 35,
-      "community_name": "presentation.ts",
+      "community": 19,
+      "community_name": "stepFeedback.ts",
       "norm_label": "port"
     },
     {
@@ -1401,8 +1401,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "server_index_dirname",
-      "community": 35,
-      "community_name": "presentation.ts",
+      "community": 19,
+      "community_name": "stepFeedback.ts",
       "norm_label": "__dirname"
     },
     {
@@ -1412,8 +1412,8 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "server_index_distpath",
-      "community": 35,
-      "community_name": "presentation.ts",
+      "community": 19,
+      "community_name": "stepFeedback.ts",
       "norm_label": "distpath"
     },
     {
@@ -1423,8 +1423,8 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "server_index_hasdist",
-      "community": 35,
-      "community_name": "presentation.ts",
+      "community": 19,
+      "community_name": "stepFeedback.ts",
       "norm_label": "hasdist"
     },
     {
@@ -1434,8 +1434,8 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "server_index_server",
-      "community": 35,
-      "community_name": "presentation.ts",
+      "community": 19,
+      "community_name": "stepFeedback.ts",
       "norm_label": "server"
     },
     {
@@ -1489,8 +1489,8 @@
       "source_location": "L46",
       "_origin": "ast",
       "id": "src_app_botsgame",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "botsgame()"
     },
     {
@@ -1511,8 +1511,8 @@
       "source_location": "L142",
       "_origin": "ast",
       "id": "src_app_tutorialgame",
-      "community": 20,
-      "community_name": "lesson.ts",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "tutorialgame()"
     },
     {
@@ -1577,8 +1577,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_startscreen",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
       "norm_label": "startscreen.tsx"
     },
     {
@@ -1588,8 +1588,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "src_startscreen_view",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
       "norm_label": "view"
     },
     {
@@ -1599,8 +1599,8 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "src_startscreen_cuemenu",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
       "norm_label": "cuemenu()"
     },
     {
@@ -1610,8 +1610,8 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "src_startscreen_startscreen",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
       "norm_label": "startscreen()"
     },
     {
@@ -1797,8 +1797,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_fishcard",
-      "community": 29,
-      "community_name": "game/types.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "fishcard.tsx"
     },
     {
@@ -1808,8 +1808,8 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "src_components_fishcard_fishcard",
-      "community": 29,
-      "community_name": "game/types.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "fishcard()"
     },
     {
@@ -1819,8 +1819,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_fishcardback",
-      "community": 29,
-      "community_name": "game/types.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "fishcardback.tsx"
     },
     {
@@ -1830,8 +1830,8 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "src_components_fishcardback_fishcardback",
-      "community": 29,
-      "community_name": "game/types.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "fishcardback()"
     },
     {
@@ -1841,8 +1841,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_fishicon",
-      "community": 29,
-      "community_name": "game/types.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "fishicon.tsx"
     },
     {
@@ -1852,8 +1852,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "src_components_fishicon_fishiconprops",
-      "community": 29,
-      "community_name": "game/types.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "fishiconprops"
     },
     {
@@ -1863,8 +1863,8 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "src_components_fishicon_fishicon",
-      "community": 29,
-      "community_name": "game/types.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "fishicon()"
     },
     {
@@ -1874,8 +1874,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_gamelobby",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
       "norm_label": "gamelobby.tsx"
     },
     {
@@ -1885,8 +1885,8 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "src_components_gamelobby_matchlistitem",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
       "norm_label": "matchlistitem"
     },
     {
@@ -1896,8 +1896,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "src_components_gamelobby_openseats",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
       "norm_label": "openseats()"
     },
     {
@@ -1907,8 +1907,8 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "src_components_gamelobby_filledcount",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
       "norm_label": "filledcount()"
     },
     {
@@ -1918,8 +1918,8 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "src_components_gamelobby_gamelobby",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
       "norm_label": "gamelobby()"
     },
     {
@@ -1929,8 +1929,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_gameover",
-      "community": 31,
-      "community_name": "OutcomeSplash.tsx",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
       "norm_label": "gameover.tsx"
     },
     {
@@ -1940,8 +1940,8 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "src_components_gameover_mayberecord",
-      "community": 31,
-      "community_name": "OutcomeSplash.tsx",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
       "norm_label": "mayberecord()"
     },
     {
@@ -1951,8 +1951,8 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "src_components_gameover_gameover",
-      "community": 31,
-      "community_name": "OutcomeSplash.tsx",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
       "norm_label": "gameover()"
     },
     {
@@ -2047,7 +2047,7 @@
       "label": "Tab",
       "file_type": "code",
       "source_file": "src/components/Nest.tsx",
-      "source_location": "L9",
+      "source_location": "L10",
       "_origin": "ast",
       "id": "src_components_nest_tab",
       "community": 5,
@@ -2058,7 +2058,7 @@
       "label": "Filter",
       "file_type": "code",
       "source_file": "src/components/Nest.tsx",
-      "source_location": "L10",
+      "source_location": "L11",
       "_origin": "ast",
       "id": "src_components_nest_filter",
       "community": 5,
@@ -2069,7 +2069,7 @@
       "label": "Nest()",
       "file_type": "code",
       "source_file": "src/components/Nest.tsx",
-      "source_location": "L12",
+      "source_location": "L13",
       "_origin": "ast",
       "id": "src_components_nest_nest",
       "community": 5,
@@ -2138,8 +2138,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_outcomesplash",
-      "community": 31,
-      "community_name": "OutcomeSplash.tsx",
+      "community": 29,
+      "community_name": "game/types.ts",
       "norm_label": "outcomesplash.tsx"
     },
     {
@@ -2149,8 +2149,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "src_components_outcomesplash_props",
-      "community": 31,
-      "community_name": "OutcomeSplash.tsx",
+      "community": 29,
+      "community_name": "game/types.ts",
       "norm_label": "props"
     },
     {
@@ -2160,8 +2160,8 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "src_components_outcomesplash_prefersreducedmotion",
-      "community": 31,
-      "community_name": "OutcomeSplash.tsx",
+      "community": 29,
+      "community_name": "game/types.ts",
       "norm_label": "prefersreducedmotion()"
     },
     {
@@ -2171,8 +2171,8 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "src_components_outcomesplash_outcomesplash",
-      "community": 31,
-      "community_name": "OutcomeSplash.tsx",
+      "community": 29,
+      "community_name": "game/types.ts",
       "norm_label": "outcomesplash()"
     },
     {
@@ -2182,8 +2182,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_perch",
-      "community": 30,
-      "community_name": "Perch.tsx",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "perch.tsx"
     },
     {
@@ -2193,8 +2193,8 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "src_components_perch_perchprops",
-      "community": 30,
-      "community_name": "Perch.tsx",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "perchprops"
     },
     {
@@ -2204,8 +2204,8 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "src_components_perch_reaction_class",
-      "community": 30,
-      "community_name": "Perch.tsx",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "reaction_class"
     },
     {
@@ -2215,8 +2215,8 @@
       "source_location": "L36",
       "_origin": "ast",
       "id": "src_components_perch_perch",
-      "community": 30,
-      "community_name": "Perch.tsx",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "perch()"
     },
     {
@@ -2226,8 +2226,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_riverboard",
-      "community": 4,
-      "community_name": "presentation.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "riverboard.tsx"
     },
     {
@@ -2237,8 +2237,8 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "src_components_riverboard_perchoccupant",
-      "community": 30,
-      "community_name": "Perch.tsx",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "perchoccupant"
     },
     {
@@ -2248,8 +2248,8 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "src_components_riverboard_riverboardprops",
-      "community": 4,
-      "community_name": "presentation.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "riverboardprops"
     },
     {
@@ -2292,8 +2292,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_rosterbutton",
-      "community": 19,
-      "community_name": "stepFeedback.ts",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
       "norm_label": "rosterbutton.tsx"
     },
     {
@@ -2303,8 +2303,8 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "src_components_rosterbutton_rosterbuttonprops",
-      "community": 19,
-      "community_name": "stepFeedback.ts",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
       "norm_label": "rosterbuttonprops"
     },
     {
@@ -2314,8 +2314,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "src_components_rosterbutton_rosterbutton",
-      "community": 19,
-      "community_name": "stepFeedback.ts",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
       "norm_label": "rosterbutton()"
     },
     {
@@ -2325,8 +2325,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_rostersheet",
-      "community": 29,
-      "community_name": "game/types.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "rostersheet.tsx"
     },
     {
@@ -2336,8 +2336,8 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "src_components_rostersheet_rostersheetprops",
-      "community": 30,
-      "community_name": "Perch.tsx",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "rostersheetprops"
     },
     {
@@ -2358,8 +2358,8 @@
       "source_location": "L123",
       "_origin": "ast",
       "id": "src_components_rostersheet_roundplays",
-      "community": 29,
-      "community_name": "game/types.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "roundplays()"
     },
     {
@@ -2369,8 +2369,8 @@
       "source_location": "L149",
       "_origin": "ast",
       "id": "src_components_rostersheet_revealline",
-      "community": 29,
-      "community_name": "game/types.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "revealline()"
     },
     {
@@ -2380,8 +2380,8 @@
       "source_location": "L174",
       "_origin": "ast",
       "id": "src_components_rostersheet_fishchip",
-      "community": 29,
-      "community_name": "game/types.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "fishchip()"
     },
     {
@@ -2512,8 +2512,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_titlediorama",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
       "norm_label": "titlediorama.tsx"
     },
     {
@@ -2523,8 +2523,8 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "src_components_titlediorama_flock",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
       "norm_label": "flock"
     },
     {
@@ -2534,8 +2534,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "src_components_titlediorama_titlediorama",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
       "norm_label": "titlediorama()"
     },
     {
@@ -2611,8 +2611,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_zonetile",
-      "community": 4,
-      "community_name": "presentation.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "zonetile.tsx"
     },
     {
@@ -2622,8 +2622,8 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "src_components_zonetile_badge_class",
-      "community": 4,
-      "community_name": "presentation.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "badge_class"
     },
     {
@@ -2633,8 +2633,8 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "src_components_zonetile_zonetileprops",
-      "community": 4,
-      "community_name": "presentation.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "zonetileprops"
     },
     {
@@ -2644,8 +2644,8 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "src_components_zonetile_zonetile",
-      "community": 4,
-      "community_name": "presentation.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "zonetile()"
     },
     {
@@ -2655,8 +2655,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_scene_bankfoliagesvg",
-      "community": 4,
-      "community_name": "presentation.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "bankfoliagesvg.tsx"
     },
     {
@@ -2666,8 +2666,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_scene_bankfoliagesvg_bankfoliagesvgprops",
-      "community": 4,
-      "community_name": "presentation.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "bankfoliagesvgprops"
     },
     {
@@ -2677,8 +2677,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "src_components_scene_bankfoliagesvg_bankfoliagesvg",
-      "community": 4,
-      "community_name": "presentation.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "bankfoliagesvg()"
     },
     {
@@ -2688,8 +2688,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_scene_branchsvg",
-      "community": 30,
-      "community_name": "Perch.tsx",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "branchsvg.tsx"
     },
     {
@@ -2699,8 +2699,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "src_components_scene_branchsvg_branchsvgprops",
-      "community": 30,
-      "community_name": "Perch.tsx",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "branchsvgprops"
     },
     {
@@ -2710,8 +2710,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "src_components_scene_branchsvg_branchsvg",
-      "community": 30,
-      "community_name": "Perch.tsx",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "branchsvg()"
     },
     {
@@ -2721,8 +2721,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_scene_mosstuftsvg",
-      "community": 4,
-      "community_name": "presentation.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "mosstuftsvg.tsx"
     },
     {
@@ -2732,8 +2732,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_scene_mosstuftsvg_mosstuftsvgprops",
-      "community": 4,
-      "community_name": "presentation.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "mosstuftsvgprops"
     },
     {
@@ -2743,8 +2743,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "src_components_scene_mosstuftsvg_mosstuftsvg",
-      "community": 4,
-      "community_name": "presentation.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "mosstuftsvg()"
     },
     {
@@ -2754,8 +2754,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_scene_reedsvg",
-      "community": 30,
-      "community_name": "Perch.tsx",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "reedsvg.tsx"
     },
     {
@@ -2765,8 +2765,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "src_components_scene_reedsvg_reedsvgprops",
-      "community": 30,
-      "community_name": "Perch.tsx",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "reedsvgprops"
     },
     {
@@ -2776,8 +2776,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "src_components_scene_reedsvg_reedsvg",
-      "community": 30,
-      "community_name": "Perch.tsx",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "reedsvg()"
     },
     {
@@ -2787,8 +2787,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_scene_riverchannelsvg",
-      "community": 4,
-      "community_name": "presentation.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "riverchannelsvg.tsx"
     },
     {
@@ -2798,8 +2798,8 @@
       "source_location": "L2",
       "_origin": "ast",
       "id": "src_components_scene_riverchannelsvg_riverchannelsvg",
-      "community": 4,
-      "community_name": "presentation.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "riverchannelsvg()"
     },
     {
@@ -2952,8 +2952,8 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "src_game_game_buildperches",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "buildperches()"
     },
     {
@@ -3007,8 +3007,8 @@
       "source_location": "L90",
       "_origin": "ast",
       "id": "src_game_game_setup",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "setup()"
     },
     {
@@ -4096,8 +4096,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_game_fish",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "fish.ts"
     },
     {
@@ -4107,8 +4107,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "src_game_fish_fish_points",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "fish_points"
     },
     {
@@ -4118,8 +4118,8 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "src_game_fish_fishcounts",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "fishcounts"
     },
     {
@@ -4129,8 +4129,8 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "src_game_fish_fish_counts",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "fish_counts"
     },
     {
@@ -4140,8 +4140,8 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "src_game_fish_fish_types",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "fish_types"
     },
     {
@@ -4151,8 +4151,8 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "src_game_fish_river_zones",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "river_zones"
     },
     {
@@ -4162,8 +4162,8 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "src_game_fish_countstotal",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "countstotal()"
     },
     {
@@ -4184,8 +4184,8 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "src_game_fish_clampzonecount",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "clampzonecount()"
     },
     {
@@ -4217,8 +4217,8 @@
       "source_location": "L58",
       "_origin": "ast",
       "id": "src_game_fish_scalecounts",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "scalecounts()"
     },
     {
@@ -4228,8 +4228,8 @@
       "source_location": "L78",
       "_origin": "ast",
       "id": "src_game_fish_fishcountsfor",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "fishcountsfor()"
     },
     {
@@ -4239,8 +4239,8 @@
       "source_location": "L84",
       "_origin": "ast",
       "id": "src_game_fish_builddeck",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "builddeck()"
     },
     {
@@ -4305,8 +4305,8 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "src_game_kingfishers_kingfisher",
-      "community": 34,
-      "community_name": "OutcomeSplash.tsx",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
       "norm_label": "kingfisher"
     },
     {
@@ -4525,8 +4525,8 @@
       "source_location": "L85",
       "_origin": "ast",
       "id": "src_game_powers_speciesidforseat",
-      "community": 31,
-      "community_name": "OutcomeSplash.tsx",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
       "norm_label": "speciesidforseat()"
     },
     {
@@ -4569,8 +4569,8 @@
       "source_location": "L155",
       "_origin": "ast",
       "id": "src_game_powers_powerforseat",
-      "community": 31,
-      "community_name": "OutcomeSplash.tsx",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
       "norm_label": "powerforseat()"
     },
     {
@@ -4591,8 +4591,8 @@
       "source_location": "L165",
       "_origin": "ast",
       "id": "src_game_powers_reachlevel",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 4,
+      "community_name": "presentation.ts",
       "norm_label": "reachlevel()"
     },
     {
@@ -4646,8 +4646,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_game_reach",
-      "community": 30,
-      "community_name": "Perch.tsx",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "reach.ts"
     },
     {
@@ -4668,8 +4668,8 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "src_game_reach_adjacentperches",
-      "community": 30,
-      "community_name": "Perch.tsx",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "adjacentperches()"
     },
     {
@@ -4679,8 +4679,8 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "src_game_reach_openhoverperches",
-      "community": 30,
-      "community_name": "Perch.tsx",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "openhoverperches()"
     },
     {
@@ -4888,8 +4888,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_game_types",
-      "community": 30,
-      "community_name": "Perch.tsx",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "game/types.ts"
     },
     {
@@ -4965,8 +4965,8 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "src_game_types_perchlevel",
-      "community": 30,
-      "community_name": "Perch.tsx",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "perchlevel"
     },
     {
@@ -4976,8 +4976,8 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "src_game_types_perch",
-      "community": 30,
-      "community_name": "Perch.tsx",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "perch"
     },
     {
@@ -4987,8 +4987,8 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "src_game_types_riverzone",
-      "community": 4,
-      "community_name": "presentation.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "riverzone"
     },
     {
@@ -5009,8 +5009,8 @@
       "source_location": "L48",
       "_origin": "ast",
       "id": "src_game_types_stepselection",
-      "community": 29,
-      "community_name": "game/types.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "stepselection"
     },
     {
@@ -5020,8 +5020,8 @@
       "source_location": "L55",
       "_origin": "ast",
       "id": "src_game_types_calloutkind",
-      "community": 30,
-      "community_name": "Perch.tsx",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "calloutkind"
     },
     {
@@ -5031,8 +5031,8 @@
       "source_location": "L57",
       "_origin": "ast",
       "id": "src_game_types_outcomecallout",
-      "community": 4,
-      "community_name": "presentation.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "outcomecallout"
     },
     {
@@ -5306,8 +5306,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_lib_personalsplash",
-      "community": 31,
-      "community_name": "OutcomeSplash.tsx",
+      "community": 29,
+      "community_name": "game/types.ts",
       "norm_label": "personalsplash.ts"
     },
     {
@@ -5317,8 +5317,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "src_lib_personalsplash_splashvalence",
-      "community": 31,
-      "community_name": "OutcomeSplash.tsx",
+      "community": 29,
+      "community_name": "game/types.ts",
       "norm_label": "splashvalence"
     },
     {
@@ -5328,8 +5328,8 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "src_lib_personalsplash_personalsplash",
-      "community": 31,
-      "community_name": "OutcomeSplash.tsx",
+      "community": 29,
+      "community_name": "game/types.ts",
       "norm_label": "personalsplash"
     },
     {
@@ -5339,8 +5339,8 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "src_lib_personalsplash_pointssuffix",
-      "community": 31,
-      "community_name": "OutcomeSplash.tsx",
+      "community": 29,
+      "community_name": "game/types.ts",
       "norm_label": "pointssuffix()"
     },
     {
@@ -5350,8 +5350,8 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "src_lib_personalsplash_personaloutcomesplash",
-      "community": 31,
-      "community_name": "OutcomeSplash.tsx",
+      "community": 29,
+      "community_name": "game/types.ts",
       "norm_label": "personaloutcomesplash()"
     },
     {
@@ -5361,8 +5361,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_lib_presentation",
-      "community": 34,
-      "community_name": "OutcomeSplash.tsx",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
       "norm_label": "presentation.ts"
     },
     {
@@ -5405,8 +5405,8 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "src_lib_presentation_kingfisher",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
       "norm_label": "kingfisher()"
     },
     {
@@ -5416,8 +5416,8 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "src_lib_presentation_seatkingfisher",
-      "community": 31,
-      "community_name": "OutcomeSplash.tsx",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
       "norm_label": "seatkingfisher()"
     },
     {
@@ -5427,8 +5427,8 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "src_lib_presentation_playercolor",
-      "community": 31,
-      "community_name": "OutcomeSplash.tsx",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
       "norm_label": "playercolor()"
     },
     {
@@ -5438,8 +5438,8 @@
       "source_location": "L41",
       "_origin": "ast",
       "id": "src_lib_presentation_speciesname",
-      "community": 31,
-      "community_name": "OutcomeSplash.tsx",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
       "norm_label": "speciesname()"
     },
     {
@@ -5482,8 +5482,8 @@
       "source_location": "L60",
       "_origin": "ast",
       "id": "src_lib_presentation_fish_label",
-      "community": 29,
-      "community_name": "game/types.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "fish_label"
     },
     {
@@ -5504,8 +5504,8 @@
       "source_location": "L76",
       "_origin": "ast",
       "id": "src_lib_presentation_perchlabel",
-      "community": 34,
-      "community_name": "OutcomeSplash.tsx",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
       "norm_label": "perchlabel()"
     },
     {
@@ -5515,8 +5515,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_lib_sfx",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
       "norm_label": "sfx.ts"
     },
     {
@@ -5526,119 +5526,130 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "src_lib_sfx_sfxid",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "sfxid"
     },
     {
       "label": "buffers",
       "file_type": "code",
       "source_file": "src/lib/sfx.ts",
-      "source_location": "L32",
+      "source_location": "L37",
       "_origin": "ast",
       "id": "src_lib_sfx_buffers",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
       "norm_label": "buffers"
     },
     {
       "label": "muted()",
       "file_type": "code",
       "source_file": "src/lib/sfx.ts",
-      "source_location": "L37",
+      "source_location": "L42",
       "_origin": "ast",
       "id": "src_lib_sfx_muted",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
       "norm_label": "muted()"
     },
     {
       "label": "ensureCtx()",
       "file_type": "code",
       "source_file": "src/lib/sfx.ts",
-      "source_location": "L44",
+      "source_location": "L49",
       "_origin": "ast",
       "id": "src_lib_sfx_ensurectx",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
       "norm_label": "ensurectx()"
     },
     {
       "label": "loadBuffer()",
       "file_type": "code",
       "source_file": "src/lib/sfx.ts",
-      "source_location": "L57",
+      "source_location": "L62",
       "_origin": "ast",
       "id": "src_lib_sfx_loadbuffer",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
       "norm_label": "loadbuffer()"
     },
     {
       "label": "playBuffer()",
       "file_type": "code",
       "source_file": "src/lib/sfx.ts",
-      "source_location": "L72",
+      "source_location": "L77",
       "_origin": "ast",
       "id": "src_lib_sfx_playbuffer",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
       "norm_label": "playbuffer()"
     },
     {
       "label": "playSfx()",
       "file_type": "code",
       "source_file": "src/lib/sfx.ts",
-      "source_location": "L88",
+      "source_location": "L93",
       "_origin": "ast",
       "id": "src_lib_sfx_playsfx",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
       "norm_label": "playsfx()"
     },
     {
       "label": "startAmbience()",
       "file_type": "code",
       "source_file": "src/lib/sfx.ts",
-      "source_location": "L101",
+      "source_location": "L106",
       "_origin": "ast",
       "id": "src_lib_sfx_startambience",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
       "norm_label": "startambience()"
     },
     {
       "label": "stopAmbience()",
       "file_type": "code",
       "source_file": "src/lib/sfx.ts",
-      "source_location": "L120",
+      "source_location": "L125",
       "_origin": "ast",
       "id": "src_lib_sfx_stopambience",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
       "norm_label": "stopambience()"
     },
     {
       "label": "cueRoundAdvanceSfx()",
       "file_type": "code",
       "source_file": "src/lib/sfx.ts",
-      "source_location": "L132",
+      "source_location": "L137",
       "_origin": "ast",
       "id": "src_lib_sfx_cueroundadvancesfx",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "cueroundadvancesfx()"
     },
     {
-      "label": "cueWinSfx()",
+      "label": "cueGameOverSfx()",
       "file_type": "code",
       "source_file": "src/lib/sfx.ts",
-      "source_location": "L140",
+      "source_location": "L146",
       "_origin": "ast",
-      "id": "src_lib_sfx_cuewinsfx",
-      "community": 31,
-      "community_name": "OutcomeSplash.tsx",
-      "norm_label": "cuewinsfx()"
+      "id": "src_lib_sfx_cuegameoversfx",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
+      "norm_label": "cuegameoversfx()"
+    },
+    {
+      "label": "cueUnlockSfx()",
+      "file_type": "code",
+      "source_file": "src/lib/sfx.ts",
+      "source_location": "L154",
+      "_origin": "ast",
+      "id": "src_lib_sfx_cueunlocksfx",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
+      "norm_label": "cueunlocksfx()"
     },
     {
       "label": "stepFeedback.ts",
@@ -5647,8 +5658,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_lib_stepfeedback",
-      "community": 33,
-      "community_name": "stepFeedback.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "stepfeedback.ts"
     },
     {
@@ -5658,8 +5669,8 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "src_lib_stepfeedback_zoneaction",
-      "community": 4,
-      "community_name": "presentation.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "zoneaction"
     },
     {
@@ -5669,8 +5680,8 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "src_lib_stepfeedback_reaction_priority",
-      "community": 33,
-      "community_name": "stepFeedback.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "reaction_priority"
     },
     {
@@ -5680,8 +5691,8 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "src_lib_stepfeedback_outcome_label",
-      "community": 33,
-      "community_name": "stepFeedback.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "outcome_label"
     },
     {
@@ -5691,8 +5702,8 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "src_lib_stepfeedback_selectionzone",
-      "community": 33,
-      "community_name": "stepFeedback.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "selectionzone()"
     },
     {
@@ -5702,8 +5713,8 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "src_lib_stepfeedback_zoneactions",
-      "community": 33,
-      "community_name": "stepFeedback.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "zoneactions()"
     },
     {
@@ -5724,8 +5735,8 @@
       "source_location": "L49",
       "_origin": "ast",
       "id": "src_lib_stepfeedback_playerreactions",
-      "community": 33,
-      "community_name": "stepFeedback.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "playerreactions()"
     },
     {
@@ -5735,8 +5746,8 @@
       "source_location": "L63",
       "_origin": "ast",
       "id": "src_lib_stepfeedback_selectiondetail",
-      "community": 29,
-      "community_name": "game/types.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "selectiondetail()"
     },
     {
@@ -5757,8 +5768,8 @@
       "source_location": "L85",
       "_origin": "ast",
       "id": "src_lib_stepfeedback_outcomelabel",
-      "community": 4,
-      "community_name": "presentation.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "outcomelabel()"
     },
     {
@@ -5768,8 +5779,8 @@
       "source_location": "L90",
       "_origin": "ast",
       "id": "src_lib_stepfeedback_primaryzonecallout",
-      "community": 33,
-      "community_name": "stepFeedback.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "primaryzonecallout()"
     },
     {
@@ -5779,8 +5790,8 @@
       "source_location": "L97",
       "_origin": "ast",
       "id": "src_lib_stepfeedback_primaryzoneoutcome",
-      "community": 33,
-      "community_name": "stepFeedback.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "primaryzoneoutcome()"
     },
     {
@@ -5790,8 +5801,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_lib_stepsfx",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "stepsfx.ts"
     },
     {
@@ -5801,8 +5812,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "src_lib_stepsfx_outcome_order",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "outcome_order"
     },
     {
@@ -5812,8 +5823,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "src_lib_stepsfx_reveal_sfx",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "reveal_sfx"
     },
     {
@@ -5823,8 +5834,8 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "src_lib_stepsfx_fishsfx",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "fishsfx()"
     },
     {
@@ -5834,8 +5845,8 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "src_lib_stepsfx_revealed",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "revealed()"
     },
     {
@@ -5845,8 +5856,8 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "src_lib_stepsfx_cuestepsfx",
-      "community": 1,
-      "community_name": "App.tsx",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "cuestepsfx()"
     },
     {
@@ -5966,8 +5977,8 @@
       "source_location": "L99",
       "_origin": "ast",
       "id": "src_profile_store_recordmatchonce",
-      "community": 31,
-      "community_name": "OutcomeSplash.tsx",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
       "norm_label": "recordmatchonce()"
     },
     {
@@ -6307,8 +6318,8 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "src_tutorial_tutorialbot_tutorialbot",
-      "community": 20,
-      "community_name": "lesson.ts",
+      "community": 19,
+      "community_name": "stepFeedback.ts",
       "norm_label": "tutorialbot"
     },
     {
@@ -6318,8 +6329,8 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "src_tutorial_tutorialbot_tutorialbot_constructor",
-      "community": 20,
-      "community_name": "lesson.ts",
+      "community": 19,
+      "community_name": "stepFeedback.ts",
       "norm_label": ".constructor()"
     },
     {
@@ -11964,6 +11975,30 @@
       "target": "src_lib_presentation_kingfisher"
     },
     {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/StartScreen.tsx",
+      "source_location": "L82",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_startscreen_startscreen",
+      "target": "src_lib_sfx_playsfx"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/StartScreen.tsx",
+      "source_location": "L83",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_startscreen_startscreen",
+      "target": "src_lib_sfx_startambience"
+    },
+    {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -14196,7 +14231,19 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_gameover",
-      "target": "src_lib_sfx_cuewinsfx",
+      "target": "src_lib_sfx_cuegameoversfx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/GameOver.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_gameover",
+      "target": "src_lib_sfx_cueunlocksfx",
       "confidence_score": 1.0
     },
     {
@@ -14300,7 +14347,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/components/GameOver.tsx",
-      "source_location": "L20",
+      "source_location": "L22",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_gameover_gameover",
@@ -14337,7 +14384,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/GameOver.tsx",
-      "source_location": "L21",
+      "source_location": "L24",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_gameover_gameover",
@@ -14349,7 +14396,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/GameOver.tsx",
-      "source_location": "L39",
+      "source_location": "L42",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_gameover_gameover",
@@ -14361,7 +14408,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/GameOver.tsx",
-      "source_location": "L36",
+      "source_location": "L39",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_gameover_gameover",
@@ -14373,11 +14420,23 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/GameOver.tsx",
-      "source_location": "L19",
+      "source_location": "L21",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_gameover_gameover",
-      "target": "src_lib_sfx_cuewinsfx"
+      "target": "src_lib_sfx_cuegameoversfx"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/components/GameOver.tsx",
+      "source_location": "L23",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_gameover_gameover",
+      "target": "src_lib_sfx_cueunlocksfx"
     },
     {
       "relation": "contains",
@@ -14895,7 +14954,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/Nest.tsx",
-      "source_location": "L10",
+      "source_location": "L11",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_nest",
@@ -14906,7 +14965,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/Nest.tsx",
-      "source_location": "L12",
+      "source_location": "L13",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_nest",
@@ -14917,7 +14976,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/Nest.tsx",
-      "source_location": "L9",
+      "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_nest",
@@ -14929,7 +14988,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/Nest.tsx",
-      "source_location": "L5",
+      "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_nest",
@@ -14941,7 +15000,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/Nest.tsx",
-      "source_location": "L5",
+      "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_nest",
@@ -14981,7 +15040,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_nest",
-      "target": "src_profile_store",
+      "target": "src_lib_sfx",
       "confidence_score": 1.0
     },
     {
@@ -14993,7 +15052,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_nest",
-      "target": "src_profile_store_loadprofile",
+      "target": "src_lib_sfx_playsfx",
       "confidence_score": 1.0
     },
     {
@@ -15005,7 +15064,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_nest",
-      "target": "src_profile_types",
+      "target": "src_profile_store",
       "confidence_score": 1.0
     },
     {
@@ -15017,6 +15076,30 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_nest",
+      "target": "src_profile_store_loadprofile",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/Nest.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_nest",
+      "target": "src_profile_types",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/Nest.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_nest",
       "target": "src_profile_types_card_types",
       "confidence_score": 1.0
     },
@@ -15025,7 +15108,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/Nest.tsx",
-      "source_location": "L4",
+      "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_nest",
@@ -15038,7 +15121,19 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/Nest.tsx",
-      "source_location": "L13",
+      "source_location": "L48",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_nest_nest",
+      "target": "src_lib_sfx_playsfx"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/components/Nest.tsx",
+      "source_location": "L14",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_nest_nest",
@@ -25887,7 +25982,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/sfx.ts",
-      "source_location": "L32",
+      "source_location": "L37",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_lib_sfx",
@@ -25898,7 +25993,18 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/sfx.ts",
-      "source_location": "L132",
+      "source_location": "L146",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_lib_sfx",
+      "target": "src_lib_sfx_cuegameoversfx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/sfx.ts",
+      "source_location": "L137",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_lib_sfx",
@@ -25909,18 +26015,18 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/sfx.ts",
-      "source_location": "L140",
+      "source_location": "L154",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_lib_sfx",
-      "target": "src_lib_sfx_cuewinsfx",
+      "target": "src_lib_sfx_cueunlocksfx",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/sfx.ts",
-      "source_location": "L44",
+      "source_location": "L49",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_lib_sfx",
@@ -25931,7 +26037,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/sfx.ts",
-      "source_location": "L57",
+      "source_location": "L62",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_lib_sfx",
@@ -25942,7 +26048,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/sfx.ts",
-      "source_location": "L37",
+      "source_location": "L42",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_lib_sfx",
@@ -25953,7 +26059,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/sfx.ts",
-      "source_location": "L72",
+      "source_location": "L77",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_lib_sfx",
@@ -25964,7 +26070,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/sfx.ts",
-      "source_location": "L88",
+      "source_location": "L93",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_lib_sfx",
@@ -25986,7 +26092,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/sfx.ts",
-      "source_location": "L101",
+      "source_location": "L106",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_lib_sfx",
@@ -25997,7 +26103,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/sfx.ts",
-      "source_location": "L120",
+      "source_location": "L125",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_lib_sfx",
@@ -26033,71 +26139,11 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/sfx.ts",
-      "source_location": "L89",
+      "source_location": "L94",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_lib_sfx_playsfx",
       "target": "src_lib_sfx_muted",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/sfx.ts",
-      "source_location": "L102",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_lib_sfx_startambience",
-      "target": "src_lib_sfx_muted",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/sfx.ts",
-      "source_location": "L61",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_lib_sfx_loadbuffer",
-      "target": "src_lib_sfx_ensurectx",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/sfx.ts",
-      "source_location": "L91",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_lib_sfx_playsfx",
-      "target": "src_lib_sfx_ensurectx",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/sfx.ts",
-      "source_location": "L105",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_lib_sfx_startambience",
-      "target": "src_lib_sfx_ensurectx",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/sfx.ts",
-      "source_location": "L93",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_lib_sfx_playsfx",
-      "target": "src_lib_sfx_loadbuffer",
       "confidence_score": 1.0
     },
     {
@@ -26109,6 +26155,54 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_lib_sfx_startambience",
+      "target": "src_lib_sfx_muted",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/sfx.ts",
+      "source_location": "L66",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_lib_sfx_loadbuffer",
+      "target": "src_lib_sfx_ensurectx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/sfx.ts",
+      "source_location": "L96",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_lib_sfx_playsfx",
+      "target": "src_lib_sfx_ensurectx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/sfx.ts",
+      "source_location": "L110",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_lib_sfx_startambience",
+      "target": "src_lib_sfx_ensurectx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/sfx.ts",
+      "source_location": "L98",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_lib_sfx_playsfx",
       "target": "src_lib_sfx_loadbuffer",
       "confidence_score": 1.0
     },
@@ -26117,7 +26211,19 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/sfx.ts",
-      "source_location": "L94",
+      "source_location": "L112",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_lib_sfx_startambience",
+      "target": "src_lib_sfx_loadbuffer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/sfx.ts",
+      "source_location": "L99",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_lib_sfx_playsfx",
@@ -26129,7 +26235,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/sfx.ts",
-      "source_location": "L114",
+      "source_location": "L119",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_lib_sfx_startambience",
@@ -26141,7 +26247,19 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/sfx.ts",
-      "source_location": "L133",
+      "source_location": "L150",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_lib_sfx_cuegameoversfx",
+      "target": "src_lib_sfx_playsfx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/sfx.ts",
+      "source_location": "L138",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_lib_sfx_cueroundadvancesfx",
@@ -26153,10 +26271,10 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/sfx.ts",
-      "source_location": "L144",
+      "source_location": "L159",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "src_lib_sfx_cuewinsfx",
+      "source": "src_lib_sfx_cueunlocksfx",
       "target": "src_lib_sfx_playsfx",
       "confidence_score": 1.0
     },
@@ -28878,5 +28996,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "a00cc3cac1f2efd45fb21f4fedaf6baf8312de2c"
+  "built_at_commit": "3a86f5d7c51bf61f5c64d43900bf0891e317be65"
 }

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import type { KingfisherID } from '../game/kingfishers'
+import { playSfx } from '../lib/sfx'
 import { loadProfile } from '../profile/store'
 import { CARD_TYPES, FISH_TYPES } from '../profile/types'
 import { NestFlock } from './NestFlock'
@@ -42,7 +43,11 @@ export function Nest({ onBack }: { onBack: () => void }) {
               role="tab"
               aria-selected={tab === id}
               className={tab === id ? styles.tabOn : styles.tab}
-              onClick={() => setTab(id)}
+              onClick={() => {
+                if (tab === id) return
+                playSfx('tab_switch')
+                setTab(id)
+              }}
             >
               {label}
             </button>
@@ -64,7 +69,11 @@ export function Nest({ onBack }: { onBack: () => void }) {
                   type="button"
                   className={filter === id ? styles.chipOn : styles.chip}
                   aria-pressed={filter === id}
-                  onClick={() => setFilter(id)}
+                  onClick={() => {
+                    if (filter === id) return
+                    playSfx('tab_switch')
+                    setFilter(id)
+                  }}
                 >
                   {label}
                 </button>
@@ -83,7 +92,10 @@ export function Nest({ onBack }: { onBack: () => void }) {
             <NestFlock
               profile={profile}
               selected={selected}
-              onSelect={setSelected}
+              onSelect={(id) => {
+                if (id !== null && id !== selected) playSfx('field_note')
+                setSelected(id)
+              }}
               query={query}
               filter={filter}
             />
