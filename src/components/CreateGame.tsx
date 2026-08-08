@@ -1,13 +1,19 @@
 import { useState } from 'react'
 import { KINGFISHERS, type KingfisherID } from '../game/kingfishers'
-import { SPECIES_ORDER, SPECIES_POWERS, buildSpeciesBySeat } from '../game/powers'
-import { kingfisherById, speciesShortById } from '../lib/presentation'
+import {
+  SPECIES_ORDER,
+  SPECIES_POWERS,
+  fillBotSpecies,
+  speciesBySeatFromBots,
+} from '../game/powers'
+import { kingfisherById, speciesShortById, spriteScaleStyle } from '../lib/presentation'
 import { playSfx } from '../lib/sfx'
 import { loadProfile } from '../profile/store'
 import { isBirdUnlocked, UNLOCK_META } from '../profile/unlocks'
 import type { UnlockId } from '../profile/types'
 import type { StartConfig } from '../startConfig'
 import { clampDeckSize, deckTotalFor, riverZonesFor } from '../game/fish'
+import { CreateBotRoster } from './CreateBotRoster'
 import { RiverOptions } from './RiverOptions'
 import surface from './menuSurface.module.css'
 import styles from './CreateGame.module.css'
@@ -29,10 +35,14 @@ export function CreateGame({
   const [zoneCount, setZoneCount] = useState(() => riverZonesFor(DEFAULT_PLAYERS))
   const [deckSize, setDeckSize] = useState(() => deckTotalFor(DEFAULT_PLAYERS))
   const [humanSpecies, setHumanSpecies] = useState<KingfisherID>('common')
+  const [botSpecies, setBotSpecies] = useState<KingfisherID[]>(() =>
+    fillBotSpecies(DEFAULT_PLAYERS - 1, 'common'),
+  )
+  const [editingBot, setEditingBot] = useState<string | null>('1')
   const [speciesPowers, setSpeciesPowers] = useState(true)
 
   const seats = Array.from({ length: playerCount }, (_, i) => String(i))
-  const speciesBySeat = buildSpeciesBySeat(seats, humanSpecies, HUMAN_SEAT)
+  const speciesBySeat = speciesBySeatFromBots(seats, humanSpecies, botSpecies, HUMAN_SEAT)
   const you = kingfisherById(humanSpecies)
   const yourPower = SPECIES_POWERS[humanSpecies]
 
@@ -40,11 +50,23 @@ export function CreateGame({
     setPlayerCount(n)
     setZoneCount(riverZonesFor(n))
     setDeckSize(deckTotalFor(n))
+    setBotSpecies((prev) => fillBotSpecies(n - 1, humanSpecies, prev))
+    setEditingBot((seat) => {
+      if (!seat) return seat
+      return Number(seat) < n ? seat : n > 1 ? '1' : null
+    })
   }
 
   const applyZoneCount = (n: number) => {
     setZoneCount(n)
     setDeckSize((d) => clampDeckSize(d, n))
+  }
+
+  const pickHuman = (id: KingfisherID) => {
+    if (!isBirdUnlocked(profile, id)) return
+    playSfx('card_select')
+    setHumanSpecies(id)
+    setBotSpecies((prev) => fillBotSpecies(playerCount - 1, id, prev))
   }
 
   const start = () => {
@@ -57,6 +79,7 @@ export function CreateGame({
       botSeats: seats.filter((id) => id !== HUMAN_SEAT),
       speciesPowers,
       humanSpecies,
+      speciesBySeat,
       zoneCount,
       deckSize,
     })
@@ -77,11 +100,11 @@ export function CreateGame({
 
       <p className={surface.kicker}>Local · vs bots</p>
       <h1 className={surface.title}>Create game</h1>
-      <p className={surface.lede}>Pick your bird, fill the bank with bots, then dive in.</p>
+      <p className={surface.lede}>Pick your bird, assign bot birds, then dive in.</p>
 
       <div className={surface.panel}>
         <div className={styles.portrait} style={{ ['--seat-accent' as string]: you.accent }}>
-          <img src={you.sprite} alt="" />
+          <img src={you.sprite} alt="" style={spriteScaleStyle(you.spriteScale)} />
           <div>
             <span className={styles.portraitLabel}>You play as</span>
             <strong>{speciesShortById(humanSpecies)}</strong>
@@ -101,9 +124,7 @@ export function CreateGame({
               const unlocked = isBirdUnlocked(profile, id)
               const active = humanSpecies === id
               const hint =
-                id === 'common'
-                  ? 'Always available'
-                  : UNLOCK_META[id as UnlockId].flavor
+                id === 'common' ? 'Always available' : UNLOCK_META[id as UnlockId].flavor
               return (
                 <button
                   key={id}
@@ -119,17 +140,14 @@ export function CreateGame({
                   disabled={!unlocked}
                   title={unlocked ? k.displayName : `Locked — ${hint}`}
                   aria-label={unlocked ? k.displayName : `Locked: ${hint}`}
-                  onClick={() => {
-                    if (!unlocked) return
-                    playSfx('card_select')
-                    setHumanSpecies(id)
-                  }}
+                  onClick={() => pickHuman(id)}
                   aria-pressed={active}
                 >
                   <img
                     className={unlocked ? undefined : styles.lockedImg}
                     src={k.sprite}
                     alt=""
+                    style={spriteScaleStyle(k.spriteScale)}
                   />
                 </button>
               )
@@ -139,37 +157,20 @@ export function CreateGame({
 
         <div className={styles.field}>
           <span>Players ({playerCount})</span>
-          <ul className={styles.slots}>
-            <li className={styles.slot} style={{ ['--seat-accent' as string]: you.accent }}>
-              <img src={you.sprite} alt="" />
-              <div>
-                <strong>You</strong>
-                <span>
-                  {speciesShortById(humanSpecies)}
-                  {speciesPowers ? ` · ${yourPower.name}` : ''}
-                </span>
-              </div>
-            </li>
-            {seats
-              .filter((id) => id !== HUMAN_SEAT)
-              .map((seat) => {
-                const birdId = speciesBySeat[seat]
-                const k = kingfisherById(birdId)
-                const power = SPECIES_POWERS[birdId]
-                return (
-                  <li key={seat} className={styles.slot} style={{ ['--seat-accent' as string]: k.accent }}>
-                    <img src={k.sprite} alt="" />
-                    <div>
-                      <strong>Bot</strong>
-                      <span>
-                        {speciesShortById(birdId)}
-                        {speciesPowers ? ` · ${power.name}` : ''}
-                      </span>
-                    </div>
-                  </li>
-                )
-              })}
-          </ul>
+          <CreateBotRoster
+            humanSpecies={humanSpecies}
+            botSpecies={botSpecies}
+            editingSeat={editingBot}
+            speciesPowers={speciesPowers}
+            onEditSeat={setEditingBot}
+            onSetBotSpecies={(index, id) => {
+              setBotSpecies((prev) => {
+                const next = [...prev]
+                next[index] = id
+                return next
+              })
+            }}
+          />
           <div className={styles.slotActions}>
             <button
               type="button"

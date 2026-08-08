@@ -1,5 +1,6 @@
 import { KINGFISHERS, type KingfisherID } from '../game/kingfishers'
 import { SPECIES_POWERS } from '../game/powers'
+import { spriteScaleStyle } from '../lib/presentation'
 import { loadProfile } from '../profile/store'
 import { isBirdUnlocked, STARTER_FLAVOR, UNLOCK_META } from '../profile/unlocks'
 import type { UnlockId } from '../profile/types'
@@ -46,6 +47,7 @@ export function NestPanel({ onClose }: { onClose: () => void }) {
                     className={unlocked ? styles.sprite : styles.silhouette}
                     src={bird.sprite}
                     alt=""
+                    style={spriteScaleStyle(bird.spriteScale)}
                   />
                   <div className={styles.birdCopy}>
                     <strong>{bird.displayName}</strong>

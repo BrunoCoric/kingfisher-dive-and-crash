@@ -43,6 +43,8 @@ export interface KingfisherSetupData {
   speciesPowers?: boolean
   /** Human's chosen bird (vs-bots). Bots fill remaining flock seats. */
   humanSpecies?: KingfisherID
+  /** Full seat→species map (Create game bot picker). Overrides flock fill. */
+  speciesBySeat?: Record<string, KingfisherID>
   /** Socket.IO match: open with gather phase for bird pick. */
   online?: boolean
   /** Override water-zone count (default from player count: 4–7). */
@@ -64,8 +66,8 @@ function tutorialRiver(): { zones: GameState['zones']; deck: FishCard[] } {
     { id: 3, fish: fish('Minnow', 'tut-z3') },
     { id: 4, fish: fish('Trout', 'tut-z4') },
   ]
-  // pop() takes from the end. After R1 drift, null fills want Minnow → Pike → Perch
-  // so Pike sits on zone 2, drifts to 3 for R3, then to 4 for the R4 Pike dive.
+  // pop() takes from the end. After R1 catch on z1 + drift, nulls at z0 then z2
+  // fill Minnow → Perch so R2 has fish on z1 (steal) and z2 (crash) without Pike.
   const deck: FishCard[] = [
     fish('Trash', 'tut-d0'),
     fish('Trash', 'tut-d1'),
@@ -78,8 +80,8 @@ function tutorialRiver(): { zones: GameState['zones']; deck: FishCard[] } {
     fish('Trout', 'tut-r2c'),
     fish('Perch', 'tut-r2b'),
     fish('Minnow', 'tut-r2a'),
-    fish('Perch', 'tut-r1c'),
-    fish('Pike', 'tut-r1b'),
+    fish('Trout', 'tut-r1c'),
+    fish('Perch', 'tut-r1b'),
     fish('Minnow', 'tut-r1a'),
   ]
   return { zones, deck }
@@ -123,16 +125,16 @@ export function setup(
   const humanSeats = setupData?.humanSeats ?? []
   const humanSeat = humanSeats[0] ?? '0'
   const humanSpecies = setupData?.humanSpecies ?? SPECIES_ORDER[0]
-  // Online + local vs-bots: host bird + flock fill for bots / other seats.
-  // Pure online (no humanSpecies) defaults everyone to Common until gather picks.
+  // Create-game map wins; else host bird + flock fill; pure online → Common until gather.
   const speciesBySeat =
-    setupData?.humanSpecies !== undefined
+    setupData?.speciesBySeat ??
+    (setupData?.humanSpecies !== undefined
       ? buildSpeciesBySeat(ctx.playOrder, humanSpecies, humanSeat)
       : online
         ? Object.fromEntries(ctx.playOrder.map((pid) => [pid, 'common' as KingfisherID]))
         : Object.fromEntries(
             ctx.playOrder.map((pid) => [pid, SPECIES_ORDER[Number(pid) % SPECIES_ORDER.length]]),
-          )
+          ))
 
   const ready: Record<string, boolean> = {}
   for (const pid of ctx.playOrder) ready[pid] = !online

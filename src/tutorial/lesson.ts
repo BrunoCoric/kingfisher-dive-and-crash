@@ -16,24 +16,25 @@ function cleanupReviewKey(G: GameState): string {
 }
 
 /**
- * Pure lesson picker. `dismissedReview` is the last review key acknowledged
- * with Got it — reviews block the action gate until dismissed.
+ * Pure lesson picker. `dismissedReviews` is every review key acknowledged
+ * with Got it — reviews block the action gate until dismissed. A set is
+ * required because cleanup can still show the last step’s outcome review.
  */
 export function lessonFor(
   G: GameState,
   _ctx: Ctx,
   playerID: string,
-  dismissedReview: string | null,
+  dismissedReviews: ReadonlySet<string>,
 ): TutorialLesson {
   if (!G.tutorial) {
     return { id: 'off', title: '', body: '', gate: null }
   }
 
-  if (G.round >= 5) {
+  if (G.round >= 3) {
     return {
       id: 'done',
       title: 'You are ready',
-      body: 'Catch, crash, splash, steal, Drop+Drop, Hover, and Pike — Menu → Play vs Bots.',
+      body: 'Dive catches alone, Splash blocks Dive, Drop steals a catch, same card twice crashes. Menu → Play vs Bots.',
       gate: null,
       done: true,
     }
@@ -42,20 +43,20 @@ export function lessonFor(
   if (G.currentPhase === 'cleanup') {
     if (G.outcomeLog.length > 0) {
       const sk = stepReviewKey(G)
-      if (dismissedReview !== sk) {
+      if (!dismissedReviews.has(sk)) {
         const review = reviewLesson(G, outcomeKinds(G), sk)
         if (review) return review
       }
     }
     const ck = cleanupReviewKey(G)
-    if (dismissedReview !== ck) {
+    if (!dismissedReviews.has(ck)) {
       return {
         id: `cleanup-review-${G.round}`,
-        title: G.round === 4 ? 'Tutorial complete' : 'End of round',
+        title: G.round === 2 ? 'Tutorial complete' : 'End of round',
         body:
-          G.round === 4
-            ? 'You have seen the full collision set. Tap Got it, then Next round — or Menu to play for real.'
-            : 'Fish will drift downstream, hands reset, and First Player passes. Tap Got it, then Next round.',
+          G.round === 2
+            ? 'You have the core loop. Tap Got it, then Next round — or Menu to play for real.'
+            : 'Fish drift downstream, hands reset, First Player passes. Tap Got it, then Next round for the fight lessons.',
         gate: null,
         reviewKey: ck,
       }
@@ -63,17 +64,17 @@ export function lessonFor(
     const gate = humanGate(G, playerID)
     return {
       id: `cleanup-${G.round}`,
-      title: G.round === 4 ? 'Finish' : 'Next round',
+      title: G.round === 2 ? 'Finish' : 'Next round',
       body: 'Tap Next round.',
       gate,
-      done: G.round === 4,
+      done: G.round === 2,
     }
   }
 
   const kinds = outcomeKinds(G)
   if (G.outcomeLog.length > 0) {
     const sk = stepReviewKey(G)
-    if (dismissedReview !== sk) {
+    if (!dismissedReviews.has(sk)) {
       const review = reviewLesson(G, kinds, sk)
       if (review) return review
     }
@@ -85,7 +86,7 @@ export function lessonFor(
     return {
       id: 'wait',
       title: 'Watch the river',
-      body: 'The other kingfishers are taking their scripted turns.',
+      body: 'Rivals lock their cards — then everything reveals together.',
       gate: null,
     }
   }
@@ -93,20 +94,11 @@ export function lessonFor(
 }
 
 function reviewLesson(G: GameState, kinds: Set<string>, rk: string): TutorialLesson | null {
-  if (kinds.has('pike')) {
-    return {
-      id: 'review-pike',
-      title: 'Pike!',
-      body: 'Catching a Pike discards it and a Minnow from your pile if you have one.',
-      gate: null,
-      reviewKey: rk,
-    }
-  }
   if (kinds.has('steal')) {
     return {
       id: 'review-steal',
-      title: 'Steal!',
-      body: 'Drop ambushed a successful solo Dive. The diver’s Dive card bounced back to their hand.',
+      title: 'Stolen!',
+      body: 'Your Drop beat their solo Dive. They get their Dive card back; you keep the fish.',
       gate: null,
       reviewKey: rk,
     }
@@ -114,26 +106,8 @@ function reviewLesson(G: GameState, kinds: Set<string>, rk: string): TutorialLes
   if (kinds.has('blocked')) {
     return {
       id: 'review-splash',
-      title: 'Splash block',
-      body: 'Splash cancels Dives on that zone. The fish stays; the Dive card is spent. Drops are not splashed.',
-      gate: null,
-      reviewKey: rk,
-    }
-  }
-  if (kinds.has('crash') && G.round === 3 && G.step === 0) {
-    return {
-      id: 'review-dive-crash',
-      title: 'Dive Crash!',
-      body: 'Two Dives collide. Fish stays; each bird spends Dive and discards one extra random hand card.',
-      gate: null,
-      reviewKey: rk,
-    }
-  }
-  if (kinds.has('crash') && G.round === 3) {
-    return {
-      id: 'review-drop-crash',
-      title: 'Drop + Drop Crash!',
-      body: 'Two or more Drops crash — no steal, fish stays, each Dropper loses an extra random hand card.',
+      title: 'Blocked!',
+      body: 'Splash cancelled their Dive. The fish stayed put. Drops are not blocked by Splash.',
       gate: null,
       reviewKey: rk,
     }
@@ -141,8 +115,8 @@ function reviewLesson(G: GameState, kinds: Set<string>, rk: string): TutorialLes
   if (kinds.has('crash')) {
     return {
       id: 'review-dive-crash',
-      title: 'Dive Crash!',
-      body: 'Same-action Crash: fish stays; played card spent plus one random extra hand discard.',
+      title: 'Crash!',
+      body: 'Two Dives on the same zone collide. Nobody gets the fish; each bird spends Dive plus one extra hand card.',
       gate: null,
       reviewKey: rk,
     }
@@ -150,8 +124,8 @@ function reviewLesson(G: GameState, kinds: Set<string>, rk: string): TutorialLes
   if (kinds.has('catch')) {
     return {
       id: 'review-catch',
-      title: 'Catch!',
-      body: 'A solo Dive on a zone with fish scores it. Card effects last only for this step.',
+      title: 'Caught!',
+      body: 'Solo Dive on a zone with fish scores it. Card effects last only for this step.',
       gate: null,
       reviewKey: rk,
     }
@@ -169,71 +143,39 @@ function actionLesson(key: string, gate: TutorialGate): TutorialLesson {
   const copy: Record<string, { title: string; body: string }> = {
     '1|placement|place': {
       title: 'Claim a perch',
-      body: 'Tap the highlighted low perch. Low branches see fewer zones but grant a secret peek.',
+      body: 'Sit on the lit low perch. Low branches reach fewer zones, but you get a secret peek at the start of the round.',
     },
     '1|placement|peek': {
       title: 'Sightline peek',
-      body: 'Tap the highlighted face-down fish to peek. Only you see it.',
+      body: 'Tap the lit face-down fish. Only you see it — use that intel when you Dive.',
     },
     '1|step1': {
       title: 'Solo Dive',
-      body: 'Tap Dive, then the highlighted zone to catch that fish alone.',
+      body: 'You are alone on this fish. Play Dive on the lit zone — if nobody else Dives or Splashes it, you keep it.',
     },
     '1|step2': {
-      title: 'Drop without a Dive',
-      body: 'Tap Drop on the highlighted zone. With no successful Dive there, Drop does nothing.',
+      title: 'Hover Scout',
+      body: 'Play Hover and peek the lit face-down zone. Scout anywhere, or Relocate — never both on one play.',
     },
     '1|step3': {
-      title: 'Hover Relocate',
-      body: 'Tap Hover, then the highlighted adjacent perch. Scout (peek) or Relocate — not both.',
+      title: 'Burn a Splash',
+      body: 'Play Splash on the lit zone to finish the round. You hold one card unused each round unless crashes eat tempo.',
     },
     '2|placement|place': {
       title: 'High perch',
-      body: 'Tap the highlighted high perch. High branches reach farther and skip the sightline peek.',
+      body: 'Sit on the lit high perch. Wider reach, no sightline peek — better for fighting over fish.',
     },
     '2|step1': {
-      title: 'Splash',
-      body: 'Tap Splash on the highlighted zone. A rival is about to Dive there — block them.',
+      title: 'Splash a Dive',
+      body: 'A rival is Diving the lit zone. Play Splash there first in resolve order — their Dive fails and the fish stays.',
     },
     '2|step2': {
       title: 'Drop steal',
-      body: 'Tap Drop on the highlighted zone. Steal the fish from a successful solo Dive.',
+      body: 'A rival will Dive alone on the lit zone. Play Drop there — after a successful Dive, Drop takes the fish.',
     },
     '2|step3': {
-      title: 'Hover Scout',
-      body: 'Tap Hover and peek the highlighted face-down zone. You stay on your perch.',
-    },
-    '3|placement|place': {
-      title: 'Hold the high perch',
-      body: 'Tap the highlighted perch so you can reach zones 1–3 for the crash lessons.',
-    },
-    '3|step1': {
       title: 'Dive Crash',
-      body: 'Tap Dive on the highlighted zone. Another bird will Dive the same water — Crash!',
-    },
-    '3|step2': {
-      title: 'Scout the contested fish',
-      body: 'Tap Hover and peek the crash zone — the fish is still there. Rivals Drop+Drop elsewhere.',
-    },
-    '3|step3': {
-      title: 'Spend the leftover',
-      body: 'Tap Drop on the highlighted zone. After a Crash you lost an extra card — tempo matters.',
-    },
-    '4|placement|place': {
-      title: 'Line up on Pike',
-      body: 'Tap the highlighted perch. A Pike has drifted into the downstream zone.',
-    },
-    '4|step1': {
-      title: 'Pike hazard',
-      body: 'Tap Dive on the highlighted zone. Catching a Pike discards a Minnow if you have one.',
-    },
-    '4|step2': {
-      title: 'Almost done',
-      body: 'Tap Hover and Scout an unseen zone to burn the middle step.',
-    },
-    '4|step3': {
-      title: 'Last Splash',
-      body: 'Tap Splash on the highlighted zone to finish the round.',
+      body: 'Play Dive on the lit zone. Another bird Dives the same water — Crash. Fish stays; both lose tempo.',
     },
   }
   const text = copy[key] ?? { title: 'Follow the highlight', body: 'Tap only what the coach highlights.' }

@@ -93,7 +93,10 @@
 .seat img,
 .seatActive img,
 .seatLocked img,
-.slot img {
+.seatTaken img,
+.slot img,
+.slotBtn img,
+.slotEdit img {
   width: 2.2rem;
   height: 2.2rem;
   object-fit: contain;
@@ -108,7 +111,9 @@
   gap: 0.4rem;
 }
 
-.slot {
+.slot,
+.slotBtn,
+.slotEdit {
   display: flex;
   align-items: center;
   gap: 0.55rem;
@@ -120,7 +125,72 @@
   box-shadow: 0 2px 5px var(--shadow-soft);
 }
 
-.slot > div {
+.slotBtn,
+.slotEdit {
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+
+.slotBtn:hover,
+.slotEdit:hover {
+  border-color: rgba(242, 193, 78, 0.55);
+}
+
+.slotEdit {
+  border-color: var(--seat-accent, var(--status-highlight));
+  box-shadow:
+    0 0 0 2px rgba(242, 193, 78, 0.28),
+    0 2px 5px var(--shadow-soft);
+  background: linear-gradient(160deg, #fdf8e8, #f3e4bc);
+}
+
+.botBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  list-style: none;
+}
+
+.botPicker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  padding: 0.15rem 0.15rem 0.25rem 0.55rem;
+}
+
+.botPicker .seat,
+.botPicker .seatActive,
+.botPicker .seatTaken {
+  width: 2.55rem;
+  height: 2.55rem;
+}
+
+.botPicker .seat img,
+.botPicker .seatActive img,
+.botPicker .seatTaken img {
+  width: 1.9rem;
+  height: 1.9rem;
+}
+
+.seatTaken {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  padding: 0.2rem;
+  background: rgba(43, 36, 32, 0.05);
+  border: 2px dashed rgba(43, 36, 32, 0.18);
+  border-radius: 0.85rem;
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.slot > div,
+.slotBtn > div,
+.slotEdit > div {
   flex: 1;
   min-width: 0;
 }
@@ -149,17 +219,25 @@
 }
 
 .slot strong,
-.slot span {
+.slot span,
+.slotBtn strong,
+.slotBtn span,
+.slotEdit strong,
+.slotEdit span {
   display: block;
 }
 
-.slot strong {
+.slot strong,
+.slotBtn strong,
+.slotEdit strong {
   font-family: var(--font-display);
   font-size: 0.9rem;
   color: var(--ink);
 }
 
-.slot span {
+.slot span,
+.slotBtn span,
+.slotEdit span {
   font-size: 0.72rem;
   font-weight: 600;
   color: rgba(43, 36, 32, 0.62);

@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import type { GameState } from '../game/types'
 import { STEPS_PER_ROUND } from '../game/cards'
+import { spriteScaleStyle } from '../lib/presentation'
 import { outcomeStory } from '../lib/stepFeedback'
 import styles from './StatusLine.module.css'
 
@@ -8,6 +9,7 @@ export interface StatusActor {
   shortName: string
   sprite: string
   accent: string
+  spriteScale?: number
 }
 
 interface StatusLineProps {
@@ -48,7 +50,11 @@ export function StatusLine({
             style={{ ['--actor-accent' as string]: actor.accent }}
             aria-hidden
           >
-            <img src={actor.sprite} alt="" />
+            <img
+              src={actor.sprite}
+              alt=""
+              style={spriteScaleStyle(actor.spriteScale)}
+            />
           </span>
         )}
         {isActive && !hint && !callout && <span className={styles.you}>Your turn</span>}

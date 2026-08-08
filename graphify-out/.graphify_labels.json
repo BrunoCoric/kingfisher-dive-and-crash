@@ -28,6 +28,12 @@
   "26": "capacitor.settings.gradle",
   "27": "settings.gradle",
   "28": "variables.gradle",
+  "29": "game/types.ts",
+  "30": "Perch.tsx",
+  "31": "OutcomeSplash.tsx",
+  "32": "WaterPuddleSvg.tsx",
+  "33": "stepFeedback.ts",
   "34": "OutcomeSplash.tsx",
+  "35": "presentation.ts",
   "37": "cutout_kingfisher.py"
 }

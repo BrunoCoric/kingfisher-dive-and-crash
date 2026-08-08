@@ -12,6 +12,8 @@ export type StartConfig =
       speciesPowers: boolean
       /** Bird the human plays as (must be Nest-unlocked). */
       humanSpecies: KingfisherID
+      /** Full seat→species map (human + chosen bot birds). */
+      speciesBySeat: Record<string, KingfisherID>
       /** Water zones (default from player count). */
       zoneCount: number
       /** Fish deck size; mix scales from the player-count recipe. */

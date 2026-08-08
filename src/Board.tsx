@@ -131,6 +131,7 @@ export function Board(props: BoardProps<GameState> & BoardExtra) {
       isFirst: pid === G.firstPlayer,
       sprite: bird.sprite,
       facing: bird.facing,
+      spriteScale: bird.spriteScale,
       reaction: reactions[pid],
       feedbackKey: reactions[pid] ? feedbackKey : undefined,
     }
@@ -251,6 +252,7 @@ export function Board(props: BoardProps<GameState> & BoardExtra) {
         shortName: speciesShort(G, turnPid),
         sprite: turnBird.sprite,
         accent: turnBird.accent,
+        spriteScale: turnBird.spriteScale,
       }
     : null
 

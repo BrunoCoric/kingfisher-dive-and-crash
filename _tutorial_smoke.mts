@@ -77,11 +77,11 @@ async function main() {
   let iter = 0
   while (iter++ < 500) {
     const G = state.G as GameState
-    if (G.round >= 5 || (G.round === 5 && G.currentPhase === 'placement')) {
+    if (G.round >= 3) {
       console.log('_ok tutorial finished → round', G.round)
       return
     }
-    if (G.currentPhase === 'cleanup' && G.round === 4) {
+    if (G.currentPhase === 'cleanup' && G.round === 2) {
       const seat = activeSeat(state)
       if (seat === '0') {
         state = humanAct(state)

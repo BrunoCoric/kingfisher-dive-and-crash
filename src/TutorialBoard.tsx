@@ -6,9 +6,9 @@ import { lessonFor } from './tutorial/lesson'
 
 /** boardgame.io board wrapper that owns tutorial coach dismiss state. */
 export function TutorialBoard(props: BoardProps<GameState> & Pick<BoardExtra, 'onMenu'>) {
-  const [dismissedReview, setDismissedReview] = useState<string | null>(null)
+  const [dismissedReviews, setDismissedReviews] = useState<ReadonlySet<string>>(() => new Set())
   const myID = props.playerID ?? '0'
-  const lesson = lessonFor(props.G, props.ctx, myID, dismissedReview)
+  const lesson = lessonFor(props.G, props.ctx, myID, dismissedReviews)
   const reviewToken = lesson.reviewKey ?? null
   return (
     <Board
@@ -18,7 +18,13 @@ export function TutorialBoard(props: BoardProps<GameState> & Pick<BoardExtra, 'o
       coach={lesson}
       onMenu={props.onMenu}
       onDismissReview={() => {
-        if (reviewToken) setDismissedReview(reviewToken)
+        if (!reviewToken) return
+        setDismissedReviews((prev) => {
+          if (prev.has(reviewToken)) return prev
+          const next = new Set(prev)
+          next.add(reviewToken)
+          return next
+        })
       }}
     />
   )

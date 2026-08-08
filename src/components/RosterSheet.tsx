@@ -2,7 +2,13 @@ import { useState } from 'react'
 import type { CalloutKind, CardType, FishCard, GameState, StepSelection } from '../game/types'
 import { STEPS_PER_ROUND } from '../game/cards'
 import { selectionDetail } from '../lib/stepFeedback'
-import { FISH_LABEL, seatKingfisher, speciesShort, CARD_ACCENT } from '../lib/presentation'
+import {
+  FISH_LABEL,
+  seatKingfisher,
+  speciesShort,
+  CARD_ACCENT,
+  spriteScaleStyle,
+} from '../lib/presentation'
 import { ActionIcon } from './ActionIcon'
 import { FishIcon } from './FishIcon'
 import styles from './RosterSheet.module.css'
@@ -69,7 +75,12 @@ export function RosterSheet({
                   onClick={() => setOpenFish(expanded ? null : pid)}
                 >
                   <span className={styles.avRing}>
-                    <img className={styles.avatar} src={k.sprite} alt="" />
+                    <img
+                      className={styles.avatar}
+                      src={k.sprite}
+                      alt=""
+                      style={spriteScaleStyle(k.spriteScale)}
+                    />
                     {first && <span className={styles.first} title="First player this round">1st</span>}
                   </span>
                   <span className={styles.meta}>

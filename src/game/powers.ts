@@ -20,14 +20,60 @@ export function buildSpeciesBySeat(
   humanSpecies: KingfisherID,
   humanSeat = '0',
 ): Record<string, KingfisherID> {
-  const rest = SPECIES_ORDER.filter((id) => id !== humanSpecies)
+  const bots = fillBotSpecies(playOrder.length - 1, humanSpecies)
   const map: Record<string, KingfisherID> = {}
   let botIdx = 0
   for (const pid of playOrder) {
     if (pid === humanSeat) {
       map[pid] = humanSpecies
     } else {
-      map[pid] = rest[botIdx % rest.length]
+      map[pid] = bots[botIdx] ?? SPECIES_ORDER[botIdx % SPECIES_ORDER.length]
+      botIdx += 1
+    }
+  }
+  return map
+}
+
+/**
+ * Distinct bot birds, skipping the human's species. Prefers prior picks when still free
+ * (Create game bot picker / player-count resize).
+ */
+export function fillBotSpecies(
+  botCount: number,
+  humanSpecies: KingfisherID,
+  prefer: readonly KingfisherID[] = [],
+): KingfisherID[] {
+  const used = new Set<KingfisherID>([humanSpecies])
+  const out: KingfisherID[] = []
+  for (let i = 0; i < botCount; i++) {
+    const want = prefer[i]
+    if (want !== undefined && !used.has(want)) {
+      out.push(want)
+      used.add(want)
+      continue
+    }
+    const fill = SPECIES_ORDER.find((id) => !used.has(id))
+    const pick = fill ?? SPECIES_ORDER[i % SPECIES_ORDER.length]
+    out.push(pick)
+    used.add(pick)
+  }
+  return out
+}
+
+/** Seat map from human + ordered bot species (Create game → setup). */
+export function speciesBySeatFromBots(
+  playOrder: string[],
+  humanSpecies: KingfisherID,
+  botSpecies: readonly KingfisherID[],
+  humanSeat = '0',
+): Record<string, KingfisherID> {
+  const map: Record<string, KingfisherID> = {}
+  let botIdx = 0
+  for (const pid of playOrder) {
+    if (pid === humanSeat) {
+      map[pid] = humanSpecies
+    } else {
+      map[pid] = botSpecies[botIdx] ?? SPECIES_ORDER[botIdx % SPECIES_ORDER.length]
       botIdx += 1
     }
   }

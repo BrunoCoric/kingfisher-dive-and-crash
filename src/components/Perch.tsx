@@ -11,6 +11,7 @@ interface PerchProps {
     isFirst: boolean
     sprite: string
     facing: 'left' | 'right'
+    spriteScale?: number
     reaction?: CalloutKind
     feedbackKey?: string
   }
@@ -92,6 +93,11 @@ export function Perch({
               src={occupant.sprite}
               alt={`Player ${occupant.id} kingfisher`}
               draggable={false}
+              style={
+                occupant.spriteScale && occupant.spriteScale !== 1
+                  ? { ['--sprite-scale' as string]: String(occupant.spriteScale) }
+                  : undefined
+              }
             />
           </span>
           {occupant.isFirst && (

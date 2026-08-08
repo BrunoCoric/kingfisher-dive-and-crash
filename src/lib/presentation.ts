@@ -8,13 +8,19 @@ export const SPECIES_SHORT: Record<KingfisherID, string> = {
   orientalDwarf: 'Dwarf',
   belted: 'Belted',
   azure: 'Azure',
-  yellowBilled: 'Yellowbill',
+  yellowBilled: 'Yellow-Billed',
   banded: 'Banded',
   green: 'Green',
 }
 
 export function kingfisherById(id: KingfisherID): Kingfisher {
   return KINGFISHERS[id]
+}
+
+/** Inline style for species with a `spriteScale` boost (tall portrait art). */
+export function spriteScaleStyle(scale?: number): { transform: string } | undefined {
+  if (scale === undefined || scale === 1) return undefined
+  return { transform: `scale(${scale})` }
 }
 
 /** Flock-order lookup (menus / diorama). Prefer `seatKingfisher` in-match. */

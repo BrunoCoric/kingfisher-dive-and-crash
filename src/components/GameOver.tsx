@@ -1,5 +1,5 @@
 import type { GameState } from '../game/types'
-import { seatKingfisher, speciesName } from '../lib/presentation'
+import { seatKingfisher, speciesName, spriteScaleStyle } from '../lib/presentation'
 import { cueWinSfx } from '../lib/sfx'
 import { recordMatchOnce } from '../profile/store'
 import { summarizeMatch } from '../profile/summarize'
@@ -29,7 +29,12 @@ export function GameOver({ game, playOrder, onMenu }: { game: GameState; playOrd
         <p className={styles.kicker}>The river rests</p>
         <h2 className={styles.title}>Game Over</h2>
         <div className={styles.winnerCard} style={{ ['--win-accent' as string]: winner.accent }}>
-          <img className={styles.winnerSprite} src={winner.sprite} alt="" />
+          <img
+            className={styles.winnerSprite}
+            src={winner.sprite}
+            alt=""
+            style={spriteScaleStyle(winner.spriteScale)}
+          />
           <p className={styles.winner}>
             <strong>{speciesName(game, game.winner)}</strong> wins with{' '}
             <strong>{game.players[game.winner].score}</strong> points!

@@ -1,6 +1,6 @@
 import { useState, type AnimationEvent } from 'react'
 import type { GameState } from '../game/types'
-import { seatKingfisher } from '../lib/presentation'
+import { seatKingfisher, spriteScaleStyle } from '../lib/presentation'
 import { personalOutcomeSplash } from '../lib/personalSplash'
 import { playSfx } from '../lib/sfx'
 import styles from './OutcomeSplash.module.css'
@@ -44,7 +44,12 @@ export function OutcomeSplash({ G, playerID }: Props) {
       }
       onAnimationEnd={(e) => onRootAnim(e, dismiss)}
     >
-      <img className={styles.bird} src={bird.sprite} alt="" />
+      <img
+        className={styles.bird}
+        src={bird.sprite}
+        alt=""
+        style={spriteScaleStyle(bird.spriteScale)}
+      />
       <span className={styles.label}>{splash.label}</span>
     </button>
   )

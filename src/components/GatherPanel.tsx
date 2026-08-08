@@ -1,7 +1,7 @@
 import { KINGFISHERS, type KingfisherID } from '../game/kingfishers'
 import { SPECIES_ORDER, SPECIES_POWERS } from '../game/powers'
 import type { GameState } from '../game/types'
-import { kingfisherById, speciesShortById } from '../lib/presentation'
+import { kingfisherById, speciesShortById, spriteScaleStyle } from '../lib/presentation'
 import { playSfx } from '../lib/sfx'
 import { loadProfile } from '../profile/store'
 import { isBirdUnlocked, UNLOCK_META } from '../profile/unlocks'
@@ -40,7 +40,7 @@ export function GatherPanel({
       </p>
 
       <div className={styles.portrait} style={{ ['--seat-accent' as string]: you.accent }}>
-        <img src={you.sprite} alt="" />
+        <img src={you.sprite} alt="" style={spriteScaleStyle(you.spriteScale)} />
         <div>
           <span className={styles.portraitLabel}>You play as</span>
           <strong>{speciesShortById(mine)}</strong>
@@ -76,7 +76,12 @@ export function GatherPanel({
                   onSetSpecies(id)
                 }}
               >
-                <img className={unlocked ? undefined : styles.lockedImg} src={k.sprite} alt="" />
+                <img
+                  className={unlocked ? undefined : styles.lockedImg}
+                  src={k.sprite}
+                  alt=""
+                  style={spriteScaleStyle(k.spriteScale)}
+                />
               </button>
             )
           })}
@@ -94,7 +99,7 @@ export function GatherPanel({
               className={styles.slot}
               style={{ ['--seat-accent' as string]: k.accent }}
             >
-              <img src={k.sprite} alt="" />
+              <img src={k.sprite} alt="" style={spriteScaleStyle(k.spriteScale)} />
               <div>
                 <strong>{pid === myID ? 'You' : `Seat ${Number(pid) + 1}`}</strong>
                 <span>

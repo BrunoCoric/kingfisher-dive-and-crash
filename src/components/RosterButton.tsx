@@ -1,5 +1,5 @@
 import type { GameState } from '../game/types'
-import { seatKingfisher } from '../lib/presentation'
+import { seatKingfisher, spriteScaleStyle } from '../lib/presentation'
 import styles from './RosterButton.module.css'
 
 interface RosterButtonProps {
@@ -41,7 +41,7 @@ export function RosterButton({ G, playOrder, myID, placing, onOpen }: RosterButt
                 zIndex: shown.length - i,
               }}
             >
-              <img src={k.sprite} alt="" />
+              <img src={k.sprite} alt="" style={spriteScaleStyle(k.spriteScale)} />
             </span>
           )
         })}

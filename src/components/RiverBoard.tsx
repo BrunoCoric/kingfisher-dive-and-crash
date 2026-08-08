@@ -16,6 +16,8 @@ export interface PerchOccupant {
   isFirst: boolean
   sprite: string
   facing: 'left' | 'right'
+  /** From species manifest; tall art may be > 1. */
+  spriteScale?: number
   reaction?: CalloutKind
   /** Changes each resolved step so CSS reaction animations replay. */
   feedbackKey?: string

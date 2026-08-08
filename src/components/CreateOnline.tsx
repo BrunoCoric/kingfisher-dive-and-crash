@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { LobbyClient } from 'boardgame.io/client'
 import { KINGFISHERS, type KingfisherID } from '../game/kingfishers'
 import { SPECIES_ORDER, SPECIES_POWERS, buildSpeciesBySeat } from '../game/powers'
-import { kingfisherById, speciesShortById } from '../lib/presentation'
+import { kingfisherById, speciesShortById, spriteScaleStyle } from '../lib/presentation'
 import { playSfx } from '../lib/sfx'
 import { loadProfile } from '../profile/store'
 import { isBirdUnlocked, UNLOCK_META } from '../profile/unlocks'
@@ -153,7 +153,7 @@ export function CreateOnline({
         </label>
 
         <div className={styles.portrait} style={{ ['--seat-accent' as string]: you.accent }}>
-          <img src={you.sprite} alt="" />
+          <img src={you.sprite} alt="" style={spriteScaleStyle(you.spriteScale)} />
           <div>
             <span className={styles.portraitLabel}>You play as</span>
             <strong>{speciesShortById(humanSpecies)}</strong>
@@ -192,7 +192,12 @@ export function CreateOnline({
                     setHumanSpecies(id)
                   }}
                 >
-                  <img className={unlocked ? undefined : styles.lockedImg} src={k.sprite} alt="" />
+                  <img
+                    className={unlocked ? undefined : styles.lockedImg}
+                    src={k.sprite}
+                    alt=""
+                    style={spriteScaleStyle(k.spriteScale)}
+                  />
                 </button>
               )
             })}
@@ -203,7 +208,7 @@ export function CreateOnline({
           <span>Players ({playerCount})</span>
           <ul className={styles.slots}>
             <li className={styles.slot} style={{ ['--seat-accent' as string]: you.accent }}>
-              <img src={you.sprite} alt="" />
+              <img src={you.sprite} alt="" style={spriteScaleStyle(you.spriteScale)} />
               <div>
                 <strong>You</strong>
                 <span>
@@ -219,7 +224,7 @@ export function CreateOnline({
               const power = SPECIES_POWERS[birdId]
               return (
                 <li key={seat} className={styles.slot} style={{ ['--seat-accent' as string]: k.accent }}>
-                  <img src={k.sprite} alt="" />
+                  <img src={k.sprite} alt="" style={spriteScaleStyle(k.spriteScale)} />
                   <div>
                     <strong>{kind === 'bot' ? 'Bot' : 'Open'}</strong>
                     <span>

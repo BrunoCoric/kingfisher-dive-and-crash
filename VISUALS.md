@@ -342,5 +342,6 @@ One prompt per playable species. Each follows the same template (same pose, angl
 
 **Final assets (in-repo)**
 - Location: `src/assets/kingfishers/` (kebab-case filenames: `common-kingfisher.png`, `pied-kingfisher.png`, `oriental-dwarf-kingfisher.png`, `belted-kingfisher.png`, `azure-kingfisher.png`, `yellow-billed-kingfisher.png`, `banded-kingfisher.png`, `green-kingfisher.png`).
-- Manifest: `src/game/kingfishers.ts` — typed constants per species (id, display name, sprite import, accent color).
+- Manifest: `src/game/kingfishers.ts` — typed constants per species (id, display name, sprite import, accent color, optional `spriteScale`).
 - **Facing:** all sprites look **left**, except the **common kingfisher which faces right**. Components must flip sprites with CSS `scaleX(-1)` to make a pawn face the center of the board regardless of bank, i.e. use `facing` from the manifest.
+- **`spriteScale`:** optional display boost for tall/narrow art (e.g. Banded `1.3`) so `object-fit: contain` boxes match square sprites.

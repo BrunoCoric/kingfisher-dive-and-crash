@@ -23,6 +23,8 @@ export interface Kingfisher {
   sprite: string;
   facing: "left" | "right";
   accent: string;
+  /** Display boost for tall/narrow art (1 = default). */
+  spriteScale?: number;
 }
 
 export const KINGFISHERS: Record<KingfisherID, Kingfisher> = {
@@ -74,6 +76,8 @@ export const KINGFISHERS: Record<KingfisherID, Kingfisher> = {
     sprite: banded,
     facing: "left",
     accent: "#B54A2E",
+    // Tall portrait art; boost so it matches square sprites in contain boxes.
+    spriteScale: 1.3,
   },
   green: {
     id: "green",
