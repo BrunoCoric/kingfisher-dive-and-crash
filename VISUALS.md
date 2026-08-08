@@ -136,8 +136,8 @@ Vertical flow, **top = upstream (Zone 1) → bottom = downstream (Zone 5)**. A s
   - **Grounded presence via shadow:** each pawn carries a soft blurred drop-shadow that stays anchored on the perch even as the sprite lifts — sells a solid 3D table presence for free.
   - Idle: subtle bob (3s loop); hover move glides along an arc from perch to perch.
 
-### Pawn Species (8 playable kingfishers)
-Eight real species in the Nest flock (the game supports up to 5 players — each player picks a distinct species from unlocked birds). Each has a **natural-feather palette**, a **defining mark**, and a **UI accent slot** used for the avatar border / score row / locked-card edge. All sprites share one **side-profile pose + baseline**, differing only in plumage color & small build cues.
+### Pawn Species (9 playable kingfishers)
+Nine real species in the Nest flock (the game supports up to 5 players — each player picks a distinct species from unlocked birds). Each has a **natural-feather palette**, a **defining mark**, and a **UI accent slot** used for the avatar border / score row / locked-card edge. All sprites share one **side-profile pose + baseline**, differing only in plumage color & small build cues.
 
 | # | Species | Natural palette | Defining mark | UI accent |
 |---|---|---|---|---|
@@ -149,6 +149,7 @@ Eight real species in the Nest flock (the game supports up to 5 players — each
 | 6 | **Yellow-billed Kingfisher** | olive-green back, orange crown, blue rump | bright yellow-orange bill + black eye mask | `#6B8A2E` olive |
 | 7 | **Banded Kingfisher** | orange-brown & charcoal bars, speckled crown | scarlet red bill + barred wings | `#B54A2E` russet |
 | 8 | **Green Kingfisher** | deep emerald back, white collar, spotted wings | white wing speckles + green breast bands | `#1F8A52` emerald |
+| 9 | **Laughing Kookaburra** | cream head, brown wings, rufous barred tail | dark eye stripe + sky-blue wing spots | `#8B5A2B` umber |
 
 Guidelines:
 - Palette hexes are **not rigid** — the painted sprite's natural colors are the star; the UI accent only needs to be recognizable against board greens/water blues.
@@ -335,13 +336,16 @@ One prompt per playable species. Each follows the same template (same pose, angl
 **Green Kingfisher**
 > Hand-painted watercolor children's book illustration of a green kingfisher bird, side profile view, perched upright, head and body flat against a plain white background. Whimsical, airy, joyful field-guide art in the style of Wingspan. Soft painterly watercolor strokes with gentle paper texture, warm sunlit river-valley palette. Feather body is deep emerald green on the back and wings with fine white wing speckles, a crisp white collar, and jagged green-and-white bands across the breast; long dark charcoal beak, round cartoonish head, single glossy eye, bold clean silhouette, no background scenery, no other elements, isolated subject, centered composition. Soft soft drop shadow under the feet. Clean flat vector colors with watercolor texture. PNG, no text. No background.
 
+**Laughing Kookaburra**
+> Hand-painted watercolor children's book illustration of a laughing kookaburra bird, side profile view, perched upright, head and body flat against a plain white background. Whimsical, airy, joyful field-guide art in the style of Wingspan. Soft painterly watercolor strokes with gentle paper texture, warm sunlit river-valley palette. Feather body is creamy white on the head and breast with a thick dark brown eye stripe, chocolate-brown wings with a patch of sky-blue spots, and a rufous barred tail; heavy two-tone beak (dark upper, pale lower), round cartoonish head, single glossy eye, bold clean silhouette, no background scenery, no other elements, isolated subject, centered composition. Soft soft drop shadow under the feet. Clean flat vector colors with watercolor texture. PNG, no text. No background.
+
 **Generation tips**
 - Run sprites in one batch/seed so plumage style and pose stay locked.
 - Request transparent PNG and keep the same aspect ratio + baseline (feet aligned) so perch elevation scales identically.
 - If a species' defining mark is missed, re-prompt with only that clause emphasized — don't regenerate the whole art direction.
 
 **Final assets (in-repo)**
-- Location: `src/assets/kingfishers/` (kebab-case filenames: `common-kingfisher.png`, `pied-kingfisher.png`, `oriental-dwarf-kingfisher.png`, `belted-kingfisher.png`, `azure-kingfisher.png`, `yellow-billed-kingfisher.png`, `banded-kingfisher.png`, `green-kingfisher.png`).
+- Location: `src/assets/kingfishers/` (kebab-case filenames: `common-kingfisher.png`, `pied-kingfisher.png`, `oriental-dwarf-kingfisher.png`, `belted-kingfisher.png`, `azure-kingfisher.png`, `yellow-billed-kingfisher.png`, `banded-kingfisher.png`, `green-kingfisher.png`, `laughing-kookaburra.png`).
 - Manifest: `src/game/kingfishers.ts` — typed constants per species (id, display name, sprite import, accent color, optional `spriteScale`).
 - **Facing:** all sprites look **left**, except the **common kingfisher which faces right**. Components must flip sprites with CSS `scaleX(-1)` to make a pawn face the center of the board regardless of bank, i.e. use `facing` from the manifest.
 - **`spriteScale`:** optional display boost for tall/narrow art (e.g. Banded `1.3`) so `object-fit: contain` boxes match square sprites.

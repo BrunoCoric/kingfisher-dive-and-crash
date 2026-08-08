@@ -46,6 +46,7 @@ function main() {
   assert(SPECIES_POWERS.yellowBilled.id === 'sunBill', 'Yellow-billed power')
   assert(SPECIES_POWERS.banded.id === 'barredWatch', 'Banded power')
   assert(SPECIES_POWERS.green.id === 'speckledWing', 'Green power')
+  assert(SPECIES_POWERS.kookaburra.id === 'heartyDive', 'Kookaburra power')
 
   const yb = Client({
     game: {
@@ -84,6 +85,18 @@ function main() {
   })
   gr.start()
   assert(hasPower(gr.getState()!.G as GameState, '0', 'speckledWing'), 'Green Speckled Wing')
+
+  const kk = Client({
+    game: {
+      ...Game,
+      setup: (ctx) =>
+        setup(ctx, { humanSeats: ['0'], humanSpecies: 'kookaburra', speciesPowers: true }),
+    },
+    numPlayers: 2,
+    multiplayer: Local(),
+  })
+  kk.start()
+  assert(hasPower(kk.getState()!.G as GameState, '0', 'heartyDive'), 'Kookaburra Hearty Dive')
 
   const low = G.perches.find((p) => p.level === 'low')!
   assert(reachLevel(G, '3', low) === 'high', 'Belted Wide Bank')

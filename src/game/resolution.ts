@@ -94,6 +94,10 @@ function blockPlayer(G: GameState, pid: string, zone: number): void {
     const seen = G.peeked[pid] ?? []
     if (!seen.includes(zone)) G.peeked[pid] = [...seen, zone]
   }
+  // Kookaburra Hearty Dive: blocked Dive returns to hand.
+  if (hasPower(G, pid, 'heartyDive')) {
+    G.players[pid].hand.push('Dive')
+  }
 }
 
 interface DiveResult {

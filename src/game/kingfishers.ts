@@ -6,6 +6,7 @@ import azure from "../assets/kingfishers/azure-kingfisher.png";
 import yellowBilled from "../assets/kingfishers/yellow-billed-kingfisher.png";
 import banded from "../assets/kingfishers/banded-kingfisher.png";
 import green from "../assets/kingfishers/green-kingfisher.png";
+import kookaburra from "../assets/kingfishers/laughing-kookaburra.png";
 
 export type KingfisherID =
   | "common"
@@ -15,7 +16,8 @@ export type KingfisherID =
   | "azure"
   | "yellowBilled"
   | "banded"
-  | "green";
+  | "green"
+  | "kookaburra";
 
 export interface Kingfisher {
   id: KingfisherID;
@@ -85,5 +87,12 @@ export const KINGFISHERS: Record<KingfisherID, Kingfisher> = {
     sprite: green,
     facing: "left",
     accent: "#1F8A52",
+  },
+  kookaburra: {
+    id: "kookaburra",
+    displayName: "Laughing Kookaburra",
+    sprite: kookaburra,
+    facing: "left",
+    accent: "#8B5A2B",
   },
 };

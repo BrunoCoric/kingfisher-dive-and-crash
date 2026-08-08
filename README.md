@@ -135,3 +135,4 @@ Enabled from Create game (default on for vs-bots; always off in Tutorial). Power
 - Yellow-billed — Sun Bill: solo Splash also privately peeks that zone’s fish.
 - Banded — Barred Watch: when your Dive is Blocked, privately peek that zone’s fish.
 - Green — Speckled Wing: on Crash, privately peek that zone’s fish (fish stays).
+- Laughing Kookaburra — Hearty Dive: when your Dive is Blocked, return that Dive to your hand.
