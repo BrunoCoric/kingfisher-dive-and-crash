@@ -5,13 +5,13 @@ import { SPECIES_ORDER, speciesIdForSeat } from '../game/powers'
 export const SPECIES_SHORT: Record<KingfisherID, string> = {
   common: 'Common',
   pied: 'Pied',
-  orientalDwarf: 'Dwarf',
+  orientalDwarf: 'Oriental Dwarf',
   belted: 'Belted',
   azure: 'Azure',
   yellowBilled: 'Yellow-Billed',
   banded: 'Banded',
   green: 'Green',
-  kookaburra: 'Kookaburra',
+  kookaburra: 'Laughing Kookaburra',
 }
 
 export function kingfisherById(id: KingfisherID): Kingfisher {
