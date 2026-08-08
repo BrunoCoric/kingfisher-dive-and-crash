@@ -1,10 +1,18 @@
+/* Top-pin so tab height changes don't recentre the whole page. */
+.shell {
+  justify-content: flex-start;
+  padding-top: max(3.5rem, 8dvh);
+  overflow: auto;
+}
+
 .panel {
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
   width: min(42rem, 100%);
-  max-height: min(78dvh, 44rem);
-  overflow: auto;
+  height: min(78dvh, 44rem);
+  min-height: min(78dvh, 44rem);
+  overflow: hidden;
   padding: 1rem 1.1rem 1.2rem;
   border-radius: 1.4rem 1.55rem 1.35rem 1.5rem / 1.45rem 1.3rem 1.55rem 1.35rem;
   background:
@@ -26,6 +34,12 @@
     0 16px 36px rgba(43, 36, 32, 0.28);
   color: var(--ink);
   animation: panelIn 0.45s cubic-bezier(0.2, 1.2, 0.4, 1) both;
+}
+
+.body {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
 }
 
 .tabs {
@@ -60,6 +74,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.55rem;
+  min-height: 100%;
 }
 
 .filters {

@@ -39,9 +39,10 @@ export function CreateGame({
   const [botSpecies, setBotSpecies] = useState<KingfisherID[]>(() =>
     fillBotSpecies(DEFAULT_PLAYERS - 1, 'common'),
   )
-  const [editingBot, setEditingBot] = useState<string | null>('1')
+  const [editingBot, setEditingBot] = useState<string | null>(null)
   const [speciesPowers, setSpeciesPowers] = useState(true)
   const [specialZones, setSpecialZones] = useState(MIN_SPECIAL_ZONES)
+  const [showAdvanced, setShowAdvanced] = useState(false)
 
   const seats = Array.from({ length: playerCount }, (_, i) => String(i))
   const speciesBySeat = speciesBySeatFromBots(seats, humanSpecies, botSpecies, HUMAN_SEAT)
@@ -203,30 +204,46 @@ export function CreateGame({
           </div>
         </div>
 
-        <RiverOptions
-          playerCount={playerCount}
-          zoneCount={zoneCount}
-          deckSize={deckSize}
-          specialZones={specialZones}
-          onZoneCount={applyZoneCount}
-          onDeckSize={(n) => setDeckSize(clampDeckSize(n, zoneCount))}
-          onSpecialZones={(n) => setSpecialZones(clampSpecialZones(n, zoneCount))}
-        />
+        <button
+          type="button"
+          className={styles.advancedToggle}
+          aria-expanded={showAdvanced}
+          onClick={() => {
+            playSfx('card_select')
+            setShowAdvanced((v) => !v)
+          }}
+        >
+          {showAdvanced ? 'Hide advanced options' : 'Advanced options'}
+        </button>
 
-        <label className={styles.toggle}>
-          <input
-            type="checkbox"
-            checked={speciesPowers}
-            onChange={(e) => {
-              playSfx('card_select')
-              setSpeciesPowers(e.target.checked)
-            }}
-          />
-          <span>
-            <strong>Species powers</strong>
-            Soft passives per bird. Same cards & crash rules either way.
-          </span>
-        </label>
+        {showAdvanced && (
+          <>
+            <RiverOptions
+              playerCount={playerCount}
+              zoneCount={zoneCount}
+              deckSize={deckSize}
+              specialZones={specialZones}
+              onZoneCount={applyZoneCount}
+              onDeckSize={(n) => setDeckSize(clampDeckSize(n, zoneCount))}
+              onSpecialZones={(n) => setSpecialZones(clampSpecialZones(n, zoneCount))}
+            />
+
+            <label className={styles.toggle}>
+              <input
+                type="checkbox"
+                checked={speciesPowers}
+                onChange={(e) => {
+                  playSfx('card_select')
+                  setSpeciesPowers(e.target.checked)
+                }}
+              />
+              <span>
+                <strong>Species powers</strong>
+                Soft passives per bird. Same cards & crash rules either way.
+              </span>
+            </label>
+          </>
+        )}
 
         <button type="button" className={surface.primary} onClick={start}>
           Play

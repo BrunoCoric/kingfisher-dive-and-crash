@@ -45,8 +45,8 @@
     "semantic_hash": ""
   },
   "src/components/ZoneTile.tsx": {
-    "mtime": 1786220286.2351935,
-    "ast_hash": "e92a02d2c60595b907ef8bacdec3e852",
+    "mtime": 1786220541.8023474,
+    "ast_hash": "860f2b262939d049274a6a596abd9db6",
     "semantic_hash": ""
   },
   "src/game/Game.ts": {
@@ -135,8 +135,8 @@
     "semantic_hash": ""
   },
   "DESIGN.md": {
-    "mtime": 1786220301.3786068,
-    "ast_hash": "92d3fae6cdda2266027637a80911b42f",
+    "mtime": 1786220830.9606037,
+    "ast_hash": "d1837cd5453f61f1bb1fb1d62a473b20",
     "semantic_hash": ""
   },
   "README.md": {
@@ -560,8 +560,8 @@
     "semantic_hash": ""
   },
   "src/components/CreateGame.tsx": {
-    "mtime": 1786219890.349951,
-    "ast_hash": "d79b05d25b02084c59308588933c3e3c",
+    "mtime": 1786220738.1004446,
+    "ast_hash": "54c8b121eeb6e01447ebac8c6771e5c0",
     "semantic_hash": ""
   },
   "src/components/GameLobby.tsx": {
@@ -620,8 +620,8 @@
     "semantic_hash": ""
   },
   "src/components/CreateOnline.tsx": {
-    "mtime": 1786219885.0405414,
-    "ast_hash": "8f3cf15d8006ea2c1b24df359ebd9248",
+    "mtime": 1786220740.6764975,
+    "ast_hash": "eef9ec0876fe0ccbc0768b6d99e1dac7",
     "semantic_hash": ""
   },
   "src/components/GatherPanel.tsx": {
@@ -870,8 +870,8 @@
     "semantic_hash": ""
   },
   "src/components/Nest.tsx": {
-    "mtime": 1786216791.2767477,
-    "ast_hash": "dea0c2a7d722c7a9e347fe8799ee0b73",
+    "mtime": 1786220823.7027416,
+    "ast_hash": "c46613d5dfed5df9e4632cdda3f9c3b7",
     "semantic_hash": ""
   },
   "src/components/NestFlock.tsx": {
@@ -935,8 +935,13 @@
     "semantic_hash": ""
   },
   "src/components/ZoneKindBadge.tsx": {
-    "mtime": 1786220262.9474785,
+    "mtime": 1786220541.8694263,
     "ast_hash": "c8327e66d4e4d596a383a68aa68e2a4a",
+    "semantic_hash": ""
+  },
+  "src/components/scene/EddySwirlSvg.tsx": {
+    "mtime": 1786220541.8998067,
+    "ast_hash": "05cfc1e3c1f1ada38d118b04492b5807",
     "semantic_hash": ""
   }
 }

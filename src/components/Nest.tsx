@@ -19,7 +19,7 @@ export function Nest({ onBack }: { onBack: () => void }) {
   const [query, setQuery] = useState('')
 
   return (
-    <main className={surface.shell}>
+    <main className={`${surface.shell} ${styles.shell}`}>
       <button type="button" className={surface.back} onClick={onBack}>
         ← Back
       </button>
@@ -54,112 +54,114 @@ export function Nest({ onBack }: { onBack: () => void }) {
           ))}
         </div>
 
-        {tab === 'flock' && (
-          <div className={styles.flockTools}>
-            <div className={styles.filters} role="group" aria-label="Flock filter">
-              {(
-                [
-                  ['all', 'All'],
-                  ['unlocked', 'Unlocked'],
-                  ['locked', 'Locked'],
-                ] as const
-              ).map(([id, label]) => (
-                <button
-                  key={id}
-                  type="button"
-                  className={filter === id ? styles.chipOn : styles.chip}
-                  aria-pressed={filter === id}
-                  onClick={() => {
-                    if (filter === id) return
-                    playSfx('tab_switch')
-                    setFilter(id)
-                  }}
-                >
-                  {label}
-                </button>
-              ))}
-            </div>
-            <label className={styles.search}>
-              <span className={styles.srOnly}>Search species</span>
-              <input
-                type="search"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search species…"
-                autoComplete="off"
-              />
-            </label>
-            <NestFlock
-              profile={profile}
-              selected={selected}
-              onSelect={(id) => {
-                if (id !== null && id !== selected) playSfx('field_note')
-                setSelected(id)
-              }}
-              query={query}
-              filter={filter}
-            />
-          </div>
-        )}
-
-        {tab === 'lifetime' && (
-          <section className={styles.section} aria-label="Lifetime stats">
-            <div className={styles.statGrid}>
-              <div>
-                <strong>{stats.matchesPlayed}</strong>
-                <span>matches</span>
-              </div>
-              <div>
-                <strong>{stats.wins}</strong>
-                <span>wins</span>
-              </div>
-              <div>
-                <strong>{stats.losses}</strong>
-                <span>losses</span>
-              </div>
-              <div>
-                <strong>{stats.steals}</strong>
-                <span>steals</span>
-              </div>
-              <div>
-                <strong>{stats.crashes}</strong>
-                <span>crashes</span>
-              </div>
-              <div>
-                <strong>{stats.blocked}</strong>
-                <span>blocked</span>
-              </div>
-            </div>
-            <p className={styles.subRow}>
-              Fish kept:{' '}
-              {FISH_TYPES.map((t) => `${t} ${stats.fishCaught[t]}`).join(' · ')}
-            </p>
-            <p className={styles.subRow}>
-              Cards:{' '}
-              {CARD_TYPES.map((c) => `${c} ${stats.cardsPlayed[c]}`).join(' · ')}
-            </p>
-          </section>
-        )}
-
-        {tab === 'matches' && (
-          <section className={styles.section} aria-label="Recent matches">
-            {matches.length === 0 ? (
-              <p className={styles.empty}>Finish a vs-bots match to fill your nest.</p>
-            ) : (
-              <ul className={styles.matches}>
-                {matches.slice(0, 12).map((m, i) => (
-                  <li key={`${m.at}-${i}`}>
-                    <span className={styles.place}>#{m.place}</span>
-                    <span>
-                      {m.score} pts · {m.players}p
-                    </span>
-                    <span className={styles.when}>{m.at.slice(0, 10)}</span>
-                  </li>
+        <div className={styles.body}>
+          {tab === 'flock' && (
+            <div className={styles.flockTools}>
+              <div className={styles.filters} role="group" aria-label="Flock filter">
+                {(
+                  [
+                    ['all', 'All'],
+                    ['unlocked', 'Unlocked'],
+                    ['locked', 'Locked'],
+                  ] as const
+                ).map(([id, label]) => (
+                  <button
+                    key={id}
+                    type="button"
+                    className={filter === id ? styles.chipOn : styles.chip}
+                    aria-pressed={filter === id}
+                    onClick={() => {
+                      if (filter === id) return
+                      playSfx('tab_switch')
+                      setFilter(id)
+                    }}
+                  >
+                    {label}
+                  </button>
                 ))}
-              </ul>
-            )}
-          </section>
-        )}
+              </div>
+              <label className={styles.search}>
+                <span className={styles.srOnly}>Search species</span>
+                <input
+                  type="search"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  placeholder="Search species…"
+                  autoComplete="off"
+                />
+              </label>
+              <NestFlock
+                profile={profile}
+                selected={selected}
+                onSelect={(id) => {
+                  if (id !== null && id !== selected) playSfx('field_note')
+                  setSelected(id)
+                }}
+                query={query}
+                filter={filter}
+              />
+            </div>
+          )}
+
+          {tab === 'lifetime' && (
+            <section className={styles.section} aria-label="Lifetime stats">
+              <div className={styles.statGrid}>
+                <div>
+                  <strong>{stats.matchesPlayed}</strong>
+                  <span>matches</span>
+                </div>
+                <div>
+                  <strong>{stats.wins}</strong>
+                  <span>wins</span>
+                </div>
+                <div>
+                  <strong>{stats.losses}</strong>
+                  <span>losses</span>
+                </div>
+                <div>
+                  <strong>{stats.steals}</strong>
+                  <span>steals</span>
+                </div>
+                <div>
+                  <strong>{stats.crashes}</strong>
+                  <span>crashes</span>
+                </div>
+                <div>
+                  <strong>{stats.blocked}</strong>
+                  <span>blocked</span>
+                </div>
+              </div>
+              <p className={styles.subRow}>
+                Fish kept:{' '}
+                {FISH_TYPES.map((t) => `${t} ${stats.fishCaught[t]}`).join(' · ')}
+              </p>
+              <p className={styles.subRow}>
+                Cards:{' '}
+                {CARD_TYPES.map((c) => `${c} ${stats.cardsPlayed[c]}`).join(' · ')}
+              </p>
+            </section>
+          )}
+
+          {tab === 'matches' && (
+            <section className={styles.section} aria-label="Recent matches">
+              {matches.length === 0 ? (
+                <p className={styles.empty}>Finish a vs-bots match to fill your nest.</p>
+              ) : (
+                <ul className={styles.matches}>
+                  {matches.slice(0, 12).map((m, i) => (
+                    <li key={`${m.at}-${i}`}>
+                      <span className={styles.place}>#{m.place}</span>
+                      <span>
+                        {m.score} pts · {m.players}p
+                      </span>
+                      <span className={styles.when}>{m.at.slice(0, 10)}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </section>
+          )}
+        </div>
       </div>
     </main>
   )

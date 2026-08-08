@@ -391,3 +391,22 @@
   opacity: 0.45;
   cursor: not-allowed;
 }
+
+.advancedToggle {
+  align-self: flex-start;
+  padding: 0.35rem 0;
+  border: none;
+  background: none;
+  color: var(--forest-deep);
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  cursor: pointer;
+}
+
+.advancedToggle:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}

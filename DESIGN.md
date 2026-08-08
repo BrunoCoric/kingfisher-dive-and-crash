@@ -59,8 +59,8 @@ Single source of truth for implementation status. Refer to `README.md` for the g
 - [x] `GameState`, `RiverZone`, `Perch`, `PlayerState` in `types.ts`
 - [x] Card data in `cards.ts` (Dive / Drop / Splash / Hover)
 - [x] Fish deck builder in `fish.ts` (per player count)
-- [x] Create game / Create online: optional water-zone count (4–7) and fish-deck size (scaled mix from the player-count recipe)
-- [x] Special zones (optional count 0–3): `ZoneKind` Clear / Eddy / Rapids + open water (`zones.ts`); Create game / Create online stepper (default 0); match randomly picks that many kinds from the pool and random seats; tutorial forced 0; Rules sheet lists kinds on the board. Smoke: `npx tsx _zones_smoke.mts`.
+- [x] Create game / Create online: optional water-zone count (4–7) and fish-deck size (scaled mix from the player-count recipe) under **Advanced options** (collapsed by default); vs-bots bot bird picker closed until tapped
+- [x] Special zones (optional count 0–3): `ZoneKind` Clear / Eddy / Rapids + open water (`zones.ts`); Create game / Create online stepper under Advanced (default 0); match randomly picks that many kinds from the pool and random seats; tutorial forced 0; Rules sheet lists kinds on the board. Smoke: `npx tsx _zones_smoke.mts`.
 - [x] Special-zone river UI: distinct water wash + motif per kind (Clear sparkle / Eddy swirl / Rapids foam); `ZoneKindBadge` chip under the zone number — tap opens a tip with `ZONE_KIND_BLURB` (stays tappable on dimmed illegal targets).
 
 ### Clarified Rules (2026-08-06)
@@ -119,7 +119,7 @@ Single source of truth for implementation status. Refer to `README.md` for the g
 - [x] Play → **Game lobby** → **Create online** (Lobby API) or **Play vs bots** → Create game (bird pick + bot slots)
 - [x] Menu / lobby / create: clean title (brand + flock + pill CTAs); lobby/create bank-sand panels
 - [x] Start Screen CTA hierarchy: flame-orange primary **Play** (larger), nest/egg glyph on Nest, darker plaque hints, centered cluster + reed/ripple ambience on the water bank
-- [x] Start Screen **Nest** page: flock grid + species field-guide sheet (trivia always readable), lifetime stats, recent matches; search / All·Unlocked·Locked filters
+- [x] Start Screen **Nest** page: flock grid + species field-guide sheet (trivia always readable), lifetime stats, recent matches; search / All·Unlocked·Locked filters; fixed panel height + top-pinned shell so tab switches don’t jump
 - [x] Optional Species Powers (`src/game/powers.ts`): one soft passive per bird; Create game toggle (default on); tutorial forced off; Rules sheet lists them when active
 - [x] Nest flock unlocks: Common always free; Pied / Oriental Dwarf / Belted / Azure / Yellow-billed / Banded / Green / Laughing Kookaburra via vs-bots missions; Create game gates human bird pick; vs-bots Create game also assigns bot birds (`speciesBySeat`); `G.speciesBySeat` decouples seat from species
 - [x] Species field notes (`src/content/fieldNotes.ts`): scientific name, range, habitat, 2–3 trivia lines per bird — unlocks gate play, not reading
@@ -128,8 +128,8 @@ Single source of truth for implementation status. Refer to `README.md` for the g
 - [x] Online **gather** phase: each seat picks bird (`setSpecies`) + Ready (`setReady`) before placement; Nest unlocks still client-gated; local/bots/tutorial skip gather
 
 ### Implementation Notes
-- **Local vs-bots** remains Create game (2–5 seats, `Local({ bots })`). Pass-and-play stays off the Start Screen. **River table** options: water zones + fish deck size (defaults from player count; changing seat count resets both). Tap a bot row to pick its species (distinct from you and other bots; Nest unlocks gate only the human bird).
-- **Online tables:** Play → lobby → Create online (bird pick + bot/open seats, like vs-bots) or Refresh/join. Same river-table overrides in `setupData`. Requires `npm run server` (`PORT` / `VITE_GAME_SERVER`). Host claims bot seats via Lobby join and drives them with headless SocketIO `KingfisherBot` clients (`src/lib/onlineBots.ts`). Open seats wait for humans. Nest records only when `humanSeats.length === 1` (host + bots only).
+- **Local vs-bots** remains Create game (2–5 seats, `Local({ bots })`). Pass-and-play stays off the Start Screen. Bird pick + bot slots stay on the main form; bot species pickers stay closed until you tap a bot row (distinct from you and other bots; Nest unlocks gate only the human bird). **Advanced options** (collapsed by default): river table (water zones + fish deck + special zones) and Species powers toggle. Changing seat count still resets river defaults.
+- **Online tables:** Play → lobby → Create online (bird pick + bot/open seats, like vs-bots) or Refresh/join. Same advanced river-table / Species powers overrides in `setupData`. Requires `npm run server` (`PORT` / `VITE_GAME_SERVER`). Host claims bot seats via Lobby join and drives them with headless SocketIO `KingfisherBot` clients (`src/lib/onlineBots.ts`). Open seats wait for humans. Nest records only when `humanSeats.length === 1` (host + bots only).
 - **Share over the internet (local tunnel):** `npm run share` serves the built UI + game server on one port (default `8000`). In a second terminal, `npm run tunnel` (Cloudflare quick tunnel; needs `cloudflared`). Friends open the printed `https://….trycloudflare.com` URL — same-origin, no `VITE_GAME_SERVER`. Keep your machine awake; matches are in-memory. If port 8000 is busy: `PORT=8002 npm run share` and `cloudflared tunnel --url http://localhost:8002`.
 - **Hidden info:** `filterPlayerView` keeps hands, pending selections, peeks, and deck faces private; master state lives on the server for SocketIO matches. Online clients run with `debug: false`. Hand UI only reads the local seat’s hand.
 - **Gather phase:** `G.online` from setupData; starts as `gather` then → `placement`. Offline paths auto-`endPhase` in gather `onBegin`.
