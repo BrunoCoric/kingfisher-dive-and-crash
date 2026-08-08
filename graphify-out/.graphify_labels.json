@@ -29,9 +29,13 @@
   "27": "settings.gradle",
   "28": "variables.gradle",
   "29": "game/types.ts",
+  "30": "ZoneTile.tsx",
   "31": "OutcomeSplash.tsx",
   "32": "WaterPuddleSvg.tsx",
+  "33": "game/types.ts",
   "34": "OutcomeSplash.tsx",
+  "35": "RosterSheet.tsx",
   "36": "StatusLine.tsx",
-  "37": "cutout_kingfisher.py"
+  "37": "cutout_kingfisher.py",
+  "38": "stepSfx.ts"
 }

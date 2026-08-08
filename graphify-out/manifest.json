@@ -135,8 +135,8 @@
     "semantic_hash": ""
   },
   "DESIGN.md": {
-    "mtime": 1786216792.9460015,
-    "ast_hash": "4bdbc5b70aed640f4dffd72ff852e2ea",
+    "mtime": 1786217004.778396,
+    "ast_hash": "ae7ef8abd5154d2e6c7de094533a4e11",
     "semantic_hash": ""
   },
   "README.md": {
@@ -190,8 +190,8 @@
     "semantic_hash": ""
   },
   "src/StartScreen.tsx": {
-    "mtime": 1786216789.190429,
-    "ast_hash": "b5b85c3176fbd04783934f18893c9a50",
+    "mtime": 1786216989.4473975,
+    "ast_hash": "d4c37a888d8ccdf755a3b63b318c2326",
     "semantic_hash": ""
   },
   "src/components/ActionIcon.tsx": {

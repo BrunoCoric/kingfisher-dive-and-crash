@@ -1,16 +1,16 @@
 # Graph Report - kingfisher-dive-and-crash  (2026-08-08)
 
 ## Corpus Check
-- 113 files · ~369,519 words
+- 113 files · ~369,648 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 704 nodes · 1816 edges · 35 communities (30 shown, 5 thin omitted)
+- 705 nodes · 1817 edges · 39 communities (34 shown, 5 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 12 edges (avg confidence: 0.75)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `3a86f5d7`
+- Built from commit: `2736299f`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -37,11 +37,15 @@
 - MainActivity.java
 - capacitor.config.ts
 - game/types.ts
+- ZoneTile.tsx
 - OutcomeSplash.tsx
 - WaterPuddleSvg.tsx
+- game/types.ts
 - OutcomeSplash.tsx
+- RosterSheet.tsx
 - StatusLine.tsx
 - cutout_kingfisher.py
+- stepSfx.ts
 
 ## God Nodes (most connected - your core abstractions)
 1. `GameState` - 48 edges
@@ -70,7 +74,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (35 total, 5 thin omitted)
+## Communities (39 total, 5 thin omitted)
 
 ### Community 0 - "VISUALS.md — Kingfisher: Dive & Crash"
 Cohesion: 0.05
@@ -140,6 +144,10 @@ Nodes (23): BoardExtra, Props, TutorialCoach(), actionLesson(), cleanupReviewKey
 Cohesion: 0.33
 Nodes (7): OutcomeSplash(), prefersReducedMotion(), Props, personalOutcomeSplash(), PersonalSplash, pointsSuffix(), SplashValence
 
+### Community 30 - "ZoneTile.tsx"
+Cohesion: 0.21
+Nodes (16): RiverBoardProps, BADGE_CLASS, ZoneTile(), ZoneTileProps, OutcomeCallout, RiverZone, SPECIES_SHORT, OUTCOME_LABEL (+8 more)
+
 ### Community 31 - "OutcomeSplash.tsx"
 Cohesion: 0.36
 Nodes (9): countCards(), countFish(), placeOf(), summarizeMatch(), emptyCardCounts(), emptyFishCounts(), emptyOutcomes(), emptyStats() (+1 more)
@@ -148,17 +156,29 @@ Nodes (9): countCards(), countFish(), placeOf(), summarizeMatch(), emptyCardCoun
 Cohesion: 0.29
 Nodes (6): WaterPuddleSvg(), WaterPuddleSvgProps, Bloom, StrokeMark, WashRecipe, WATER_RECIPES
 
+### Community 33 - "game/types.ts"
+Cohesion: 0.20
+Nodes (11): PerchProps, REACTION_CLASS, BranchSvg(), BranchSvgProps, ReedSvg(), ReedSvgProps, adjacentPerches(), openHoverPerches() (+3 more)
+
 ### Community 34 - "OutcomeSplash.tsx"
-Cohesion: 0.05
-Nodes (58): PendingSelection, ActionCard(), ActionCardProps, ActionIcon(), ActionIconProps, FishCard(), FishCardBack(), FishIcon() (+50 more)
+Cohesion: 0.19
+Nodes (15): PendingSelection, ActionCard(), ActionCardProps, ActionIcon(), ActionIconProps, Hand(), HandProps, PRIORITY (+7 more)
+
+### Community 35 - "RosterSheet.tsx"
+Cohesion: 0.20
+Nodes (8): FishCard(), FishCardBack(), FishIcon(), FishIconProps, RevealLine(), RosterSheetProps, FISH_LABEL, selectionDetail()
 
 ### Community 36 - "StatusLine.tsx"
-Cohesion: 0.43
-Nodes (6): calloutFor(), phaseText(), StatusActor, StatusLine(), StatusLineProps, outcomeStory()
+Cohesion: 0.24
+Nodes (7): Perch(), PerchOccupant, BankFoliageSvg(), BankFoliageSvgProps, MossTuftSvg(), MossTuftSvgProps, RiverChannelSvg()
 
 ### Community 37 - "cutout_kingfisher.py"
 Cohesion: 0.33
 Nodes (9): Image, Path, collect_paths(), content_bbox(), main(), process(), Bounding box of real content, ignoring thin alpha fringe strips.      Generator, Crop to opaque content. Ignores faint alpha noise and thin fringe strips. (+1 more)
+
+### Community 38 - "stepSfx.ts"
+Cohesion: 0.32
+Nodes (7): StepSelection, SfxId, cueStepSfx(), fishSfx(), OUTCOME_ORDER, REVEAL_SFX, revealed()
 
 ## Knowledge Gaps
 - **179 isolated node(s):** `Stats`, `BotKind`, `Stats`, `state`, `order` (+174 more)
@@ -168,11 +188,11 @@ Nodes (9): Image, Path, collect_paths(), content_bbox(), main(), process(), Boun
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `GameState` connect `stepFeedback.ts` to `App.tsx`, `OutcomeSplash.tsx`, `presentation.ts`, `StatusLine.tsx`, `StatusLine.tsx`, `types.ts`, `resolution.ts`, `legacy.ts`, `lesson.ts`, `game/types.ts`, `OutcomeSplash.tsx`?**
+- **Why does `GameState` connect `stepFeedback.ts` to `game/types.ts`, `App.tsx`, `RosterSheet.tsx`, `presentation.ts`, `StatusLine.tsx`, `stepSfx.ts`, `types.ts`, `resolution.ts`, `legacy.ts`, `lesson.ts`, `game/types.ts`, `ZoneTile.tsx`, `OutcomeSplash.tsx`?**
   _High betweenness centrality (0.069) - this node is a cross-community bridge._
-- **Why does `KingfisherID` connect `StatusLine.tsx` to `App.tsx`, `OutcomeSplash.tsx`, `stepFeedback.ts`, `types.ts`?**
+- **Why does `KingfisherID` connect `StatusLine.tsx` to `App.tsx`, `game/types.ts`, `StatusLine.tsx`, `types.ts`, `stepFeedback.ts`, `ZoneTile.tsx`?**
   _High betweenness centrality (0.021) - this node is a cross-community bridge._
-- **Why does `CardType` connect `OutcomeSplash.tsx` to `StatusLine.tsx`, `types.ts`, `resolution.ts`, `legacy.ts`, `lesson.ts`, `OutcomeSplash.tsx`?**
+- **Why does `CardType` connect `OutcomeSplash.tsx` to `game/types.ts`, `RosterSheet.tsx`, `StatusLine.tsx`, `stepSfx.ts`, `types.ts`, `resolution.ts`, `legacy.ts`, `lesson.ts`, `ZoneTile.tsx`, `OutcomeSplash.tsx`?**
   _High betweenness centrality (0.018) - this node is a cross-community bridge._
 - **What connects `Stats`, `BotKind`, `Stats` to the rest of the system?**
   _179 weakly-connected nodes found - possible documentation gaps or missing edges._

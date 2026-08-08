@@ -111,6 +111,7 @@ Single source of truth for implementation status. Refer to `README.md` for the g
 - [x] Start Screen main menu: **Play** / **Nest** / **Tutorial** (`card_select` on click); no Pass & Play
 - [x] Play → **Game lobby** → **Create online** (Lobby API) or **Play vs bots** → Create game (bird pick + bot slots)
 - [x] Menu / lobby / create: clean title (brand + flock + pill CTAs); lobby/create bank-sand panels
+- [x] Start Screen CTA hierarchy: flame-orange primary **Play** (larger), nest/egg glyph on Nest, darker plaque hints, centered cluster + reed/ripple ambience on the water bank
 - [x] Start Screen **Nest** page: flock grid + species field-guide sheet (trivia always readable), lifetime stats, recent matches; search / All·Unlocked·Locked filters
 - [x] Optional Species Powers (`src/game/powers.ts`): one soft passive per bird; Create game toggle (default on); tutorial forced off; Rules sheet lists them when active
 - [x] Nest flock unlocks: Common always free; Pied / Oriental Dwarf / Belted / Azure / Yellow-billed / Banded / Green / Laughing Kookaburra via vs-bots missions; Create game gates human bird pick; vs-bots Create game also assigns bot birds (`speciesBySeat`); `G.speciesBySeat` decouples seat from species
