@@ -3,13 +3,15 @@ import pied from "../assets/kingfishers/pied-kingfisher.png";
 import orientalDwarf from "../assets/kingfishers/oriental-dwarf-kingfisher.png";
 import belted from "../assets/kingfishers/belted-kingfisher.png";
 import azure from "../assets/kingfishers/azure-kingfisher.png";
+import yellowBilled from "../assets/kingfishers/yellow-billed-kingfisher.png";
 
 export type KingfisherID =
   | "common"
   | "pied"
   | "orientalDwarf"
   | "belted"
-  | "azure";
+  | "azure"
+  | "yellowBilled";
 
 export interface Kingfisher {
   id: KingfisherID;
@@ -54,5 +56,12 @@ export const KINGFISHERS: Record<KingfisherID, Kingfisher> = {
     sprite: azure,
     facing: "left",
     accent: "#2E9FD6",
+  },
+  yellowBilled: {
+    id: "yellowBilled",
+    displayName: "Yellow-billed Kingfisher",
+    sprite: yellowBilled,
+    facing: "left",
+    accent: "#6B8A2E",
   },
 };

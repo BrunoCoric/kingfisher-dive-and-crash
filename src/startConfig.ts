@@ -12,6 +12,10 @@ export type StartConfig =
       speciesPowers: boolean
       /** Bird the human plays as (must be Nest-unlocked). */
       humanSpecies: KingfisherID
+      /** Water zones (default from player count). */
+      zoneCount: number
+      /** Fish deck size; mix scales from the player-count recipe. */
+      deckSize: number
     }
   | {
       kind: 'online'

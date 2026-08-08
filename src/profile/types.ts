@@ -44,7 +44,13 @@ export interface Profile {
 export const FISH_TYPES: FishType[] = ['Minnow', 'Perch', 'Trout', 'Trash', 'Pike']
 export const CARD_TYPES: CardType[] = ['Dive', 'Drop', 'Splash', 'Hover']
 
-export const LOCKED_BIRDS: UnlockId[] = ['pied', 'orientalDwarf', 'belted', 'azure']
+export const LOCKED_BIRDS: UnlockId[] = [
+  'pied',
+  'orientalDwarf',
+  'belted',
+  'azure',
+  'yellowBilled',
+]
 
 export function emptyFishCounts(): Record<FishType, number> {
   return { Minnow: 0, Perch: 0, Trout: 0, Trash: 0, Pike: 0 }

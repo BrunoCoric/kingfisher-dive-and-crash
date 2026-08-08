@@ -4,6 +4,7 @@ dist
 dist-ssr
 *.local
 *.tsbuildinfo
+*__pycache__*
 
 # Logs
 logs

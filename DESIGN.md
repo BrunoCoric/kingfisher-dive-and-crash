@@ -19,7 +19,7 @@ Single source of truth for implementation status. Refer to `README.md` for the g
 - `src/game/` — all game logic, separated by concern
   - `types.ts` — shared types/interfaces
   - `cards.ts` — action card data
-  - `fish.ts` — fish deck data & builder
+  - `fish.ts` — fish deck data & builder; zone/deck defaults + create-game overrides
   - `Game.ts` — boardgame.io game config (setup, moves, phases)
   - `reach.ts` — perch reach and adjacent-perch geometry
   - `moves.ts` — validated simultaneous card selection
@@ -57,9 +57,11 @@ Single source of truth for implementation status. Refer to `README.md` for the g
 - [x] `GameState`, `RiverZone`, `Perch`, `PlayerState` in `types.ts`
 - [x] Card data in `cards.ts` (Dive / Drop / Splash / Hover)
 - [x] Fish deck builder in `fish.ts` (per player count)
+- [x] Create game / Create online: optional water-zone count (4–7) and fish-deck size (scaled mix from the player-count recipe)
 
 ### Clarified Rules (2026-08-06)
 - Fish deck totals (code `fish.ts` is authoritative): 2p:25, 3p:32, 4p:39, 5p:43.
+- River zones default (same file): 2p:4, 3p:5, 4p:6, 5p:7. Create game / Create online can override zones (4–7) and deck size (12–60, ≥ zones); custom totals scale the player-count mix via largest remainder.
 - Reach: Zone 1 is most upstream, zone # increases downstream. Low perch = own zone + downstream (or upstream at the end); High perch = own zone + downstream + upstream (using two upstream/downstream at edges).
 - Splash, Drop, Dive, Hover effects apply only within the Step they are played.
 - Low-perch sightline: automatic, private, at round start; player picks one reachable zone card.
@@ -89,7 +91,8 @@ Single source of truth for implementation status. Refer to `README.md` for the g
 - [x] Field-guide polish: organic per-zone puddle silhouettes (`waterRecipes.ts`), parchment fish backs, soft sun-glow perch targets (not yellow app buttons), clearer high/low perch elevation, dappled bank light
 - [x] River depth polish: softer broken-bloom channel (no hard tube), mid-board moss balance on both banks, per-zone puddle glare/ripples
 - [x] Targeting contrast: Splash/Drop/Dive (and Hover peek / sightline) light legal zones with a sun halo + badge and dim out-of-reach / illegal zones so reach is obvious at a glance
-- [x] Perch hover reach preview: hovering (or focusing) any perch soft-glows its reachable zones in water-cyan and dims the rest — suppressed while card/sightline targeting is active so it never fights the sun/peek highlights
+- [x] Perch targeting contrast: placement / Hover relocate warm-glow legal perches (no sun badge); non-legal perches dim (replaces the old landing-arrow badge)
+- [x] Perch hover reach preview: hovering (or focusing) any perch soft-glows its reachable zones in water-cyan and dims the rest — suppressed while card/sightline/perch targeting is active so it never fights the sun highlights
 - [x] Round-start placement clears all birds off perches, then players place in First-Player order (empty → seated makes turn order readable)
 - [x] End-of-round fish drift animation: **Next round** plays a short CSS slide downstream (last zone washes off), then `continueRound` applies cleanup; respects `prefers-reduced-motion`
 - [x] Phone-first HUD shell: fixed `100dvh` column, slim masthead + on-demand `RosterSheet` (scores / 1st / fish piles), bottom `StatusLine` dock (Your turn focus), bottom-left minimizable held-hand fan (`Hand` / `ActionCard`); river stage scrolls internally
@@ -109,18 +112,18 @@ Single source of truth for implementation status. Refer to `README.md` for the g
 - [x] Menu / lobby / create: clean title (brand + flock + pill CTAs); lobby/create bank-sand panels
 - [x] Start Screen **Nest** panel: lifetime stats, flock unlock gallery, recent matches
 - [x] Optional Species Powers (`src/game/powers.ts`): one soft passive per bird; Create game toggle (default on); tutorial forced off; Rules sheet lists them when active
-- [x] Nest flock unlocks: Common always free; Pied / Oriental Dwarf / Belted / Azure via vs-bots missions; Create game gates bird pick; `G.speciesBySeat` decouples seat from species
+- [x] Nest flock unlocks: Common always free; Pied / Oriental Dwarf / Belted / Azure / Yellow-billed via vs-bots missions; Create game gates bird pick; `G.speciesBySeat` decouples seat from species
 - [x] App favicon: Common Kingfisher mark (`public/favicon.svg` + PNG fallbacks / apple-touch)
 - [x] Online multiplayer: `npm run server` (boardgame.io Server + Socket.IO, default `:8000`); Lobby create/list/join; SocketIO client with credentials; waiting room until seats filled; host can fill seats with bots (driven on the host client)
 - [x] Online **gather** phase: each seat picks bird (`setSpecies`) + Ready (`setReady`) before placement; Nest unlocks still client-gated; local/bots/tutorial skip gather
 
 ### Implementation Notes
-- **Local vs-bots** remains Create game (2–5 seats, `Local({ bots })`). Pass-and-play stays off the Start Screen.
-- **Online tables:** Play → lobby → Create online (bird pick + bot/open seats, like vs-bots) or Refresh/join. Requires `npm run server` (`PORT` / `VITE_GAME_SERVER`). Host claims bot seats via Lobby join and drives them with headless SocketIO `KingfisherBot` clients (`src/lib/onlineBots.ts`). Open seats wait for humans. Nest records only when `humanSeats.length === 1` (host + bots only).
+- **Local vs-bots** remains Create game (2–5 seats, `Local({ bots })`). Pass-and-play stays off the Start Screen. **River table** options: water zones + fish deck size (defaults from player count; changing seat count resets both).
+- **Online tables:** Play → lobby → Create online (bird pick + bot/open seats, like vs-bots) or Refresh/join. Same river-table overrides in `setupData`. Requires `npm run server` (`PORT` / `VITE_GAME_SERVER`). Host claims bot seats via Lobby join and drives them with headless SocketIO `KingfisherBot` clients (`src/lib/onlineBots.ts`). Open seats wait for humans. Nest records only when `humanSeats.length === 1` (host + bots only).
 - **Share over the internet (local tunnel):** `npm run share` serves the built UI + game server on one port (default `8000`). In a second terminal, `npm run tunnel` (Cloudflare quick tunnel; needs `cloudflared`). Friends open the printed `https://….trycloudflare.com` URL — same-origin, no `VITE_GAME_SERVER`. Keep your machine awake; matches are in-memory. If port 8000 is busy: `PORT=8002 npm run share` and `cloudflared tunnel --url http://localhost:8002`.
 - **Hidden info:** `filterPlayerView` keeps hands, pending selections, peeks, and deck faces private; master state lives on the server for SocketIO matches. Online clients run with `debug: false`. Hand UI only reads the local seat’s hand.
 - **Gather phase:** `G.online` from setupData; starts as `gather` then → `placement`. Offline paths auto-`endPhase` in gather `onBegin`.
-- **Species Powers (optional):** `G.speciesPowers` from setup. Same 4-card deck & crash principle; helpers in `powers.ts` (`playerReach`, `openHoverTargets`, `canSightline`, `hasPower`). Common skips crash extra discard; Pied 2-hop Hover; Dwarf high sightline; Belted low→high reach; Azure first Pike skips Minnow tax (`pikeShieldUsed`). Smoke: `npx tsx _powers_smoke.mts`.
+- **Species Powers (optional):** `G.speciesPowers` from setup. Same 4-card deck & crash principle; helpers in `powers.ts` (`playerReach`, `openHoverTargets`, `canSightline`, `hasPower`). Common skips crash extra discard; Pied 2-hop Hover; Dwarf high sightline; Belted low→high reach; Azure first Pike skips Minnow tax (`pikeShieldUsed`); Yellow-billed solo Splash peeks that zone (`sunBill`). Smoke: `npx tsx _powers_smoke.mts`.
 - **Tutorial mode:** Opens with four primer slides (`src/tutorial/intro.ts` / `TutorialIntro`) before the Local client mounts — goal & end condition, reach, round cadence, then the four cards. `setup(..., { humanSeats: ['0'], tutorial: true })` deals a fixed river/deck and First Player `0`. Crash discards prefer burning Splash first so Hover lessons stay legal after a Dive Crash. Lessons derive from phase/round/outcomes (`src/tutorial/lesson.ts`); review beats use Got it before unlocking the next gate.
 - The opening placement phase randomizes the First Player, then lets each player choose one unoccupied perch in clockwise order before the first simultaneous card step.
 - Crash never discards the zone’s fish (Splash+Splash, Dive+Dive, Drop+Drop). Crashers spend the played card and discard one extra random hand card. Solo Dive grant is deferred until after Drops so a Drop+Drop Crash can return the fish to the zone.
@@ -142,7 +145,7 @@ Single source of truth for implementation status. Refer to `README.md` for the g
 - **Contest retune:** `denyWeight` 0.25→0.7, `repositionWeight` 0.3→0.45; `denyValue` scales by how exclusive a zone already is (1 bird ≫ crowded). Fixes bots herding mid-river while a human farms one side alone.
 - Enumerate fix: a seat with no legal card must emit `skipTurn` (not bare `endStage`), or simultaneous steps stall with `activePlayers: null` and a missing selection.
 - Outcome log is cleared at the start of `resolveStep`, not on the first `selectCard` of the next step — otherwise later seats never see crashes/steals for belief updates. UI feedback (status story, zone badges, pawn reactions, roster reveals) stays visible through the following selection phase via the same `outcomeLog` / `lastReveals` window. `resolveStep` also snapshots `G.selections` into `G.lastReveals` so chips match the step that just resolved, and appends each seat's card into `G.roundPlays` for the roster history strip. After step 3, the `cleanup` review beat keeps that window until `continueRound`; only then does `endOfRoundCleanup` clear it (including `roundPlays`), drift/restock fish, and reset hands (bot belief round-resets cleanly).
-- **Nest (v1):** Finished vs-bots matches (`humanSeats.length === 1`, not tutorial) write into `localStorage` key `kingfisher-nest-v1` via `recordMatchOnce` on GameOver. `G.matchPlays` / `G.matchOutcomes` accumulate for the whole match; fish types come from the human seat’s final `scored` pile. Flock unlocks (playable birds): Common always free; Pied = win a match; Oriental Dwarf = keep a Trout; Belted = crash ≥3 and finish top two; Azure = five matches. Nest **Flock** gallery shows silhouettes + missions; Create game only offers unlocked birds. `G.speciesBySeat` (from `humanSpecies` setup) maps seats → species so the human can play any unlocked bird regardless of seat index. Legacy badge ids migrate on load.
+- **Nest (v1):** Finished vs-bots matches (`humanSeats.length === 1`, not tutorial) write into `localStorage` key `kingfisher-nest-v1` via `recordMatchOnce` on GameOver. `G.matchPlays` / `G.matchOutcomes` accumulate for the whole match; fish types come from the human seat’s final `scored` pile. Flock unlocks (playable birds): Common always free; Pied = win a match; Oriental Dwarf = keep a Trout; Belted = crash ≥3 and finish top two; Azure = five matches; Yellow-billed = steal ≥1 with Drop. Nest **Flock** gallery shows silhouettes + missions; Create game only offers unlocked birds. `G.speciesBySeat` (from `humanSpecies` setup) maps seats → species so the human can play any unlocked bird regardless of seat index. Legacy badge ids migrate on load.
 - [x] End-of-round review beat: `cleanup` waits for **Next round** in the bottom status dock (`continueRound`); river chips stay up; vs-bots holds on the human seat so bots don’t auto-skip
 - Hover zone chips need the peek *zone* in public `lastReveals`. `playerView` no longer strips `peek` from revealed selections — only the fish face stays private (via `peeked` / zone filtering). Pending `selections` remain seat-private until resolve.
 - A/B harness: `npx tsx _bot_ab.mts` (all-smart / all-legacy / mixed). Probe: `npx tsx _bot_probe.mts`. Diag: `npx tsx _bot_diag.mts`. Against legacy, smart typically wins mixed seats; all-smart mirror still crashes more than all-legacy because legacy's hash argmax is a near-perfect anti-collision coordination device.

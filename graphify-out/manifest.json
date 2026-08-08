@@ -1,12 +1,12 @@
 {
   "package.json": {
-    "mtime": 1786047120.146643,
-    "ast_hash": "471ad66fc9ea0ea7eceda10e5fadfb84",
+    "mtime": 1786180858.4553406,
+    "ast_hash": "e27c6dee4d82e490fb891ecb2af6dc19",
     "semantic_hash": ""
   },
   "src/App.tsx": {
-    "mtime": 1786046893.0899384,
-    "ast_hash": "a65537fb07bdbdbbcb7366a2e30e60f0",
+    "mtime": 1786179909.23895,
+    "ast_hash": "d3ddcffb08c4e0bca859cb74d84915d1",
     "semantic_hash": ""
   },
   "src/Board.tsx": {
@@ -35,13 +35,13 @@
     "semantic_hash": ""
   },
   "src/components/Perch.tsx": {
-    "mtime": 1786034443.7353845,
-    "ast_hash": "9986581f03150340755c1dbc9030f210",
+    "mtime": 1786180162.109767,
+    "ast_hash": "3897dc82d0f64b2d31be0059749fcd3b",
     "semantic_hash": ""
   },
   "src/components/RiverBoard.tsx": {
-    "mtime": 1786043969.8552139,
-    "ast_hash": "e044a005a36563971efdfd2722e383c8",
+    "mtime": 1786179958.679439,
+    "ast_hash": "8269ceaf6153bf5de5e4ad4c01adf6b4",
     "semantic_hash": ""
   },
   "src/components/ZoneTile.tsx": {
@@ -50,8 +50,8 @@
     "semantic_hash": ""
   },
   "src/game/Game.ts": {
-    "mtime": 1786046821.1845076,
-    "ast_hash": "328b0ff921a9dff27e1180ff776f32e4",
+    "mtime": 1786179902.7331078,
+    "ast_hash": "d847c9ac05bf5755ad4e8c62a0429b05",
     "semantic_hash": ""
   },
   "src/game/cards.ts": {
@@ -65,13 +65,13 @@
     "semantic_hash": ""
   },
   "src/game/fish.ts": {
-    "mtime": 1786035938.7552207,
-    "ast_hash": "a38a47d9e11f78503a95e11a0783b6c3",
+    "mtime": 1786179895.5133834,
+    "ast_hash": "cb60bbf2f46800c48e9957c7ff521ec6",
     "semantic_hash": ""
   },
   "src/game/kingfishers.ts": {
-    "mtime": 1785969527.5507033,
-    "ast_hash": "a439fcd5d131e5f219dfe5e9a3ec38ea",
+    "mtime": 1786182191.1725786,
+    "ast_hash": "9bec1aa1208a011eef2601d7052632d5",
     "semantic_hash": ""
   },
   "src/game/moves.ts": {
@@ -85,8 +85,8 @@
     "semantic_hash": ""
   },
   "src/game/resolution.ts": {
-    "mtime": 1786041977.6363807,
-    "ast_hash": "04f0d8503afdc0f7df77cb6d9360c9bd",
+    "mtime": 1786182200.5417562,
+    "ast_hash": "53ad503610ae60cad76dada8a61ef1ca",
     "semantic_hash": ""
   },
   "src/game/types.ts": {
@@ -95,8 +95,8 @@
     "semantic_hash": ""
   },
   "src/lib/presentation.ts": {
-    "mtime": 1786044082.2638159,
-    "ast_hash": "5d4ae3d30a69a4acbce4d0fed0e5639f",
+    "mtime": 1786182196.4698818,
+    "ast_hash": "77add0109cad987c64d6f3c076e9d557",
     "semantic_hash": ""
   },
   "src/main.tsx": {
@@ -135,18 +135,18 @@
     "semantic_hash": ""
   },
   "DESIGN.md": {
-    "mtime": 1786047120.5552676,
-    "ast_hash": "7cf444fe848c99ff70165be8bb49e9a1",
+    "mtime": 1786182220.6064317,
+    "ast_hash": "ec7d1443362acdc52fe7930bf5eccd3a",
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1786042160.556835,
-    "ast_hash": "42ea3fdc99afa29e3920ebd54bfb2088",
+    "mtime": 1786182211.6125991,
+    "ast_hash": "83e6f8738242551716dfd9dc35177394",
     "semantic_hash": ""
   },
   "VISUALS.md": {
-    "mtime": 1786045143.4778762,
-    "ast_hash": "bb75650fbf56ab933a5ee22880753399",
+    "mtime": 1786182226.6068103,
+    "ast_hash": "c97313cf2a720e0d2beeb86b7cbcd75c",
     "semantic_hash": ""
   },
   "index.html": {
@@ -155,8 +155,8 @@
     "semantic_hash": ""
   },
   "src/assets/kingfishers/azure-kingfisher.png": {
-    "mtime": 1785997656.988069,
-    "ast_hash": "cd20b4f8d02677eb6744de6fad57eb11",
+    "mtime": 1786181900.9334912,
+    "ast_hash": "e3ad91c670873bb8bb4dbaf284b01efd",
     "semantic_hash": ""
   },
   "src/assets/kingfishers/belted-kingfisher.png": {
@@ -190,7 +190,7 @@
     "semantic_hash": ""
   },
   "src/StartScreen.tsx": {
-    "mtime": 1786045849.4147685,
+    "mtime": 1786110519.001763,
     "ast_hash": "a10799bc60b2a246cf6a49bbf7eeaa15",
     "semantic_hash": ""
   },
@@ -265,8 +265,8 @@
     "semantic_hash": ""
   },
   "src/game/ai/scoring.ts": {
-    "mtime": 1786042034.1403894,
-    "ast_hash": "59ab966faf4c27289afb7074addc1653",
+    "mtime": 1786047743.3254166,
+    "ast_hash": "43ebc61740054209c176e3daf1cbaab1",
     "semantic_hash": ""
   },
   "src/game/ai/select.ts": {
@@ -560,18 +560,18 @@
     "semantic_hash": ""
   },
   "src/profile/types.ts": {
-    "mtime": 1786043924.0883548,
-    "ast_hash": "b000f6bc05499b37e46bfe1e9de506bf",
+    "mtime": 1786182197.3356524,
+    "ast_hash": "0f51726502cca96319cda2c587179a67",
     "semantic_hash": ""
   },
   "src/profile/unlocks.ts": {
-    "mtime": 1786043929.8809037,
-    "ast_hash": "a0dcc38334719649152beb885c43e829",
+    "mtime": 1786182200.2211578,
+    "ast_hash": "bad291df4220bf1cef9ff192f0194972",
     "semantic_hash": ""
   },
   "src/components/CreateGame.tsx": {
-    "mtime": 1786044074.2394612,
-    "ast_hash": "2bbd09c96c5a561a61be0211b78b47bf",
+    "mtime": 1786179926.8877356,
+    "ast_hash": "cced87ec283e8928d61ed03b5838ac78",
     "semantic_hash": ""
   },
   "src/components/GameLobby.tsx": {
@@ -580,23 +580,23 @@
     "semantic_hash": ""
   },
   "src/startConfig.ts": {
-    "mtime": 1786046849.637827,
-    "ast_hash": "27694e82c94d57d656c5b22ee6b552b1",
+    "mtime": 1786179903.5575836,
+    "ast_hash": "bafb1ee102501303284ee79059e79d59",
     "semantic_hash": ""
   },
   "src/components/TitleDiorama.tsx": {
-    "mtime": 1786041309.7966669,
+    "mtime": 1786110589.5940387,
     "ast_hash": "1763e8d615e6cc9760ad63b37a05ec34",
     "semantic_hash": ""
   },
   "src/game/powers.ts": {
-    "mtime": 1786043940.2536724,
-    "ast_hash": "5b257f49bc2382ec26a36dbf72348fbd",
+    "mtime": 1786182195.8741891,
+    "ast_hash": "62149edced742ac6af6369b6278982cc",
     "semantic_hash": ""
   },
   "_powers_smoke.mts": {
-    "mtime": 1786042188.0111127,
-    "ast_hash": "7f271ddef76cc448b8591205d07aa128",
+    "mtime": 1786182209.3722272,
+    "ast_hash": "5dadde5101af0349b6ffc2325884640b",
     "semantic_hash": ""
   },
   "public/apple-touch-icon.png": {
@@ -630,8 +630,8 @@
     "semantic_hash": ""
   },
   "src/components/CreateOnline.tsx": {
-    "mtime": 1786046880.6556747,
-    "ast_hash": "82858018701b876c2578119268bbe616",
+    "mtime": 1786179934.5101988,
+    "ast_hash": "0499686ff20b1eb22410713f9eb86212",
     "semantic_hash": ""
   },
   "src/components/GatherPanel.tsx": {
@@ -655,8 +655,208 @@
     "semantic_hash": ""
   },
   "src/lib/onlineBots.ts": {
-    "mtime": 1786046834.6210182,
-    "ast_hash": "a25b6933f6af6e48be251c7fb1cf61fb",
+    "mtime": 1786047988.2503784,
+    "ast_hash": "3adf269ee23a2fc11a7255747e9affa5",
+    "semantic_hash": ""
+  },
+  "android/app/build.gradle": {
+    "mtime": 1786110799.5214708,
+    "ast_hash": "3af71c410854a3447b780c580076171a",
+    "semantic_hash": ""
+  },
+  "android/app/capacitor.build.gradle": {
+    "mtime": 1786110883.584481,
+    "ast_hash": "b863e425fbde80251bd3c68ac8ccba02",
+    "semantic_hash": ""
+  },
+  "android/app/src/androidTest/java/com/getcapacitor/myapp/ExampleInstrumentedTest.java": {
+    "mtime": 1785512756.0,
+    "ast_hash": "fbaf7cc870c663eb52dcf218531c439d",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/kingfisher/diveandcrash/MainActivity.java": {
+    "mtime": 1786110799.521274,
+    "ast_hash": "e992261c3b5235d153a4527dfaeb4b1f",
+    "semantic_hash": ""
+  },
+  "android/app/src/test/java/com/getcapacitor/myapp/ExampleUnitTest.java": {
+    "mtime": 1785512756.0,
+    "ast_hash": "e91b4501c14da821682fa5c26a16d616",
+    "semantic_hash": ""
+  },
+  "android/build.gradle": {
+    "mtime": 1785512756.0,
+    "ast_hash": "682315a426653617c6a74fc12bef55b6",
+    "semantic_hash": ""
+  },
+  "android/capacitor.settings.gradle": {
+    "mtime": 1786110883.584396,
+    "ast_hash": "455ebb7f9fe84a6974da6bdae43097c2",
+    "semantic_hash": ""
+  },
+  "android/gradlew": {
+    "mtime": 1785512756.0,
+    "ast_hash": "794669d78aef1dd5c7d889ef618b311a",
+    "semantic_hash": ""
+  },
+  "android/settings.gradle": {
+    "mtime": 1785512756.0,
+    "ast_hash": "f6cd925b3f859e23c3d819fe2459e0e4",
+    "semantic_hash": ""
+  },
+  "android/variables.gradle": {
+    "mtime": 1785512756.0,
+    "ast_hash": "4b3fce8ea2a515a9d2e47e74757172ec",
+    "semantic_hash": ""
+  },
+  "capacitor.config.ts": {
+    "mtime": 1786110775.3863108,
+    "ast_hash": "b10ca64a002e7038a0e46e58b7fe26da",
+    "semantic_hash": ""
+  },
+  "src/components/RiverOptions.tsx": {
+    "mtime": 1786179909.5994477,
+    "ast_hash": "ac8c067da07aaca4f092189d342f1514",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/drawable-land-hdpi/splash.png": {
+    "mtime": 1785512756.0,
+    "ast_hash": "f7a80786dd355bd39014e58027aa6e19",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/drawable-land-mdpi/splash.png": {
+    "mtime": 1785512756.0,
+    "ast_hash": "acc976d4a36479233371a53021525c0c",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/drawable-land-xhdpi/splash.png": {
+    "mtime": 1785512756.0,
+    "ast_hash": "b8c72969bc1f78aab71a76035360d4af",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/drawable-land-xxhdpi/splash.png": {
+    "mtime": 1785512756.0,
+    "ast_hash": "f87e988387b07d843905f38b084929fb",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/drawable-land-xxxhdpi/splash.png": {
+    "mtime": 1785512756.0,
+    "ast_hash": "055a69553b16b0bf5f72094a2e459fc7",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/drawable-port-hdpi/splash.png": {
+    "mtime": 1785512756.0,
+    "ast_hash": "5eb10d16c81338abe8bbc033d49638a8",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/drawable-port-mdpi/splash.png": {
+    "mtime": 1785512756.0,
+    "ast_hash": "d855a76a5070c8e6fcfd83a27549bdce",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/drawable-port-xhdpi/splash.png": {
+    "mtime": 1785512756.0,
+    "ast_hash": "df100b2a36bdb98b711cca58941728de",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/drawable-port-xxhdpi/splash.png": {
+    "mtime": 1785512756.0,
+    "ast_hash": "2c1b668364e815256f67b71dcdfa4d6e",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/drawable-port-xxxhdpi/splash.png": {
+    "mtime": 1785512756.0,
+    "ast_hash": "b5b1b22b59abe686c1df0d74a423d034",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/drawable/splash.png": {
+    "mtime": 1785512756.0,
+    "ast_hash": "acc976d4a36479233371a53021525c0c",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/mipmap-hdpi/ic_launcher.png": {
+    "mtime": 1785512756.0,
+    "ast_hash": "1956941339dd5fe36d5c66601c89a08d",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png": {
+    "mtime": 1785512756.0,
+    "ast_hash": "73b1e06d769fa08a9c3b8328cc15fd75",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png": {
+    "mtime": 1785512756.0,
+    "ast_hash": "f43e5674865a00186dd76183cf1f2f8e",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/mipmap-mdpi/ic_launcher.png": {
+    "mtime": 1785512756.0,
+    "ast_hash": "7ed1b3739b83215d0c4a0b4a7f2dcab4",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png": {
+    "mtime": 1785512756.0,
+    "ast_hash": "5b77e8aec8b17eed320a97567c7cb8bf",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png": {
+    "mtime": 1785512756.0,
+    "ast_hash": "a49547a32c7d9b529af607b033811d81",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/mipmap-xhdpi/ic_launcher.png": {
+    "mtime": 1785512756.0,
+    "ast_hash": "5689511ee4e41a367d0342f37ac48bdf",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png": {
+    "mtime": 1785512756.0,
+    "ast_hash": "15cdded29b9877ac98c5931024c5da5d",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png": {
+    "mtime": 1785512756.0,
+    "ast_hash": "c890fa4af62a63486d5dea62441ce7ab",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png": {
+    "mtime": 1785512756.0,
+    "ast_hash": "a3285eeaedda8201f04e7737b9df8421",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png": {
+    "mtime": 1785512756.0,
+    "ast_hash": "4e9584ecc16d1fc75afb798688ce576f",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png": {
+    "mtime": 1785512756.0,
+    "ast_hash": "14cde87848553e24d7106f56eb8ceb6f",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png": {
+    "mtime": 1785512756.0,
+    "ast_hash": "9e029293ab1ae8e3a6a7b7d0b7177e46",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png": {
+    "mtime": 1785512756.0,
+    "ast_hash": "ed3696b7c52d9747411a475dbe3fa34a",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png": {
+    "mtime": 1785512756.0,
+    "ast_hash": "85addb4159ecd3f76f02fbacd5ec86de",
+    "semantic_hash": ""
+  },
+  "scripts/cutout_kingfisher.py": {
+    "mtime": 1786182133.3377042,
+    "ast_hash": "5457b3f5a03fcb850a79c0fd67a93ffe",
+    "semantic_hash": ""
+  },
+  "src/assets/kingfishers/yellow-billed-kingfisher.png": {
+    "mtime": 1786182162.8878574,
+    "ast_hash": "29158308ad343ce21a5d61af71faa11d",
     "semantic_hash": ""
   }
 }

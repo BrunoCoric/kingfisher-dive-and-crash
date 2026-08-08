@@ -60,8 +60,10 @@ export function RiverBoard({
   const zoneCount = zones.length
   const lastZone = zoneCount - 1
 
-  // Don't fight Splash/Dive/peek targeting — only preview when the river is idle.
-  const targeting = Object.values(targetStates).some((state) => state != null)
+  // Don't fight Splash/Dive/peek or perch placement — only preview when the river is idle.
+  const zoneTargeting = Object.values(targetStates).some((state) => state != null)
+  const perchTargeting = movablePerches.length > 0
+  const targeting = zoneTargeting || perchTargeting
   const hoverPerch = !targeting && hoverPerchId
     ? perches.find((p) => p.id === hoverPerchId)
     : undefined
@@ -75,11 +77,13 @@ export function RiverBoard({
 
   const renderPerch = (perch: PerchType | undefined) => {
     if (!perch) return <span className={styles.spacer} />
+    const movable = movablePerches.includes(perch.id)
     return (
       <Perch
         perch={perch}
         occupant={occupants[perch.id]}
-        movable={movablePerches.includes(perch.id)}
+        movable={movable}
+        dimmed={perchTargeting && !movable}
         previewing={hoverPerch?.id === perch.id}
         onClick={() => onPerchClick(perch.id)}
         onHoverChange={(hovering) => setHoverPerchId(hovering ? perch.id : null)}

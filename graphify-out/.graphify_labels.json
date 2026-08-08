@@ -14,7 +14,20 @@
   "12": "README.md",
   "13": "vite-env.d.ts",
   "14": "vite.config.ts",
+  "15": "ExampleInstrumentedTest.java",
+  "16": "ExampleUnitTest.java",
   "17": "legacy.ts",
+  "18": "gradlew",
   "19": "stepFeedback.ts",
-  "20": "lesson.ts"
+  "20": "lesson.ts",
+  "21": "MainActivity.java",
+  "22": "capacitor.config.ts",
+  "23": "app/build.gradle",
+  "24": "capacitor.build.gradle",
+  "25": "android/build.gradle",
+  "26": "capacitor.settings.gradle",
+  "27": "settings.gradle",
+  "28": "variables.gradle",
+  "34": "OutcomeSplash.tsx",
+  "37": "cutout_kingfisher.py"
 }

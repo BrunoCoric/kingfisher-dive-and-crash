@@ -136,8 +136,8 @@ Vertical flow, **top = upstream (Zone 1) → bottom = downstream (Zone 5)**. A s
   - **Grounded presence via shadow:** each pawn carries a soft blurred drop-shadow that stays anchored on the perch even as the sprite lifts — sells a solid 3D table presence for free.
   - Idle: subtle bob (3s loop); hover move glides along an arc from perch to perch.
 
-### Pawn Species (5 playable kingfishers)
-Five real species, one per player slot (the game supports up to 5 players — each player picks a distinct species). Each has a **natural-feather palette**, a **defining mark**, and a **UI accent slot** used for the avatar border / score row / locked-card edge. All sprites share one **side-profile pose + baseline**, differing only in plumage color & small build cues.
+### Pawn Species (6 playable kingfishers)
+Six real species in the Nest flock (the game supports up to 5 players — each player picks a distinct species from unlocked birds). Each has a **natural-feather palette**, a **defining mark**, and a **UI accent slot** used for the avatar border / score row / locked-card edge. All sprites share one **side-profile pose + baseline**, differing only in plumage color & small build cues.
 
 | # | Species | Natural palette | Defining mark | UI accent |
 |---|---|---|---|---|
@@ -146,11 +146,12 @@ Five real species, one per player slot (the game supports up to 5 players — ea
 | 3 | **Oriental Dwarf Kingfisher** | tiny; purple-blue back, white collar | egg-yolk orange crown cap | `#E8732A` flame orange |
 | 4 | **Belted Kingfisher** | slate blue-grey, bushy head crest | thick grey-blue chest belt | `#1FA08C` river teal |
 | 5 | **Azure Kingfisher** | iridescent azure blue | tiny size, bright azure + white | `#2E9FD6` azure blue |
+| 6 | **Yellow-billed Kingfisher** | olive-green back, orange crown, blue rump | bright yellow-orange bill + black eye mask | `#6B8A2E` olive |
 
 Guidelines:
 - Palette hexes are **not rigid** — the painted sprite's natural colors are the star; the UI accent only needs to be recognizable against board greens/water blues.
-- Keep the **white throat/chest patch** on every species (shared silhouette anchor so all five read as the same bird "family").
-- All five crop to the same baseline so elevation scale behaves identically on the perch.
+- Keep the **white throat/chest patch** on every species (shared silhouette anchor so all six read as the same bird "family").
+- All six crop to the same baseline so elevation scale behaves identically on the perch.
 - Species names appear next to avatars in the HUD and briefly on the setup/lobby picker (footnote tooltip with a fun fact, optional).
 
 ### Scores roster (on demand)
@@ -200,7 +201,7 @@ Small (about 60% of an action card). Always show a **big point number** plus a t
 This sequence is the heart of the game. **Current build: "Read it on the river"** — outcomes are readable on the board and birds for the whole next selection phase. Staged priority timeline / dive arcs / fish fly-to-score remain future polish.
 
 ### Step 1 — Select & Lock
-- Legal targets light up (sun-yellow halo + sun badge + zone-number rim); out-of-reach and empty-Dive targets dim hard so the legal lanes read at a glance.
+- Legal targets light up (sun-yellow halo + sun badge + zone-number rim); out-of-reach and empty-Dive targets dim hard so the legal lanes read at a glance. **Perch targets** (placement / Hover relocate): legal perches get a warm sun glow only (no badge); occupied / out-of-reach perches dim.
 - Locking in shows a small "lock" pulse + an animated countdown when the step timer is low.
 
 ### Step 2 — Simultaneous Reveal
@@ -256,7 +257,7 @@ River feedback stays the shared truth. On top of that, the **local seat** gets a
 ### Hover (peek + move)
 Two clear sub-moments, both surfaced with distinct UI:
 1. **Peek:** tap one highlighted face-down zone — card flips in-tile and Hover locks immediately. If no face-down fish remain, status offers **Skip peek**.
-2. **Move:** after the step resolves into the hover phase, arrows appear on adjacent perches; one tap = move (or Stay). If no adjacent perch is free, Stay happens automatically.
+2. **Move:** after the step resolves into the hover phase, legal adjacent perches warm-glow (no badge); occupied / out-of-reach perches dim hard. One tap = move (or Stay). If no adjacent perch is free, Stay happens automatically.
 
 ### Crash / Penalty Feedback
 ### Score & Fish Flow
@@ -323,12 +324,15 @@ One prompt per playable species. Each follows the same template (same pose, angl
 **Azure Kingfisher**
 > Hand-painted watercolor children's book illustration of a small azure kingfisher bird, side profile view, perched upright, head and body flat against a plain white background. Whimsical, airy, joyful field-guide art in the style of Wingspan. Soft painterly watercolor strokes with gentle paper texture, warm sunlit river-valley palette. Feather body is bright iridescent azure blue on the back with white underparts, a small white spot at the base of the wing, and a white throat patch; slender orange beak, round cartoonish head, single glossy eye, bold clean silhouette, no background scenery, no other elements, isolated subject, centered composition. Soft soft drop shadow under the feet. Clean flat vector colors with watercolor texture. PNG, no text. No background.
 
+**Yellow-billed Kingfisher**
+> Hand-painted watercolor children's book illustration of a yellow-billed kingfisher bird, side profile view, perched upright, head and body flat against a plain white background. Whimsical, airy, joyful field-guide art in the style of Wingspan. Soft painterly watercolor strokes with gentle paper texture, warm sunlit river-valley palette. Feather body is olive green on the back and wings with an orange-rufous crown, creamy white throat, a thick black eye mask, and a bright cerulean blue rump and tail; large bright yellow-orange beak, round cartoonish head, single glossy eye, bold clean silhouette, no background scenery, no other elements, isolated subject, centered composition. Soft soft drop shadow under the feet. Clean flat vector colors with watercolor texture. PNG, no text. No background.
+
 **Generation tips**
 - Run all five in one batch/seed so plumage style and pose stay locked.
 - Request transparent PNG and keep the same aspect ratio + baseline (feet aligned) so perch elevation scales identically.
 - If a species' defining mark is missed, re-prompt with only that clause emphasized — don't regenerate the whole art direction.
 
 **Final assets (in-repo)**
-- Location: `src/assets/kingfishers/` (kebab-case filenames: `common-kingfisher.png`, `pied-kingfisher.png`, `oriental-dwarf-kingfisher.png`, `belted-kingfisher.png`, `azure-kingfisher.png`).
+- Location: `src/assets/kingfishers/` (kebab-case filenames: `common-kingfisher.png`, `pied-kingfisher.png`, `oriental-dwarf-kingfisher.png`, `belted-kingfisher.png`, `azure-kingfisher.png`, `yellow-billed-kingfisher.png`).
 - Manifest: `src/game/kingfishers.ts` — typed constants per species (id, display name, sprite import, accent color).
 - **Facing:** all sprites look **left**, except the **common kingfisher which faces right**. Components must flip sprites with CSS `scaleX(-1)` to make a pawn face the center of the board regardless of bank, i.e. use `facing` from the manifest.

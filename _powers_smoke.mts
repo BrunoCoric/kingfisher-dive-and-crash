@@ -43,6 +43,21 @@ function main() {
   assert(hasPower(G, '3', 'wideBank'), 'Belted')
   assert(hasPower(G, '4', 'toughGut'), 'Azure')
   assert(SPECIES_POWERS.azure.name === 'Tough Gut', 'manifest label')
+  assert(SPECIES_POWERS.yellowBilled.id === 'sunBill', 'Yellow-billed power')
+
+  const yb = Client({
+    game: {
+      ...Game,
+      setup: (ctx) =>
+        setup(ctx, { humanSeats: ['0'], humanSpecies: 'yellowBilled', speciesPowers: true }),
+    },
+    numPlayers: 2,
+    multiplayer: Local(),
+  })
+  yb.start()
+  const Y = yb.getState()!.G as GameState
+  assert(hasPower(Y, '0', 'sunBill'), 'Yellow-billed Sun Bill')
+  assert(hasPower(Y, '1', 'steadyWing'), 'bot fills flock order')
 
   const low = G.perches.find((p) => p.level === 'low')!
   assert(reachLevel(G, '3', low) === 'high', 'Belted Wide Bank')

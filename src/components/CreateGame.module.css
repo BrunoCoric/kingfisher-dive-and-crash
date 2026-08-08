@@ -267,3 +267,49 @@
   font-weight: 600;
   line-height: 1.35;
 }
+
+.optionHint {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: rgba(43, 36, 32, 0.62);
+}
+
+.steppers {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.stepper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.stepper > span {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: rgba(43, 36, 32, 0.72);
+}
+
+.resetLink {
+  align-self: flex-start;
+  margin-top: 0.15rem;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--forest-deep);
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  cursor: pointer;
+}
+
+.resetLink:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}

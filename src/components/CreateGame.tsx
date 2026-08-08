@@ -7,6 +7,8 @@ import { loadProfile } from '../profile/store'
 import { isBirdUnlocked, UNLOCK_META } from '../profile/unlocks'
 import type { UnlockId } from '../profile/types'
 import type { StartConfig } from '../startConfig'
+import { clampDeckSize, deckTotalFor, riverZonesFor } from '../game/fish'
+import { RiverOptions } from './RiverOptions'
 import surface from './menuSurface.module.css'
 import styles from './CreateGame.module.css'
 
@@ -24,6 +26,8 @@ export function CreateGame({
 }) {
   const profile = loadProfile()
   const [playerCount, setPlayerCount] = useState(DEFAULT_PLAYERS)
+  const [zoneCount, setZoneCount] = useState(() => riverZonesFor(DEFAULT_PLAYERS))
+  const [deckSize, setDeckSize] = useState(() => deckTotalFor(DEFAULT_PLAYERS))
   const [humanSpecies, setHumanSpecies] = useState<KingfisherID>('common')
   const [speciesPowers, setSpeciesPowers] = useState(true)
 
@@ -31,6 +35,17 @@ export function CreateGame({
   const speciesBySeat = buildSpeciesBySeat(seats, humanSpecies, HUMAN_SEAT)
   const you = kingfisherById(humanSpecies)
   const yourPower = SPECIES_POWERS[humanSpecies]
+
+  const applyPlayerCount = (n: number) => {
+    setPlayerCount(n)
+    setZoneCount(riverZonesFor(n))
+    setDeckSize(deckTotalFor(n))
+  }
+
+  const applyZoneCount = (n: number) => {
+    setZoneCount(n)
+    setDeckSize((d) => clampDeckSize(d, n))
+  }
 
   const start = () => {
     if (!isBirdUnlocked(profile, humanSpecies)) return
@@ -42,6 +57,8 @@ export function CreateGame({
       botSeats: seats.filter((id) => id !== HUMAN_SEAT),
       speciesPowers,
       humanSpecies,
+      zoneCount,
+      deckSize,
     })
   }
 
@@ -160,7 +177,7 @@ export function CreateGame({
               disabled={playerCount <= MIN_PLAYERS}
               onClick={() => {
                 playSfx('card_select')
-                setPlayerCount((n) => Math.max(MIN_PLAYERS, n - 1))
+                applyPlayerCount(Math.max(MIN_PLAYERS, playerCount - 1))
               }}
             >
               Remove bot
@@ -171,13 +188,21 @@ export function CreateGame({
               disabled={playerCount >= MAX_PLAYERS}
               onClick={() => {
                 playSfx('card_select')
-                setPlayerCount((n) => Math.min(MAX_PLAYERS, n + 1))
+                applyPlayerCount(Math.min(MAX_PLAYERS, playerCount + 1))
               }}
             >
               Add bot
             </button>
           </div>
         </div>
+
+        <RiverOptions
+          playerCount={playerCount}
+          zoneCount={zoneCount}
+          deckSize={deckSize}
+          onZoneCount={applyZoneCount}
+          onDeckSize={(n) => setDeckSize(clampDeckSize(n, zoneCount))}
+        />
 
         <label className={styles.toggle}>
           <input

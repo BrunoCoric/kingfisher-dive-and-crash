@@ -9,6 +9,7 @@ export const SPECIES_ORDER: KingfisherID[] = [
   'orientalDwarf',
   'belted',
   'azure',
+  'yellowBilled',
 ]
 
 /** Assign distinct species: human seat gets `humanSpecies`, others fill flock order. */
@@ -42,6 +43,7 @@ export type PowerId =
   | 'keenSight'
   | 'wideBank'
   | 'toughGut'
+  | 'sunBill'
 
 export interface SpeciesPower {
   id: PowerId
@@ -75,6 +77,11 @@ export const SPECIES_POWERS: Record<KingfisherID, SpeciesPower> = {
     id: 'toughGut',
     name: 'Tough Gut',
     blurb: 'Your first Pike each match does not eat a Minnow.',
+  },
+  yellowBilled: {
+    id: 'sunBill',
+    name: 'Sun Bill',
+    blurb: 'Solo Splash also privately peeks that zone’s fish.',
   },
 }
 

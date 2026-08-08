@@ -25,6 +25,8 @@ type BotsMode = {
   botSeats: string[]
   speciesPowers: boolean
   humanSpecies: KingfisherID
+  zoneCount: number
+  deckSize: number
 }
 
 type OnlineMode = {
@@ -57,6 +59,8 @@ function BotsGame({ mode, onMenu }: { mode: BotsMode; onMenu: () => void }) {
               humanSeats: [mode.humanSeat],
               speciesPowers: mode.speciesPowers,
               humanSpecies: mode.humanSpecies,
+              zoneCount: mode.zoneCount,
+              deckSize: mode.deckSize,
             }),
         },
         board: Board,

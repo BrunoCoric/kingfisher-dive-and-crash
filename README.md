@@ -8,11 +8,11 @@ Core Mechanics: Simultaneous Action Selection, Bluffing, Spatial Positioning, Pu
 In Kingfisher: Dash & Dive, players control hungry kingfishers competing along a narrow stretch of river. By maneuvering along low and high perches, players scan for fish, read their opponents' intentions, and execute simultaneous high-speed dives. But watch out—if two kingfishers dive into the same water zone at once, they crash and burn tempo while the fish stays put!
 Components
 1 River Board
-Center Track: River zones (depending on number of players, 2: 4, 3: 5, 4: 6, 5: 7)
+Center Track: River zones (default by player count — 2: 4, 3: 5, 4: 6, 5: 7; Create game can override 4–7)
 Left & Right Banks: Perch locations flanking the river.
-5 Kingfisher Pawns (Blue, Orange, Teal, Green, Purple) — optional Species Powers (one soft passive each; toggle on Create game)
+5 Kingfisher Pawns (species roster — optional Species Powers; one soft passive each; toggle on Create game)
 5 Action Decks (4 cards per player)
-1 Fish Deck (2: 25, 3: 32, 4: 39, 5: 43)
+1 Fish Deck (default 2: 25, 3: 32, 4: 39, 5: 43; Create game can override size — mix scales from that recipe)
 1 First Player / Season Marker
 Board Layout & Perch System
 The River Board consists of 5 central water spaces flanked by perches on the riverbanks.
@@ -132,3 +132,4 @@ Enabled from Create game (default on for vs-bots; always off in Tutorial). Power
 - Oriental Dwarf — Keen Sight: High perch also gets a placement sightline peek.
 - Belted — Wide Bank: Low perch uses High’s three-zone reach.
 - Azure — Tough Gut: your first Pike each match does not eat a Minnow.
+- Yellow-billed — Sun Bill: solo Splash also privately peeks that zone’s fish.

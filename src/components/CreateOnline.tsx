@@ -11,12 +11,15 @@ import { gameServerUrl, GAME_NAME } from '../lib/gameServer'
 import type { OnlineBotSeat } from '../lib/onlineBots'
 import { ensureOnlineBots } from '../lib/onlineBots'
 import type { StartConfig } from '../startConfig'
+import { clampDeckSize, deckTotalFor, riverZonesFor } from '../game/fish'
+import { RiverOptions } from './RiverOptions'
 import surface from './menuSurface.module.css'
 import styles from './CreateGame.module.css'
 
 const MIN_PLAYERS = 2
 const MAX_PLAYERS = 5
 const DEFAULT_EXTRAS = 3
+const DEFAULT_PLAYERS = 1 + DEFAULT_EXTRAS
 const HUMAN_SEAT = '0'
 
 type SeatKind = 'bot' | 'open'
@@ -32,6 +35,8 @@ export function CreateOnline({
   const [extras, setExtras] = useState<SeatKind[]>(() =>
     Array.from({ length: DEFAULT_EXTRAS }, () => 'bot' as SeatKind),
   )
+  const [zoneCount, setZoneCount] = useState(() => riverZonesFor(DEFAULT_PLAYERS))
+  const [deckSize, setDeckSize] = useState(() => deckTotalFor(DEFAULT_PLAYERS))
   const [humanSpecies, setHumanSpecies] = useState<KingfisherID>('common')
   const [speciesPowers, setSpeciesPowers] = useState(true)
   const [playerName, setPlayerName] = useState('Host')
@@ -51,6 +56,18 @@ export function CreateOnline({
     .filter((id): id is string => id !== null)
   const humanSeats = [HUMAN_SEAT, ...openSeats]
 
+  const applyExtras = (next: SeatKind[]) => {
+    setExtras(next)
+    const n = 1 + next.length
+    setZoneCount(riverZonesFor(n))
+    setDeckSize(deckTotalFor(n))
+  }
+
+  const applyZoneCount = (n: number) => {
+    setZoneCount(n)
+    setDeckSize((d) => clampDeckSize(d, n))
+  }
+
   const create = async () => {
     if (busy || !isBirdUnlocked(profile, humanSpecies)) return
     setBusy(true)
@@ -65,6 +82,8 @@ export function CreateOnline({
           humanSeats,
           speciesPowers,
           humanSpecies,
+          zoneCount,
+          deckSize,
         },
       })
       const host = await lobby.joinMatch(GAME_NAME, matchID, {
@@ -235,7 +254,7 @@ export function CreateOnline({
               disabled={playerCount <= MIN_PLAYERS || busy}
               onClick={() => {
                 playSfx('card_select')
-                setExtras((prev) => prev.slice(0, -1))
+                applyExtras(extras.slice(0, -1))
               }}
             >
               Remove
@@ -246,7 +265,7 @@ export function CreateOnline({
               disabled={playerCount >= MAX_PLAYERS || busy}
               onClick={() => {
                 playSfx('card_select')
-                setExtras((prev) => [...prev, 'bot'])
+                applyExtras([...extras, 'bot'])
               }}
             >
               Add bot
@@ -257,13 +276,22 @@ export function CreateOnline({
               disabled={playerCount >= MAX_PLAYERS || busy}
               onClick={() => {
                 playSfx('card_select')
-                setExtras((prev) => [...prev, 'open'])
+                applyExtras([...extras, 'open'])
               }}
             >
               Add open
             </button>
           </div>
         </div>
+
+        <RiverOptions
+          playerCount={playerCount}
+          zoneCount={zoneCount}
+          deckSize={deckSize}
+          disabled={busy}
+          onZoneCount={applyZoneCount}
+          onDeckSize={(n) => setDeckSize(clampDeckSize(n, zoneCount))}
+        />
 
         <label className={styles.toggle}>
           <input

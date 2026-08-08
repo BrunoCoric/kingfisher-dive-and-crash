@@ -20,6 +20,10 @@ export const UNLOCK_META: Record<UnlockId, { name: string; flavor: string }> = {
     name: KINGFISHERS.azure.displayName,
     flavor: 'Finish five vs-bots matches.',
   },
+  yellowBilled: {
+    name: KINGFISHERS.yellowBilled.displayName,
+    flavor: 'Steal a fish with Drop.',
+  },
 }
 
 export const STARTER_FLAVOR = 'Starter — ready to dive.'
@@ -36,6 +40,7 @@ export function evaluateUnlocks(profile: Profile, match: MatchSummary): UnlockId
   if (profile.stats.fishCaught.Trout >= 1) add('orientalDwarf')
   if (match.outcomes.crash >= 3 && match.place <= 2) add('belted')
   if (profile.stats.matchesPlayed >= 5) add('azure')
+  if (match.outcomes.steal >= 1) add('yellowBilled')
 
   return next
 }

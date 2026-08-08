@@ -45,6 +45,10 @@ export interface KingfisherSetupData {
   humanSpecies?: KingfisherID
   /** Socket.IO match: open with gather phase for bird pick. */
   online?: boolean
+  /** Override water-zone count (default from player count: 4–7). */
+  zoneCount?: number
+  /** Override fish-deck size; mix scales from the player-count recipe. */
+  deckSize?: number
 }
 
 function fish(type: FishType, id: string): FishCard {
@@ -86,7 +90,7 @@ export function setup(
   setupData?: KingfisherSetupData,
 ): GameState {
   const tutorial = setupData?.tutorial === true
-  const zoneCount = riverZonesFor(ctx.numPlayers)
+  const zoneCount = riverZonesFor(ctx.numPlayers, setupData?.zoneCount)
   const perches = buildPerches(zoneCount)
 
   let deck: FishCard[]
@@ -96,7 +100,7 @@ export function setup(
     zones = river.zones
     deck = river.deck
   } else {
-    deck = random.Shuffle(buildDeck(ctx.numPlayers))
+    deck = random.Shuffle(buildDeck(ctx.numPlayers, setupData?.deckSize))
     zones = Array.from({ length: zoneCount }, (_, i) => ({
       id: i,
       fish: deck.pop() ?? null,

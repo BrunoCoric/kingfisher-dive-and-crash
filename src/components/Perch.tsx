@@ -14,7 +14,10 @@ interface PerchProps {
     reaction?: CalloutKind
     feedbackKey?: string
   }
+  /** Legal landing / relocate perch (placement or Hover). */
   movable?: boolean
+  /** Out of reach / occupied while perch targeting is active — dim like illegal zones. */
+  dimmed?: boolean
   /** Soft highlight while mouse is over this perch (reach preview). */
   previewing?: boolean
   onClick?: () => void
@@ -29,9 +32,18 @@ const REACTION_CLASS: Partial<Record<CalloutKind, string>> = {
   pike: styles.reactPike,
 }
 
-export function Perch({ perch, occupant, movable, previewing, onClick, onHoverChange }: PerchProps) {
+export function Perch({
+  perch,
+  occupant,
+  movable,
+  dimmed,
+  previewing,
+  onClick,
+  onHoverChange,
+}: PerchProps) {
   const cls = [styles.perch, perch.bank === 'left' ? styles.left : styles.right, styles[perch.level]]
   if (movable) cls.push(styles.movable)
+  if (dimmed) cls.push(styles.dimmed)
   if (occupant) cls.push(styles.occupied)
   if (previewing) cls.push(styles.previewing)
 
@@ -95,20 +107,7 @@ export function Perch({ perch, occupant, movable, previewing, onClick, onHoverCh
         </span>
       )}
 
-      {movable && (
-        <span className={styles.moveHalo} aria-hidden>
-          <svg viewBox="0 0 24 24" className={styles.moveArrow}>
-            <path
-              d="M12 4v11m-5-4.5 5 5 5-5"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.4"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </span>
-      )}
+      {movable && <span className={styles.sunHalo} aria-hidden />}
     </div>
   )
 }

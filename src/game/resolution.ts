@@ -128,6 +128,12 @@ function resolveSplashes(G: GameState, order: string[], random: Random): void {
       // Fish stays — Crash taxes hands, not the prize.
     } else {
       G.splashes.push(zone)
+      // Yellow-billed Sun Bill: solo Splash privately peeks that zone.
+      const pid = pids[0]
+      if (hasPower(G, pid, 'sunBill') && isFish(G.zones[zone]?.fish)) {
+        const seen = G.peeked[pid] ?? []
+        if (!seen.includes(zone)) G.peeked[pid] = [...seen, zone]
+      }
     }
   }
 }
