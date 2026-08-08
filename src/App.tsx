@@ -10,6 +10,7 @@ import { TutorialIntro } from './components/TutorialIntro'
 import { TUTORIAL_INTRO } from './tutorial/intro'
 import { StartScreen, type StartConfig } from './StartScreen'
 import { MatchWaiting } from './components/MatchWaiting'
+import { LeaveChip } from './components/LeaveChip'
 import { startAmbience } from './lib/sfx'
 import { gameServerUrl } from './lib/gameServer'
 import { clearMatchSession, saveMatchSession, loadMatchSession } from './lib/matchSession'
@@ -74,9 +75,7 @@ function BotsGame({ mode, onMenu }: { mode: BotsMode; onMenu: () => void }) {
   )
   return (
     <main className="app-shell">
-      <button type="button" className="menu-chip" onClick={onMenu} aria-label="Back to menu">
-        Menu
-      </button>
+      <LeaveChip onLeave={onMenu} />
       <div className="seat">
         <BotsClient key={matchID} matchID={matchID} playerID={mode.humanSeat} onMenu={onMenu} />
       </div>
@@ -124,9 +123,7 @@ function OnlineGame({ mode, onMenu }: { mode: OnlineMode; onMenu: () => void }) 
 
   return (
     <main className="app-shell">
-      <button type="button" className="menu-chip" onClick={leave} aria-label="Back to menu">
-        Menu
-      </button>
+      <LeaveChip onLeave={leave} />
       <div className="seat">
         <OnlineClient
           matchID={mode.matchID}
@@ -180,9 +177,7 @@ function TutorialGame({ onMenu }: { onMenu: () => void }) {
 
   return (
     <main className="app-shell">
-      <button type="button" className="menu-chip" onClick={onMenu} aria-label="Back to menu">
-        Menu
-      </button>
+      <LeaveChip onLeave={onMenu} />
       <div className="seat">
         <TutorialClient key={matchID} matchID={matchID} playerID="0" onMenu={onMenu} />
       </div>

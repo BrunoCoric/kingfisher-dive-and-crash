@@ -34,7 +34,7 @@ export function lessonFor(
     return {
       id: 'done',
       title: 'You are ready',
-      body: 'Dive catches alone, Splash blocks Dive, Drop steals a catch, same card twice crashes. Menu → Play vs Bots.',
+      body: 'Dive catches alone, Splash blocks Dive, Drop steals a catch, same card twice crashes. Leave → Play vs Bots.',
       gate: null,
       done: true,
     }
@@ -55,7 +55,7 @@ export function lessonFor(
         title: G.round === 2 ? 'Tutorial complete' : 'End of round',
         body:
           G.round === 2
-            ? 'You have the core loop. Tap Got it, then Next round — or Menu to play for real.'
+            ? 'You have the core loop. Tap Got it, then Next round — or Leave to play for real.'
             : 'Fish drift downstream, hands reset, First Player passes. Tap Got it, then Next round for the fight lessons.',
         gate: null,
         reviewKey: ck,

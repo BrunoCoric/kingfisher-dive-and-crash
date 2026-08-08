@@ -3,6 +3,7 @@ import type { GameState } from '../game/types'
 import { STEPS_PER_ROUND } from '../game/cards'
 import { spriteScaleStyle } from '../lib/presentation'
 import { outcomeStory } from '../lib/stepFeedback'
+import { RulesCheatsheet } from './RulesCheatsheet'
 import styles from './StatusLine.module.css'
 
 export interface StatusActor {
@@ -10,6 +11,13 @@ export interface StatusActor {
   sprite: string
   accent: string
   spriteScale?: number
+}
+
+/** Show/hide the held-hand fan during step selection. */
+export interface StatusHandControl {
+  open: boolean
+  count: number
+  onToggle: () => void
 }
 
 interface StatusLineProps {
@@ -21,6 +29,8 @@ interface StatusLineProps {
   actions?: ReactNode
   /** Sequential turn actor (placement) — shown when waiting. */
   actor?: StatusActor | null
+  speciesPowers?: boolean
+  hand?: StatusHandControl | null
 }
 
 export function StatusLine({
@@ -31,6 +41,8 @@ export function StatusLine({
   hint,
   actions,
   actor = null,
+  speciesPowers = false,
+  hand = null,
 }: StatusLineProps) {
   const story = showStory ? outcomeStory(G) : ''
   const phase = hint ?? phaseText(G, isActive, isSighting, actor)
@@ -62,7 +74,29 @@ export function StatusLine({
         <span className={styles.phase}>{phase}</span>
         {story && !hint && <span className={styles.story}>{story}</span>}
       </div>
-      {actions && <div className={styles.actions}>{actions}</div>}
+      <div className={styles.trailing}>
+        {actions && <div className={styles.actions}>{actions}</div>}
+        {hand && (
+          <button
+            type="button"
+            className={`${styles.handBtn}${hand.open ? ` ${styles.handOpen}` : ''}`}
+            aria-expanded={hand.open}
+            aria-label={hand.open ? 'Hide hand' : 'Show hand'}
+            onClick={hand.onToggle}
+          >
+            <span className={styles.handIcon} aria-hidden>
+              <svg viewBox="0 0 20 20" width="1em" height="1em">
+                <rect x="2.2" y="4.5" width="7.2" height="11" rx="1.2" transform="rotate(-14 5.8 10)" />
+                <rect x="6.4" y="3.8" width="7.2" height="11" rx="1.2" />
+                <rect x="10.6" y="4.5" width="7.2" height="11" rx="1.2" transform="rotate(14 14.2 10)" />
+              </svg>
+            </span>
+            <span className={styles.handLabel}>{hand.open ? 'Hide' : 'Hand'}</span>
+            {!hand.open && <span className={styles.handCount}>{hand.count}</span>}
+          </button>
+        )}
+        <RulesCheatsheet speciesPowers={speciesPowers} variant="dock" />
+      </div>
     </div>
   )
 }

@@ -107,7 +107,7 @@ Phone is the design target. The board lives in a **fixed viewport shell** (`100d
 **Budget rules**
 - Players are **not** always on screen. A compact **Scores** flock chip opens a parchment **roster sheet** (scores, first-player token, ready state, last reveal). Tap a bird to expand their public fish pile.
 - Your action cards are a **held hand overlay** in the **bottom-left** of the river stage (fanned parchment cards). They float over the board — they do not take a permanent full-width strip.
-- The hand can be **minimized** to a small pill (selected/locked action + count) so the river is fully readable; expand again to pick a card.
+- Show / hide lives on the status dock (**Hand** chip with a fan-cards icon + count when closed); the fan itself never owns the toggle.
 - Play flow: tap a card → tap a legal zone → committed. Tap the same card again to cancel. Hover: tap one face-down zone to peek and lock immediately (Skip peek only if none remain).
 - Phase / targeting / outcome share **one status dock** pinned under the river (thumb zone) — not under the masthead.
 - River stage scrolls vertically when zones need space; page chrome stays pinned.
@@ -161,6 +161,8 @@ Guidelines:
 - Masthead holds a **Scores** flock chip (fish-deck count + stacked avatars + ready count + 1st marker). Opens a bottom parchment sheet: every bird, score, first-player badge, ready/reveal.
 - Tap a row to expand that player's **public scoring pile** (fish chips with points). Hands stay private.
 - Leading score tints gold. Your row is softly outlined.
+- **On the river:** each perched bird wears a tiny parchment **VP chip** (species accent rim) under the sprite so totals stay glanceable without opening the roster. Leading bird’s chip soft-golds — same language as the sheet.
+- **Your bird:** the viewing seat’s pawn keeps a soft sun glow (warm halo + accent drop-shadow) so you always know which kingfisher is yours — quieter than legal-perch targeting glow.
 - Status is a parchment **dock under the river** (phase / targeting / outcome). Active turns get a sun rim + **Your turn** pill; placement waiting shows the current bird’s face. River chips still answer “where?” after a step.
 
 ### Held hand (bottom-left overlay)
@@ -170,7 +172,7 @@ Guidelines:
 - Flow: tap card → legal zones light → tap zone to commit. Cancel = tap the same card again. Hover peeks commit on first zone tap.
 
 ### Rules cheatsheet (bottom-right overlay)
-- Compact **? Rules** pill sits bottom-right over the river (mirrors the hand’s corner, does not compete with it).
+- Status-dock trailing chips: **Hand** (step selection only) + **? Rules** (always while seated). Neither floats over the river.
 - Tap opens a parchment sheet: define **Crash** once (spent card + random extra discard; fish stays), then resolve order and short collision rows that just say Crash / Steal / Block.
 - Backdrop dismiss / Close; ≥44px hit target. Keep copy short — this is a mid-game glance, not the full rulebook.
 
@@ -304,7 +306,7 @@ Two clear sub-moments, both surfaced with distinct UI:
 | **Personal outcome splash** | Local-only bird burst on catch / steal / crash; auto-dismiss; does not replace river feedback. |
 | **Round review** | Same board + status-dock **Next round** (no modal). |
 | **Game over** | Winner celebration, final scoreboard, main menu button. |
-| **Rules cheatsheet** | Bottom-right `? Rules` → parchment collision reference. |
+| **Rules cheatsheet** | Status-dock `? Rules` → parchment collision reference. |
 
 ---
 

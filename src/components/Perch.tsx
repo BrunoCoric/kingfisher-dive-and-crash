@@ -9,6 +9,9 @@ interface PerchProps {
     id: string
     color: string
     isFirst: boolean
+    isMine?: boolean
+    score: number
+    leading?: boolean
     sprite: string
     facing: 'left' | 'right'
     spriteScale?: number
@@ -64,7 +67,11 @@ export function Perch({
       onClick={onClick}
       role={onClick ? 'button' : undefined}
       tabIndex={onClick ? 0 : undefined}
-      aria-label={`Perch ${perch.id} (${perch.level})`}
+      aria-label={
+        occupant
+          ? `Perch ${perch.id} (${perch.level}), ${occupant.isMine ? 'you' : `player ${occupant.id}`}, ${occupant.score} points`
+          : `Perch ${perch.id} (${perch.level})`
+      }
       onMouseEnter={() => onHoverChange?.(true)}
       onMouseLeave={() => onHoverChange?.(false)}
       onFocus={() => onHoverChange?.(true)}
@@ -84,14 +91,16 @@ export function Perch({
       {occupant && (
         <span
           key={occupant.feedbackKey ? `${occupant.id}-${occupant.feedbackKey}` : occupant.id}
-          className={`${styles.pawn} ${reactCls ?? ''}`}
+          className={`${styles.pawn} ${reactCls ?? ''}${occupant.isMine ? ` ${styles.mine}` : ''}`}
+          style={{ ['--pawn-accent' as string]: occupant.color }}
         >
+          {occupant.isMine && <span className={styles.mineGlow} aria-hidden />}
           <span className={styles.pawnShadow} aria-hidden />
           <span className={styles.bobber}>
             <img
               className={flip ? styles.spriteFlip : styles.sprite}
               src={occupant.sprite}
-              alt={`Player ${occupant.id} kingfisher`}
+              alt={occupant.isMine ? 'Your kingfisher' : `Player ${occupant.id} kingfisher`}
               draggable={false}
               style={
                 occupant.spriteScale && occupant.spriteScale !== 1
@@ -99,6 +108,13 @@ export function Perch({
                   : undefined
               }
             />
+          </span>
+          <span
+            className={`${styles.scoreChip}${occupant.leading ? ` ${styles.scoreLeading}` : ''}`}
+            title={`${occupant.score} points`}
+            aria-hidden
+          >
+            {occupant.score}
           </span>
           {occupant.isFirst && (
             <span className={styles.firstStar} title="First player">

@@ -14,6 +14,12 @@ export interface PerchOccupant {
   id: string
   color: string
   isFirst: boolean
+  /** Viewing seat — soft sun glow so “your bird” is always obvious. */
+  isMine?: boolean
+  /** Public VP total — shown as a small chip on the bird. */
+  score: number
+  /** Soft gold tint when this bird leads (and score > 0). */
+  leading?: boolean
   sprite: string
   facing: 'left' | 'right'
   /** From species manifest; tall art may be > 1. */

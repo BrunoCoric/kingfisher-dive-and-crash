@@ -96,12 +96,15 @@ Single source of truth for implementation status. Refer to `README.md` for the g
 - [x] Perch hover reach preview: hovering (or focusing) any perch soft-glows its reachable zones in water-cyan and dims the rest — suppressed while card/sightline/perch targeting is active so it never fights the sun highlights
 - [x] Round-start placement clears all birds off perches, then players place in First-Player order (empty → seated makes turn order readable)
 - [x] End-of-round fish drift animation: **Next round** plays a short CSS slide downstream (last zone washes off), then `continueRound` applies cleanup; respects `prefers-reduced-motion`
-- [x] Phone-first HUD shell: fixed `100dvh` column, slim masthead + on-demand `RosterSheet` (scores / 1st / fish piles), bottom `StatusLine` dock (Your turn focus), bottom-left minimizable held-hand fan (`Hand` / `ActionCard`); river stage scrolls internally
+- [x] Phone-first HUD shell: fixed `100dvh` column, slim masthead + on-demand `RosterSheet` (scores / 1st / fish piles), bottom `StatusLine` dock (Your turn focus + Hand / Rules chips), bottom-left held-hand fan (`Hand` / `ActionCard`) toggled from the dock; river stage scrolls internally
 - [x] Turn focus dock: `StatusLine` moved from under masthead to bottom chrome — active sun highlight + Your turn pill; placement waiting shows current bird face + short name
 - [x] Scoring piles are public in `playerView` (hands stay private) so the roster can show each bird's fish
 - [x] Public fish-deck remaining count (`deckCount`) on the Scores chip; deck faces stay hidden
+- [x] On-board VP chip on each perched bird (`Perch` scoreChip): parchment pill with species accent rim; soft gold when leading — roster sheet still has full piles
+- [x] Your-bird sun glow on the viewing seat’s perch pawn (`isMine`): soft warm halo + accent drop-shadow so “my bird” reads at a glance
 - [x] Roster round-play strip: `G.roundPlays` accumulates each seat's revealed cards across the 3 steps (cleared in `endOfRoundCleanup`); `RosterSheet` shows Dive/Drop/Splash/Hover icons + empty slots for steps still open
-- [x] Bottom-right rules cheatsheet (`RulesCheatsheet`): tap `? Rules` for priority order + crash / splash / steal interactions
+- [x] Rules cheatsheet (`RulesCheatsheet`): docked as `? Rules` on the right of `StatusLine` (always available during a seated match); sheet portals to `document.body` so StatusLine `backdrop-filter` / overflow can’t clip it
+- [x] In-match **Leave** chip (`LeaveChip`): confirms before abandoning bots / online / tutorial practice back to Start Screen; GameOver still uses **Main menu** with no prompt
 - [x] Personal outcome splash (local seat only): `OutcomeSplash` + `personalSplash.ts` — slower bird burst on catch / steal / crash only; river feedback remains shared truth (VISUALS §6 Step 4b)
 - [x] Scripted interactive tutorial: Start Screen **Tutorial** → one core-loop primer slide then 3-seat sandbox (`tutorial: true` setup, `TutorialBot` seats 1–2, gated `TutorialBoard` + coach). Human only taps highlighted targets; opponents play a fixed script across 2 rounds covering place/peek, solo Dive catch, Hover scout, Splash block, Drop steal, and Dive Crash. Smoke: `npx tsx _tutorial_smoke.mts`.
 - [x] Tutorial intro uses the same menu chrome back pill (`← Back`) as Nest / lobby / create; slide nav uses Previous / Next

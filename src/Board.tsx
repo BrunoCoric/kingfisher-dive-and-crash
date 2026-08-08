@@ -15,7 +15,6 @@ import { RosterButton } from './components/RosterButton'
 import { RosterSheet } from './components/RosterSheet'
 import { StatusLine } from './components/StatusLine'
 import { GameOver } from './components/GameOver'
-import { RulesCheatsheet } from './components/RulesCheatsheet'
 import { OutcomeSplash } from './components/OutcomeSplash'
 import { TutorialCoach } from './components/TutorialCoach'
 import { GatherPanel } from './components/GatherPanel'
@@ -40,6 +39,7 @@ export function Board(props: BoardProps<GameState> & BoardExtra) {
   const [pending, setPending] = useState<PendingSelection | null>(null)
   const [rosterOpen, setRosterOpen] = useState(false)
   const [drifting, setDrifting] = useState(false)
+  const [handOpen, setHandOpen] = useState(true)
 
   const myID = playerID ?? ''
   const me = myID === '' ? undefined : G.players[myID]
@@ -120,6 +120,7 @@ export function Board(props: BoardProps<GameState> & BoardExtra) {
   const feedbackKey = `${G.round}-${G.step}-${G.outcomeLog.length}`
   if (showStepFeedback) cueStepSfx(feedbackKey, G)
 
+  const bestScore = Math.max(...(ctx.playOrder as string[]).map((pid) => G.players[pid].score), 0)
   const occupants: Record<string, PerchOccupant> = {}
   for (const pid of ctx.playOrder) {
     const p = G.players[pid]
@@ -129,6 +130,9 @@ export function Board(props: BoardProps<GameState> & BoardExtra) {
       id: pid,
       color: bird.accent,
       isFirst: pid === G.firstPlayer,
+      isMine: pid === myID,
+      score: p.score,
+      leading: p.score > 0 && p.score === bestScore,
       sprite: bird.sprite,
       facing: bird.facing,
       spriteScale: bird.spriteScale,
@@ -330,10 +334,10 @@ export function Board(props: BoardProps<GameState> & BoardExtra) {
             locked={locked}
             canAct={canAct}
             selectedCard={pending?.card ?? lockedCard}
+            open={handOpen}
             onSelect={selectCard}
           />
         )}
-        <RulesCheatsheet speciesPowers={G.speciesPowers} />
         {myID !== '' && showStepFeedback && G.outcomeLog.length > 0 && (
           <OutcomeSplash key={`${feedbackKey}:${myID}`} G={G} playerID={myID} />
         )}
@@ -388,6 +392,16 @@ export function Board(props: BoardProps<GameState> & BoardExtra) {
           hint={statusHint}
           actions={statusActions}
           actor={turnActor}
+          speciesPowers={G.speciesPowers}
+          hand={
+            !placing && !hopping && !cleaning
+              ? {
+                  open: handOpen,
+                  count: me?.hand.length ?? 0,
+                  onToggle: () => setHandOpen((v) => !v),
+                }
+              : null
+          }
         />
       )}
 
