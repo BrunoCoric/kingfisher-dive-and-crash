@@ -131,7 +131,7 @@ export function CreateOnline({
           onBack()
         }}
       >
-        Back
+        ← Back
       </button>
 
       <p className={surface.kicker}>Online · humans &amp; bots</p>

@@ -5,8 +5,8 @@
     "semantic_hash": ""
   },
   "src/App.tsx": {
-    "mtime": 1786193204.439157,
-    "ast_hash": "bb5f361c358515b0abc5244bbb0dbc12",
+    "mtime": 1786217127.012763,
+    "ast_hash": "66679aed6428109750f44c57de6e1415",
     "semantic_hash": ""
   },
   "src/Board.tsx": {
@@ -135,8 +135,8 @@
     "semantic_hash": ""
   },
   "DESIGN.md": {
-    "mtime": 1786217004.778396,
-    "ast_hash": "ae7ef8abd5154d2e6c7de094533a4e11",
+    "mtime": 1786217133.6547968,
+    "ast_hash": "cb143f0a406dc6c109a739c244330d8a",
     "semantic_hash": ""
   },
   "README.md": {
@@ -390,8 +390,8 @@
     "semantic_hash": ""
   },
   "src/components/TutorialIntro.tsx": {
-    "mtime": 1786027284.3783865,
-    "ast_hash": "0907de3e3a34268d1848e42ec07286ea",
+    "mtime": 1786217125.765354,
+    "ast_hash": "7b7f36a5409b0f98db2b03d028030854",
     "semantic_hash": ""
   },
   "src/tutorial/intro.ts": {
@@ -565,13 +565,13 @@
     "semantic_hash": ""
   },
   "src/components/CreateGame.tsx": {
-    "mtime": 1786193222.7662356,
-    "ast_hash": "582ab07df7ba271e62927a0086cf67f0",
+    "mtime": 1786217128.514134,
+    "ast_hash": "432a773e8cf2b88e45228b0ec07b0a3a",
     "semantic_hash": ""
   },
   "src/components/GameLobby.tsx": {
-    "mtime": 1786046881.4038577,
-    "ast_hash": "5a7a6fc26182f0d6ce62f63aca17d684",
+    "mtime": 1786217128.0822217,
+    "ast_hash": "051cedcca5070f10725d2e5c721bd099",
     "semantic_hash": ""
   },
   "src/startConfig.ts": {
@@ -625,8 +625,8 @@
     "semantic_hash": ""
   },
   "src/components/CreateOnline.tsx": {
-    "mtime": 1786193037.6497078,
-    "ast_hash": "b73b301052dfd2bff450dee5ec07cf6d",
+    "mtime": 1786217128.8501687,
+    "ast_hash": "8c0deeb17f4a46d19509d94358b90f25",
     "semantic_hash": ""
   },
   "src/components/GatherPanel.tsx": {

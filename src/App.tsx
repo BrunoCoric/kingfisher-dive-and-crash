@@ -165,20 +165,16 @@ function TutorialGame({ onMenu }: { onMenu: () => void }) {
 
   if (!practice) {
     return (
-      <main className="app-shell">
-        <button type="button" className="menu-chip" onClick={onMenu} aria-label="Back to menu">
-          Menu
-        </button>
-        <TutorialIntro
-          index={introIndex}
-          onBack={() => setIntroIndex((i) => Math.max(0, i - 1))}
-          onSkip={() => setPractice(true)}
-          onNext={() => {
-            if (introIndex >= TUTORIAL_INTRO.length - 1) setPractice(true)
-            else setIntroIndex((i) => i + 1)
-          }}
-        />
-      </main>
+      <TutorialIntro
+        index={introIndex}
+        onMenu={onMenu}
+        onBack={() => setIntroIndex((i) => Math.max(0, i - 1))}
+        onSkip={() => setPractice(true)}
+        onNext={() => {
+          if (introIndex >= TUTORIAL_INTRO.length - 1) setPractice(true)
+          else setIntroIndex((i) => i + 1)
+        }}
+      />
     )
   }
 

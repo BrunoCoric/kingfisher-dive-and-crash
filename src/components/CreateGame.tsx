@@ -95,7 +95,7 @@ export function CreateGame({
           onBack()
         }}
       >
-        Back
+        ← Back
       </button>
 
       <p className={surface.kicker}>Local · vs bots</p>

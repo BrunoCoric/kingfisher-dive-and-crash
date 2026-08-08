@@ -106,7 +106,7 @@ export function GameLobby({
             setJoining(null)
           }}
         >
-          Back
+          ← Back
         </button>
         <p className={surface.kicker}>Join table</p>
         <h1 className={surface.title}>Take a seat</h1>
@@ -165,7 +165,7 @@ export function GameLobby({
           onBack()
         }}
       >
-        Back
+        ← Back
       </button>
 
       <img className={styles.deco} src={deco.sprite} alt="" aria-hidden />

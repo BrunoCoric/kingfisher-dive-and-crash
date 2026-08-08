@@ -1519,7 +1519,7 @@
       "label": "App()",
       "file_type": "code",
       "source_file": "src/App.tsx",
-      "source_location": "L197",
+      "source_location": "L193",
       "_origin": "ast",
       "id": "src_app_app",
       "community": 1,
@@ -2226,8 +2226,8 @@
       "source_location": "L36",
       "_origin": "ast",
       "id": "src_components_perch_perch",
-      "community": 36,
-      "community_name": "StatusLine.tsx",
+      "community": 33,
+      "community_name": "game/types.ts",
       "norm_label": "perch()"
     },
     {
@@ -2237,8 +2237,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_riverboard",
-      "community": 36,
-      "community_name": "StatusLine.tsx",
+      "community": 33,
+      "community_name": "game/types.ts",
       "norm_label": "riverboard.tsx"
     },
     {
@@ -2248,8 +2248,8 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "src_components_riverboard_perchoccupant",
-      "community": 36,
-      "community_name": "StatusLine.tsx",
+      "community": 33,
+      "community_name": "game/types.ts",
       "norm_label": "perchoccupant"
     },
     {
@@ -2597,7 +2597,7 @@
       "label": "Props",
       "file_type": "code",
       "source_file": "src/components/TutorialIntro.tsx",
-      "source_location": "L4",
+      "source_location": "L6",
       "_origin": "ast",
       "id": "src_components_tutorialintro_props",
       "community": 1,
@@ -2608,7 +2608,7 @@
       "label": "TutorialIntro()",
       "file_type": "code",
       "source_file": "src/components/TutorialIntro.tsx",
-      "source_location": "L11",
+      "source_location": "L14",
       "_origin": "ast",
       "id": "src_components_tutorialintro_tutorialintro",
       "community": 1,
@@ -2666,8 +2666,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_scene_bankfoliagesvg",
-      "community": 36,
-      "community_name": "StatusLine.tsx",
+      "community": 33,
+      "community_name": "game/types.ts",
       "norm_label": "bankfoliagesvg.tsx"
     },
     {
@@ -2677,8 +2677,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_scene_bankfoliagesvg_bankfoliagesvgprops",
-      "community": 36,
-      "community_name": "StatusLine.tsx",
+      "community": 33,
+      "community_name": "game/types.ts",
       "norm_label": "bankfoliagesvgprops"
     },
     {
@@ -2688,8 +2688,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "src_components_scene_bankfoliagesvg_bankfoliagesvg",
-      "community": 36,
-      "community_name": "StatusLine.tsx",
+      "community": 33,
+      "community_name": "game/types.ts",
       "norm_label": "bankfoliagesvg()"
     },
     {
@@ -2732,8 +2732,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_scene_mosstuftsvg",
-      "community": 36,
-      "community_name": "StatusLine.tsx",
+      "community": 33,
+      "community_name": "game/types.ts",
       "norm_label": "mosstuftsvg.tsx"
     },
     {
@@ -2743,8 +2743,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_scene_mosstuftsvg_mosstuftsvgprops",
-      "community": 36,
-      "community_name": "StatusLine.tsx",
+      "community": 33,
+      "community_name": "game/types.ts",
       "norm_label": "mosstuftsvgprops"
     },
     {
@@ -2754,8 +2754,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "src_components_scene_mosstuftsvg_mosstuftsvg",
-      "community": 36,
-      "community_name": "StatusLine.tsx",
+      "community": 33,
+      "community_name": "game/types.ts",
       "norm_label": "mosstuftsvg()"
     },
     {
@@ -2798,8 +2798,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_scene_riverchannelsvg",
-      "community": 36,
-      "community_name": "StatusLine.tsx",
+      "community": 33,
+      "community_name": "game/types.ts",
       "norm_label": "riverchannelsvg.tsx"
     },
     {
@@ -2809,8 +2809,8 @@
       "source_location": "L2",
       "_origin": "ast",
       "id": "src_components_scene_riverchannelsvg_riverchannelsvg",
-      "community": 36,
-      "community_name": "StatusLine.tsx",
+      "community": 33,
+      "community_name": "game/types.ts",
       "norm_label": "riverchannelsvg()"
     },
     {
@@ -4657,8 +4657,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_game_reach",
-      "community": 33,
-      "community_name": "game/types.ts",
+      "community": 36,
+      "community_name": "StatusLine.tsx",
       "norm_label": "reach.ts"
     },
     {
@@ -4679,8 +4679,8 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "src_game_reach_adjacentperches",
-      "community": 33,
-      "community_name": "game/types.ts",
+      "community": 36,
+      "community_name": "StatusLine.tsx",
       "norm_label": "adjacentperches()"
     },
     {
@@ -4690,8 +4690,8 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "src_game_reach_openhoverperches",
-      "community": 33,
-      "community_name": "game/types.ts",
+      "community": 36,
+      "community_name": "StatusLine.tsx",
       "norm_label": "openhoverperches()"
     },
     {
@@ -4899,8 +4899,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_game_types",
-      "community": 33,
-      "community_name": "game/types.ts",
+      "community": 36,
+      "community_name": "StatusLine.tsx",
       "norm_label": "game/types.ts"
     },
     {
@@ -4976,8 +4976,8 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "src_game_types_perchlevel",
-      "community": 33,
-      "community_name": "game/types.ts",
+      "community": 36,
+      "community_name": "StatusLine.tsx",
       "norm_label": "perchlevel"
     },
     {
@@ -7327,7 +7327,7 @@
       "label": "Implementation Notes",
       "file_type": "document",
       "source_file": "DESIGN.md",
-      "source_location": "L123",
+      "source_location": "L124",
       "_origin": "ast",
       "id": "design_implementation_notes",
       "community": 10,
@@ -10118,7 +10118,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/App.tsx",
-      "source_location": "L197",
+      "source_location": "L193",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app",
@@ -10725,7 +10725,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.tsx",
-      "source_location": "L203",
+      "source_location": "L199",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -10737,7 +10737,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.tsx",
-      "source_location": "L201",
+      "source_location": "L197",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -10749,7 +10749,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.tsx",
-      "source_location": "L212",
+      "source_location": "L208",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -10761,7 +10761,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.tsx",
-      "source_location": "L202",
+      "source_location": "L198",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -10773,7 +10773,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.tsx",
-      "source_location": "L200",
+      "source_location": "L196",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -17268,7 +17268,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/TutorialIntro.tsx",
-      "source_location": "L4",
+      "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_tutorialintro",
@@ -17279,7 +17279,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/TutorialIntro.tsx",
-      "source_location": "L11",
+      "source_location": "L14",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_tutorialintro",
@@ -17295,7 +17295,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_tutorialintro",
-      "target": "src_tutorial_intro",
+      "target": "src_lib_sfx",
       "confidence_score": 1.0
     },
     {
@@ -17307,8 +17307,44 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_tutorialintro",
+      "target": "src_lib_sfx_playsfx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/TutorialIntro.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_tutorialintro",
+      "target": "src_tutorial_intro",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/TutorialIntro.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_tutorialintro",
       "target": "src_tutorial_intro_tutorial_intro",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/components/TutorialIntro.tsx",
+      "source_location": "L25",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_tutorialintro_tutorialintro",
+      "target": "src_lib_sfx_playsfx"
     },
     {
       "relation": "imports_from",
@@ -28569,7 +28605,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "DESIGN.md",
-      "source_location": "L123",
+      "source_location": "L124",
       "weight": 1.0,
       "_origin": "ast",
       "source": "design_progress",
@@ -29018,5 +29054,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "2736299f1f4f7774d42b86d3b7a8e211fbd93ad9"
+  "built_at_commit": "5923389730c3f311b477dce3376059e08507aa00"
 }

@@ -1,16 +1,16 @@
 # Graph Report - kingfisher-dive-and-crash  (2026-08-08)
 
 ## Corpus Check
-- 113 files · ~369,648 words
+- 113 files · ~369,697 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 705 nodes · 1817 edges · 39 communities (34 shown, 5 thin omitted)
+- 705 nodes · 1820 edges · 39 communities (34 shown, 5 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 12 edges (avg confidence: 0.75)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `2736299f`
+- Built from commit: `59233897`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -49,7 +49,7 @@
 
 ## God Nodes (most connected - your core abstractions)
 1. `GameState` - 48 edges
-2. `playSfx()` - 33 edges
+2. `playSfx()` - 35 edges
 3. `CardType` - 28 edges
 4. `KingfisherID` - 25 edges
 5. `spriteScaleStyle()` - 23 edges
@@ -157,8 +157,8 @@ Cohesion: 0.29
 Nodes (6): WaterPuddleSvg(), WaterPuddleSvgProps, Bloom, StrokeMark, WashRecipe, WATER_RECIPES
 
 ### Community 33 - "game/types.ts"
-Cohesion: 0.20
-Nodes (11): PerchProps, REACTION_CLASS, BranchSvg(), BranchSvgProps, ReedSvg(), ReedSvgProps, adjacentPerches(), openHoverPerches() (+3 more)
+Cohesion: 0.14
+Nodes (15): Perch(), PerchProps, REACTION_CLASS, PerchOccupant, BankFoliageSvg(), BankFoliageSvgProps, BranchSvg(), BranchSvgProps (+7 more)
 
 ### Community 34 - "OutcomeSplash.tsx"
 Cohesion: 0.19
@@ -169,8 +169,8 @@ Cohesion: 0.20
 Nodes (8): FishCard(), FishCardBack(), FishIcon(), FishIconProps, RevealLine(), RosterSheetProps, FISH_LABEL, selectionDetail()
 
 ### Community 36 - "StatusLine.tsx"
-Cohesion: 0.24
-Nodes (7): Perch(), PerchOccupant, BankFoliageSvg(), BankFoliageSvgProps, MossTuftSvg(), MossTuftSvgProps, RiverChannelSvg()
+Cohesion: 0.60
+Nodes (3): adjacentPerches(), openHoverPerches(), PerchLevel
 
 ### Community 37 - "cutout_kingfisher.py"
 Cohesion: 0.33
@@ -188,11 +188,11 @@ Nodes (7): StepSelection, SfxId, cueStepSfx(), fishSfx(), OUTCOME_ORDER, REVEAL_
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `GameState` connect `stepFeedback.ts` to `game/types.ts`, `App.tsx`, `RosterSheet.tsx`, `presentation.ts`, `StatusLine.tsx`, `stepSfx.ts`, `types.ts`, `resolution.ts`, `legacy.ts`, `lesson.ts`, `game/types.ts`, `ZoneTile.tsx`, `OutcomeSplash.tsx`?**
+- **Why does `GameState` connect `stepFeedback.ts` to `App.tsx`, `RosterSheet.tsx`, `presentation.ts`, `StatusLine.tsx`, `StatusLine.tsx`, `types.ts`, `resolution.ts`, `stepSfx.ts`, `legacy.ts`, `lesson.ts`, `game/types.ts`, `ZoneTile.tsx`, `OutcomeSplash.tsx`?**
   _High betweenness centrality (0.069) - this node is a cross-community bridge._
 - **Why does `KingfisherID` connect `StatusLine.tsx` to `App.tsx`, `game/types.ts`, `StatusLine.tsx`, `types.ts`, `stepFeedback.ts`, `ZoneTile.tsx`?**
-  _High betweenness centrality (0.021) - this node is a cross-community bridge._
-- **Why does `CardType` connect `OutcomeSplash.tsx` to `game/types.ts`, `RosterSheet.tsx`, `StatusLine.tsx`, `stepSfx.ts`, `types.ts`, `resolution.ts`, `legacy.ts`, `lesson.ts`, `ZoneTile.tsx`, `OutcomeSplash.tsx`?**
+  _High betweenness centrality (0.020) - this node is a cross-community bridge._
+- **Why does `CardType` connect `OutcomeSplash.tsx` to `RosterSheet.tsx`, `StatusLine.tsx`, `StatusLine.tsx`, `stepSfx.ts`, `types.ts`, `resolution.ts`, `legacy.ts`, `lesson.ts`, `ZoneTile.tsx`, `OutcomeSplash.tsx`?**
   _High betweenness centrality (0.018) - this node is a cross-community bridge._
 - **What connects `Stats`, `BotKind`, `Stats` to the rest of the system?**
   _179 weakly-connected nodes found - possible documentation gaps or missing edges._
