@@ -135,8 +135,8 @@
     "semantic_hash": ""
   },
   "DESIGN.md": {
-    "mtime": 1786194170.4492788,
-    "ast_hash": "0ca0a84b7d324372638e12c1d9b7d10b",
+    "mtime": 1786216236.996944,
+    "ast_hash": "e551ff50c4779152baafdf9b8ba4314c",
     "semantic_hash": ""
   },
   "README.md": {
@@ -190,8 +190,8 @@
     "semantic_hash": ""
   },
   "src/StartScreen.tsx": {
-    "mtime": 1786110519.001763,
-    "ast_hash": "a10799bc60b2a246cf6a49bbf7eeaa15",
+    "mtime": 1786216223.1175709,
+    "ast_hash": "0e1aa8c51bafac0ec7ee945059541dbd",
     "semantic_hash": ""
   },
   "src/components/ActionIcon.tsx": {
@@ -375,8 +375,8 @@
     "semantic_hash": ""
   },
   "src/tutorial/lesson.ts": {
-    "mtime": 1786193398.029075,
-    "ast_hash": "bd30f06adcf26ed63e12e78fe3e4c0f1",
+    "mtime": 1786215463.90598,
+    "ast_hash": "35f3977b6914583c2b61d011894a3eb7",
     "semantic_hash": ""
   },
   "src/tutorial/script.ts": {
@@ -542,11 +542,6 @@
   "src/components/scene/RiverChannelSvg.tsx": {
     "mtime": 1786035107.038034,
     "ast_hash": "7ec8025f82069590c8ea894926bf4fe8",
-    "semantic_hash": ""
-  },
-  "src/components/NestPanel.tsx": {
-    "mtime": 1786193030.077959,
-    "ast_hash": "9a00231e907c37ab0a511c5df1adf07e",
     "semantic_hash": ""
   },
   "src/profile/store.ts": {
@@ -877,6 +872,26 @@
   "src/assets/kingfishers/laughing-kookaburra.png": {
     "mtime": 1786193976.1842778,
     "ast_hash": "00ea2e6c9bfe63da34bfd31f0f28c690",
+    "semantic_hash": ""
+  },
+  "src/components/Nest.tsx": {
+    "mtime": 1786216204.492204,
+    "ast_hash": "c0b2fec1c196246f5c7c513ae9257d3b",
+    "semantic_hash": ""
+  },
+  "src/components/NestFlock.tsx": {
+    "mtime": 1786216215.8784645,
+    "ast_hash": "f1de9c6afb48d9a3ef3aa93f738ee7a0",
+    "semantic_hash": ""
+  },
+  "src/components/NestSpeciesSheet.tsx": {
+    "mtime": 1786216228.2059503,
+    "ast_hash": "c6d5537ecfbd363568265e8e6fd24ff3",
+    "semantic_hash": ""
+  },
+  "src/content/fieldNotes.ts": {
+    "mtime": 1786216164.881386,
+    "ast_hash": "b7c1e7230c6d5105667bf390d0f2a6ad",
     "semantic_hash": ""
   }
 }

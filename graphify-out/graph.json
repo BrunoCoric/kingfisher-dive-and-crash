@@ -1577,8 +1577,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_startscreen",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "startscreen.tsx"
     },
     {
@@ -1588,8 +1588,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "src_startscreen_view",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "view"
     },
     {
@@ -1599,8 +1599,8 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "src_startscreen_cuemenu",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "cuemenu()"
     },
     {
@@ -1610,8 +1610,8 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "src_startscreen_startscreen",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "startscreen()"
     },
     {
@@ -1874,8 +1874,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_gamelobby",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "gamelobby.tsx"
     },
     {
@@ -1885,8 +1885,8 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "src_components_gamelobby_matchlistitem",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "matchlistitem"
     },
     {
@@ -1896,8 +1896,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "src_components_gamelobby_openseats",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "openseats()"
     },
     {
@@ -1907,8 +1907,8 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "src_components_gamelobby_filledcount",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "filledcount()"
     },
     {
@@ -1918,8 +1918,8 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "src_components_gamelobby_gamelobby",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "gamelobby()"
     },
     {
@@ -1929,8 +1929,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_gameover",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 31,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "gameover.tsx"
     },
     {
@@ -1940,8 +1940,8 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "src_components_gameover_mayberecord",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 31,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "mayberecord()"
     },
     {
@@ -1951,8 +1951,8 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "src_components_gameover_gameover",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 31,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "gameover()"
     },
     {
@@ -2033,37 +2033,103 @@
       "norm_label": "matchwaiting()"
     },
     {
-      "label": "NestPanel.tsx",
+      "label": "Nest.tsx",
       "file_type": "code",
-      "source_file": "src/components/NestPanel.tsx",
+      "source_file": "src/components/Nest.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "src_components_nestpanel",
+      "id": "src_components_nest",
       "community": 5,
       "community_name": "StatusLine.tsx",
-      "norm_label": "nestpanel.tsx"
+      "norm_label": "nest.tsx"
     },
     {
-      "label": "FLOCK",
+      "label": "Tab",
       "file_type": "code",
-      "source_file": "src/components/NestPanel.tsx",
+      "source_file": "src/components/Nest.tsx",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "src_components_nest_tab",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
+      "norm_label": "tab"
+    },
+    {
+      "label": "Filter",
+      "file_type": "code",
+      "source_file": "src/components/Nest.tsx",
       "source_location": "L10",
       "_origin": "ast",
-      "id": "src_components_nestpanel_flock",
+      "id": "src_components_nest_filter",
       "community": 5,
       "community_name": "StatusLine.tsx",
-      "norm_label": "flock"
+      "norm_label": "filter"
     },
     {
-      "label": "NestPanel()",
+      "label": "Nest()",
       "file_type": "code",
-      "source_file": "src/components/NestPanel.tsx",
+      "source_file": "src/components/Nest.tsx",
       "source_location": "L12",
       "_origin": "ast",
-      "id": "src_components_nestpanel_nestpanel",
+      "id": "src_components_nest_nest",
       "community": 5,
       "community_name": "StatusLine.tsx",
-      "norm_label": "nestpanel()"
+      "norm_label": "nest()"
+    },
+    {
+      "label": "NestFlock.tsx",
+      "file_type": "code",
+      "source_file": "src/components/NestFlock.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_components_nestflock",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
+      "norm_label": "nestflock.tsx"
+    },
+    {
+      "label": "Filter",
+      "file_type": "code",
+      "source_file": "src/components/NestFlock.tsx",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "src_components_nestflock_filter",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
+      "norm_label": "filter"
+    },
+    {
+      "label": "NestFlock()",
+      "file_type": "code",
+      "source_file": "src/components/NestFlock.tsx",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "src_components_nestflock_nestflock",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
+      "norm_label": "nestflock()"
+    },
+    {
+      "label": "NestSpeciesSheet.tsx",
+      "file_type": "code",
+      "source_file": "src/components/NestSpeciesSheet.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_components_nestspeciessheet",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
+      "norm_label": "nestspeciessheet.tsx"
+    },
+    {
+      "label": "NestSpeciesSheet()",
+      "file_type": "code",
+      "source_file": "src/components/NestSpeciesSheet.tsx",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "src_components_nestspeciessheet_nestspeciessheet",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
+      "norm_label": "nestspeciessheet()"
     },
     {
       "label": "OutcomeSplash.tsx",
@@ -2193,8 +2259,8 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "src_components_riverboard_riverboard",
-      "community": 4,
-      "community_name": "presentation.ts",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "riverboard()"
     },
     {
@@ -2248,8 +2314,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "src_components_rosterbutton_rosterbutton",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 19,
+      "community_name": "stepFeedback.ts",
       "norm_label": "rosterbutton()"
     },
     {
@@ -2281,8 +2347,8 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "src_components_rostersheet_rostersheet",
-      "community": 29,
-      "community_name": "game/types.ts",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "rostersheet()"
     },
     {
@@ -2380,8 +2446,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_statusline",
-      "community": 33,
-      "community_name": "stepFeedback.ts",
+      "community": 36,
+      "community_name": "StatusLine.tsx",
       "norm_label": "statusline.tsx"
     },
     {
@@ -2391,8 +2457,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "src_components_statusline_statusactor",
-      "community": 33,
-      "community_name": "stepFeedback.ts",
+      "community": 36,
+      "community_name": "StatusLine.tsx",
       "norm_label": "statusactor"
     },
     {
@@ -2402,8 +2468,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "src_components_statusline_statuslineprops",
-      "community": 33,
-      "community_name": "stepFeedback.ts",
+      "community": 36,
+      "community_name": "StatusLine.tsx",
       "norm_label": "statuslineprops"
     },
     {
@@ -2413,8 +2479,8 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "src_components_statusline_statusline",
-      "community": 33,
-      "community_name": "stepFeedback.ts",
+      "community": 36,
+      "community_name": "StatusLine.tsx",
       "norm_label": "statusline()"
     },
     {
@@ -2424,8 +2490,8 @@
       "source_location": "L70",
       "_origin": "ast",
       "id": "src_components_statusline_phasetext",
-      "community": 33,
-      "community_name": "stepFeedback.ts",
+      "community": 36,
+      "community_name": "StatusLine.tsx",
       "norm_label": "phasetext()"
     },
     {
@@ -2435,8 +2501,8 @@
       "source_location": "L93",
       "_origin": "ast",
       "id": "src_components_statusline_calloutfor",
-      "community": 33,
-      "community_name": "stepFeedback.ts",
+      "community": 36,
+      "community_name": "StatusLine.tsx",
       "norm_label": "calloutfor()"
     },
     {
@@ -2446,8 +2512,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_titlediorama",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "titlediorama.tsx"
     },
     {
@@ -2457,8 +2523,8 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "src_components_titlediorama_flock",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "flock"
     },
     {
@@ -2468,8 +2534,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "src_components_titlediorama_titlediorama",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "titlediorama()"
     },
     {
@@ -2823,6 +2889,50 @@
       "community": 32,
       "community_name": "WaterPuddleSvg.tsx",
       "norm_label": "water_recipes"
+    },
+    {
+      "label": "fieldNotes.ts",
+      "file_type": "code",
+      "source_file": "src/content/fieldNotes.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_content_fieldnotes",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
+      "norm_label": "fieldnotes.ts"
+    },
+    {
+      "label": "FieldNote",
+      "file_type": "code",
+      "source_file": "src/content/fieldNotes.ts",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "src_content_fieldnotes_fieldnote",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
+      "norm_label": "fieldnote"
+    },
+    {
+      "label": "FIELD_NOTES",
+      "file_type": "code",
+      "source_file": "src/content/fieldNotes.ts",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "src_content_fieldnotes_field_notes",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
+      "norm_label": "field_notes"
+    },
+    {
+      "label": "fieldNoteFor()",
+      "file_type": "code",
+      "source_file": "src/content/fieldNotes.ts",
+      "source_location": "L104",
+      "_origin": "ast",
+      "id": "src_content_fieldnotes_fieldnotefor",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
+      "norm_label": "fieldnotefor()"
     },
     {
       "label": "Game.ts",
@@ -3557,8 +3667,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "src_game_ai_types_knownfish",
-      "community": 19,
-      "community_name": "stepFeedback.ts",
+      "community": 17,
+      "community_name": "legacy.ts",
       "norm_label": "knownfish"
     },
     {
@@ -3997,8 +4107,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "src_game_fish_fish_points",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
       "norm_label": "fish_points"
     },
     {
@@ -4019,8 +4129,8 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "src_game_fish_fish_counts",
-      "community": 17,
-      "community_name": "legacy.ts",
+      "community": 5,
+      "community_name": "StatusLine.tsx",
       "norm_label": "fish_counts"
     },
     {
@@ -4195,8 +4305,8 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "src_game_kingfishers_kingfisher",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "kingfisher"
     },
     {
@@ -4415,8 +4525,8 @@
       "source_location": "L85",
       "_origin": "ast",
       "id": "src_game_powers_speciesidforseat",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 31,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "speciesidforseat()"
     },
     {
@@ -4459,8 +4569,8 @@
       "source_location": "L155",
       "_origin": "ast",
       "id": "src_game_powers_powerforseat",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 31,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "powerforseat()"
     },
     {
@@ -4547,8 +4657,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "src_game_reach_reachablezones",
-      "community": 4,
-      "community_name": "presentation.ts",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "reachablezones()"
     },
     {
@@ -4800,8 +4910,8 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "src_game_types_fishtype",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 17,
+      "community_name": "legacy.ts",
       "norm_label": "fishtype"
     },
     {
@@ -4899,8 +5009,8 @@
       "source_location": "L48",
       "_origin": "ast",
       "id": "src_game_types_stepselection",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 29,
+      "community_name": "game/types.ts",
       "norm_label": "stepselection"
     },
     {
@@ -5251,8 +5361,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_lib_presentation",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "presentation.ts"
     },
     {
@@ -5262,8 +5372,8 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "src_lib_presentation_species_short",
-      "community": 4,
-      "community_name": "presentation.ts",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "species_short"
     },
     {
@@ -5295,8 +5405,8 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "src_lib_presentation_kingfisher",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "kingfisher()"
     },
     {
@@ -5306,8 +5416,8 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "src_lib_presentation_seatkingfisher",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 31,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "seatkingfisher()"
     },
     {
@@ -5317,8 +5427,8 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "src_lib_presentation_playercolor",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 31,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "playercolor()"
     },
     {
@@ -5328,8 +5438,8 @@
       "source_location": "L41",
       "_origin": "ast",
       "id": "src_lib_presentation_speciesname",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 31,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "speciesname()"
     },
     {
@@ -5339,8 +5449,8 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "src_lib_presentation_speciesshort",
-      "community": 29,
-      "community_name": "game/types.ts",
+      "community": 7,
+      "community_name": "types.ts",
       "norm_label": "speciesshort()"
     },
     {
@@ -5394,8 +5504,8 @@
       "source_location": "L76",
       "_origin": "ast",
       "id": "src_lib_presentation_perchlabel",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 34,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "perchlabel()"
     },
     {
@@ -5405,8 +5515,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_lib_sfx",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "sfx.ts"
     },
     {
@@ -5416,8 +5526,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "src_lib_sfx_sfxid",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "sfxid"
     },
     {
@@ -5427,8 +5537,8 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "src_lib_sfx_buffers",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "buffers"
     },
     {
@@ -5438,8 +5548,8 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "src_lib_sfx_muted",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "muted()"
     },
     {
@@ -5449,8 +5559,8 @@
       "source_location": "L44",
       "_origin": "ast",
       "id": "src_lib_sfx_ensurectx",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "ensurectx()"
     },
     {
@@ -5460,8 +5570,8 @@
       "source_location": "L57",
       "_origin": "ast",
       "id": "src_lib_sfx_loadbuffer",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "loadbuffer()"
     },
     {
@@ -5471,8 +5581,8 @@
       "source_location": "L72",
       "_origin": "ast",
       "id": "src_lib_sfx_playbuffer",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "playbuffer()"
     },
     {
@@ -5482,8 +5592,8 @@
       "source_location": "L88",
       "_origin": "ast",
       "id": "src_lib_sfx_playsfx",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "playsfx()"
     },
     {
@@ -5493,8 +5603,8 @@
       "source_location": "L101",
       "_origin": "ast",
       "id": "src_lib_sfx_startambience",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "startambience()"
     },
     {
@@ -5504,8 +5614,8 @@
       "source_location": "L120",
       "_origin": "ast",
       "id": "src_lib_sfx_stopambience",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "stopambience()"
     },
     {
@@ -5515,8 +5625,8 @@
       "source_location": "L132",
       "_origin": "ast",
       "id": "src_lib_sfx_cueroundadvancesfx",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "cueroundadvancesfx()"
     },
     {
@@ -5526,8 +5636,8 @@
       "source_location": "L140",
       "_origin": "ast",
       "id": "src_lib_sfx_cuewinsfx",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 31,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "cuewinsfx()"
     },
     {
@@ -5614,8 +5724,8 @@
       "source_location": "L49",
       "_origin": "ast",
       "id": "src_lib_stepfeedback_playerreactions",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 33,
+      "community_name": "stepFeedback.ts",
       "norm_label": "playerreactions()"
     },
     {
@@ -5636,8 +5746,8 @@
       "source_location": "L73",
       "_origin": "ast",
       "id": "src_lib_stepfeedback_outcomestory",
-      "community": 33,
-      "community_name": "stepFeedback.ts",
+      "community": 36,
+      "community_name": "StatusLine.tsx",
       "norm_label": "outcomestory()"
     },
     {
@@ -5680,8 +5790,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_lib_stepsfx",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "stepsfx.ts"
     },
     {
@@ -5691,8 +5801,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "src_lib_stepsfx_outcome_order",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "outcome_order"
     },
     {
@@ -5702,8 +5812,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "src_lib_stepsfx_reveal_sfx",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "reveal_sfx"
     },
     {
@@ -5713,8 +5823,8 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "src_lib_stepsfx_fishsfx",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "fishsfx()"
     },
     {
@@ -5724,8 +5834,8 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "src_lib_stepsfx_revealed",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "revealed()"
     },
     {
@@ -5735,8 +5845,8 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "src_lib_stepsfx_cuestepsfx",
-      "community": 7,
-      "community_name": "types.ts",
+      "community": 1,
+      "community_name": "App.tsx",
       "norm_label": "cuestepsfx()"
     },
     {
@@ -5856,8 +5966,8 @@
       "source_location": "L99",
       "_origin": "ast",
       "id": "src_profile_store_recordmatchonce",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 31,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "recordmatchonce()"
     },
     {
@@ -5867,8 +5977,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_profile_summarize",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 31,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "summarize.ts"
     },
     {
@@ -5878,8 +5988,8 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "src_profile_summarize_countcards",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 31,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "countcards()"
     },
     {
@@ -5889,8 +5999,8 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "src_profile_summarize_countfish",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 31,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "countfish()"
     },
     {
@@ -5900,8 +6010,8 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "src_profile_summarize_placeof",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 31,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "placeof()"
     },
     {
@@ -5911,8 +6021,8 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "src_profile_summarize_summarizematch",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 31,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "summarizematch()"
     },
     {
@@ -5944,8 +6054,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "src_profile_types_outcometallies",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 31,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "outcometallies"
     },
     {
@@ -5955,8 +6065,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "src_profile_types_lifetimestats",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 17,
+      "community_name": "legacy.ts",
       "norm_label": "lifetimestats"
     },
     {
@@ -6021,8 +6131,8 @@
       "source_location": "L58",
       "_origin": "ast",
       "id": "src_profile_types_emptyfishcounts",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 31,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "emptyfishcounts()"
     },
     {
@@ -6032,8 +6142,8 @@
       "source_location": "L62",
       "_origin": "ast",
       "id": "src_profile_types_emptycardcounts",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 31,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "emptycardcounts()"
     },
     {
@@ -6043,8 +6153,8 @@
       "source_location": "L66",
       "_origin": "ast",
       "id": "src_profile_types_emptyoutcomes",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 31,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "emptyoutcomes()"
     },
     {
@@ -6054,8 +6164,8 @@
       "source_location": "L70",
       "_origin": "ast",
       "id": "src_profile_types_emptystats",
-      "community": 5,
-      "community_name": "StatusLine.tsx",
+      "community": 31,
+      "community_name": "OutcomeSplash.tsx",
       "norm_label": "emptystats()"
     },
     {
@@ -7140,7 +7250,7 @@
       "label": "Progress",
       "file_type": "document",
       "source_file": "DESIGN.md",
-      "source_location": "L47",
+      "source_location": "L48",
       "_origin": "ast",
       "id": "design_progress",
       "community": 10,
@@ -7151,7 +7261,7 @@
       "label": "Scaffolding",
       "file_type": "document",
       "source_file": "DESIGN.md",
-      "source_location": "L49",
+      "source_location": "L50",
       "_origin": "ast",
       "id": "design_scaffolding",
       "community": 10,
@@ -7162,7 +7272,7 @@
       "label": "Core Types",
       "file_type": "document",
       "source_file": "DESIGN.md",
-      "source_location": "L56",
+      "source_location": "L57",
       "_origin": "ast",
       "id": "design_core_types",
       "community": 10,
@@ -7173,7 +7283,7 @@
       "label": "Clarified Rules (2026-08-06)",
       "file_type": "document",
       "source_file": "DESIGN.md",
-      "source_location": "L62",
+      "source_location": "L63",
       "_origin": "ast",
       "id": "design_clarified_rules_2026_08_06",
       "community": 10,
@@ -7184,7 +7294,7 @@
       "label": "To Build Next",
       "file_type": "document",
       "source_file": "DESIGN.md",
-      "source_location": "L75",
+      "source_location": "L76",
       "_origin": "ast",
       "id": "design_to_build_next",
       "community": 10,
@@ -7195,7 +7305,7 @@
       "label": "Implementation Notes",
       "file_type": "document",
       "source_file": "DESIGN.md",
-      "source_location": "L120",
+      "source_location": "L122",
       "_origin": "ast",
       "id": "design_implementation_notes",
       "community": 10,
@@ -11649,7 +11759,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_startscreen",
-      "target": "src_components_nestpanel",
+      "target": "src_components_nest",
       "confidence_score": 1.0
     },
     {
@@ -11661,7 +11771,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_startscreen",
-      "target": "src_components_nestpanel_nestpanel",
+      "target": "src_components_nest_nest",
       "confidence_score": 1.0
     },
     {
@@ -11834,7 +11944,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/StartScreen.tsx",
-      "source_location": "L65",
+      "source_location": "L68",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_startscreen_startscreen",
@@ -11847,7 +11957,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/StartScreen.tsx",
-      "source_location": "L69",
+      "source_location": "L72",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_startscreen_startscreen",
@@ -14784,34 +14894,69 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "src/components/NestPanel.tsx",
+      "source_file": "src/components/Nest.tsx",
       "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "src_components_nestpanel",
-      "target": "src_components_nestpanel_flock",
+      "source": "src_components_nest",
+      "target": "src_components_nest_filter",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "src/components/NestPanel.tsx",
+      "source_file": "src/components/Nest.tsx",
       "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "src_components_nestpanel",
-      "target": "src_components_nestpanel_nestpanel",
+      "source": "src_components_nest",
+      "target": "src_components_nest_nest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/Nest.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_nest",
+      "target": "src_components_nest_tab",
       "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "src/components/NestPanel.tsx",
-      "source_location": "L1",
+      "source_file": "src/components/Nest.tsx",
+      "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "src_components_nestpanel",
+      "source": "src_components_nest",
+      "target": "src_components_nestflock",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/Nest.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_nest",
+      "target": "src_components_nestflock_nestflock",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/Nest.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_nest",
       "target": "src_game_kingfishers",
       "confidence_score": 1.0
     },
@@ -14819,83 +14964,23 @@
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "src/components/NestPanel.tsx",
-      "source_location": "L1",
+      "source_file": "src/components/Nest.tsx",
+      "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "src_components_nestpanel",
+      "source": "src_components_nest",
       "target": "src_game_kingfishers_kingfisherid",
       "confidence_score": 1.0
     },
     {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/NestPanel.tsx",
-      "source_location": "L1",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_components_nestpanel",
-      "target": "src_game_kingfishers_kingfishers",
-      "confidence_score": 1.0
-    },
-    {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "src/components/NestPanel.tsx",
-      "source_location": "L2",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_components_nestpanel",
-      "target": "src_game_powers",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/NestPanel.tsx",
-      "source_location": "L2",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_components_nestpanel",
-      "target": "src_game_powers_species_powers",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/NestPanel.tsx",
+      "source_file": "src/components/Nest.tsx",
       "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "src_components_nestpanel",
-      "target": "src_lib_presentation",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/NestPanel.tsx",
-      "source_location": "L3",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_components_nestpanel",
-      "target": "src_lib_presentation_spritescalestyle",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/NestPanel.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_components_nestpanel",
+      "source": "src_components_nest",
       "target": "src_profile_store",
       "confidence_score": 1.0
     },
@@ -14903,11 +14988,11 @@
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "src/components/NestPanel.tsx",
-      "source_location": "L4",
+      "source_file": "src/components/Nest.tsx",
+      "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "src_components_nestpanel",
+      "source": "src_components_nest",
       "target": "src_profile_store_loadprofile",
       "confidence_score": 1.0
     },
@@ -14915,11 +15000,11 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "src/components/NestPanel.tsx",
-      "source_location": "L7",
+      "source_file": "src/components/Nest.tsx",
+      "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "src_components_nestpanel",
+      "source": "src_components_nest",
       "target": "src_profile_types",
       "confidence_score": 1.0
     },
@@ -14927,11 +15012,11 @@
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "src/components/NestPanel.tsx",
-      "source_location": "L7",
+      "source_file": "src/components/Nest.tsx",
+      "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "src_components_nestpanel",
+      "source": "src_components_nest",
       "target": "src_profile_types_card_types",
       "confidence_score": 1.0
     },
@@ -14939,47 +15024,189 @@
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "src/components/NestPanel.tsx",
-      "source_location": "L7",
+      "source_file": "src/components/Nest.tsx",
+      "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "src_components_nestpanel",
+      "source": "src_components_nest",
       "target": "src_profile_types_fish_types",
       "confidence_score": 1.0
     },
     {
-      "relation": "imports",
-      "context": "import",
+      "relation": "calls",
+      "context": "call",
       "confidence": "EXTRACTED",
-      "source_file": "src/components/NestPanel.tsx",
-      "source_location": "L7",
+      "confidence_score": 1.0,
+      "source_file": "src/components/Nest.tsx",
+      "source_location": "L13",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "src_components_nestpanel",
-      "target": "src_profile_types_locked_birds",
+      "source": "src_components_nest_nest",
+      "target": "src_profile_store_loadprofile"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/NestFlock.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_nestflock",
+      "target": "src_components_nestflock_filter",
       "confidence_score": 1.0
     },
     {
-      "relation": "imports",
-      "context": "import",
+      "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "src/components/NestPanel.tsx",
-      "source_location": "L6",
+      "source_file": "src/components/NestFlock.tsx",
+      "source_location": "L11",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "src_components_nestpanel",
-      "target": "src_profile_types_unlockid",
+      "source": "src_components_nestflock",
+      "target": "src_components_nestflock_nestflock",
       "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "src/components/NestPanel.tsx",
+      "source_file": "src/components/NestFlock.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_nestflock",
+      "target": "src_components_nestspeciessheet",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/NestFlock.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_nestflock",
+      "target": "src_components_nestspeciessheet_nestspeciessheet",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/NestFlock.tsx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_nestflock",
+      "target": "src_game_kingfishers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/NestFlock.tsx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_nestflock",
+      "target": "src_game_kingfishers_kingfisherid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/NestFlock.tsx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_nestflock",
+      "target": "src_game_kingfishers_kingfishers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/NestFlock.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_nestflock",
+      "target": "src_game_powers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/NestFlock.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_nestflock",
+      "target": "src_game_powers_species_order",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/NestFlock.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_nestflock",
+      "target": "src_lib_presentation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/NestFlock.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_nestflock",
+      "target": "src_lib_presentation_spritescalestyle",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/NestFlock.tsx",
       "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "src_components_nestpanel",
+      "source": "src_components_nestflock",
+      "target": "src_profile_types",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/NestFlock.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_nestflock",
+      "target": "src_profile_types_profile",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/NestFlock.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_nestflock",
       "target": "src_profile_unlocks",
       "confidence_score": 1.0
     },
@@ -14987,23 +15214,202 @@
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "src/components/NestPanel.tsx",
-      "source_location": "L5",
+      "source_file": "src/components/NestFlock.tsx",
+      "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "src_components_nestpanel",
+      "source": "src_components_nestflock",
       "target": "src_profile_unlocks_isbirdunlocked",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/components/NestFlock.tsx",
+      "source_location": "L75",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_nestflock_nestflock",
+      "target": "src_lib_presentation_spritescalestyle"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/components/NestFlock.tsx",
+      "source_location": "L26",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_nestflock_nestflock",
+      "target": "src_profile_unlocks_isbirdunlocked"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/NestSpeciesSheet.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_nestspeciessheet",
+      "target": "src_components_nestspeciessheet_nestspeciessheet",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/NestSpeciesSheet.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_nestspeciessheet",
+      "target": "src_content_fieldnotes",
       "confidence_score": 1.0
     },
     {
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "src/components/NestPanel.tsx",
+      "source_file": "src/components/NestSpeciesSheet.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_nestspeciessheet",
+      "target": "src_content_fieldnotes_fieldnotefor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/NestSpeciesSheet.tsx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_nestspeciessheet",
+      "target": "src_game_kingfishers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/NestSpeciesSheet.tsx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_nestspeciessheet",
+      "target": "src_game_kingfishers_kingfisherid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/NestSpeciesSheet.tsx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_nestspeciessheet",
+      "target": "src_game_kingfishers_kingfishers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/NestSpeciesSheet.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_nestspeciessheet",
+      "target": "src_game_powers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/NestSpeciesSheet.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_nestspeciessheet",
+      "target": "src_game_powers_species_powers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/NestSpeciesSheet.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_nestspeciessheet",
+      "target": "src_lib_presentation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/NestSpeciesSheet.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_nestspeciessheet",
+      "target": "src_lib_presentation_spritescalestyle",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/NestSpeciesSheet.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_nestspeciessheet",
+      "target": "src_profile_types",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/NestSpeciesSheet.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_nestspeciessheet",
+      "target": "src_profile_types_unlockid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/NestSpeciesSheet.tsx",
       "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "src_components_nestpanel",
+      "source": "src_components_nestspeciessheet",
+      "target": "src_profile_unlocks",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/NestSpeciesSheet.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_nestspeciessheet",
       "target": "src_profile_unlocks_unlock_meta",
       "confidence_score": 1.0
     },
@@ -15012,36 +15418,24 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "src/components/NestPanel.tsx",
-      "source_location": "L50",
+      "source_file": "src/components/NestSpeciesSheet.tsx",
+      "source_location": "L20",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "src_components_nestpanel_nestpanel",
+      "source": "src_components_nestspeciessheet_nestspeciessheet",
+      "target": "src_content_fieldnotes_fieldnotefor"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/components/NestSpeciesSheet.tsx",
+      "source_location": "L41",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_nestspeciessheet_nestspeciessheet",
       "target": "src_lib_presentation_spritescalestyle"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/components/NestPanel.tsx",
-      "source_location": "L13",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_components_nestpanel_nestpanel",
-      "target": "src_profile_store_loadprofile"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/components/NestPanel.tsx",
-      "source_location": "L37",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_components_nestpanel_nestpanel",
-      "target": "src_profile_unlocks_isbirdunlocked"
     },
     {
       "relation": "contains",
@@ -17295,6 +17689,63 @@
       "_origin": "ast",
       "source": "src_components_scene_waterrecipes",
       "target": "src_components_scene_waterrecipes_water_recipes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/content/fieldNotes.ts",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_content_fieldnotes",
+      "target": "src_content_fieldnotes_field_notes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/content/fieldNotes.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_content_fieldnotes",
+      "target": "src_content_fieldnotes_fieldnote",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/content/fieldNotes.ts",
+      "source_location": "L104",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_content_fieldnotes",
+      "target": "src_content_fieldnotes_fieldnotefor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/content/fieldNotes.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_content_fieldnotes",
+      "target": "src_game_kingfishers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/content/fieldNotes.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_content_fieldnotes",
+      "target": "src_game_kingfishers_kingfisherid",
       "confidence_score": 1.0
     },
     {
@@ -27923,7 +28374,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "DESIGN.md",
-      "source_location": "L47",
+      "source_location": "L48",
       "weight": 1.0,
       "_origin": "ast",
       "source": "design_kingfisher_dive_crash_design_progress",
@@ -27956,7 +28407,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "DESIGN.md",
-      "source_location": "L62",
+      "source_location": "L63",
       "weight": 1.0,
       "_origin": "ast",
       "source": "design_progress",
@@ -27967,7 +28418,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "DESIGN.md",
-      "source_location": "L56",
+      "source_location": "L57",
       "weight": 1.0,
       "_origin": "ast",
       "source": "design_progress",
@@ -27978,7 +28429,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "DESIGN.md",
-      "source_location": "L120",
+      "source_location": "L122",
       "weight": 1.0,
       "_origin": "ast",
       "source": "design_progress",
@@ -27989,7 +28440,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "DESIGN.md",
-      "source_location": "L49",
+      "source_location": "L50",
       "weight": 1.0,
       "_origin": "ast",
       "source": "design_progress",
@@ -28000,7 +28451,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "DESIGN.md",
-      "source_location": "L75",
+      "source_location": "L76",
       "weight": 1.0,
       "_origin": "ast",
       "source": "design_progress",
@@ -28427,5 +28878,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "31e42ef9f5395f12d6df9870e92161cf52695e10"
+  "built_at_commit": "a00cc3cac1f2efd45fb21f4fedaf6baf8312de2c"
 }

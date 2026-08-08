@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { kingfisher } from './lib/presentation'
 import { playSfx, startAmbience } from './lib/sfx'
-import { NestPanel } from './components/NestPanel'
+import { Nest } from './components/Nest'
 import { GameLobby } from './components/GameLobby'
 import { CreateGame } from './components/CreateGame'
 import { CreateOnline } from './components/CreateOnline'
@@ -11,7 +11,7 @@ import styles from './StartScreen.module.css'
 
 export type { StartConfig }
 
-type View = 'menu' | 'lobby' | 'createBots' | 'createOnline'
+type View = 'menu' | 'lobby' | 'createBots' | 'createOnline' | 'nest'
 
 function cueMenu() {
   playSfx('card_select')
@@ -20,7 +20,10 @@ function cueMenu() {
 
 export function StartScreen({ onStart }: { onStart: (config: StartConfig) => void }) {
   const [view, setView] = useState<View>('menu')
-  const [nestOpen, setNestOpen] = useState(false)
+
+  if (view === 'nest') {
+    return <Nest onBack={() => setView('menu')} />
+  }
 
   if (view === 'lobby') {
     return (
@@ -77,7 +80,7 @@ export function StartScreen({ onStart }: { onStart: (config: StartConfig) => voi
           className={styles.plaque}
           onClick={() => {
             cueMenu()
-            setNestOpen(true)
+            setView('nest')
           }}
         >
           <span className={styles.nestIcon} aria-hidden>
@@ -85,7 +88,7 @@ export function StartScreen({ onStart }: { onStart: (config: StartConfig) => voi
           </span>
           <span className={styles.copy}>
             <span className={styles.label}>Nest</span>
-            <span className={styles.hint}>Field notes &amp; unlocks</span>
+            <span className={styles.hint}>Field guide &amp; unlocks</span>
           </span>
         </button>
         <button
@@ -104,7 +107,6 @@ export function StartScreen({ onStart }: { onStart: (config: StartConfig) => voi
         </button>
       </nav>
 
-      {nestOpen && <NestPanel onClose={() => setNestOpen(false)} />}
     </main>
   )
 }
