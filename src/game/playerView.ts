@@ -3,6 +3,8 @@ import type { GameState, StepSelection, ZoneFish } from './types'
 import { HIDDEN_FISH } from './types'
 
 function revealZone(G: GameState, playerID: string, zoneId: number): boolean {
+  if (G.zones[zoneId]?.kind === 'clear') return true
+  if (G.faceUp.includes(zoneId)) return true
   return G.sightlinePeek[playerID] === zoneId || (G.peeked[playerID]?.includes(zoneId) ?? false)
 }
 

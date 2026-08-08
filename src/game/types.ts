@@ -22,6 +22,9 @@ export function isFish(fish: ZoneFish): fish is FishCard {
 
 export type PerchLevel = 'high' | 'low'
 
+/** Water-tile terrain. `open` is classic flat water. */
+export type ZoneKind = 'open' | 'eddy' | 'rapids' | 'clear'
+
 export interface Perch {
   id: string
   level: PerchLevel
@@ -32,6 +35,7 @@ export interface Perch {
 export interface RiverZone {
   id: number
   fish: ZoneFish
+  kind: ZoneKind
 }
 
 export type GamePhase =
@@ -113,10 +117,15 @@ export interface GameState {
   sightlinePeek: Record<string, number>
   /**
    * Zones revealed face-up to each player (Hover peeks + sightline). Persists
-   * across rounds: drifts +1 with the fish, drops when a fish washes off or
-   * leaves the river (catch / crash discard).
+   * across rounds: drifts with the fish, drops when a fish washes off or
+   * leaves the river (catch / discard).
    */
   peeked: Record<string, number[]>
+  /**
+   * Zones publicly face-up for everyone (Clear shallows + fish that left Clear).
+   * Drifts with the fish like `peeked`; never covers a restocked unknown card.
+   */
+  faceUp: number[]
   /** Players who have locked in a selection / placement for the current step. */
   locked: Record<string, boolean>
   /** Players who have resolved their Hover move in the current hover phase. */
@@ -144,6 +153,11 @@ export interface GameState {
    * Off for tutorial / classic symmetric play.
    */
   speciesPowers: boolean
+  /**
+   * How many special water tiles (0–3). Kinds and seats are rolled at setup.
+   * 0 = classic flat water (tutorial / default Create game).
+   */
+  specialZones: number
   /** Seat → species (Create game / gather picks; bots fill the rest offline). */
   speciesBySeat: Record<string, KingfisherID>
 }

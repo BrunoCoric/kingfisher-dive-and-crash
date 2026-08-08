@@ -16,6 +16,7 @@ import { endOfRoundCleanup } from './cleanup'
 import { filterPlayerView } from './playerView'
 import { enumerateLegalMoves } from './enumerate'
 import { buildSpeciesBySeat, SPECIES_ORDER, openHoverTargets } from './powers'
+import { assignZoneKinds, clampSpecialZones } from './zones'
 import type { KingfisherID } from './kingfishers'
 import type { FishCard, FishType, GameState, GamePhase, Perch, PlayerState } from './types'
 
@@ -41,6 +42,8 @@ export interface KingfisherSetupData {
   tutorial?: boolean
   /** Soft species passives; default false (tutorial / headless). */
   speciesPowers?: boolean
+  /** Special water tiles 0–3 (Rapids → Eddy → Clear); default 0. */
+  specialZones?: number
   /** Human's chosen bird (vs-bots). Bots fill remaining flock seats. */
   humanSpecies?: KingfisherID
   /** Full seat→species map (Create game bot picker). Overrides flock fill. */
@@ -60,11 +63,11 @@ function fish(type: FishType, id: string): FishCard {
 /** Deterministic starting river for the scripted tutorial (3 players → 5 zones). */
 function tutorialRiver(): { zones: GameState['zones']; deck: FishCard[] } {
   const zones = [
-    { id: 0, fish: fish('Trout', 'tut-z0') },
-    { id: 1, fish: fish('Minnow', 'tut-z1') },
-    { id: 2, fish: fish('Perch', 'tut-z2') },
-    { id: 3, fish: fish('Minnow', 'tut-z3') },
-    { id: 4, fish: fish('Trout', 'tut-z4') },
+    { id: 0, kind: 'open' as const, fish: fish('Trout', 'tut-z0') },
+    { id: 1, kind: 'open' as const, fish: fish('Minnow', 'tut-z1') },
+    { id: 2, kind: 'open' as const, fish: fish('Perch', 'tut-z2') },
+    { id: 3, kind: 'open' as const, fish: fish('Minnow', 'tut-z3') },
+    { id: 4, kind: 'open' as const, fish: fish('Trout', 'tut-z4') },
   ]
   // pop() takes from the end. After R1 catch on z1 + drift, nulls at z0 then z2
   // fill Minnow → Perch so R2 has fish on z1 (steal) and z2 (crash) without Pike.
@@ -93,7 +96,11 @@ export function setup(
 ): GameState {
   const tutorial = setupData?.tutorial === true
   const zoneCount = riverZonesFor(ctx.numPlayers, setupData?.zoneCount)
+  const specialZones = tutorial
+    ? 0
+    : clampSpecialZones(setupData?.specialZones ?? 0, zoneCount)
   const perches = buildPerches(zoneCount)
+  const kinds = assignZoneKinds(zoneCount, specialZones, (items) => random.Shuffle([...items]))
 
   let deck: FishCard[]
   let zones: GameState['zones']
@@ -105,6 +112,7 @@ export function setup(
     deck = random.Shuffle(buildDeck(ctx.numPlayers, setupData?.deckSize))
     zones = Array.from({ length: zoneCount }, (_, i) => ({
       id: i,
+      kind: kinds[i],
       fish: deck.pop() ?? null,
     }))
   }
@@ -139,6 +147,10 @@ export function setup(
   const ready: Record<string, boolean> = {}
   for (const pid of ctx.playOrder) ready[pid] = !online
 
+  const faceUp = zones
+    .filter((z) => z.kind === 'clear' && z.fish !== null)
+    .map((z) => z.id)
+
   return {
     zones,
     perches,
@@ -157,6 +169,7 @@ export function setup(
     matchOutcomes: {},
     sightlinePeek: {},
     peeked: {},
+    faceUp,
     locked: {},
     hovered: [],
     splashes: [],
@@ -167,6 +180,7 @@ export function setup(
     online,
     ready,
     speciesPowers: setupData?.speciesPowers === true && !tutorial,
+    specialZones,
     speciesBySeat,
   }
 }

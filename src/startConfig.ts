@@ -10,6 +10,8 @@ export type StartConfig =
       botSeats: string[]
       /** Soft per-species passives; default on in Create game. */
       speciesPowers: boolean
+      /** Special water tiles 0–3; default 0 (classic flat water). */
+      specialZones: number
       /** Bird the human plays as (must be Nest-unlocked). */
       humanSpecies: KingfisherID
       /** Full seat→species map (human + chosen bot birds). */

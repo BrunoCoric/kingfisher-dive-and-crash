@@ -2,13 +2,29 @@ import type { CalloutKind, OutcomeCallout, RiverZone } from '../game/types'
 import { HIDDEN_FISH } from '../game/types'
 import type { KingfisherID } from '../game/kingfishers'
 import { KINGFISHERS } from '../game/kingfishers'
+import { ZONE_KIND_LABEL, type DriftVisual } from '../game/zones'
 import { outcomeLabel, primaryZoneCallout, type ZoneAction } from '../lib/stepFeedback'
 import { ACTION_LABEL, SPECIES_SHORT } from '../lib/presentation'
 import { ActionIcon } from './ActionIcon'
 import { FishCard } from './FishCard'
 import { FishCardBack } from './FishCardBack'
+import { EddySwirlSvg } from './scene/EddySwirlSvg'
 import { WaterPuddleSvg } from './scene/WaterPuddleSvg'
+import { ZoneKindBadge } from './ZoneKindBadge'
 import styles from './ZoneTile.module.css'
+
+const KIND_CLASS: Partial<Record<RiverZone['kind'], string>> = {
+  eddy: styles.kindEddy,
+  rapids: styles.kindRapids,
+  clear: styles.kindClear,
+}
+
+const DRIFT_CLASS: Record<Exclude<DriftVisual, null>, string> = {
+  stay: styles.fishDriftStay,
+  drift: styles.fishDrift,
+  fast: styles.fishDriftFast,
+  off: styles.fishDriftOff,
+}
 
 const BADGE_CLASS: Record<CalloutKind, string> = {
   catch: styles.badge_catch,
@@ -26,10 +42,8 @@ interface ZoneTileProps {
   influence?: 'in' | 'out' | null
   actions?: ZoneAction[]
   outcomes?: OutcomeCallout[]
-  /** End-of-round: animate this zone's fish one step downstream. */
-  drifting?: boolean
-  /** Last zone — fish washes off the board instead of landing. */
-  driftOff?: boolean
+  /** End-of-round drift cue for this zone's fish. */
+  driftVisual?: DriftVisual
   speciesBySeat: Record<string, KingfisherID>
   onClick?: () => void
 }
@@ -41,15 +55,16 @@ export function ZoneTile({
   influence,
   actions = [],
   outcomes = [],
-  drifting,
-  driftOff,
+  driftVisual = null,
   speciesBySeat,
   onClick,
 }: ZoneTileProps) {
   const primaryCallout = primaryZoneCallout(outcomes)
   const primary = primaryCallout?.kind ?? null
   const hasFish = zone.fish !== null
+  const kindClass = KIND_CLASS[zone.kind]
   const cls = [styles.zone]
+  if (kindClass) cls.push(kindClass)
   if (splashed) cls.push(styles.splashed)
   if (targetState === 'legal') cls.push(styles.legal)
   if (targetState === 'illegal') cls.push(styles.illegal)
@@ -61,16 +76,16 @@ export function ZoneTile({
   if (primary === 'steal') cls.push(styles.outcomeSteal)
 
   const fishCls = [styles.fishSlot]
-  if (drifting && hasFish) {
-    fishCls.push(driftOff ? styles.fishDriftOff : styles.fishDrift)
-  }
+  if (driftVisual && hasFish) fishCls.push(DRIFT_CLASS[driftVisual])
 
   const interactive = targetState === 'legal' || targetState === 'peek'
+  const kindName = zone.kind !== 'open' ? ZONE_KIND_LABEL[zone.kind] : null
 
   return (
     <div
       className={cls.join(' ')}
       data-zone={zone.id}
+      data-kind={zone.kind}
       data-state={targetState ?? undefined}
       onClick={interactive ? onClick : undefined}
       role={interactive ? 'button' : undefined}
@@ -78,11 +93,15 @@ export function ZoneTile({
       onKeyDown={(event) => {
         if (interactive && onClick && (event.key === 'Enter' || event.key === ' ')) onClick()
       }}
-      aria-label={`Zone ${zone.id + 1}`}
+      aria-label={kindName ? `Zone ${zone.id + 1}, ${kindName}` : `Zone ${zone.id + 1}`}
     >
       <WaterPuddleSvg zoneId={zone.id} className={styles.wash} />
       <span className={styles.grain} aria-hidden />
+      {zone.kind === 'clear' && <span className={styles.motifClear} aria-hidden />}
+      {zone.kind === 'eddy' && <EddySwirlSvg className={styles.motifEddy} />}
+      {zone.kind === 'rapids' && <span className={styles.motifRapids} aria-hidden />}
       <span className={styles.label}>{zone.id + 1}</span>
+      {zone.kind !== 'open' && <ZoneKindBadge kind={zone.kind} />}
       <div className={fishCls.join(' ')}>
         {zone.fish === HIDDEN_FISH ? (
           <FishCardBack />

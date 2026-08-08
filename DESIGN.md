@@ -20,11 +20,12 @@ Single source of truth for implementation status. Refer to `README.md` for the g
   - `types.ts` — shared types/interfaces
   - `cards.ts` — action card data
   - `fish.ts` — fish deck data & builder; zone/deck defaults + create-game overrides
+  - `zones.ts` — zone kinds (Clear / Eddy / Rapids), scenic layout, drift plan
   - `Game.ts` — boardgame.io game config (setup, moves, phases)
   - `reach.ts` — perch reach and adjacent-perch geometry
   - `moves.ts` — validated simultaneous card selection
   - `resolution.ts` — Hover / Splash / Dive / Drop priority resolution
-  - `cleanup.ts` — fish drift, restock, hand reset, and winner selection
+  - `cleanup.ts` — fish drift (zone-kind aware), restock, hand reset, and winner selection
   - `enumerate.ts` — legal-move enumeration (incl. `skipTurn` fallback)
   - `bot.ts` — smart `KingfisherBot` + re-export of legacy bot
   - `ai/` — belief, fish-drift memory, scoring, softmax select, legacy greedy
@@ -59,6 +60,8 @@ Single source of truth for implementation status. Refer to `README.md` for the g
 - [x] Card data in `cards.ts` (Dive / Drop / Splash / Hover)
 - [x] Fish deck builder in `fish.ts` (per player count)
 - [x] Create game / Create online: optional water-zone count (4–7) and fish-deck size (scaled mix from the player-count recipe)
+- [x] Special zones (optional count 0–3): `ZoneKind` Clear / Eddy / Rapids + open water (`zones.ts`); Create game / Create online stepper (default 0); match randomly picks that many kinds from the pool and random seats; tutorial forced 0; Rules sheet lists kinds on the board. Smoke: `npx tsx _zones_smoke.mts`.
+- [x] Special-zone river UI: distinct water wash + motif per kind (Clear sparkle / Eddy swirl / Rapids foam); `ZoneKindBadge` chip under the zone number — tap opens a tip with `ZONE_KIND_BLURB` (stays tappable on dimmed illegal targets).
 
 ### Clarified Rules (2026-08-06)
 - Fish deck totals (code `fish.ts` is authoritative): 2p:25, 3p:32, 4p:39, 5p:43.
@@ -131,6 +134,7 @@ Single source of truth for implementation status. Refer to `README.md` for the g
 - **Hidden info:** `filterPlayerView` keeps hands, pending selections, peeks, and deck faces private; master state lives on the server for SocketIO matches. Online clients run with `debug: false`. Hand UI only reads the local seat’s hand.
 - **Gather phase:** `G.online` from setupData; starts as `gather` then → `placement`. Offline paths auto-`endPhase` in gather `onBegin`.
 - **Species Powers (optional):** `G.speciesPowers` from setup. Same 4-card deck & crash principle; helpers in `powers.ts` (`playerReach`, `openHoverTargets`, `canSightline`, `hasPower`). Common skips crash extra discard; Pied 2-hop Hover; Dwarf high sightline; Belted low→high reach; Azure first Pike skips Minnow tax (`pikeShieldUsed`); Yellow-billed solo Splash peeks that zone (`sunBill`); Banded blocked Dive peeks that zone (`barredWatch`); Green Crash peeks that zone (`speckledWing`); Kookaburra blocked Dive returns Dive to hand (`heartyDive`). Smoke: `npx tsx _powers_smoke.mts`.
+- **Special zones (optional count):** `G.specialZones` from setup (0–3, default 0). `assignZoneKinds(zoneCount, n, shuffle)` picks `n` distinct kinds from Clear/Eddy/Rapids and assigns each to a random seat (setup uses `random.Shuffle`). Drift via `planFishDrift`: Eddy fish stay; upstream fish skip occupied Eddies; Rapids step +2 (off-map discard past the end); open/Clear +1. Clear fish are public (`faceUp`); when they leave Clear the reveal travels with them until catch/wash-off (restocks stay hidden). Peek memory / bot fish memory use the same destination helper. Tutorial / headless / Create default stay at 0 (classic +1 conveyor). On the river, each special puddle gets a tinted wash + motif; `ZoneKindBadge` (under the zone number) opens a tip with the kind blurb so players don’t have to dig into Rules.
 - **Tutorial mode:** Opens with one primer slide (`src/tutorial/intro.ts` / `TutorialIntro`) — goal + the Dive / Splash / Drop / Crash spine — then the Local client mounts. `setup(..., { humanSeats: ['0'], tutorial: true })` deals a fixed river/deck and First Player `0`. Round 1 teaches catch + scout; round 2 teaches Splash block, Drop steal, and Dive Crash. Lessons derive from phase/round/outcomes (`src/tutorial/lesson.ts`); review beats use Got it before unlocking the next gate. Edge cases (Pike, Drop+Drop) stay in the Rules cheatsheet.
 - The opening placement phase randomizes the First Player, then lets each player choose one unoccupied perch in clockwise order before the first simultaneous card step.
 - Crash never discards the zone’s fish (Splash+Splash, Dive+Dive, Drop+Drop). Crashers spend the played card and discard one extra random hand card. Solo Dive grant is deferred until after Drops so a Drop+Drop Crash can return the fish to the zone.

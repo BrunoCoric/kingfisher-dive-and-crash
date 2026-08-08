@@ -5,13 +5,13 @@
     "semantic_hash": ""
   },
   "src/App.tsx": {
-    "mtime": 1786218171.969211,
-    "ast_hash": "0f0fd0711e5331e14ab3b50845bacd8f",
+    "mtime": 1786219867.504662,
+    "ast_hash": "c992b9c5a7f13cfa781add862a25de26",
     "semantic_hash": ""
   },
   "src/Board.tsx": {
-    "mtime": 1786218241.796808,
-    "ast_hash": "4024cda91f8e98c256c505eb4260b52d",
+    "mtime": 1786219934.1877813,
+    "ast_hash": "293fb95413ec3b7fd8087dd690fb3440",
     "semantic_hash": ""
   },
   "src/components/ActionCard.tsx": {
@@ -30,28 +30,28 @@
     "semantic_hash": ""
   },
   "src/components/Hand.tsx": {
-    "mtime": 1786218141.135754,
-    "ast_hash": "2d298a73e1ec34f592274e7f6b2beb06",
+    "mtime": 1786218488.9654655,
+    "ast_hash": "c4bb2ab9699208354fbab863ffaf90ff",
     "semantic_hash": ""
   },
   "src/components/Perch.tsx": {
-    "mtime": 1786218249.3172936,
-    "ast_hash": "14ded7a28680ba9f038a166e25586630",
+    "mtime": 1786218345.90886,
+    "ast_hash": "a8729f2ce04956d96961ecf81c5d35ed",
     "semantic_hash": ""
   },
   "src/components/RiverBoard.tsx": {
-    "mtime": 1786218240.3549426,
-    "ast_hash": "20b24db3030ccf9e38bd82b7d23554cd",
+    "mtime": 1786219468.167426,
+    "ast_hash": "b88d31bf6af488e2416ac395cfa6199f",
     "semantic_hash": ""
   },
   "src/components/ZoneTile.tsx": {
-    "mtime": 1786218140.7761047,
-    "ast_hash": "4ad6b7dbd279b05877bc2a2a868e987f",
+    "mtime": 1786220286.2351935,
+    "ast_hash": "e92a02d2c60595b907ef8bacdec3e852",
     "semantic_hash": ""
   },
   "src/game/Game.ts": {
-    "mtime": 1786193201.6901991,
-    "ast_hash": "b8937c46501e7251335b6d81163b1ae8",
+    "mtime": 1786220080.9273245,
+    "ast_hash": "344ebb73083f8adb81d2cf5094f102ed",
     "semantic_hash": ""
   },
   "src/game/cards.ts": {
@@ -60,8 +60,8 @@
     "semantic_hash": ""
   },
   "src/game/cleanup.ts": {
-    "mtime": 1786033892.0203855,
-    "ast_hash": "e4532dfa04fe6dc36e483fddf99590ac",
+    "mtime": 1786220080.4173589,
+    "ast_hash": "2354e4ae2c131673a0b5a84ff966f8e7",
     "semantic_hash": ""
   },
   "src/game/fish.ts": {
@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "src/game/types.ts": {
-    "mtime": 1786045738.3476794,
-    "ast_hash": "9ef485c2fbfc00b7a37131cc7f0c0dba",
+    "mtime": 1786220074.4146698,
+    "ast_hash": "f83b08d9c252e70ec53572194be18617",
     "semantic_hash": ""
   },
   "src/lib/presentation.ts": {
@@ -135,18 +135,18 @@
     "semantic_hash": ""
   },
   "DESIGN.md": {
-    "mtime": 1786218259.5344863,
-    "ast_hash": "8066fc749520a07619eba462234e3c5e",
+    "mtime": 1786220301.3786068,
+    "ast_hash": "92d3fae6cdda2266027637a80911b42f",
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1786194166.1937456,
-    "ast_hash": "9b2ff2c6b47e6ffbd55057d2e8c6c148",
+    "mtime": 1786220083.1429207,
+    "ast_hash": "d37dd23579f36e65c4f80de619e1dd57",
     "semantic_hash": ""
   },
   "VISUALS.md": {
-    "mtime": 1786218261.775709,
-    "ast_hash": "02b0f3bd6b60e4043f816f7ce031926b",
+    "mtime": 1786218508.505444,
+    "ast_hash": "e1a12874b0d7eeda31a0d4307da56fbd",
     "semantic_hash": ""
   },
   "index.html": {
@@ -220,8 +220,8 @@
     "semantic_hash": ""
   },
   "src/game/playerView.ts": {
-    "mtime": 1786045931.9646537,
-    "ast_hash": "5bcbf0e3e859170b652b795b1962f229",
+    "mtime": 1786220075.060628,
+    "ast_hash": "64c4b8b1c6189cc825c9e2c372aa8f13",
     "semantic_hash": ""
   },
   "_bot_ab.mts": {
@@ -255,8 +255,8 @@
     "semantic_hash": ""
   },
   "src/game/ai/memory.ts": {
-    "mtime": 1786040444.8660805,
-    "ast_hash": "1b8624481218935ee8434fba09fc9e10",
+    "mtime": 1786219438.2018995,
+    "ast_hash": "a84dc5894e6a0fecd2259eb0e79269ba",
     "semantic_hash": ""
   },
   "src/game/ai/risk.ts": {
@@ -305,8 +305,8 @@
     "semantic_hash": ""
   },
   "src/components/StatusLine.tsx": {
-    "mtime": 1786193051.4531765,
-    "ast_hash": "b0e4b55f3f241de81648c80bc8a1e6dc",
+    "mtime": 1786219933.831819,
+    "ast_hash": "227683ad197bb97715e1b79d35f72b32",
     "semantic_hash": ""
   },
   "src/lib/boardChrome.tsx": {
@@ -330,8 +330,8 @@
     "semantic_hash": ""
   },
   "src/components/RulesCheatsheet.tsx": {
-    "mtime": 1786218140.893094,
-    "ast_hash": "69790dbd8d49b6962edb0322e21b234c",
+    "mtime": 1786219929.3892787,
+    "ast_hash": "3c3ced63e3de98e2351b654b3ef5cd8b",
     "semantic_hash": ""
   },
   "src/components/scene/waterRecipes.ts": {
@@ -560,8 +560,8 @@
     "semantic_hash": ""
   },
   "src/components/CreateGame.tsx": {
-    "mtime": 1786217128.514134,
-    "ast_hash": "432a773e8cf2b88e45228b0ec07b0a3a",
+    "mtime": 1786219890.349951,
+    "ast_hash": "d79b05d25b02084c59308588933c3e3c",
     "semantic_hash": ""
   },
   "src/components/GameLobby.tsx": {
@@ -570,8 +570,8 @@
     "semantic_hash": ""
   },
   "src/startConfig.ts": {
-    "mtime": 1786193202.7694323,
-    "ast_hash": "e1ccf49d5d088d2824335fd189dc2c20",
+    "mtime": 1786219866.6841438,
+    "ast_hash": "52a67930409d3c6d2404cf34a0cc8b59",
     "semantic_hash": ""
   },
   "src/components/TitleDiorama.tsx": {
@@ -620,8 +620,8 @@
     "semantic_hash": ""
   },
   "src/components/CreateOnline.tsx": {
-    "mtime": 1786217128.8501687,
-    "ast_hash": "8c0deeb17f4a46d19509d94358b90f25",
+    "mtime": 1786219885.0405414,
+    "ast_hash": "8f3cf15d8006ea2c1b24df359ebd9248",
     "semantic_hash": ""
   },
   "src/components/GatherPanel.tsx": {
@@ -705,8 +705,8 @@
     "semantic_hash": ""
   },
   "src/components/RiverOptions.tsx": {
-    "mtime": 1786179909.5994477,
-    "ast_hash": "ac8c067da07aaca4f092189d342f1514",
+    "mtime": 1786219925.652592,
+    "ast_hash": "5221fbf424b90d9071531aad91221fcc",
     "semantic_hash": ""
   },
   "android/app/src/main/res/drawable-land-hdpi/splash.png": {
@@ -922,6 +922,21 @@
   "src/components/RosterButton.tsx": {
     "mtime": 1786218171.914393,
     "ast_hash": "5a53de494da74901b5ea159ede5ac978",
+    "semantic_hash": ""
+  },
+  "_zones_smoke.mts": {
+    "mtime": 1786219938.6058176,
+    "ast_hash": "a56810ebafb001f93de55cbc105b9902",
+    "semantic_hash": ""
+  },
+  "src/game/zones.ts": {
+    "mtime": 1786220257.9988174,
+    "ast_hash": "e23bcb2af5372bf8c446e656876d9196",
+    "semantic_hash": ""
+  },
+  "src/components/ZoneKindBadge.tsx": {
+    "mtime": 1786220262.9474785,
+    "ast_hash": "c8327e66d4e4d596a383a68aa68e2a4a",
     "semantic_hash": ""
   }
 }

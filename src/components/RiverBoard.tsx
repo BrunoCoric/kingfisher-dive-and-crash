@@ -2,6 +2,7 @@ import { useState } from 'react'
 import type { CalloutKind, OutcomeCallout, Perch as PerchType, RiverZone } from '../game/types'
 import type { KingfisherID } from '../game/kingfishers'
 import { reachableZones } from '../game/reach'
+import { driftVisualFor, planFishDrift } from '../game/zones'
 import type { ZoneAction } from '../lib/stepFeedback'
 import { Perch } from './Perch'
 import { ZoneTile } from './ZoneTile'
@@ -66,7 +67,7 @@ export function RiverBoard({
 }: RiverBoardProps) {
   const [hoverPerchId, setHoverPerchId] = useState<string | null>(null)
   const zoneCount = zones.length
-  const lastZone = zoneCount - 1
+  const driftPlan = drifting ? planFishDrift(zones) : null
 
   // Don't fight Splash/Dive/peek or perch placement — only preview when the river is idle.
   const zoneTargeting = Object.values(targetStates).some((state) => state != null)
@@ -185,8 +186,7 @@ export function RiverBoard({
                 influence={zoneInfluence}
                 actions={zoneActions[zone.id]}
                 outcomes={zoneOutcomes[zone.id]}
-                drifting={drifting}
-                driftOff={drifting && zone.id === lastZone}
+                driftVisual={driftPlan ? driftVisualFor(zone, driftPlan) : null}
                 speciesBySeat={speciesBySeat}
                 onClick={() => onZoneClick(zone.id)}
               />

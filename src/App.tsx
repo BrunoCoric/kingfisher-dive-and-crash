@@ -25,6 +25,7 @@ type BotsMode = {
   humanSeat: string
   botSeats: string[]
   speciesPowers: boolean
+  specialZones: number
   humanSpecies: KingfisherID
   speciesBySeat: Record<string, KingfisherID>
   zoneCount: number
@@ -60,6 +61,7 @@ function BotsGame({ mode, onMenu }: { mode: BotsMode; onMenu: () => void }) {
             setup(context, {
               humanSeats: [mode.humanSeat],
               speciesPowers: mode.speciesPowers,
+              specialZones: mode.specialZones,
               humanSpecies: mode.humanSpecies,
               speciesBySeat: mode.speciesBySeat,
               zoneCount: mode.zoneCount,

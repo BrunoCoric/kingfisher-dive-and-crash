@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import type { GameState } from '../game/types'
 import { STEPS_PER_ROUND } from '../game/cards'
+import { specialKindsIn } from '../game/zones'
 import { spriteScaleStyle } from '../lib/presentation'
 import { outcomeStory } from '../lib/stepFeedback'
 import { RulesCheatsheet } from './RulesCheatsheet'
@@ -95,7 +96,11 @@ export function StatusLine({
             {!hand.open && <span className={styles.handCount}>{hand.count}</span>}
           </button>
         )}
-        <RulesCheatsheet speciesPowers={speciesPowers} variant="dock" />
+        <RulesCheatsheet
+          speciesPowers={speciesPowers}
+          specialKinds={specialKindsIn(G.zones)}
+          variant="dock"
+        />
       </div>
     </div>
   )

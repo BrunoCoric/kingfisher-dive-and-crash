@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { createPortal } from 'react-dom'
-import type { CardType } from '../game/types'
+import type { CardType, ZoneKind } from '../game/types'
 import { SPECIES_POWERS } from '../game/powers'
 import { KINGFISHERS } from '../game/kingfishers'
+import { ZONE_KIND_BLURB, ZONE_KIND_LABEL } from '../game/zones'
 import { CARD_ACCENT } from '../lib/presentation'
 import { ActionIcon } from './ActionIcon'
 import styles from './RulesCheatsheet.module.css'
@@ -45,12 +46,15 @@ const ROWS: Row[] = [
 
 interface RulesCheatsheetProps {
   speciesPowers?: boolean
+  /** Special kinds actually on this river (empty = hide feature rules). */
+  specialKinds?: Exclude<ZoneKind, 'open'>[]
   /** `dock` = compact chip for StatusLine; default floats over the river. */
   variant?: 'float' | 'dock'
 }
 
 export function RulesCheatsheet({
   speciesPowers = false,
+  specialKinds = [],
   variant = 'float',
 }: RulesCheatsheetProps) {
   const [open, setOpen] = useState(false)
@@ -130,6 +134,20 @@ export function RulesCheatsheet({
                   </li>
                 ))}
               </ul>
+
+              {specialKinds.length > 0 && (
+                <>
+                  <p className={styles.priorityLabel}>River features</p>
+                  <ul className={styles.list}>
+                    {specialKinds.map((kind) => (
+                      <li key={kind} className={styles.row}>
+                        <strong className={styles.rowTitle}>{ZONE_KIND_LABEL[kind]}</strong>
+                        <span className={styles.rowBody}>{ZONE_KIND_BLURB[kind]}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
 
               {speciesPowers && (
                 <>

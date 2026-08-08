@@ -12,6 +12,7 @@ import type { OnlineBotSeat } from '../lib/onlineBots'
 import { ensureOnlineBots } from '../lib/onlineBots'
 import type { StartConfig } from '../startConfig'
 import { clampDeckSize, deckTotalFor, riverZonesFor } from '../game/fish'
+import { clampSpecialZones, MIN_SPECIAL_ZONES } from '../game/zones'
 import { RiverOptions } from './RiverOptions'
 import surface from './menuSurface.module.css'
 import styles from './CreateGame.module.css'
@@ -39,6 +40,7 @@ export function CreateOnline({
   const [deckSize, setDeckSize] = useState(() => deckTotalFor(DEFAULT_PLAYERS))
   const [humanSpecies, setHumanSpecies] = useState<KingfisherID>('common')
   const [speciesPowers, setSpeciesPowers] = useState(true)
+  const [specialZones, setSpecialZones] = useState(MIN_SPECIAL_ZONES)
   const [playerName, setPlayerName] = useState('Host')
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -59,13 +61,16 @@ export function CreateOnline({
   const applyExtras = (next: SeatKind[]) => {
     setExtras(next)
     const n = 1 + next.length
-    setZoneCount(riverZonesFor(n))
+    const zones = riverZonesFor(n)
+    setZoneCount(zones)
     setDeckSize(deckTotalFor(n))
+    setSpecialZones((s) => clampSpecialZones(s, zones))
   }
 
   const applyZoneCount = (n: number) => {
     setZoneCount(n)
     setDeckSize((d) => clampDeckSize(d, n))
+    setSpecialZones((s) => clampSpecialZones(s, n))
   }
 
   const create = async () => {
@@ -81,6 +86,7 @@ export function CreateOnline({
           online: true,
           humanSeats,
           speciesPowers,
+          specialZones,
           humanSpecies,
           zoneCount,
           deckSize,
@@ -293,9 +299,11 @@ export function CreateOnline({
           playerCount={playerCount}
           zoneCount={zoneCount}
           deckSize={deckSize}
+          specialZones={specialZones}
           disabled={busy}
           onZoneCount={applyZoneCount}
           onDeckSize={(n) => setDeckSize(clampDeckSize(n, zoneCount))}
+          onSpecialZones={(n) => setSpecialZones(clampSpecialZones(n, zoneCount))}
         />
 
         <label className={styles.toggle}>

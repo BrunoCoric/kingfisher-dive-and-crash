@@ -1,13 +1,13 @@
 import type { GameState } from '../types'
 import { isFish } from '../types'
+import { destinationAfterDrift } from '../zones'
 import type { BotMemory, KnownFish } from './types'
 
 /**
  * Fish-drift memory. The bot only ever sees fish it revealed (sightline /
- * Hover peek) and can never see the deck, so its memory is a private,
- * approximate map of "fish id → predicted zone". Drift is deterministic
- * (+1 zone at cleanup, downstream edge washes out), so remembered fish are
- * shifted once per round change and pruned when they exit the river.
+ * Hover peek / Clear shallows) and can never see the deck, so its memory is a
+ * private map of "fish id → predicted zone". Drift follows zone kinds (Eddy
+ * sticky, Rapids +2, else +1); remembered fish shift once per round change.
  */
 export function initMemory(zoneCount: number): BotMemory {
   return { lastRound: 1, beliefRound: 1, zoneCount, known: [], oppHands: {}, seenKey: '' }
@@ -22,16 +22,21 @@ export function knownFishIn(memory: BotMemory, zone: number): KnownFish | undefi
 }
 
 /**
- * On a round change, shift every remembered fish one zone downstream and drop
- * any that washed off the downstream edge. Runs exactly once per cleanup.
+ * On a round change, shift remembered fish with the same destination rules as
+ * cleanup (Eddy / Rapids / skip). Runs exactly once per cleanup.
  */
 export function driftMemory(memory: BotMemory, view: GameState): void {
   if (memory.lastRound === view.round) return
-  const zoneCount = memory.zoneCount
+  // `view` is already post-cleanup — infer sticky Eddies from pre-drift memory.
+  const kinds = view.zones.map((z) => z.kind)
+  const sticky = new Set<number>()
+  for (const f of memory.known) {
+    if (kinds[f.zone] === 'eddy') sticky.add(f.zone)
+  }
   const drifted: KnownFish[] = []
   for (const f of memory.known) {
-    const zone = f.zone + 1
-    if (zone >= zoneCount) continue
+    const zone = destinationAfterDrift(f.zone, kinds, sticky)
+    if (zone === null) continue
     drifted.push({ ...f, zone, round: f.round + 1 })
   }
   memory.known = drifted

@@ -1,0 +1,165 @@
+.chip {
+  position: absolute;
+  left: 50%;
+  bottom: 0.35rem;
+  top: auto;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  max-width: calc(100% - 0.7rem);
+  min-height: 1.2rem;
+  padding: 0.1rem 0.38rem 0.1rem 0.22rem;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  border: 1.5px solid rgba(46, 75, 42, 0.22);
+  background: rgba(250, 243, 227, 0.94);
+  color: var(--forest-deep);
+  font-family: var(--font-display);
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  box-shadow: 0 1px 4px rgba(45, 95, 120, 0.28);
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.chip:focus-visible {
+  outline: 2px solid var(--status-highlight);
+  outline-offset: 2px;
+}
+
+.glyph {
+  width: 0.78rem;
+  height: 0.78rem;
+  flex: none;
+}
+
+.name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chip_clear {
+  background: rgba(210, 242, 248, 0.96);
+  border-color: rgba(42, 130, 150, 0.4);
+  color: #1f5f70;
+}
+
+.chip_eddy {
+  background: rgba(188, 220, 208, 0.96);
+  border-color: rgba(40, 100, 85, 0.4);
+  color: #1f4f44;
+}
+
+.chip_rapids {
+  background: rgba(236, 244, 248, 0.96);
+  border-color: rgba(70, 110, 130, 0.45);
+  color: #2a4a5c;
+  box-shadow: 0 1px 4px rgba(45, 95, 120, 0.32), inset 0 0 0 1px rgba(255, 255, 255, 0.55);
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: var(--backdrop);
+  backdrop-filter: blur(4px);
+}
+
+.tip {
+  width: min(100%, 17.5rem);
+  padding: 1rem 1rem 0.85rem;
+  border-radius: 1rem;
+  border: 2px solid rgba(46, 75, 42, 0.22);
+  background:
+    radial-gradient(120% 60% at 50% -10%, rgba(255, 255, 255, 0.55), transparent 55%),
+    linear-gradient(165deg, var(--parchment), var(--parchment-deep));
+  box-shadow: 0 16px 36px rgba(43, 36, 32, 0.35);
+  text-align: center;
+}
+
+.tip_clear {
+  border-color: rgba(42, 130, 150, 0.35);
+}
+
+.tip_eddy {
+  border-color: rgba(40, 100, 85, 0.35);
+}
+
+.tip_rapids {
+  border-color: rgba(70, 110, 130, 0.4);
+}
+
+.tipMark {
+  display: grid;
+  place-items: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: rgba(250, 243, 227, 0.95);
+  border: 1.5px solid rgba(46, 75, 42, 0.18);
+  color: var(--forest-deep);
+}
+
+.tip_clear .tipMark {
+  background: rgba(210, 242, 248, 0.95);
+  color: #1f5f70;
+}
+
+.tip_eddy .tipMark {
+  background: rgba(188, 220, 208, 0.95);
+  color: #1f4f44;
+}
+
+.tip_rapids .tipMark {
+  background: rgba(236, 244, 248, 0.95);
+  color: #2a4a5c;
+}
+
+.tipMark .glyph {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.tipTitle {
+  margin: 0.45rem 0 0;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--forest-deep);
+  letter-spacing: 0.01em;
+}
+
+.tipBody {
+  margin: 0.4rem 0 0;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 0.86rem;
+  line-height: 1.35;
+}
+
+.gotIt {
+  display: block;
+  width: 100%;
+  min-height: 2.35rem;
+  margin-top: 0.9rem;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  border: 1.5px solid rgba(46, 75, 42, 0.28);
+  background: rgba(250, 243, 227, 0.95);
+  color: var(--forest-deep);
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}

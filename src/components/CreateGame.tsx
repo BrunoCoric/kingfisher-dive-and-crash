@@ -13,6 +13,7 @@ import { isBirdUnlocked, UNLOCK_META } from '../profile/unlocks'
 import type { UnlockId } from '../profile/types'
 import type { StartConfig } from '../startConfig'
 import { clampDeckSize, deckTotalFor, riverZonesFor } from '../game/fish'
+import { clampSpecialZones, MIN_SPECIAL_ZONES } from '../game/zones'
 import { CreateBotRoster } from './CreateBotRoster'
 import { RiverOptions } from './RiverOptions'
 import surface from './menuSurface.module.css'
@@ -40,6 +41,7 @@ export function CreateGame({
   )
   const [editingBot, setEditingBot] = useState<string | null>('1')
   const [speciesPowers, setSpeciesPowers] = useState(true)
+  const [specialZones, setSpecialZones] = useState(MIN_SPECIAL_ZONES)
 
   const seats = Array.from({ length: playerCount }, (_, i) => String(i))
   const speciesBySeat = speciesBySeatFromBots(seats, humanSpecies, botSpecies, HUMAN_SEAT)
@@ -48,8 +50,10 @@ export function CreateGame({
 
   const applyPlayerCount = (n: number) => {
     setPlayerCount(n)
-    setZoneCount(riverZonesFor(n))
+    const zones = riverZonesFor(n)
+    setZoneCount(zones)
     setDeckSize(deckTotalFor(n))
+    setSpecialZones((s) => clampSpecialZones(s, zones))
     setBotSpecies((prev) => fillBotSpecies(n - 1, humanSpecies, prev))
     setEditingBot((seat) => {
       if (!seat) return seat
@@ -60,6 +64,7 @@ export function CreateGame({
   const applyZoneCount = (n: number) => {
     setZoneCount(n)
     setDeckSize((d) => clampDeckSize(d, n))
+    setSpecialZones((s) => clampSpecialZones(s, n))
   }
 
   const pickHuman = (id: KingfisherID) => {
@@ -78,6 +83,7 @@ export function CreateGame({
       humanSeat: HUMAN_SEAT,
       botSeats: seats.filter((id) => id !== HUMAN_SEAT),
       speciesPowers,
+      specialZones,
       humanSpecies,
       speciesBySeat,
       zoneCount,
@@ -201,8 +207,10 @@ export function CreateGame({
           playerCount={playerCount}
           zoneCount={zoneCount}
           deckSize={deckSize}
+          specialZones={specialZones}
           onZoneCount={applyZoneCount}
           onDeckSize={(n) => setDeckSize(clampDeckSize(n, zoneCount))}
+          onSpecialZones={(n) => setSpecialZones(clampSpecialZones(n, zoneCount))}
         />
 
         <label className={styles.toggle}>

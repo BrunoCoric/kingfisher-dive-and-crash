@@ -15,7 +15,11 @@ Left & Right Banks: Perch locations flanking the river.
 1 Fish Deck (default 2: 25, 3: 32, 4: 39, 5: 43; Create game can override size — mix scales from that recipe)
 1 First Player / Season Marker
 Board Layout & Perch System
-The River Board consists of 5 central water spaces flanked by perches on the riverbanks.
+The River Board consists of central water spaces flanked by perches on the riverbanks.
+Optional — Special zones (Create game / Create online stepper, default 0 = classic flat water; Tutorial always 0). Pick how many (0–3); the match randomly chooses that many distinct kinds from Clear / Eddy / Rapids and places each on a random water tile. Remaining tiles stay open water. Same action cards and crash rules.
+- Clear shallows: fish on this zone is face-up for everyone, and stays face-up as it drifts downstream.
+- Eddy: fish stays at end of round. If occupied, upstream fish skips past it.
+- Rapids: fish drifts +2 and washes off the map if past the last zone.
 [BANK LEFT]                                             [BANK RIGHT]
 ( High Perch A ) ---- [ Zone 1] ---- ( Low Perch 1 )
         |                                             |
@@ -119,8 +123,8 @@ Played card is spent. (Drops are never splashed.)
 
 5. End of Round Cleanup & Win Condition
 Secure Catches: Players add all caught fish cards to their personal scoring pile.
-Move fish: Move each fish card one space downstream, fish in the Zone 5 (the most downstream zone) is discarded
-Board Restock: Place new face-down cards from the Fish Deck onto any empty Water Tiles.
+Move fish: Each fish drifts downstream (open water / Clear: +1; Rapids: +2 and off the map if past the end; Eddy: stays — upstream fish skips an occupied Eddy). Fish that leave past the last zone are discarded.
+Board Restock: Place new face-down cards from the Fish Deck onto any empty Water Tiles (Clear shallows reveal immediately).
 Hand Reset: Players retrieve all spent and discarded Action Cards back into their hand (returning to 4 cards).
 Perch Maintenance: At the start of each round (after the First Player marker passes clockwise), all Kingfisher pawns leave the board, then players place again in turn order onto any unoccupied perch. If a player places on a low branch, they may secretly peek at one reachable face-down Fish card.
 Win Condition: The game ends there are no cards in the fish deck to fill out an empty slot in the river. The player with the highest total fish points wins (on tie, the player with most fish wins)!
