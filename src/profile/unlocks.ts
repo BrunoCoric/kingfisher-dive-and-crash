@@ -24,6 +24,14 @@ export const UNLOCK_META: Record<UnlockId, { name: string; flavor: string }> = {
     name: KINGFISHERS.yellowBilled.displayName,
     flavor: 'Steal a fish with Drop.',
   },
+  banded: {
+    name: KINGFISHERS.banded.displayName,
+    flavor: 'Get blocked by a Splash once.',
+  },
+  green: {
+    name: KINGFISHERS.green.displayName,
+    flavor: 'Keep a Perch in your pile.',
+  },
 }
 
 export const STARTER_FLAVOR = 'Starter — ready to dive.'
@@ -41,6 +49,8 @@ export function evaluateUnlocks(profile: Profile, match: MatchSummary): UnlockId
   if (match.outcomes.crash >= 3 && match.place <= 2) add('belted')
   if (profile.stats.matchesPlayed >= 5) add('azure')
   if (match.outcomes.steal >= 1) add('yellowBilled')
+  if (match.outcomes.blocked >= 1) add('banded')
+  if (profile.stats.fishCaught.Perch >= 1) add('green')
 
   return next
 }

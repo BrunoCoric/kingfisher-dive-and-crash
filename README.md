@@ -133,3 +133,5 @@ Enabled from Create game (default on for vs-bots; always off in Tutorial). Power
 - Belted — Wide Bank: Low perch uses High’s three-zone reach.
 - Azure — Tough Gut: your first Pike each match does not eat a Minnow.
 - Yellow-billed — Sun Bill: solo Splash also privately peeks that zone’s fish.
+- Banded — Barred Watch: when your Dive is Blocked, privately peek that zone’s fish.
+- Green — Speckled Wing: on Crash, privately peek that zone’s fish (fish stays).

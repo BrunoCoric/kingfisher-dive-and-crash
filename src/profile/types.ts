@@ -50,6 +50,8 @@ export const LOCKED_BIRDS: UnlockId[] = [
   'belted',
   'azure',
   'yellowBilled',
+  'banded',
+  'green',
 ]
 
 export function emptyFishCounts(): Record<FishType, number> {

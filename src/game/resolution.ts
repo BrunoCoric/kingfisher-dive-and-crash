@@ -79,11 +79,21 @@ function crashPlayer(G: GameState, pid: string, zone: number, random: Random): v
   if (!hasPower(G, pid, 'steadyWing')) {
     discardOneCard(G.players[pid].hand, random, G.tutorial)
   }
+  // Green Speckled Wing: Crash privately peeks the contested zone (fish stays).
+  if (hasPower(G, pid, 'speckledWing') && isFish(G.zones[zone]?.fish)) {
+    const seen = G.peeked[pid] ?? []
+    if (!seen.includes(zone)) G.peeked[pid] = [...seen, zone]
+  }
   G.outcomeLog.push({ zone, kind: 'crash', actor: pid })
 }
 
 function blockPlayer(G: GameState, pid: string, zone: number): void {
   G.outcomeLog.push({ zone, kind: 'blocked', actor: pid })
+  // Banded Barred Watch: blocked Dive privately peeks that zone.
+  if (hasPower(G, pid, 'barredWatch') && isFish(G.zones[zone]?.fish)) {
+    const seen = G.peeked[pid] ?? []
+    if (!seen.includes(zone)) G.peeked[pid] = [...seen, zone]
+  }
 }
 
 interface DiveResult {

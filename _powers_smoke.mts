@@ -44,6 +44,8 @@ function main() {
   assert(hasPower(G, '4', 'toughGut'), 'Azure')
   assert(SPECIES_POWERS.azure.name === 'Tough Gut', 'manifest label')
   assert(SPECIES_POWERS.yellowBilled.id === 'sunBill', 'Yellow-billed power')
+  assert(SPECIES_POWERS.banded.id === 'barredWatch', 'Banded power')
+  assert(SPECIES_POWERS.green.id === 'speckledWing', 'Green power')
 
   const yb = Client({
     game: {
@@ -58,6 +60,30 @@ function main() {
   const Y = yb.getState()!.G as GameState
   assert(hasPower(Y, '0', 'sunBill'), 'Yellow-billed Sun Bill')
   assert(hasPower(Y, '1', 'steadyWing'), 'bot fills flock order')
+
+  const bd = Client({
+    game: {
+      ...Game,
+      setup: (ctx) =>
+        setup(ctx, { humanSeats: ['0'], humanSpecies: 'banded', speciesPowers: true }),
+    },
+    numPlayers: 2,
+    multiplayer: Local(),
+  })
+  bd.start()
+  assert(hasPower(bd.getState()!.G as GameState, '0', 'barredWatch'), 'Banded Barred Watch')
+
+  const gr = Client({
+    game: {
+      ...Game,
+      setup: (ctx) =>
+        setup(ctx, { humanSeats: ['0'], humanSpecies: 'green', speciesPowers: true }),
+    },
+    numPlayers: 2,
+    multiplayer: Local(),
+  })
+  gr.start()
+  assert(hasPower(gr.getState()!.G as GameState, '0', 'speckledWing'), 'Green Speckled Wing')
 
   const low = G.perches.find((p) => p.level === 'low')!
   assert(reachLevel(G, '3', low) === 'high', 'Belted Wide Bank')

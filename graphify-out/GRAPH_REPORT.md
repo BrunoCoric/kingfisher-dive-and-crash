@@ -1,16 +1,16 @@
 # Graph Report - kingfisher-dive-and-crash  (2026-08-08)
 
 ## Corpus Check
-- 109 files · ~152,237 words
+- 109 files · ~305,717 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 687 nodes · 1727 edges · 31 communities (26 shown, 5 thin omitted)
+- 687 nodes · 1730 edges · 31 communities (26 shown, 5 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 12 edges (avg confidence: 0.75)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `6a8c213f`
+- Built from commit: `e2929b2b`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 

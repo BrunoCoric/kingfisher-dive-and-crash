@@ -136,8 +136,8 @@ Vertical flow, **top = upstream (Zone 1) → bottom = downstream (Zone 5)**. A s
   - **Grounded presence via shadow:** each pawn carries a soft blurred drop-shadow that stays anchored on the perch even as the sprite lifts — sells a solid 3D table presence for free.
   - Idle: subtle bob (3s loop); hover move glides along an arc from perch to perch.
 
-### Pawn Species (6 playable kingfishers)
-Six real species in the Nest flock (the game supports up to 5 players — each player picks a distinct species from unlocked birds). Each has a **natural-feather palette**, a **defining mark**, and a **UI accent slot** used for the avatar border / score row / locked-card edge. All sprites share one **side-profile pose + baseline**, differing only in plumage color & small build cues.
+### Pawn Species (8 playable kingfishers)
+Eight real species in the Nest flock (the game supports up to 5 players — each player picks a distinct species from unlocked birds). Each has a **natural-feather palette**, a **defining mark**, and a **UI accent slot** used for the avatar border / score row / locked-card edge. All sprites share one **side-profile pose + baseline**, differing only in plumage color & small build cues.
 
 | # | Species | Natural palette | Defining mark | UI accent |
 |---|---|---|---|---|
@@ -147,11 +147,13 @@ Six real species in the Nest flock (the game supports up to 5 players — each p
 | 4 | **Belted Kingfisher** | slate blue-grey, bushy head crest | thick grey-blue chest belt | `#1FA08C` river teal |
 | 5 | **Azure Kingfisher** | iridescent azure blue | tiny size, bright azure + white | `#2E9FD6` azure blue |
 | 6 | **Yellow-billed Kingfisher** | olive-green back, orange crown, blue rump | bright yellow-orange bill + black eye mask | `#6B8A2E` olive |
+| 7 | **Banded Kingfisher** | orange-brown & charcoal bars, speckled crown | scarlet red bill + barred wings | `#B54A2E` russet |
+| 8 | **Green Kingfisher** | deep emerald back, white collar, spotted wings | white wing speckles + green breast bands | `#1F8A52` emerald |
 
 Guidelines:
 - Palette hexes are **not rigid** — the painted sprite's natural colors are the star; the UI accent only needs to be recognizable against board greens/water blues.
-- Keep the **white throat/chest patch** on every species (shared silhouette anchor so all six read as the same bird "family").
-- All six crop to the same baseline so elevation scale behaves identically on the perch.
+- Keep the **white throat/chest patch** on every species (shared silhouette anchor so the flock reads as one bird "family").
+- Crop sprites to the same baseline so elevation scale behaves identically on the perch.
 - Species names appear next to avatars in the HUD and briefly on the setup/lobby picker (footnote tooltip with a fun fact, optional).
 
 ### Scores roster (on demand)
@@ -327,12 +329,18 @@ One prompt per playable species. Each follows the same template (same pose, angl
 **Yellow-billed Kingfisher**
 > Hand-painted watercolor children's book illustration of a yellow-billed kingfisher bird, side profile view, perched upright, head and body flat against a plain white background. Whimsical, airy, joyful field-guide art in the style of Wingspan. Soft painterly watercolor strokes with gentle paper texture, warm sunlit river-valley palette. Feather body is olive green on the back and wings with an orange-rufous crown, creamy white throat, a thick black eye mask, and a bright cerulean blue rump and tail; large bright yellow-orange beak, round cartoonish head, single glossy eye, bold clean silhouette, no background scenery, no other elements, isolated subject, centered composition. Soft soft drop shadow under the feet. Clean flat vector colors with watercolor texture. PNG, no text. No background.
 
+**Banded Kingfisher**
+> Hand-painted watercolor children's book illustration of a banded kingfisher bird, side profile view, perched upright, head and body flat against a plain white background. Whimsical, airy, joyful field-guide art in the style of Wingspan. Soft painterly watercolor strokes with gentle paper texture, warm sunlit river-valley palette. Feather body is boldly barred orange-brown and charcoal on the back, wings, and long tail, with a speckled golden-brown crown, pure white throat, and dark teardrop spots on the breast; thick scarlet-red beak, round cartoonish head, single glossy eye, bold clean silhouette, no background scenery, no other elements, isolated subject, centered composition. Soft soft drop shadow under the feet. Clean flat vector colors with watercolor texture. PNG, no text. No background.
+
+**Green Kingfisher**
+> Hand-painted watercolor children's book illustration of a green kingfisher bird, side profile view, perched upright, head and body flat against a plain white background. Whimsical, airy, joyful field-guide art in the style of Wingspan. Soft painterly watercolor strokes with gentle paper texture, warm sunlit river-valley palette. Feather body is deep emerald green on the back and wings with fine white wing speckles, a crisp white collar, and jagged green-and-white bands across the breast; long dark charcoal beak, round cartoonish head, single glossy eye, bold clean silhouette, no background scenery, no other elements, isolated subject, centered composition. Soft soft drop shadow under the feet. Clean flat vector colors with watercolor texture. PNG, no text. No background.
+
 **Generation tips**
-- Run all five in one batch/seed so plumage style and pose stay locked.
+- Run sprites in one batch/seed so plumage style and pose stay locked.
 - Request transparent PNG and keep the same aspect ratio + baseline (feet aligned) so perch elevation scales identically.
 - If a species' defining mark is missed, re-prompt with only that clause emphasized — don't regenerate the whole art direction.
 
 **Final assets (in-repo)**
-- Location: `src/assets/kingfishers/` (kebab-case filenames: `common-kingfisher.png`, `pied-kingfisher.png`, `oriental-dwarf-kingfisher.png`, `belted-kingfisher.png`, `azure-kingfisher.png`, `yellow-billed-kingfisher.png`).
+- Location: `src/assets/kingfishers/` (kebab-case filenames: `common-kingfisher.png`, `pied-kingfisher.png`, `oriental-dwarf-kingfisher.png`, `belted-kingfisher.png`, `azure-kingfisher.png`, `yellow-billed-kingfisher.png`, `banded-kingfisher.png`, `green-kingfisher.png`).
 - Manifest: `src/game/kingfishers.ts` — typed constants per species (id, display name, sprite import, accent color).
 - **Facing:** all sprites look **left**, except the **common kingfisher which faces right**. Components must flip sprites with CSS `scaleX(-1)` to make a pawn face the center of the board regardless of bank, i.e. use `facing` from the manifest.

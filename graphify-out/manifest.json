@@ -70,8 +70,8 @@
     "semantic_hash": ""
   },
   "src/game/kingfishers.ts": {
-    "mtime": 1786182191.1725786,
-    "ast_hash": "9bec1aa1208a011eef2601d7052632d5",
+    "mtime": 1786184317.5990608,
+    "ast_hash": "6eeb3c1a1449a9aaae87d2e4186c5c7d",
     "semantic_hash": ""
   },
   "src/game/moves.ts": {
@@ -85,8 +85,8 @@
     "semantic_hash": ""
   },
   "src/game/resolution.ts": {
-    "mtime": 1786182200.5417562,
-    "ast_hash": "53ad503610ae60cad76dada8a61ef1ca",
+    "mtime": 1786184323.2358694,
+    "ast_hash": "4bcd1dcc9becc40fb62b0c484613113c",
     "semantic_hash": ""
   },
   "src/game/types.ts": {
@@ -95,8 +95,8 @@
     "semantic_hash": ""
   },
   "src/lib/presentation.ts": {
-    "mtime": 1786182196.4698818,
-    "ast_hash": "77add0109cad987c64d6f3c076e9d557",
+    "mtime": 1786184319.6067064,
+    "ast_hash": "b263d1cd93b05164b3e07d6c1b55a57c",
     "semantic_hash": ""
   },
   "src/main.tsx": {
@@ -135,18 +135,18 @@
     "semantic_hash": ""
   },
   "DESIGN.md": {
-    "mtime": 1786182220.6064317,
-    "ast_hash": "ec7d1443362acdc52fe7930bf5eccd3a",
+    "mtime": 1786184333.7189014,
+    "ast_hash": "d8fee0ecbcec68422dd51b5c580a8640",
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1786182211.6125991,
-    "ast_hash": "83e6f8738242551716dfd9dc35177394",
+    "mtime": 1786184329.9174957,
+    "ast_hash": "d585b892c1efe847804f874b3315636c",
     "semantic_hash": ""
   },
   "VISUALS.md": {
-    "mtime": 1786182226.6068103,
-    "ast_hash": "c97313cf2a720e0d2beeb86b7cbcd75c",
+    "mtime": 1786184345.7575984,
+    "ast_hash": "fd7189b8165a8055f4f4e9f336d9abb3",
     "semantic_hash": ""
   },
   "index.html": {
@@ -560,13 +560,13 @@
     "semantic_hash": ""
   },
   "src/profile/types.ts": {
-    "mtime": 1786182197.3356524,
-    "ast_hash": "0f51726502cca96319cda2c587179a67",
+    "mtime": 1786184319.7449424,
+    "ast_hash": "7fc86b2ad0581ea5a6de31deb7ca0c54",
     "semantic_hash": ""
   },
   "src/profile/unlocks.ts": {
-    "mtime": 1786182200.2211578,
-    "ast_hash": "bad291df4220bf1cef9ff192f0194972",
+    "mtime": 1786184321.1407225,
+    "ast_hash": "90d742a0501326f84edafce3b5984a21",
     "semantic_hash": ""
   },
   "src/components/CreateGame.tsx": {
@@ -590,13 +590,13 @@
     "semantic_hash": ""
   },
   "src/game/powers.ts": {
-    "mtime": 1786182195.8741891,
-    "ast_hash": "62149edced742ac6af6369b6278982cc",
+    "mtime": 1786184319.113533,
+    "ast_hash": "e6c7b7cb1a20ca92647e9835bd50e225",
     "semantic_hash": ""
   },
   "_powers_smoke.mts": {
-    "mtime": 1786182209.3722272,
-    "ast_hash": "5dadde5101af0349b6ffc2325884640b",
+    "mtime": 1786184329.480829,
+    "ast_hash": "8300087c1147269eb77b44d12738acaf",
     "semantic_hash": ""
   },
   "public/apple-touch-icon.png": {
@@ -855,8 +855,18 @@
     "semantic_hash": ""
   },
   "src/assets/kingfishers/yellow-billed-kingfisher.png": {
-    "mtime": 1786182162.8878574,
-    "ast_hash": "29158308ad343ce21a5d61af71faa11d",
+    "mtime": 1786182417.4274945,
+    "ast_hash": "ea5459768bde61822cd282bd45adce6f",
+    "semantic_hash": ""
+  },
+  "src/assets/kingfishers/banded-kingfisher.png": {
+    "mtime": 1786184068.1478815,
+    "ast_hash": "0d10b9e8bd439c7a4fa2888f58475a80",
+    "semantic_hash": ""
+  },
+  "src/assets/kingfishers/green-kingfisher.png": {
+    "mtime": 1786184268.917064,
+    "ast_hash": "2a5608a6427e5ab41b31915d6c2fcd69",
     "semantic_hash": ""
   }
 }

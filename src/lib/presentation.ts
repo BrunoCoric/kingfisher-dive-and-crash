@@ -9,6 +9,8 @@ export const SPECIES_SHORT: Record<KingfisherID, string> = {
   belted: 'Belted',
   azure: 'Azure',
   yellowBilled: 'Yellowbill',
+  banded: 'Banded',
+  green: 'Green',
 }
 
 export function kingfisherById(id: KingfisherID): Kingfisher {
