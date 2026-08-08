@@ -44,7 +44,7 @@ export function lessonFor(
     if (G.outcomeLog.length > 0) {
       const sk = stepReviewKey(G)
       if (!dismissedReviews.has(sk)) {
-        const review = reviewLesson(G, outcomeKinds(G), sk)
+        const review = reviewLesson(outcomeKinds(G), sk)
         if (review) return review
       }
     }
@@ -75,7 +75,7 @@ export function lessonFor(
   if (G.outcomeLog.length > 0) {
     const sk = stepReviewKey(G)
     if (!dismissedReviews.has(sk)) {
-      const review = reviewLesson(G, kinds, sk)
+      const review = reviewLesson(kinds, sk)
       if (review) return review
     }
   }
@@ -93,7 +93,7 @@ export function lessonFor(
   return actionLesson(key, gate)
 }
 
-function reviewLesson(G: GameState, kinds: Set<string>, rk: string): TutorialLesson | null {
+function reviewLesson(kinds: Set<string>, rk: string): TutorialLesson | null {
   if (kinds.has('steal')) {
     return {
       id: 'review-steal',
